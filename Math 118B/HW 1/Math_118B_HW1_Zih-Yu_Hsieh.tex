@@ -1,0 +1,549 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.5}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118B HW 1}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\subsection*{1}
+\begin{question}
+    \textbf{Use just the definition, prove:
+    \begin{itemize}
+        \item[(a)] $f:\mathbf{R} \rightarrow \mathbf{R},\ f(x)=x^2$, is not uniformly continuous.
+        \item[(b)] $f:(-10^6,10^6) \rightarrow \mathbf{R},\ f(x)=x^2$, is uniformly continuous.
+    \end{itemize}
+    }
+\end{question}
+
+\hfill
+
+\begin{itemize}
+    \item[(a)] 
+    Given $f:\mathbf{R} \rightarrow \mathbf{R},\ f(x)=x^2$.
+
+    Choose $\epsilon = 1$. For any $\delta>0$, by Archimedean Property, there exists $n\in\mathbf{N}$ with $1<n\delta$, which implies that $\frac{1}{n}<\delta$. 
+    Then, consider $(n+\frac{1}{n}),n\in\mathbf{R}$:
+    
+    First, $|(n+\frac{1}{n})-n|=|\frac{1}{n}| <\delta$. Also, the following is true:
+    $$|f(n+\frac{1}{n})-f(n)| = |(n+\frac{1}{n})^2-n^2| = |\frac{1}{n}(2n+\frac{1}{n})| = (2+\frac{1}{n^2}) >1=\epsilon$$
+    So, for any given $\delta>0$, there exists $x_1,x_2\in\mathbf{R}$, with $|x_1-x_2|<\delta$, but $|f(x_1)-f(x_2)| \geq \epsilon$, 
+    proving that $f:\mathbf{R} \rightarrow \mathbf{R},\ f(x)=x^2$, is not uniformly continuous.
+    
+    \hfill
+
+    \item[(b)] 
+    Given $f:(-10^6,10^6) \rightarrow \mathbf{R},\ f(x)=x^2$.
+
+    For all $\epsilon>0$, let $\delta = \epsilon/(2\cdot 10^6)$. Then, for all $x,y \in (-10^6,10^6)$, suppose $|x-y| < \delta$, then consider $|f(x)-f(y)|$:
+    $$|f(x)-f(y)|=|x^2-y^2| = |x-y|\cdot|x+y| < \delta \cdot |x+y|$$
+    Which, since $x,y\in (-10^6,10^6)$, then $|x|,|y| < 10^6$. So, $|x+y|$ is limited by the following inequality:
+    $$|x+y| \leq |x|+|y| < 10^6+10^6 = 2\cdot 10^6$$
+    Thus the following is true:
+    $$|f(x)-f(y)| < \delta \cdot |x+y| < \delta \cdot (2 \cdot 10^6)$$
+    $$|f(x)-f(y)| < (2\cdot 10^6) \cdot \epsilon/(2\cdot10^6) = \epsilon$$
+    So, the above proves that $f:(-10^6,10^6) \rightarrow \mathbf{R},\ f(x)=x^2$, is uniformly continuous.
+\end{itemize}
+
+\break 
+
+\subsection*{2}
+\begin{question}
+    \textbf{
+        Given $(X,d_X),\ (Y,d_Y)$ two metric spaces. Let $f:X\rightarrow Y$ be an uniformly continuous function.
+        \begin{itemize}
+            \item[(a)] Prove that if $(x_n)_{n=1}^{\infty}$ is a cauchy sequence in $X$, then $(f(x_n))_{n=1}^{\infty}$ is a cauchy sequence in $Y$.
+            \item[(b)] Given an example of $g:(0,1)\rightarrow \mathbf{R}$ continuous, $(x_n)_{n=1}^{\infty}$ is a cauchy sequence in $X$ and $(g(x_n))_{n=1}^{\infty}$ is not a cauchy sequence in $Y$.
+            \item[(c)] Prove that if $f:(0,1)\rightarrow\mathbf{R}$ is uniformly continuous, it can be extended continuously to $[0,1]$. 
+        \end{itemize}
+    }
+\end{question}
+
+\hfill
+
+\begin{itemize}
+    \item[(a)] Suppose $(x_n)_{n=1}^{\infty}$ is a Cauchy sequence in $X$. Then, consider $\left(f(x_n)\right)_{n=1}^{\infty}$: 
+    
+    Since $f$ is uniformly continuous, for all $\epsilon > 0$, there exists $\delta > 0$, such that for all $x,x' \in X$, $d_X(x,x') < \delta$ implies $d_Y(f(x),f(x')) < \epsilon$.
+
+    Also, since $(x_n)_{n=1}^{\infty}$ is Cauchy, for the given $\delta > 0$ above, there exists $N$, such that $m,n \geq N$ implies $d_X(x_m, x_n) < \delta$.
+
+    Which, for this specific $N$, since $m,n \geq N$ implies $d_X(x_m, x_n) < \delta$, and by the definition of Uniform Continuity, this further implies that $d_Y(f(x_m), f(x_n)) < \epsilon$. So, for all $\epsilon >0$, there exists such $N$, such that $m,n \geq N$ implies $d_Y(f(x_m), f(x_n)) < \epsilon$. This proves that $(f(x_n))_{n=1}^{\infty}$ is a Cauchy Sequence.
+
+    \hfill
+
+    \item[(b)] Consider $g:(0,1) \rightarrow \mathbf{R}$ defined as $g(x) = \frac{1}{x}$, and let $(x_n)_{n=1}^{\infty}$ be defined as $x_n = \frac{1}{2^n}$ for all $n \in \mathbf{N}$.
+
+    First, we'll prove that $(x_n)_{n=1}^{\infty}$ is Cauchy: For all $\epsilon > 0$, since $\frac{\epsilon}{2} > 0$, there exists $k \in \mathbf{N}$, such that$ 1 < k\frac{\epsilon}{2}$, which $\frac{1}{k} < \frac{\epsilon}{2}$. Now, choose $N = \log_{2}(k)$. For all $n \geq N = \log_2(k)$, $2^n \geq 2^N = k$, thus $|x_n-0| = |\frac{1}{2^n}| = \frac{1}{2^n} \leq \frac{1}{k} < \frac{\epsilon}{2}$. Then, for all $m,n \geq N$, the following is true:
+    $$|x_m-x_n| = |(x_m-0) + (0-x_n)| \leq |x_m-0| + |0-x_n| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
+    Thus, for all $\epsilon >0$, there exists $N$, with $m,n \geq N$ implies that $|x_m-x_n| < \epsilon$, proving that $(x_n)_{n=1}^{\infty}$ is Cauchy.
+
+    Next, we'll prove that $(g(x_n))_{n=1}^{\infty}$ is not Cauchy: For all $n \in \mathbf{N}$, since $x_n = \frac{1}{2^n}$, then $g(x_n) = \frac{1}{1/2^n} = 2^n$. Then, choose $\epsilon = 1 > 0$. For all $N \in \mathbf{R}$, by Archimedean's Property, there exists $k\in\mathbf{N}$, such that $N<k \leq 2^k$. Which, consider $g(x_k)$ and $g(x_{k+1})$: 
+    $$|g(x_k)-g(x_{k+1})| = |2^k-2^{k+1}| = |-2^k| = 2^k > 2 > 1 = \epsilon$$
+    So, for $\epsilon =1$, for all $N$, there exists $m,n \geq N$, such that $|g(x_k)-g(x_{k+1})| > \epsilon$, proving that $(g(x_n))_{n=1}^{\infty}$ is not Cauchy.
+
+    \hfill
+
+    \item[(c)] Suppose $f(0,1) \rightarrow \mathbf{R}$ is Uniformly Continuous.
+
+    \textbf{Limit near $0$ and $1$:}
+    
+    Given arbitrary $a \in \{0,1\}$. For all $(x_n)_{n=1}^{\infty}, (y_n)_{n=1}^{\infty} \subset (0,1)$ that converges to $a$, the two sequences are Cauchy. Based on the statement in \textbf{Problem 2 Part (a)}, $f$ is uniformly continuous and the two sequences being Cauchy, implies that $(f(x_n))_{n=1}^{\infty}, (f(y_n))_{n=1}^{\infty} \subset \mathbf{R}$ are Cauchy, and due to the Completeness of $\mathbf{R}$, the two sequences converge. Thus, $\lim_{n \rightarrow \infty}f(x_n) = L_x \in \mathbf{R}$, and $\lim_{n \rightarrow \infty} f(y_n) = L_y \in \mathbf{R}$.
+
+    Now, to prove that the limit is unique, consider $|L_x-L_y|$: For any $n\in\mathbf{N}$, the following is true:
+    $$0 \leq |L_x-L_y| = \left|(L_x-f(x_n)) + (f(x_n)-f(y_n)) + (f(y_n)-L_y)\right|$$
+    $$0 \leq |L_x-L_y| \leq |L_x-f(x_n)| + |f(x_n)-f(y_n)| + |L_y - f(y_n)|$$
+    Which, for all $\epsilon>0$ (which $\frac{\epsilon}{3} >0$), based on the definition of convergence, there exists $N_1, N_2$, such that $n\geq N_1$ implies that $|L_x-f(x_n)| < \frac{\epsilon}{3}$, and $n \geq N_2$ implies that $|L_y-f(y_n)| < \frac{\epsilon}{3}$.
+
+    \hfill
+
+    Also, based on the definition of Uniform Continuity, given $\frac{\epsilon}{3}>0$, there exists $\delta >0$, such that for all $x,x' \in (0,1)$, $|x-x'|<\delta$ implies $|f(x)-f(x')| < \frac{\epsilon}{3}$.
+
+    Then, since $(x_n)_{n=1}^{\infty}$ and $(y_n)_{n=1}^{\infty}$ both converges to $a$, then given $\delta >0$ (which $\frac{\delta}{2}>0$), there exists $N_3, N_4$, such that $n\geq N_3$ implies $|a-x_n| < \frac{\delta}{2}$, and $n \geq N_4$ implies $|a-y_n| < \frac{\delta}{2}$.
+
+    \hfill
+
+    Now, consider $N = \max\{N_1,N_2,N_3,N_4\}$. For any $n \geq N$:
+    
+    Since $n \geq N_3$ and $n \geq N_4$, then $|a-x_n| < \frac{\delta}{2}$, and $|a-y_n| < \frac{\delta}{2}$. Which:
+    $$|x_n-y_n| = |(x_n-a)+(a-y_n)| \leq |a-x_n| + |a-y_n| < \frac{\delta}{2}+\frac{\delta}{2} =\delta$$
+    Because $x_n, y_n \in (0,1)$ and $|x_n-y_n| < \delta$, this implies that $|f(x_n)-f(y_n)| < \frac{\epsilon}{3}$ based on the above definition of uniform continuity.
+
+    Also, since $n \geq N_1$, it implies that $|L_x-f(x_n)| < \frac{\epsilon}{3}$, and $n \geq N_2$ implies that $|L_y -f(y_n)| < \frac{\epsilon}{3}$.
+
+    Then, recall the initial inequality, the following is true:
+    $$0 \leq |L_x-L_y| \leq |L_x-f(x_n)| + |f(x_n)-f(y_n)| + |L_y - f(y_n)| < \frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}=\epsilon$$
+    Thus, for all $\epsilon>0$, $0 \leq |L_x-L_y| < \epsilon$. This implies that $|L_x-L_y| = 0$, so $L_x = L_y$. Hence, we can conclude that for all $(x_n)_{n=1}^{\infty} \subset (0,1)$ satisfying $\lim_{n \rightarrow \infty}x_n = a$ (with $a \in \{0,1\}$), $\lim_{n \rightarrow \infty}f(x_n)$  converges to a unique element in $\mathbf{R}$, regardless the choice of $(x_n)_{n=1}^{\infty}$. 
+
+    So, there exists unique $L, R \in \mathbf{R}$, such that for all $(x_n)_{n=1}^{\infty}, (y_n)_{n=1}^{\infty} \in (0,1)$ that satisfy $\lim_{n\rightarrow\infty}x_n = 0$ and $\lim_{n\rightarrow\infty}y_n = 1$, the following is true:
+    $$\lim_{n\rightarrow \infty}f(x_n) = L,\quad \lim_{n\rightarrow \infty}f(y_n) = R$$
+
+    \textbf{Continuity of $f$:} 
+    
+    Define $f:[0,1] \rightarrow \mathbf{R}$ as follow:
+    $$f(x) = \begin{cases}
+        L & x =0\\
+        f(x) & x \in (0,1)\\
+        R & x=1
+    \end{cases}$$
+    The extension is continuous on $(0,1)$, to prove this extension is continuous, it suffices to prove that it is continuous at $x=0$ and $x=1$. We'll approach this by contradiction.
+
+    Given $a \in \{0,1\}$, suppose $f$ is not continuous at $a$, then there exists $\epsilon>0$, such that for all $\delta >0$, there exists $x \in [0,1]$, with $|x-a|<\delta$, but $|f(x)-f(a)| \geq \epsilon$. Then, consider the following process:
+    \begin{itemize}
+        \item[Step 1.] Choose $\delta_1 = \frac{1}{10^1}$, there exists $x_1 \in [0,1]$, such that $|x_1-a| < \delta_1$, but $|f(x_1)-f(a)| \geq \epsilon$. 
+        
+        Notice that $x_1 \neq 0$ and $x_1 \neq 1$: If $a = 0$, then $x_1 \neq 0$ (since $|f(x_1)-f(0)| \geq \epsilon > 0$, so $f(x_1) \neq f(0)$, implying that $x_1 \neq 0$); also, since $|x_1-0| < \delta_1 = \frac{1}{10^1} < 1 = |1-0|$, then $x_1 \neq 1$. Else, if $a=1$, then $x_1 \neq 1$ (since $|f(x_1)-f(1)| \geq \epsilon > 0$, so $f(x_1) \neq f(1)$, implying that $x_1 \neq 1$); then, since $|x_1-1| < \delta_1 = \frac{1}{10^1} < 1 = |0-1|$, $x_1 \neq 0$.
+
+        So, $x_1 \in (0,1)$.
+
+        \item[Step k.] Given integer $k\geq 2$, Choose $\delta_k = \frac{1}{10^k}$, there exists $x_k \in [0,1]$, such that $|x_k-a| < \delta_k$, but $|f(x_k)-f(a)| \geq \epsilon$. 
+
+        Based on similar reason, $x_k \neq 0$ and $x_k \neq 1$: If $a = 0$, then $x_k \neq 0$ (since $|f(x_k)-f(0)| \geq \epsilon > 0$, so $f(x_k) \neq f(0)$, implying that $x_k \neq 0$); also, since $|x_k-0| < \delta_1 = \frac{1}{10^k} < 1 = |1-0|$, then $x_k \neq 1$. Else, if $a=1$, then $x_k \neq 1$ (since $|f(x_k)-f(1)| \geq \epsilon > 0$, so $f(x_k) \neq f(1)$, implying that $x_k \neq 1$); then, since $|x_k-1| < \delta_1 = \frac{1}{10^k} < 1 = |0-1|$, $x_k \neq 0$.
+
+        So, $x_k \in (0,1)$.
+    \end{itemize}
+    From the above process, we constructed $(x_k)_{k=1}^{\infty} \subset (0,1)$, such that the following is true: For all $\epsilon' >0$, there exists $K\in\mathbf{N}$, such that $1<K\epsilon$, or $\frac{1}{10^K} <\frac{1}{K} < \epsilon'$. Then, for all $k \geq K$, since $10^k \geq 10^K$, $\frac{1}{10^k} \leq \frac{1}{10^K}$. Which, the following is true:
+    $$|x_k-a| < \delta_k = \frac{1}{10^k} \leq \frac{1}{10^K} < \epsilon'$$
+    Thus, this implies that $x_k$ converges to $a$. 
+    
+    So, $(s_k)_{k=1}^{\infty} \subset (0,1)$ is a sequence satisfying $\lim_{k\rightarrow \infty}x_k = a$ (with $a \in \{0,1\}$), while $\lim_{k\rightarrow \infty}f(x_k) \neq f(a)$ (since for all $k\in\mathbf{N}$, $|f(x_k)-f(a)| \geq \epsilon >0$). Yet, this is a contradiction:
+
+    Recall that for all $(x_n)_{n=1}^{\infty}, (y_n)_{n=1}^{\infty} \in (0,1)$ that satisfy $\lim_{n\rightarrow\infty}x_n = 0$ and $\lim_{n\rightarrow\infty}y_n = 1$, $\lim_{n\rightarrow \infty}f(x_n) = L$, and $\lim_{n\rightarrow \infty}f(y_n) = R$.
+
+    If $a=0$, then $(x_k)_{k=1}^{\infty}$ satisfies $\lim_{k\rightarrow \infty}x_k = a = 0$, while $\lim_{k\rightarrow \infty}f(x_k) \neq f(a) = L$, which is a contradiction. Else if $a=1$, then $(x_k)_{k=1}^{\infty}$ satisfies $\lim_{k\rightarrow \infty}x_k = a = 1$, while $\lim_{k\rightarrow \infty}f(x_k) \neq f(a) = R$, which is again a contradiction.
+
+    So, our initial assumption must be false, the extended $f$ must be continuous at $a$. And, since $a\in\{0,1\}$ is arbitrary, then the extended $f$ is continuous on both $x=0$ and $x=1$, showing that we can extend $f$ to be continuous on $[0,1]$.
+\end{itemize}
+
+
+
+\break
+
+\subsection*{3}
+\begin{question}
+    \textbf{
+        Textbook:
+        \begin{itemize}
+            \item[2.] If $f:X\rightarrow Y$ is continuous, prove that $f(\overline{E}) \subseteq \overline{f(E)}$ for all $E\subset X$, and show that proper inclusion is possible.
+            \item[7.] Define $f$ and $g$ mapping from $\mathbf{R}^2$ to $\mathbf{R}$ by $f(0,0)=g(0,0)=0$, and $f(x,y)=xy^2/(x^2+y^4),\ g(x,y)=xy^2/(x^2+y^6)$ if $(x,y)\neq (0,0)$. 
+            Prove that $f$ is bounded on $\mathbf{R}$, $g$ is unbounded on every neighborhood of $(0,0)$, and $f$ is not continuous on $(0,0)$. 
+            Also, show that the restriction of all straight line in $\mathbf{R}^2$ is continuous. 
+            \item[18.] For all $x\in \mathbf{Q}\setminus\{0\}$, there exists unique $m,n\in\mathbf{Z}$ with $n>0$, such that $x=\frac{m}{n}$, and $m,n$ are coprime (if $x=0$, take $n=1$). 
+            Take the following function $f:\mathbf{R}\rightarrow \mathbf{R}$:
+            $$f(x)=\begin{cases}
+                0 & x\in\mathbf{Q}^C\\
+                \frac{1}{n} & x=\frac{m}{n},\ \gcd(m,n)=1
+            \end{cases}$$
+            Prove that $f$ is continuous at every irrational points, while discontinuous at every rational points.
+            \item[21.] Suppose $K,F\subset X$ are disjoint sets with $K$ being compact and $F$ is closed.
+            Prove that there exists $\delta>0$ such that if $p\in K$ and $q\in F$, then $d(p,q)>\delta$.
+            And, Show that the conclusion may fail for two disjoint closed sets if neither is compact.
+            \item[23.] Prove that every convex function is continuous, every increasing convex function of a convex function is convex, and if $f:(a,b)\rightarrow \mathbf{R}$ is convex, given $a<s<t<u<b$, the following is true:
+            $$\frac{f(t)-f(s)}{t-s} \leq \frac{f(u)-f(s)}{u-s}\leq \frac{f(u)-f(t)}{u-t}$$
+        \end{itemize}
+    }
+\end{question}
+
+\break
+
+\begin{itemize}
+    \item[Q2.] Suppose $f:X\rightarrow Y$ is continuous, and arbitrary $E\subseteq X$.
+    
+    For any $x\in \overline{E}$, there are two cases to consider: 
+    
+    First, if $x\in E$, then $f(x)\in f(E) \subseteq \overline{f(E)}$.
+
+    Else, if $x\in E'$ with $x\notin E$: 
+    
+    Suppose $f(x)\in f(E) \subseteq \overline{f(E)}$, it is already done; 
+    
+    for the other case, if $f(x) \notin f(E)$, by the definition of continuity, for any $\epsilon>0$, there exists $\delta>0$,
+    with $f(B_\delta(x)) \subseteq B_\epsilon(f(x))$. Also, since $x\in E'$, then for the given $\delta>0$, there exists $a\in B_\delta(x)\setminus\{x\} \cap E$.
+    Thus, $a\in E$ satisfies $a\in B_\delta(x)$, which implies that $f(a)\in f(B_\delta(x)) \subseteq B_\epsilon(f(x))$, and $f(a)\in f(E)$. 
+    Also, since $f(x)\notin f(E)$ by assumption, then $f(a)\neq f(x)$. So, $f(a)\in B_\epsilon(f(x))\setminus\{f(x)\}\cap f(E)$.
+    This proves that $f(x)$ is a limit point of $f(E)$, hence $f(x)\in \overline{f(E)}$.
+
+    So, under all cases, $x\in \overline{E}$ implies that $f(x)\in \overline{f(E)}$, thus $f(\overline{E}) \subseteq \overline{f(E)}$.
+
+    \hfill
+
+    \textbf{Example of Proper Inclusion:}
+    
+    Consider the following function $f:\mathbf{R}\rightarrow\mathbf{R}$ with $f(x)=e^x$, and the set $E=(-\infty,0)$.
+
+    Which, $\overline{E}=(-\infty,0]$, we have $f(\overline{E})=(0,1]$.
+
+    However, $f(E)=(0,1)$, which $\overline{f(E)}=[0,1]$, $0\in \overline{f(E)}$ while $0\notin f(\overline{E})$, thus $f(\overline{E}) \subsetneq \overline{f(E)}$.
+
+    \break
+
+    \item[Q7.]
+    
+    \textbf{$f$ Bounded:} 
+
+    For all $x,y\in \mathbf{R}$, with $(x,y)\neq(0,0)$ (so, $x^2+y^4 >0$, since at least one of the entry is nonzero), since both $x^2, y^4 \geq 0$, then the following inequality is true:
+    $$\sqrt{x^2y^4} \leq \frac{x^2+y^4}{2},\quad |xy^2| \leq \frac{x^2+y^4}{2}$$
+    $$\frac{1}{x^2+y^4}\leq \frac{1}{2|xy^2|}$$
+    Which, for $f(x,y)$, there are three cases to consider:
+    
+    If $xy^2 > 0$, then $f(x)=\frac{xy^2}{x^2+y^4} \leq \frac{xy^2}{2|xy^2|} \leq \frac{1}{2}$, and $-\frac{1}{2}<0 < f(x)$ (since $xy^2, (x^2+y^4) >0$).
+
+    If $xy^2=0$, thus $f(x)=\frac{xy^2}{x^2+y^4} = 0$.
+
+    Else if $xy^2 <0$, then $f(x) = \frac{xy^2}{x^2+y^4} \geq \frac{xy^2}{2|xy^2|} \geq -\frac{1}{2}$, and $f(x) <0 < \frac{1}{2}$ (since $xy^2<0$, and $(x^2+y^4)>0$).
+
+    Thus, in all cases, $-\frac{1}{2} \leq f(x) \leq \frac{1}{2}$ (including $f(0,0)=0$), which $f$ is bounded.
+
+    \hfill
+
+    \textbf{$g$ Unbounded:}
+
+    For all $r>0$, consider $B_r(0,0)$: Given arbitrary $M>0$, consider the set $D = \{y>0\ |\ y<\frac{1}{2M}$ and $y < \frac{r}{\sqrt{2}}\}$ which is not empty (since both $\frac{1}{2M},\frac{r}{\sqrt{2}} >0$).
+
+    Note that it is always possible to find $y\in D$ with $y^3 < \frac{r}{\sqrt{2}}$:
+    
+    If $y\geq 1$, take $y'=y^{\frac{1}{3}} >0$, then $y'=y^\frac{1}{3} \leq y = (y')^3$, implying that $y' \leq (y')^3 =y < \frac{r}{\sqrt{2}}$ and $y' \leq (y')^3 =y < \frac{1}{2M}$, which $y'$ satisfies the condition; else if $y<1$, then $y^3 < y < \frac{r}{\sqrt{2}}$ and $y^3 < y < \frac{1}{2M}$, which $y$ satisfies the condition.
+
+    Then, choose the $y\in D$ satisfying $y,y^3 < \frac{r}{\sqrt{2}}$, consider the element $(y^3,y)\in\mathbf{R}^2$: since both $y,y^3 < \frac{r}{\sqrt{2}}$, then:
+    $$\|(y^3,y)\|^2 = (y^3)^2 + y^2 < (\frac{r}{\sqrt{2}})^2+(\frac{r}{\sqrt{2}})^2=r^2,\quad \|(y^3,y)\| < \sqrt{r^2}=r$$
+    Thus, $(y^3,y)\in B_r(0,0)$. Also, consider $g(y^3,y)$:
+    $$g(y^3,y) = \frac{y^3 \cdot y^2}{(y^3)^2+y^6} = \frac{y^5}{2y^6} = \frac{1}{2y}$$
+    $$y < \frac{1}{2M},\quad M < \frac{1}{2y} = g(y^3,y)$$
+    Hence, for all $r,M>0$, there exists element $(x,y)\in B_r(0,0)$ with $g(x,y) > M$, proving that $g$ is unbounded in every neighborhood of $(0,0)$.
+
+    \hfill
+
+    \textbf{$f$ Not continuous at $(0,0)$:}
+
+    Take $\epsilon=\frac{1}{4}$, for all $\delta >0$, since $\frac{\delta}{\sqrt{2}}>0$, then there exists $n\in\mathbf{N}$ with $1 < n\frac{\delta}{\sqrt{2}}$, thus $\frac{1}{n}<\frac{\delta}{\sqrt{2}}$.
+    (Note: since $n\geq 1$, then $n^2\geq n$, $\frac{1}{n^2}\leq \frac{1}{n}$, implying that $\frac{1}{n^4} \leq \frac{1}{n^2}$).
+
+    Which, consider $(\frac{1}{n^2},\frac{1}{n})$:
+    First, about the norm:
+    $$\|(\frac{1}{n^2},\frac{1}{n})\|^2 = (\frac{1}{n^2})^2+(\frac{1}{n})^2 \leq \frac{1}{n^2}+\frac{1}{n^2} = \frac{2}{n^2} < 2\cdot (\frac{\delta}{\sqrt{2}})^2 = \delta^2 $$
+    $$\|(\frac{1}{n^2},\frac{1}{n})\| < \sqrt{\delta^2} = \delta$$
+    Thus, $(\frac{1}{n^2},\frac{1}{n})\in B_\delta(0,0)$. However, consider $f(\frac{1}{n^2},\frac{1}{n})$:
+    $$f(\frac{1}{n^2},\frac{1}{n}) = \frac{(\frac{1}{n^2})\cdot(\frac{1}{n})^2}{(\frac{1}{n^2})^2+(\frac{1}{n})^4} = \frac{1/n^4}{2/n^4} = \frac{1}{2}$$
+    Which, $|f(\frac{1}{n^2},\frac{1}{n})-f(0,0)| = |\frac{1}{2}-0| = \frac{1}{2} > \frac{1}{4} = \epsilon$. 
+
+    So, the above proves that $f$ is not continuous at $(0,0)$, since the chosen $\epsilon>0$ satisfies for all $\delta>0$, there exists $(x,y)\in B_\delta(0,0)$ with $|f(x,y)-f(0,0)| \geq \epsilon$.
+
+    \hfill
+
+    \textbf{Restriction onto Straight Line:}
+    
+    For all straight line in $\mathbf{R}^2$, every $(x,y)$ on the line satisfies $ax+by=c$ for some $a,b,c\in\mathbf{R}$ (which $(a,b)\neq (0,0)$).
+
+    If $c\neq 0$, then the line isn't including $(0,0)$, thus $f,g$ are following the given rational function with every point being well-defined, which is continuous.
+
+    Else, if $c=0$, then the line is including $(0,0)$ (everywhere else is defined with the rational function), the goal is to prove that the function is continuous at $(0,0)$. Again, there are 2 cases to consider:
+
+    First, if $b=0$, then $ax+0=0$, which $x=0$ (since $(a,b)\neq (0,0)$, so $a\neq 0$). Then, $f(0,y) = \frac{0y^2}{0^2+y^4}=0,\ g(0,y) = \frac{0y^2}{0^2+y^6}=0$, which given the domain as the straight line $ax=0$, the function has output $0$, which is a constant function (and it is continuous). The same concept applies when $a=0$ (which changes to $y=0$, but the functions are still constant function of $0$).
+
+    Else, if $a,b\neq 0$, then $ax=-by$, which $y=\frac{-ax}{b}$. If $(x,y)\neq(0,0)$ (which $x\neq 0$, or else it implies $y=0$, causing $(x,y)=(0,0)$), then the following is true:
+    $$f(x,y) = f(x,\frac{-ax}{b})=\frac{x(\frac{-ax}{b})^2}{x^2+(\frac{-ax}{b})^4} = \frac{(-a/b)^2x^3}{x^2+(-a/b)^4x^4}=\frac{(-a/b)^2x}{1+(-a/b)^4x^2}$$
+    $$g(x,y) = g(x,\frac{-ax}{b})=\frac{x(\frac{-ax}{b})^2}{x^2+(\frac{-ax}{b})^6} = \frac{(-a/b)^2x^3}{x^2+(-a/b)^4x^6}=\frac{(-a/b)^2x}{1+(-a/b)^6x^4}$$
+    Which, notice that $(-a/b)^4x^2, (-a/b)^6x^4 \geq 0$, then $1+(-a/b)^4x^2, 1+(-a/b)^6x^4 \geq 1$, or:
+    $$\frac{1}{1+(-a/b)^4x^2},\ \frac{1}{1+(-a/b)^6x^4} \leq 1$$
+    Thus, for all $(x,y)\neq(0,0)$ on the line, the following is true:
+    $$|f(x,y)-f(0,0)| = \left|\frac{(-a/b)^2x}{1+(-a/b)^4x^2}-0\right| = \frac{|(-a/b)^2x|}{1+(-a/b)^4x^2} \leq |(-a/b)^2x|$$
+    $$|g(x,y)-g(0,0)| = \left|\frac{(-a/b)^2x}{1+(-a/b)^6x^4}-0\right| = \frac{|(-a/b)^2x|}{1+(-a/b)^6x^4} \leq |(-a/b)^2x|$$
+    So, for all $\epsilon>0$, choose $\delta = (b/a)^2\epsilon$. Then, for all $(x,y)\in\mathbf{R}^2$ (with $(x,y)\neq (0,0)$) satisfying $\|(x,y)\| = \sqrt{x^2+y^2}< \delta$ (in other word, $(x,y)\in B_\delta(0,0)$), since $|x| = \sqrt{x^2} \leq \|(x,y)\| < \delta = (b/a)^2\epsilon$, then the following is true:
+    $$|f(x,y)-f(0,0)|,\ |g(x,y)-g(0,0)| \leq |(-a/b)^2x| = (a/b)^2|x| < (a/b)^2 \cdot (b/a)^2\epsilon = \epsilon$$
+    Thus, for all $\epsilon>0$, there exists $\delta>0$, with $(x,y) \in B_\delta(0,0)$ (restricted to the straight line), it implies $|f(x,y)-f(0,0)|,\ |g(x,y)-g(0,0)| < \epsilon$. Thus, when restricted to any straight line passing through $(0,0)$, the functions are continuous at $(0,0)$, hence continuous on the whole straight line.
+
+    \break
+
+    \item[Q18.]Given the following function:
+    $$f(x)=\begin{cases}
+                0 & x\in\mathbf{Q}^C\\
+                \frac{1}{n} & x=\frac{m}{n},\ \gcd(m,n)=1
+            \end{cases}$$
+    And assume that at $x=0$, $n=1$ (so $f(0)=1$).
+
+    \textbf{Discontinuity on $\mathbf{Q}$:}
+    
+    For any $x\in \mathbf{Q}$, $f(x)=\frac{1}{n}$ for some $n\in\mathbf{N}$, then choose $\epsilon = \frac{1}{2n}$. For all $\delta >0$, since the open ball $(x-\delta, x+\delta)$ contains some irrational number $r$ due to denseness of $\mathbf{Q}^C$ in $\mathbf{R}$, then $r$ satisfies $|x-r| < \delta$, and $f(r) = 0$, which $|f(r)-f(x)| = |0-\frac{1}{n}| = \frac{1}{n} \geq \frac{1}{2n} = \epsilon$. This shows that $f$ is not continuous on $x$, which $f$ is not continuous on $\mathbf{Q}$.
+
+    \hfill
+
+    \textbf{Continuity on $\mathbf{Q}^C$:}
+
+    For any $x\in\mathbf{Q}^C$, consider $U = \{n\in\mathbf{Z}\ |\ x <n\}$. Then, since $U$ is bounded below, $k=\inf(U)$ exists; and by the well-ordering property, $k \in U$. So, $k\in \mathbf{Z}$ satisfies $(k-1)\leq x<k$ ($(k-1)<k$, with $k=\inf(U)$, so $(k-1) \notin U$, or $(k-1) \leq x$). Also, since $(k-1)$ is rational, then $x\neq (k-1)$. Thus, $(k-1)<x<k$.
+
+    Now, for all $\epsilon >0$, by Archimedean's Property, there exists $n\in\mathbf{N}$ with $1<n\epsilon$ (or $\frac{1}{n}<\epsilon$). First, let $D = \{(k-1),k\}\cup\{(k-1)+\frac{i}{j}\ |\ i,j\in\mathbf{N},\ i<j<n\}$ (which $D$ is finite, and every element is rational). 
+
+    \hfill
+    
+    For any $q\in(k-1,k)$ with $f(q) > \frac{1}{n}$, if $q\in\mathbf{Q}^C$, then $f(q)=0 < \frac{1}{n}$, which violates the desired condition, so $q\in\mathbf{Q}$; then, there exists $m\in\mathbf{Z}$ and $j\in\mathbf{N}$ with $\gcd(m,j) = 1$, such that $q=\frac{m}{j}$. Now, there are some conditions:
+
+    Since $f(q) = \frac{1}{j} > \frac{1}{n}$, then $n > j$. 
+
+    Also, since $(k-1)<q=\frac{m}{j}<k$, then $(k-1)j<m<kj$, which $0<(m-(k-1)j) < j$. 
+    
+    So, let $i=(m-(k-1)j)$, consider $(k-1)+\frac{i}{j}$:
+    $$(k-1)+\frac{i}{j}=(k-1)+\frac{m-(k-1)j}{j} = (k-1)+\frac{m}{j}-\frac{(k-1)j}{j}$$
+    $$(k-1)+\frac{i}{j} = (k-1)+\frac{m}{j}-(k-1) = \frac{m}{j}$$
+    Which, $q=\frac{m}{j}=(k-1)+\frac{i}{j}$, with $0<i<j<n$ (since $i=(m-(k-1)j)$), then $q \in D$ (since $q = (k-1)+\frac{i}{j}$, which satisfies the set axiom of $\{(k-1)+\frac{i}{j}\ |\ i,j\in\mathbf{N},\ i<j<n\}$).
+
+    \hfill
+    
+    Now, let $\delta = \min\{|x-q|\ |\ q\in D\}$, which $\delta >0$ since for all $q\in D$, $q$ is rational, which $q\neq x$, so $|q-x| >0$. For all $a\in\mathbf{R}$ satisfying $|a-x|<\delta$, then the following is true:
+    $$-\delta < a-x < \delta,\quad x-\delta < a < x+\delta$$
+    Which, since $(k-1) \in D$, $\delta \leq |x-(k-1)| = x-(k-1)$, then $(k-1) < (x-\delta)$; also, since $k\in D$, $\delta \leq |x-k| = k-x$, then $(x+\delta)<k$. So, the following is true:
+    $$(k-1) < (x-\delta) < a < (x+\delta) < k$$
+    So, $a \in (k-1,k)$. Also, since for all $q \in (k-1,k)$ satisfying $f(q) > \frac{1}{n}$, we've proven that $q \in D$, then $a \notin D$, since for all $q\in D$, $|x-a| < \delta \leq |x-q|$ by how we define $\delta$.
+
+    Thus, $0 \leq f(a) \leq \frac{1}{n}$ (since $a\notin D$, it can't have $f(a) > \frac{1}{n}$). Hence, $|f(x)-f(a)| = |0-f(a)| = f(a) \leq \frac{1}{n} < \epsilon$.
+
+    This proves that $f$ is continuous at $x$, which since $x\in\mathbf{Q}^C$ is arbitrary, then $f$ is continuous on all $\mathbf{Q}^C$.
+    
+    \break
+
+    \item[Q21.]
+    Given $K,F\subset X$ that are disjoint, with $K$ being compact and $F$ is closed. 
+
+    First, consider the function $\rho_F:X\rightarrow \mathbf{R}$ with $\rho_F(x) = \inf\{d(x,q)\ |\ q\in F\}$, we'll prove that $\rho_F$ is uniformly continuous:
+
+    For all $x,y\in X$ and all $q\in F$, notice that $\rho_F(x) \leq d(x,q) \leq d(x,y) + d(y,q)$, so $\rho_F(x) \leq d(x,y)+d(y,q)$ for all $q\in F$ (or, $\rho_F(x)-d(x,y) \leq d(y,q)$ for all $q\in F$), hence $(\rho_F(x)-d(x,y))$ is a lower bound of the set $\{d(y,q)\ |\ q\in F\}$, or $(\rho_F(x)-d(x,y)) \leq \inf\{d(y,q)\ |\ q\in F\} = \rho_F(y)$. Thus, $\rho_F(x)-d(x,y) \leq \rho_F(y)$, which $(\rho_F(x)-\rho_F(y)) \leq d(x,y)$.
+
+    So, given any $\epsilon>0$, choose $\delta = \epsilon$, then for all $x,y\in X$ (Without Loss of Generality, assume $\rho_F(x) \geq \rho_F(y)$), if $d(x,y)< \delta = \epsilon$, then:
+    $$|\rho_F(x)-\rho_F(y)| = (\rho_F(x)-\rho_F(y)) \leq d(x,y) < \epsilon$$
+    Thus, the function $\rho_F(x)$ is uniformly continuous.
+
+    \hfill
+
+    Now, since $\rho_F$ is continuous and $K$ is compact, then $\rho_F(K) \subset \mathbf{R}$ is compact (which is closed and bounded), thus $\inf(\rho_F(K)) \in \rho_F(K)$, there exists $p_0 \in K$, with $\rho_F(p_0) = \inf(\rho_F(K))$.
+
+    Then, we'll prove by contradiction that $\inf(\rho_F(K)) >0$: Suppose this statement is false, then $\inf(\rho_F(K)) \leq 0$; furthermore, since $0$ is always the lower bound of a set of distance, then for any $x\in X$, $\rho_F(x) \geq 0$, so $\inf(\rho_F(K)) = \rho_F(p_0) \geq 0$, showing that $\inf(\rho_F(K)) = \rho_F(p_0) = 0$.
+
+    However, this implies that for any $r>0$, since $r = r+\rho_F(p_0)$ is no longer a lower bound of the set $\{d(p_0,q)\ |\ q\in F\}$, then there exists $q\in F$, with $d(p_0,q) <r$ (or $q\in B_r(p_0)$). Since $K$ and $F$ are disjoint, then $p_0 \neq q$, which $q \in B_r(p_0) \setminus \{p_0\} \cap F$, showing that $p_0$ is a limit point of $F$. With the assumption that $F$ is closed, then $p_0 \in F' \subseteq F$, so $p_0 \in K\cap F$; yet, this contradicts the fact that the two sets are disjoint, so the assumption is false, or $\inf(\rho_F(K)) >0$.
+
+    Eventually, let $\delta = \frac{\inf(\rho_F(K))}{2} >0$, then for all $p\in K$ and $q\in F$, since $\rho_F(p) \in \rho_F(K)$, then $\delta = \frac{\inf(\rho_F(K))}{2} < \inf(\rho_F(K)) \leq \rho_F(p) \leq d(p,q)$.
+
+    \hfill
+
+    \textbf{Example if Both Closed Sets are not Compact:}
+    
+    Given $K = \mathbf{N}$ and $F=\{n+\frac{1}{n}\ |\ n\in\mathbf{N},\ n\geq 2\}$. Both sets are not compact as they're not bounded; both are closed as there are no limit points for either of them, and the two sets are disjoint (since for all $n\in \mathbf{N}$ with $n\geq 2$, $(n+\frac{1}{n})$ is not an integer, which $F$ contains no elements from $K=\mathbf{N}$). 
+
+    However, for all $\delta>0$, there exists $n\in\mathbf{N}$ with $1<n\delta$ (or $\frac{1}{n}<\delta$), which, choose $(n+1)\in K$ and $((n+1)+\frac{1}{(n+1)}) \in F$ (note: $n\geq 1$, so $(n+1)\geq 2$). Then, the following is true:
+    $$d\left((n+1),(n+1)+\frac{1}{(n+1)}\right) = \frac{1}{n+1} < \frac{1}{n} \leq \delta$$
+    Which it is a counterexample of the desired property.
+
+    \break
+
+    \item[Q23.]
+    \textbf{Inequality of Convex Function:}
+
+    To prove the continuity of convex function, we'll use this as a tool (that's why we're proving it first). Given a convex function $f:(a,b)\rightarrow\mathbf{R}$, and given $a<s<t<u<b$. Then, let $\lambda = \frac{u-t}{u-s}$, the following is true:
+    $$\lambda s + (1-\lambda)u = \frac{u-t}{u-s}s + \left(1-\frac{u-t}{u-s}\right)u = \frac{us-ts}{u-s} + \frac{(u-s)-(u-t)}{u-s}u$$
+    $$ = \frac{us-ts}{u-s}+\frac{ut-us}{u-s} = \frac{ut-ts}{u-s} = t\frac{u-s}{u-s} = t$$
+    Since $s<u,\ 0<(u-s)$, which the above quantity is defined.
+
+    Also, since $s<t<u$, which $0<(u-t)<(u-s)$, thus $0 < \frac{u-t}{u-s} < 1$, which $\lambda = \frac{u-t}{u-s} \in (0,1)$.
+
+    With this parametrization, $t = \lambda s + (1-\lambda)u$ for some $\lambda \in (0,1)$, thus:
+    $$f(t) = f(\lambda s + (1-\lambda)u) \leq \lambda f(s)+(1-\lambda)f(u)$$
+    $$f(t)-f(s) \leq (\lambda f(s)+(1-\lambda)f(u)) - f(s) = (1-\lambda)(f(u)-f(s))$$
+    Given that $(t-s) >0$, the following is true:
+    $$\frac{f(t)-f(s)}{t-s} \leq \frac{(1-\lambda)(f(u)-f(s))}{t-s}$$
+    And again, by the parametrization of $t$, the following is true:
+    $$t-s = (\lambda s+(1-\lambda)u)-s = (1-\lambda)(u-s)$$
+    So, the inequality can be rewrite as:
+    $$\frac{f(t)-f(s)}{t-s} \leq \frac{(1-\lambda)(f(u)-f(s))}{t-s} = \frac{(1-\lambda)(f(u)-f(s))}{(1-\lambda)(u-s)}=\frac{f(u)-f(s)}{u-s}$$
+    $$\frac{f(t)-f(s)}{t-s} \leq \frac{f(u)-f(s)}{u-s}$$
+
+    Now, based on the same reasoning:
+    $$f(t)\leq \lambda f(s)+(1-\lambda)f(u),\quad f(u)-f(t) \geq f(u)-(\lambda f(s)+(1-\lambda)f(u))$$
+    $$\lambda(f(u)-f(s)) \leq f(u)-f(t)$$
+    Which, since $(t<u),\ 0<(u-t)$, so:
+    $$\frac{\lambda(f(u)-f(s))}{u-t} \leq \frac{f(u)-f(t)}{u-t}$$
+    Rewrite $(u-t)$ with the given parametrization, the following is true:
+    $$u-t = u-(\lambda s + (1-\lambda)u) = \lambda (u-s)$$
+    So, the following inequality is also true:
+    $$\frac{\lambda(f(u)-f(s))}{u-t} = \frac{\lambda(f(u)-f(s))}{\lambda(u-s)} = \frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}$$
+    $$\frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}$$
+    Combining the two inequality, the following is true:
+    $$\frac{f(t)-f(s)}{t-s} \leq \frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}$$
+
+    \hfill
+
+\begin{comment}
+    \textbf{Tools to Prove Continuity:}
+
+    Given the above inequality for convex function, and fix arbitrary $c,d,e,f$ satisfying $a<c<e<f<d<b$ (which $[e,f] \subsetneq [c,d]$). Now, consider any $x,y$ satisfying $e<x<y<f$, which $a<c<e<x<y<f<d<b$. Given the inequality proven above, the following inequalities are true:
+    $$a<c<e<x<b \implies \frac{f(e)-f(c)}{e-c} \leq \frac{f(x)-f(e)}{x-e}$$
+    $$a<e<x<y<b \implies \frac{f(x)-f(e)}{x-e} \leq \frac{f(y)-f(x)}{y-x}$$
+    $$a<x<y<f<b \implies \frac{f(y)-f(x)}{y-x} \leq \frac{f(f)-f(y)}{f-y}$$
+    $$a<y<f<d<b \implies \frac{f(f)-f(y)}{f-y} \leq \frac{f(d)-f(f)}{d-f}$$
+    Which, the first two imply $\frac{f(e)-f(c)}{e-c} \leq \frac{f(y)-f(x)}{y-x}$, while the last two imply $\frac{f(y)-f(x)}{y-x} \leq \frac{f(d)-f(f)}{d-f}$. So:
+    $$\frac{f(e)-f(c)}{e-c} \leq \frac{f(y)-f(x)}{y-x} \leq \frac{f(d)-f(f)}{d-f}$$
+
+    \hfill
+
+    \textbf{Convex Implies Continuity:}
+
+    Now, given a convex function $f:(a,b)\rightarrow \mathbf{R}$, for any $x_0\in (a,b)$ and any $\epsilon>0$. First, since $a<x<b$, we can choose and fix $c,d,e,f$ that statisfy $a<c<e<x<f<d<b$, which, given $y\in (e,f)$ (with $y\neq x_0$), since $\frac{f(y)-f(x_0)}{y-x_0} = \frac{f(x_0)-f(y)}{x_0-y}$, then the following are true:
+    $$y < x_0 \implies \frac{f(e)-f(c)}{e-c} \leq \frac{f(x_0)-f(y)}{x_0-y} =\frac{f(y)-f(x_0)}{y-x_0} \leq \frac{f(d)-f(f)}{d-f}$$
+    $$x_0 < y \implies \frac{f(e)-f(c)}{e-c} \leq \frac{f(y)-f(x_0)}{y-x_0} \leq \frac{f(d)-f(f)}{d-f}$$
+    So, regardless of the order, $y\in(e,f)$ and $y\neq x_0$ implies $\frac{f(e)-f(c)}{e-c} \leq \frac{f(y)-f(x_0)}{y-x_0} \leq \frac{f(d)-f(f)}{d-f}$.
+    Which, if we take $M = \max\left\{\left|\frac{f(e)-f(c)}{e-c}\right|,\left|\frac{f(d)-f(f)}{d-f}\right|\right\}$, then $\left|\frac{f(y)-f(x_0)}{y-x_0}\right| \leq M < (M+1)$. So, $|f(y)-f(x_0)| < (M+1)|y-x_0|$. (Note: since $M\geq 0$, then $(M+1) \geq 1> 0$).
+
+    So, for the arbitrary $\epsilon >0$, choose $\delta = \min\left\{(x_0-e),(f-x_0),\frac{\epsilon}{(M+1)}\right\} >0$ (Note: all of these are positive, since $e<x_0<f$, and $(M+1)>0$). Then, for all $y$ that satisfy $|y-x_0| < \delta$, if $y=x_0$, obviously $|f(y)-f(x_0)| = 0 < \epsilon$.
+    
+    Else, if $y\neq x_0$, the following is true:
+    $$-\delta < (y-x_0) < \delta,\quad (x_0-\delta) < y < (x_0 + \delta)$$
+    Also, since $\delta \leq (f-x_0)$ and $\delta \leq (x_0-e)$ (which $-\delta \geq -(x_0-e)$), the following is true:
+    $$e = (x_0-(x_0-e)) \leq (x_0-\delta) < y < (x_0 + \delta) \leq (x_0+(f-x_0)) = f$$
+    So, $e<y<f$ (or $y\in(e,f)$). Now, based on the inequality proven above, we have:
+    $$|f(y)-f(x_0)| < (M+1)|y-x_0| < (M+1)\delta \leq (M+1)\frac{\epsilon}{(M+1)} = \epsilon$$
+    Which we deduced $|f(y)-f(x_0)| < \epsilon$, showing that $f$ is continuous at $x_0$. Since the choice of $x_0\in(a,b)$ is arbitrary, this proves that $f$ is continuous on $(a,b)$.
+\end{comment}
+
+    \textbf{Convex Implies Continuity:}
+
+    Given convex function $f:(a,b)\rightarrow \mathbf{R}$. For all $x_0\in (a,b)$, since $a<x_0<b$, we can choose $c,d$ satisfying $a<c<x_0<d<b$.
+
+    Now, consider any $y\in(c,d)$ with $y\neq x_0$, there are two cases:
+
+    First, if $y<x_0$, then $a<c<y<x_0<b$, which from the inequality proven beforehand:
+    $$\frac{f(y)-f(c)}{y-c} \leq \frac{f(x_0)-f(c)}{x_0-c} \leq \frac{f(x_0)-f(y)}{x_0-y},\quad \frac{f(x_0)-f(c)}{x_0-c} \leq \frac{f(x_0)-f(y)}{x_0-y}$$
+    Else, if $y>x_0$, then $a<x_0<y<d<b$, which using the same inequality:
+    $$\frac{f(y)-f(x_0)}{y-x_0} \leq \frac{f(d)-f(x_0)}{d-x_0} \leq \frac{f(d)-f(y)}{d-y},\quad \frac{f(x_0)-f(y)}{x_0-y}=\frac{f(y)-f(x_0)}{y-x_0} \leq \frac{f(d)-f(x_0)}{d-x_0}$$
+    So, regardless of the case, the following is true:
+    $$\frac{f(x_0)-f(c)}{x_0-c} \leq \frac{f(x_0)-f(y)}{x_0-y} \leq \frac{f(d)-f(x_0)}{d-x_0}$$
+    Which, let $M = \max\left\{\left|\frac{f(x_0)-f(c)}{x_0-c}\right|,\ \left|\frac{f(d)-f(x_0)}{d-x_0}\right|\right\}$, then the above inequality implies that $\left|\frac{f(x_0)-f(y)}{x_0-y}\right| \leq M < (M+1)$, which:
+    $$|f(x_0)-f(y)| < (M+1)|x_0-y|$$
+    (Note: since $M$ is the maximum among absolute values, $M \geq 0$, so $(M+1) >0$).
+
+    Then, to prove that $f$ is continuous at $x_0$, given any $\epsilon >0$, let $\delta = \min\left\{(x_0-c), (d-x_0), \frac{\epsilon}{(M+1)}\right\}$ 
+    (Note: all of these are positive, since $c<x_0<d$, and $(M+1)>0$). Then, for all $y$ that satisfy $|y-x_0| < \delta$, if $y=x_0$, obviously $|f(y)-f(x_0)| = 0 < \epsilon$.
+    
+    Else, if $y\neq x_0$, the following is true:
+    $$-\delta < (y-x_0) < \delta,\quad (x_0-\delta) < y < (x_0 + \delta)$$
+    Also, since $\delta \leq (d-x_0)$ and $\delta \leq (x_0-c)$ (which $-\delta \geq -(x_0-c)$), the following is true:
+    $$c = (x_0-(x_0-c)) \leq (x_0-\delta) < y < (x_0 + \delta) \leq (x_0+(d-x_0)) = d$$
+    So, $c<y<d$ (or $y\in(c,d)$). Now, based on the inequality proven above, we have:
+    $$|f(x_0)-f(y)| < (M+1)|x_0-y| < (M+1)\delta \leq (M+1)\frac{\epsilon}{(M+1)} = \epsilon$$
+    Which we deduced $|f(y)-f(x_0)| < \epsilon$, showing that $f$ is continuous at $x_0$. Since the choice of $x_0\in(a,b)$ is arbitrary, this proves that $f$ is continuous on $(a,b)$.
+    So, $f:(a,b)\rightarrow \mathbf{R}$ is convex implies that $f$ is continuous on $(a,b)$.
+
+    \hfill
+    
+    \textbf{Composition of Increasing Convex Function and Convex Function:}
+    
+    Suppose $g:\mathbf{R}\rightarrow\mathbf{R}$ is an increasing convex function, and $f:\mathbf{R}\rightarrow\mathbf{R}$ is a convex function. Then, for all $x,y\in \mathbf{R}$ and $\lambda \in (0,1)$, since $f$ is convex, the following is true:
+    $$f(\lambda x+(1-\lambda)y) \leq \lambda f(x)+(1-\lambda)f(y)$$
+    Now, treat $f(x), f(y)$ as two inputs, since $g$ is also convex, the following is true:
+    $$g(\lambda f(x)+(1-\lambda)f(y)) \leq \lambda g(f(x)) + (1-\lambda) g(f(y))$$
+    Then, since $g$ is increasing, while $f(\lambda x+(1-\lambda)y) \leq \lambda f(x)+(1-\lambda)f(y)$, then the following is true:
+    $$g(f(\lambda x+(1-\lambda)y)) \leq g(\lambda f(x)+(1-\lambda)f(y))$$
+    Thus, combining the inequality we get:
+    $$g(f(\lambda x+(1-\lambda)y)) \leq g(\lambda f(x)+(1-\lambda)f(y)) \leq \lambda g(f(x)) + (1-\lambda) g(f(y))$$
+    $$g(f(\lambda x+(1-\lambda)y)) \leq \lambda g(f(x)) + (1-\lambda) g(f(y))$$
+    This proves that $g\circ f$ is also a convex function.
+    
+
+\end{itemize}
+
+\break
+
+\subsection*{4}
+\begin{question}
+    \textbf{
+        In each case give an example of $f:\mathbf{R}\rightarrow\mathbf{R}$ continuous and:
+        \begin{itemize}
+            \item[i] $K$ compact with $f^{-1}(K)$ no compact.
+            \item[ii] $A$ connected with $f^{-1}(A)$ no connected.
+            \item[iii] $B$ open with $f(B)$ not open.
+            \item[iv] $C$ closed with $f(C)$ not closed.
+        \end{itemize}
+    }
+\end{question}
+
+\hfill
+
+\begin{itemize}
+    \item[i]
+    Given $f(x)=0$ the constant function. Since $K=\{1\}$ is a singleton set, then $K$ is compact. 
+    
+    Yet, since for all $x\in\mathbf{R},\ f(x)=1$, so $x\in f^{-1}(K)$, or $f^{-1}(K)=\mathbf{R}$, which is not compact.
+
+    \hfill 
+
+    \item[ii]
+    Given $f(x)=x^2$ and $A=\{1\}$, which it is connected. 
+    
+    For all $x\in\mathbf{R}$, if $f(x)=x^2=1$ (or $x\in f^{-1}(A)$), then $x=1$ or $x=-1$. So, $f^{-1}(A)=\{-1,1\}$.
+
+    However, since $C=\{-1\},\ D=\{1\}$ satisfy $C\cup D = f^{-1}(A)$, and $\overline{C} \cup D = \overline{D}\cup C = \emptyset$, so $f^{-1}(A)$ is not connected.
+
+    \hfill 
+
+    \item[iii]
+    Given $f(x)=0$ again. The open interval $B=(0,1)\subset \mathbf{R}$ is open.
+    
+    Yet since for all $x\in B$, $f(x)=1$, then $f(B)=\{1\}$, which $f(B)$ is closed.
+
+    \hfill 
+
+    \item[iv]  
+    G9ven $f(x) = e^x$ and $C=(-\infty, 0]\subset \mathbf{R}$. 
+    
+    For all $x\in C$, since $x\leq 0$, so $f(x)=e^x\leq e^0=1$; also, since $f(x)=e^x>0$, then the inequality $0<f(x) \leq 1$ is true. Which, $f(C) = (0,1]$, and it is not closed.
+\end{itemize}
+\end{document}
