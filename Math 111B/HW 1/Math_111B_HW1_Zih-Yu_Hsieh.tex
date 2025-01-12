@@ -1,0 +1,303 @@
+%Math_111B_HW1_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.5}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 111B HW1}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{question}
+    Prove or disprove that the ring $\mathbb{Z}$ has no proper subring.
+\end{question}
+
+\textbf{Pf:}
+
+We'll prove that $\mathbb{Z}$ has no proper subring: Suppose $R\subseteq \mathbb{Z}$ is a subring.
+
+\hfill
+
+First, for the zero element $0'\in R$, for all $a\in R$, $0'+a = a$, thus: 
+$$0' = 0'+0 = 0' + (a-a) = (0'+a)-a = a-a = 0$$
+So, the zero element in $R$ is the same as zero element in $\mathbb{Z}$.
+
+\hfill
+
+Since $R$ is a ring, there exists unity element $b\in R\subseteq \mathbb{Z}$, such that for all $a\in\mathbb{Z}$,
+$ab=ba=a$. In particular, $b^2=bb=b$ also. So, it satisfies the following:
+$$b^2=b,\quad b^2-b=0,\quad b(b-1)=0$$
+However, since unity element is different from zero element, so $b\neq 0$. Thus, for $b(b-1)=0$ to be true under $\mathbb{Z}$,
+$(b-1)=0$, or $b=1$.
+
+\hfill
+
+But, since $1\in R$, then by the property of group, $\left<1\right> = \{k\cdot 1\ |\ k\in\mathbb{Z}\} = \mathbb{Z}$ is a subgroup of $R$ under addition.
+Thus, $\mathbb{Z}\subseteq R$, which $R=\mathbb{Z}$.
+
+So, any subring of $\mathbb{Z}$ is itself, showing that it has no proper subring.
+
+\break
+
+\section*{2}
+\begin{question}
+    Let $D$ be a rational number that is not a square of any rational number and consider
+    $\mathbb{Q}(\sqrt{D})=\{a+b\sqrt{D}\ |\ a,b\in\mathbb{Q}\}$ as a subset of $\mathbb{C}$. 
+    Show that $\mathbb{Q}(\sqrt{D})$ is a ring under the addition and multiplication in $\mathbb{C}$. 
+    Prove or disprove that every non-zero element of $\mathbb{Q}(\sqrt{D})$ has an inverse in $\mathbb{Q}(\sqrt{D})$. 
+    Prove or disprove that every element of $\mathbb{Q}(\sqrt{D})$ has a unique expression of the form 
+    $a+b\sqrt{D}$ with $a,b\in\mathbb{Q}$. Is $\mathbb{Q}(\sqrt{D})$ a subring of $\mathbb{R}$?
+\end{question}
+
+\textbf{Pf:}
+
+\textbf{$\mathbb{Q}(\sqrt{D})$ is a ring in $\mathbb{C}$:}
+
+There are several criteria to test before saying it's a ring in $\mathbb{C}$:
+\begin{itemize}
+    \item[(1)] For all $w,z\in \mathbb{Q}(\sqrt{D})$,
+    there exists $a,b,c,d \in \mathbb{Q}$, such that $w=a+b\sqrt{D}$ and $z=c+d\sqrt{D}$.
+
+    Which, the following equations are true:
+    $$w+z=(a+b\sqrt{D})+(c+d\sqrt{D})=(a+c)+(b\sqrt{D}+d\sqrt{D}) = (a+c)+(b+d)\sqrt{D}$$
+
+    $$wz = (a+b\sqrt{D})(c+d\sqrt{D})=a(c+d\sqrt{D})+b\sqrt{D}(c+d\sqrt{D}) = ac+ad\sqrt{D} + bc\sqrt{D}+bd(\sqrt{D})^2$$
+    $$wz= ac+ad\sqrt{D} + bc\sqrt{D}+bd(\sqrt{D})^2 = (ac+bdD)+(ad+bc)\sqrt{D}$$
+    Notice that since $a,b,c,d,D\in\mathbb{Q}$, which is closed under addition and multiplication, then $(a+c),(b+d),(ac+bdD),(ad+bc)\in\mathbb{Q}$.
+    Which:
+    $$w+z=\ (a+c)+(b+d)\sqrt{D}\  \in \mathbb{Q}(\sqrt{D})$$ 
+    $$wz =\ (ac+bdD)+(ad+bc)\sqrt{D}\ \in \mathbb{Q}(\sqrt{D})$$
+    So, $\mathbb{Q}(\sqrt{D})$ is closed under both addition and multiplication (and the two operations are associative since they were inherited from $\mathbb{C})$.
+    
+    \hfill
+
+    \item[(2)] Consider $0,1\in\mathbb{C}$: Since $0 = 0+0\sqrt{D}$ and $1=1+0\sqrt{D}$, while $0,1\in\mathbb{Q}$, thus $0,1\in \mathbb{Q}(\sqrt{D})$.
+
+    Which, for all $(a+b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$, the following is true:
+    $$0+(a+b\sqrt{D})=(a+b\sqrt{D})=(a+b\sqrt{D})+0$$
+    $$1\cdot(a+b\sqrt{D})=(a+b\sqrt{D})=(a+b\sqrt{D})\cdot 1$$
+    Thus, $0$ is the additive identity, and $1$ is the multiplicative identity. They both exist in the set.
+
+    \hfill
+
+    \item[(3)] For all $(a+b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$, consider $(-a-b\sqrt{D})$:
+    Since $a,b\in\mathbb{Q}$, then $(-a),(-b)\in\mathbb{Q}$. Thus, $(-a)+(-b)\sqrt{D}=(-a-b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$.
+
+    Also, the following is true:
+    $$(a+b\sqrt{D}) + (-a-b\sqrt{D}) = (a+(-a))+(b\sqrt{D}+(-b)\sqrt{D}) = 0+(b+(-b))\sqrt{D} = 0+0\sqrt{D} = 0$$
+    $$(-a-b\sqrt{D})+(a+b\sqrt{D}) = ((-a)+a)+((-b)\sqrt{D}+b\sqrt{D})=0+((-b)+b)\sqrt{D} = 0+0\sqrt{D}=0$$
+    Thus,$(-a-b\sqrt{D})$ is the additive inverse of $(a+b\sqrt{D})$. Every element in $\mathbb{Q}(\sqrt{D})$ has an additive inverse.
+\end{itemize}
+
+Given the above conditions, consider $(\mathbb{Q}(\sqrt{D}),+)$: (1) proves that it is closed under addition that's associative,
+(2) proves the existence of additive identity in the set, and (3) proves the existence of additive inverse for all element in the set.
+Thus, $(\mathbb{Q}(\sqrt{D}),+)$ is a group; furthermore, since $+$ is a commutative operation on $\mathbb{C}$, then the group is in fact abelian.
+
+Then, consider $(\mathbb{Q}(\sqrt{D}),\ \cdot\ )$: (1) proves that it is closed under multiplication which is associative, 
+and (2) proves the existence of multiplicative identity in the set, which $(\mathbb{Q}(\sqrt{D}),\ \cdot\ )$ is a monoid.
+
+Thus, $(\mathbb{Q}(\sqrt{D}),+,\ \cdot\ )$ is a ring.
+
+\hfill
+
+\textbf{Existence of Inverse:}
+
+For all nonzero $(a+b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$,
+since $D$ is a rational number that is not a square of any rational number, then $\sqrt{D}\notin \mathbb{Q}$.
+
+These conditions imply that $a\neq b\sqrt{D}$: Suppose $a=b\sqrt{D}$, then $b\sqrt{D}$ is rational. However, if $b\neq 0$, $b\sqrt{D}\neq 0$ is irrational (if $b\sqrt{D} = q\in\mathbb{Q}$, then $\sqrt{D}=\frac{q}{b}$ is rational, which contradicts), so $b=0$.
+Yet, this implies that $a=b\sqrt{D}=0\sqrt{D} = 0$, which $(a+b\sqrt{D}) = (0+0\sqrt{D}) = 0$, and this contradicts the assumption that $(a+b\sqrt{D})\neq 0$.
+
+So, $a\neq b\sqrt{D}$, which $(a-b\sqrt{D})\neq 0$.
+
+\hfill
+
+Now, consider the element $\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}$, which is defined since $(a+b\sqrt{D})$ and $(a-b\sqrt{D})$ are both nonzero:
+$$\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}=\frac{a-b\sqrt{D}}{a^2-(b\sqrt{D})^2} = \frac{a-b\sqrt{D}}{a^2-b^2D} = \frac{a}{a^2-b^2D}-\frac{b}{a^2-b^2D}\sqrt{D}$$
+(Note: since $a\neq b\sqrt{D}$, $a^2\neq b^2D$, so $a^2-b^2D \neq 0$.)
+
+Given that $a,b,D$ are all rationals, which $\frac{a}{a^2-b^2D}, \frac{-b}{a^2-b^2D}$ are both rationals. Thus:
+$$\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}=\ \frac{a}{a^2-b^2D}-\frac{b}{a^2-b^2D}\sqrt{D}\ \in \mathbb{Q}(\sqrt{D})$$
+Also, the following is true:
+$$(a+b\sqrt{D})\cdot \frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})} = 1 = \frac{(a-b\sqrt{D})}{(a+b\sqrt{D})(a-b\sqrt{D})}\cdot (a+b\sqrt{D})$$
+Which, $\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}$ is the multiplicative Inverse of $(a+b\sqrt{D})$, and it exists in $\mathbb{Q}(\sqrt{D})$.
+Hence, every nonzero element of $\mathbb{Q}(\sqrt{D})$ has a multiplicative inverse in $\mathbb{Q}(\sqrt{D})$.
+
+\hfill
+
+\textbf{Unique Expression:}
+
+For all $w\in\mathbb{Q}(\sqrt{D})$, suppose $a,a_1,b,b_1\in\mathbb{Q}$ satisfy $(a+b\sqrt{D})=(a_1+b_1\sqrt{D})=w$. Then:
+$$a+b\sqrt{D}=a_1+b_1\sqrt{D},\quad (a-a_1)=(b_1\sqrt{D}-b\sqrt{D}) = (b_1-b)\sqrt{D}$$
+This implies that $(b_1-b)=0$: Suppose $(b_1-b)\neq 0$, then since $(a-a_1)$ is rational, the above equation implies $(a-a_1)=(b_1-b)\sqrt{D}\in\mathbb{Q}$.
+Which, $\sqrt{D}=\frac{(a-a_1)}{(b_1-b)}\in\mathbb{Q}$. Yet, since $D$ is not a square of any rational number, $\sqrt{D}$ must be irrational, 
+and this is a contradiction. Thus, $(b_1-b)=0$, or $b_1=b$.
+
+Then, $(a-a_1)=(b_1-b)\sqrt{D} = 0\sqrt{D} = 0$, which $a=a_1$.
+
+So, there exists unique $a,b\in\mathbb{Q}$ with $w=a+b\sqrt{D}$, there exists a unique expression of all element of $\mathbb{Q}(\sqrt{D})$.
+
+\hfill
+
+\textbf{$\mathbb{Q}(\sqrt{D})$ is Not Necessarily a Subring of $\mathbb{R}$:}
+
+Consider $D=-1$: For all $q\in\mathbb{Q}$, since $q^2 \geq 0$, so $q^2\neq -1=D$. Thus, $\sqrt{D}=\sqrt{-1}=i$, which $\mathbb{Q}(\sqrt{D}) \not\subseteq \mathbb{R}$,
+since $i = \sqrt{D} = 0+1\sqrt{D} \in \mathbb{Q}(\sqrt{D})$, while $i\notin \mathbb{R}$.
+
+\break
+
+\section*{3}
+\begin{question}
+    Let $R$ be a ring and $R_1,R_2$ two subrings of $R$. Is $R_1\cap R_2$ also subring of $R$? Justify your answer.
+\end{question}
+
+\textbf{Pf:}
+
+If the zero-ring is not considered as a ring, then $R_1\cap R_2$ need not to be a ring, even if both are subrings of $R$.
+
+Consider $R = M_2(\mathbb{R})$, and let $R_1,R_2$ be defined as follow:
+$$R_1 = \left\{\begin{pmatrix}
+    a&0\\0&0
+\end{pmatrix}\ :\ a\in\mathbb{R}\right\},\quad R_2=\left\{\begin{pmatrix}
+    0&0\\0&b
+\end{pmatrix}\ :\ b\in\mathbb{R}\right\}$$
+
+We'll prove that both are subrings of $R$:
+\begin{itemize}
+    \item[(1)] For all $a,b\in\mathbb{R}$, the following is true:
+    $$\begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix}+\begin{pmatrix}
+        b&0\\0&0
+    \end{pmatrix}=\begin{pmatrix}
+        (a+b)&0\\0&0
+    \end{pmatrix},\quad \begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix}\begin{pmatrix}
+        b&0\\0&0
+    \end{pmatrix}=\begin{pmatrix}
+        ab&0\\0&0
+    \end{pmatrix}$$
+    $$\begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix}+\begin{pmatrix}
+        0&0\\0&b
+    \end{pmatrix}=\begin{pmatrix}
+        0&0\\0&(a+b)
+    \end{pmatrix},\quad \begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix}\begin{pmatrix}
+        0&0\\0&b
+    \end{pmatrix}=\begin{pmatrix}
+        0&0\\0&ab
+    \end{pmatrix}$$
+    Which, both $R_1$ and $R_2$ are closed under both addition and multiplication that are both associative.
+    Also, addition is commutative since real matrices' addition is commutative.
+
+    \hfill
+
+    \item[(2)] Consider $\begin{pmatrix}
+        1&0\\0&0
+    \end{pmatrix}\in R_1$ and $\begin{pmatrix}
+        0&0\\0&1
+    \end{pmatrix}\in R_2$: for all $a\in\mathbb{R}$, the following is true:
+    $$\begin{pmatrix}
+        1&0\\0&0
+    \end{pmatrix}\begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix} = \begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix} = \begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix}\begin{pmatrix}
+        1&0\\0&0
+    \end{pmatrix}$$
+    $$\begin{pmatrix}
+        0&0\\0&1
+    \end{pmatrix}\begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix} = \begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix} = \begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix}\begin{pmatrix}
+        0&0\\0&1
+    \end{pmatrix}$$
+    Thus, the given matrices are the multiplicative identities of their sets.
+
+    Also, the zero matrix $\begin{pmatrix}
+        0&0\\0&0
+    \end{pmatrix}$ are in both sets, which is the additive identity.
+
+    \hfill
+    
+    \item[(3)] For all $a\in\mathbb{R}$, the following is true:
+    $$\begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix}+\begin{pmatrix}
+        -a&0\\0&0
+    \end{pmatrix}=\begin{pmatrix}
+        0&0\\0&0
+    \end{pmatrix}=\begin{pmatrix}
+        -a&0\\0&0
+    \end{pmatrix}+\begin{pmatrix}
+        a&0\\0&0
+    \end{pmatrix}$$
+    $$ \begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix}+\begin{pmatrix}
+        0&0\\0&-a
+    \end{pmatrix}=\begin{pmatrix}
+        0&0\\0&0
+    \end{pmatrix}=\begin{pmatrix}
+        0&0\\0&-a
+    \end{pmatrix}+\begin{pmatrix}
+        0&0\\0&a
+    \end{pmatrix}$$
+    Thus, every element in $R_1$ and $R_2$ all have additive inverse.
+\end{itemize}
+
+Thus, since both $R_1,R_2$ are closed under commutative and associative addition, has additive identity, and every element has additive inverse,
+both are groups under addition; also, since they're closed under matrix multiplication and both have multiplicative identities, they're both monoids under multiplication.
+
+So, $R_1,R_2$ are both rings, which they're subrings of $R$.
+
+\hfill
+
+Yet, consider $R_1\cap R_2$: For all $a,b,c,d\in\mathbb{R}$, if $\begin{pmatrix}
+    a&b\\c&d
+\end{pmatrix} \in R_1\cap R_2$, then since $R_1$ are all matrices with only the $(1,1)$ entry could be nonzero, $b=c=d = 0$;
+furthermore, since $R_2$ are all matrices with only the $(2,2)$ entry could be nonzero, then $a=0$. Thus:
+$$R_1\cap R_2 = \left\{\begin{pmatrix}
+    0&0\\0&0
+\end{pmatrix}
+\right\}$$
+But, it is not considered as a ring, since it's the zero-ring.
+
+\break
+
+\section*{4}
+\begin{question}
+    Let $R$ be ring such that $a^2=a$ for every $a\in R$. Prove or disprove that $R$ is a
+commutative ring.
+\end{question}
+
+\textbf{Pf:}
+
+
+
+\end{document}
