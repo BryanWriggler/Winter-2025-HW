@@ -298,6 +298,18 @@ commutative ring.
 
 \textbf{Pf:}
 
+For all $a\in R$, since $(a+1)\in R$, then:
+$$(a+1)^2=(a+1)(a+1)=a(a+1)+1(a+1)=a^2+a+a+1 = a+1$$
+$$a^2+a=0,\quad a^2=-a$$
+$$(a^2+a)+(a+1)=(a+1),\quad a^2+a=0,\quad a^2=-a$$
+Thus, $a=a^2=-a$. Then, for all $a,b\in R$, since $b=-b$, then $(a+b) = (a-b)$. Thus:
+$$(a+b)^2 = (a+b),\quad (a+b)^2=(a+b)(a+b)=(a+b)(a-b)$$
+$$(a+b)(a-b)=a(a-b)+b(a-b)=a^2-ab+ba-b^2$$
+Thus, $a^2-ab+ba-b^2 = (a+b)(a-b)=(a+b)^2=(a+b)$. Also, since $a^2=a$ and $b^2=b$, while $b=-b$, then:
+$$a^2-ab+ba-b^2 = a-ab+ba-b = a-ab+ba+b$$
+Which:
+$$a-ab+ba+b=a+b,\quad -ab+ba=0,\quad ba=ab$$
+Thus, $R$ is a commutative ring.
 
 
 \end{document}
