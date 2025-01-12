@@ -8,7 +8,7 @@
 \usepackage{amssymb}
 \usepackage{verbatim}
 \usepackage[utf8]{inputenc}
-\linespread{1.5}
+%\linespread{1.5}
 
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
@@ -38,7 +38,7 @@ So, the zero element in $R$ is the same as zero element in $\mathbb{Z}$.
 
 \hfill
 
-Since $R$ is a ring, there exists unity element $b\in R\subseteq \mathbb{Z}$, such that for all $a\in\mathbb{Z}$,
+Since $R$ is a ring, there exists unity element $b\in R\subseteq \mathbb{Z}$, such that for all $a\in R$,
 $ab=ba=a$. In particular, $b^2=bb=b$ also. So, it satisfies the following:
 $$b^2=b,\quad b^2-b=0,\quad b(b-1)=0$$
 However, since unity element is different from zero element, so $b\neq 0$. Thus, for $b(b-1)=0$ to be true under $\mathbb{Z}$,
@@ -101,6 +101,17 @@ There are several criteria to test before saying it's a ring in $\mathbb{C}$:
     $$(a+b\sqrt{D}) + (-a-b\sqrt{D}) = (a+(-a))+(b\sqrt{D}+(-b)\sqrt{D}) = 0+(b+(-b))\sqrt{D} = 0+0\sqrt{D} = 0$$
     $$(-a-b\sqrt{D})+(a+b\sqrt{D}) = ((-a)+a)+((-b)\sqrt{D}+b\sqrt{D})=0+((-b)+b)\sqrt{D} = 0+0\sqrt{D}=0$$
     Thus,$(-a-b\sqrt{D})$ is the additive inverse of $(a+b\sqrt{D})$. Every element in $\mathbb{Q}(\sqrt{D})$ has an additive inverse.
+
+    \begin{comment}
+    \item[(4)] For all $a,b,c,d,e,f\in\mathbb{R}$, the following equations about distributive property is true:
+    $$((a+b\sqrt{D})+(c+d\sqrt{D}))(e+f\sqrt{D}) = ((a+c)+(b+d)\sqrt{D})(e+f\sqrt{D})$$
+    $$ = (a+c)e+(a+c)f\sqrt{D} + (b+d)e\sqrt{D}+(b+d)f(\sqrt{D})^2$$
+    $$ = ae+ce+af\sqrt{D}+cf\sqrt{D}+be\sqrt{D}+de\sqrt{D}+bfD+dfD$$
+    $$ = ((ae+bfD) + (be\sqrt{D}+af\sqrt{D}))+((ce+dfD)+(de\sqrt{D}+cf\sqrt{D})$$
+    $$ = (a+b\sqrt{D})(e+f\sqrt{D})+(c+d\sqrt{D})(e+f\sqrt{D})$$
+    Which, multiplying $(e+f\sqrt{D})$ from the right side satisfies the distributive property.
+    Also, since $\mathbb{C}$ is commutative under multiplication, then multiplying $(e+f\sqrt{D})$ from the left also satisfies the distributive property.
+    \end{comment}
 \end{itemize}
 
 Given the above conditions, consider $(\mathbb{Q}(\sqrt{D}),+)$: (1) proves that it is closed under addition that's associative,
@@ -110,7 +121,7 @@ Thus, $(\mathbb{Q}(\sqrt{D}),+)$ is a group; furthermore, since $+$ is a commuta
 Then, consider $(\mathbb{Q}(\sqrt{D}),\ \cdot\ )$: (1) proves that it is closed under multiplication which is associative, 
 and (2) proves the existence of multiplicative identity in the set, which $(\mathbb{Q}(\sqrt{D}),\ \cdot\ )$ is a monoid.
 
-Thus, $(\mathbb{Q}(\sqrt{D}),+,\ \cdot\ )$ is a ring.
+Also, the distributive property follows from the distributive property of $\mathbb{C}$, thus $(\mathbb{Q}(\sqrt{D}),+,\ \cdot\ )$ is a ring.
 
 \hfill
 
@@ -119,7 +130,7 @@ Thus, $(\mathbb{Q}(\sqrt{D}),+,\ \cdot\ )$ is a ring.
 For all nonzero $(a+b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$,
 since $D$ is a rational number that is not a square of any rational number, then $\sqrt{D}\notin \mathbb{Q}$.
 
-These conditions imply that $a\neq b\sqrt{D}$: Suppose $a=b\sqrt{D}$, then $b\sqrt{D}$ is rational. However, if $b\neq 0$, $b\sqrt{D}\neq 0$ is irrational (if $b\sqrt{D} = q\in\mathbb{Q}$, then $\sqrt{D}=\frac{q}{b}$ is rational, which contradicts), so $b=0$.
+These conditions imply that $a\neq b\sqrt{D}$: Suppose $a=b\sqrt{D}$, then $b\sqrt{D}$ is rational. However, if $b\neq 0$, $b\sqrt{D}\neq 0$ is irrational (since $b\sqrt{D}=a$, $\sqrt{D}=\frac{a}{b}\in\mathbb{Q}$, which contradicts), so b=0.
 Yet, this implies that $a=b\sqrt{D}=0\sqrt{D} = 0$, which $(a+b\sqrt{D}) = (0+0\sqrt{D}) = 0$, and this contradicts the assumption that $(a+b\sqrt{D})\neq 0$.
 
 So, $a\neq b\sqrt{D}$, which $(a-b\sqrt{D})\neq 0$.
@@ -134,7 +145,7 @@ Given that $a,b,D$ are all rationals, which $\frac{a}{a^2-b^2D}, \frac{-b}{a^2-b
 $$\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}=\ \frac{a}{a^2-b^2D}-\frac{b}{a^2-b^2D}\sqrt{D}\ \in \mathbb{Q}(\sqrt{D})$$
 Also, the following is true:
 $$(a+b\sqrt{D})\cdot \frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})} = 1 = \frac{(a-b\sqrt{D})}{(a+b\sqrt{D})(a-b\sqrt{D})}\cdot (a+b\sqrt{D})$$
-Which, $\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}$ is the multiplicative Inverse of $(a+b\sqrt{D})$, and it exists in $\mathbb{Q}(\sqrt{D})$.
+Which, $\frac{a-b\sqrt{D}}{(a+b\sqrt{D})(a-b\sqrt{D})}$ is the Multiplicative Inverse of $(a+b\sqrt{D})$, and it exists in $\mathbb{Q}(\sqrt{D})$.
 Hence, every nonzero element of $\mathbb{Q}(\sqrt{D})$ has a multiplicative inverse in $\mathbb{Q}(\sqrt{D})$.
 
 \hfill
@@ -157,6 +168,8 @@ So, there exists unique $a,b\in\mathbb{Q}$ with $w=a+b\sqrt{D}$, there exists a 
 
 Consider $D=-1$: For all $q\in\mathbb{Q}$, since $q^2 \geq 0$, so $q^2\neq -1=D$. Thus, $\sqrt{D}=\sqrt{-1}=i$, which $\mathbb{Q}(\sqrt{D}) \not\subseteq \mathbb{R}$,
 since $i = \sqrt{D} = 0+1\sqrt{D} \in \mathbb{Q}(\sqrt{D})$, while $i\notin \mathbb{R}$.
+
+In fact, if $D<0$, then $\mathbb{Q}(\sqrt{D})\not\subseteq \mathbb{R}$; but if $D \geq 0$, $\mathbb{Q}(\sqrt{D}) \subseteq \mathbb{R}$.
 
 \break
 
@@ -274,7 +287,7 @@ We'll prove that both are subrings of $R$:
 Thus, since both $R_1,R_2$ are closed under commutative and associative addition, has additive identity, and every element has additive inverse,
 both are groups under addition; also, since they're closed under matrix multiplication and both have multiplicative identities, they're both monoids under multiplication.
 
-So, $R_1,R_2$ are both rings, which they're subrings of $R$.
+Also, the distributive property of $R_1, R_2$ follows from the distributive property of $M_2(\mathbb{R})$. So, $R_1,R_2$ are both rings, which they're subrings of $R$.
 
 \hfill
 
@@ -288,7 +301,11 @@ $$R_1\cap R_2 = \left\{\begin{pmatrix}
 \right\}$$
 But, it is not considered as a ring, since it's the zero-ring.
 
-\break
+\hfill
+
+\hfill
+
+\hfill
 
 \section*{4}
 \begin{question}
@@ -298,18 +315,13 @@ commutative ring.
 
 \textbf{Pf:}
 
-For all $a\in R$, since $(a+1)\in R$, then:
-$$(a+1)^2=(a+1)(a+1)=a(a+1)+1(a+1)=a^2+a+a+1 = a+1$$
-$$a^2+a=0,\quad a^2=-a$$
-$$(a^2+a)+(a+1)=(a+1),\quad a^2+a=0,\quad a^2=-a$$
-Thus, $a=a^2=-a$. Then, for all $a,b\in R$, since $b=-b$, then $(a+b) = (a-b)$. Thus:
-$$(a+b)^2 = (a+b),\quad (a+b)^2=(a+b)(a+b)=(a+b)(a-b)$$
-$$(a+b)(a-b)=a(a-b)+b(a-b)=a^2-ab+ba-b^2$$
-Thus, $a^2-ab+ba-b^2 = (a+b)(a-b)=(a+b)^2=(a+b)$. Also, since $a^2=a$ and $b^2=b$, while $b=-b$, then:
-$$a^2-ab+ba-b^2 = a-ab+ba-b = a-ab+ba+b$$
-Which:
-$$a-ab+ba+b=a+b,\quad -ab+ba=0,\quad ba=ab$$
-Thus, $R$ is a commutative ring.
+For all $a\in R$, since $(-a)^2=a^2$, then $-a=(-a)^2=a^2=a$. So, $(a-b)=(a+(-b))=(a+b)$. Thus, for all $a,b\in R$, consider $(a+b)=(a+b)^2 = (a+b)(a-b)$:
+$$(a+b)=(a+b)(a-b) = a(a-b)+b(a-b)$$
+$$ = a^2-ab+ba-b^2$$
+Which, $a^2=a$ and $-b^2 = -b = b$. So:
+$$(a+b)=a-ab+ba+b,\quad 0 = -ab+ba,\quad ab=ba$$
+Since $ab=ba$ for all $a,b\in R$, $R$ is commutative under multiplication.
+
 
 
 \end{document}
