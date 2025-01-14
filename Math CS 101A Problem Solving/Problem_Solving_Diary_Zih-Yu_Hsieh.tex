@@ -10,7 +10,7 @@
 
 \usepackage{hyperref}
 
-\linespread{1.5}
+%\linespread{1.5}
 
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
@@ -54,30 +54,105 @@
 
 \section{A Mathematical Adventure in the Jungle}
 \subsection{Problem 1}
+The goal is to let everyone - you, your sister Maria, Mom, and Dad cross the bridge, with some restrictions:
+
+1. At most 2 people can cross the bridge together
+
+2. Cross the bridge requires a flashlight, and there is only one.
+
+3. Everyone needs some time to cross the bridge: you need 5 minutes, Maria needs 10 minutes, Mom needs 20 minutes, and Dad needs 25 minutes.
+
+4. If 2 people cross the bridge together, then it requires the time the slower person need to cross the bridge 
+(e.g. if one needs 5 minutes while the other needs 10, then the two together need 10 minutes).
+
+5. All people need to cross the bridge in 60 minutes.
+
+For the first round, you and Maria cross the bridge together with the flashlight, which takes 10 minutes (longest of the two); 
+then, you take the flashlight and go back alone, which takes 5 minutes. 
+Now, Maria is successfully across the bridge, and the total time spent is 10+5=15 minutes.
+
+For the second round, let your mom and dad cross the bridge together with the flashlight, which takes 25 minutes (dads time is longest); 
+then, let Maria take the flashlight and go back alone, which takes 10 minutes. Now, Mom and Dad are across the bridge, 
+and the total time spend is 15+25+10 = 50 minutes.
+
+For the last round, you and Maria cross the bridge together with the flashlight, which takes 10 minutes. Then, everyone had crossed the bridge, 
+the total time spend is 50+10=60 minutes.
+
+So, it's possible to let everyone cross the bridge in 60 minutes.
+
 
 \hfill
 
 \subsection{Problem 2}
+Now you have 3 pills in your palm, 1 from the yellow bottle and 2 from the blue bottle, and it's indistinguishable between the two type of pills; 
+also, there are some remaining pills in each bottle still.
+Here is the restriction: Dad needs to eat exactly 1 pill from the yellow bottle and 1 pill from the blue bottle simultaneously each day. No less, no more. 
+
+So, what we can do is carefully pour another pill from the yellow bottle, so now there are 4 pills outside, 2 from the yellow and 2 from the blue bottle.
+
+Then, break each pill in half, and let Dad eat half of the pill from all 4 of them. With this strategy, Dad swallowed exactly half of the given amount, 
+which is half of 2 pills from yellow bottle and half of 2 pills from blue bottle, having exactly 1 pill from each bottle. This satisfies day 2, 
+and the remaining other half of these 4 pills satisfies day 3 similarly. Note that you have 2 yellow and 2 blue pills remaining.
+For day 4 and 5, you follow the original instructions, taking one blue and one yellow pill each day, finishing the exact amount by the end of day 5.
 
 \hfill
 
 \subsection{Problem 3}
+There is a 3x3 grid formed by 9 sticks stuck on the ground. With a long rope, the goal is to connect all 9 sticks while only bending the rope 3 times. 
+(In other words, connecting 3x3 grid points with 4 straight lines).
+
+Instead of letting the rope always bend around the existed sticks, if we can bend the rope at the place without a stick, then the following graph is a solution:
+\textbf{Insert Picture Here}
 
 \hfill
 
 \subsection{Problem 4}
+Ok, so they tell you that they have two wooden containers of the same size. They fill one of them with water from the river and the other one with a sacred concoction 
+so that both containers have the same amount of liquid. 
+Then, they pour a small amount of the water into the container with the sacred liquid, mix well, and pour back some of this mix into the water container 
+until both containers end up having the exact amount of liquid. Which container has the higher proportion of foreign liquid?
+
+Observe the sacred liquid in the water container. It is not in the sacred liquid. In order for the sacred liquid container to have its starting volume, 
+the rest of the volume in the sacred liquid container must be water, and with the same volume as the sacred liquid that’s in the water container. 
+Therefore, they are equal, i.e. the amount of water in the sacred liquid container must equal the amount of sacred liquid in the water container.
+
 
 \hfill
 
 \subsection{Problem 5}
+We were given a knife and two 50-ft ropes hanging on the ceiling of a 50-ft tall house. This house is 100 ft above the ground. Nobody can fall more than 10 ft, 
+and we can’t cut the rope lengthwise. Then, to get back to the ground, we need a rope of at least 90 ft.
+
+First, climb up one of the rope to the ceiling, and use less than 10 ft of the other rope to tie a loop on the ceiling. 
+Now, hang yourself with the loop on the ceiling, cut the rope you climbed up while holding it (which provides 50 ft), then also cut the rope below the loop while holding it 
+(which provides more than 40 ft, since only less than 10 ft is used for the loop).
+
+Then, tie the 40 and 50 ft together, that’s a 90 ft long rope. Pass this rope through the loop, while the loop bisects the rope, then we have two 45 ft long ropes hanging on the ceiling, 
+which we can safely get back down (as there is only a 5 ft gap from the floor with the 45 ft long ropes).
+
+After sliding down, we can take the 90 ft long rope, and use that to safely get down to the ground, as there is only a 10 ft gap from the ground with the 90 ft long rope.
+
 
 \hfill
 
 \subsection{Problem 6}
+Observe that the 25s will never move because they are always the biggest card (if it’s equal, than someone has 2 and the game ends). 
+Once the 24s are out of the hands of the people with the 25s (if they were in the first place), they also never move for the same reason (as the 25s will never get passed, so there’s no bigger card in circulation). 
+The same logic applies to all the smaller cards through 14. At this point, if someone hasn’t won yet, the only cards being passed are 13s and below. There’s 12 numbers being fixed, 
+each with 2 cards, so 24 people have a card that never moves. Eventually, the 25th person gets a 13, which they hold since there isn’t a bigger card in circulation. 
+There’s another 13 in circulation, which no one else will keep. Thus the 25th person gets it and has 2 13s. The game ends.
+
 
 \hfill
 
 \subsection{Problem 7}
+Upstairs, there is a room with a light bulb that is turned off. It turns out that the switch to turn it on is on the first floor. But there are three switches and only one of them controls the bulb on the second floor. 
+After so many days of solving interesting puzzles and problems, your sister challenges you to discover which switch controls the bulb, but you are only allowed to go upstairs once. 
+How do you do it? (no fancy strings, telescopes, etc. allowed. You cannot see the upstairs room from downstairs. The light bulbs are standard 100-watt bulbs).
+
+Figure out what the other two switches do by observing their effects downstairs. Alternatively if the bulb is incandescent, turn a switch on for a hot sec, then switch it off and another one on. If the light’s on, 
+it's the switch that’s currently on. If the bulb’s hot, it's the switch that used to be on. If the bulb’s cold and off, it’s the other switch.
+
 
 \hfill
 
