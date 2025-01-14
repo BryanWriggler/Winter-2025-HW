@@ -32,16 +32,10 @@ We'll prove that $\mathbb{Z}$ has no proper subring: Suppose $R\subseteq \mathbb
 
 \hfill
 
-First, for the zero element $0'\in R$, for all $a\in R$, $0'+a = a$, thus: 
-$$0' = 0'+0 = 0' + (a-a) = (0'+a)-a = a-a = 0$$
-So, the zero element in $R$ is the same as zero element in $\mathbb{Z}$.
-
-\hfill
-
 Since $R$ is a ring, there exists unity element $b\in R\subseteq \mathbb{Z}$, such that for all $a\in R$,
 $ab=ba=a$. In particular, $b^2=bb=b$ also. So, it satisfies the following:
 $$b^2=b,\quad b^2-b=0,\quad b(b-1)=0$$
-However, since unity element is different from zero element, so $b\neq 0$. Thus, for $b(b-1)=0$ to be true under $\mathbb{Z}$,
+However, since unity element is different from zero element, so $b\neq 0$. Thus, for $b(b-1)=0$ to be true under $\mathbb{Z}$ (where two nonzero elements have product being nonzero),
 $(b-1)=0$, or $b=1$.
 
 \hfill
@@ -87,10 +81,9 @@ There are several criteria to test before saying it's a ring in $\mathbb{C}$:
 
     \item[(2)] Consider $0,1\in\mathbb{C}$: Since $0 = 0+0\sqrt{D}$ and $1=1+0\sqrt{D}$, while $0,1\in\mathbb{Q}$, thus $0,1\in \mathbb{Q}(\sqrt{D})$.
 
-    Which, for all $(a+b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$, the following is true:
-    $$0+(a+b\sqrt{D})=(a+b\sqrt{D})=(a+b\sqrt{D})+0$$
-    $$1\cdot(a+b\sqrt{D})=(a+b\sqrt{D})=(a+b\sqrt{D})\cdot 1$$
-    Thus, $0$ is the additive identity, and $1$ is the multiplicative identity. They both exist in the set.
+    Since both the zero and unity elements ($0$ and $1$ respectively) of $\mathbb{C}$ is contained in $\mathbb{Q}(\sqrt{D})$, 
+    then they also satisfy the condition as the zero and unity element of $\mathbb{Q}(\sqrt{D})$ (since $\mathbb{Q}(\sqrt{D})\subseteq \mathbb{C}$).
+    Thus, $0$ is the additive identity, and $1$ is the multiplicative identity (since identities are unique).
 
     \hfill
 
@@ -99,8 +92,8 @@ There are several criteria to test before saying it's a ring in $\mathbb{C}$:
 
     Also, the following is true:
     $$(a+b\sqrt{D}) + (-a-b\sqrt{D}) = (a+(-a))+(b\sqrt{D}+(-b)\sqrt{D}) = 0+(b+(-b))\sqrt{D} = 0+0\sqrt{D} = 0$$
-    $$(-a-b\sqrt{D})+(a+b\sqrt{D}) = ((-a)+a)+((-b)\sqrt{D}+b\sqrt{D})=0+((-b)+b)\sqrt{D} = 0+0\sqrt{D}=0$$
-    Thus,$(-a-b\sqrt{D})$ is the additive inverse of $(a+b\sqrt{D})$. Every element in $\mathbb{Q}(\sqrt{D})$ has an additive inverse.
+    $$(-a-b\sqrt{D})+(a+b\sqrt{D}) =(a+b\sqrt{D}) + (-a-b\sqrt{D}) =0$$
+    Thus, $(-a-b\sqrt{D})$ is the additive inverse of $(a+b\sqrt{D})$. Every element in $\mathbb{Q}(\sqrt{D})$ has an additive inverse.
 
     \begin{comment}
     \item[(4)] For all $a,b,c,d,e,f\in\mathbb{R}$, the following equations about distributive property is true:
@@ -130,9 +123,8 @@ Also, the distributive property follows from the distributive property of $\math
 For all nonzero $(a+b\sqrt{D})\in\mathbb{Q}(\sqrt{D})$,
 since $D$ is a rational number that is not a square of any rational number, then $\sqrt{D}\notin \mathbb{Q}$.
 
-These conditions imply that $a\neq b\sqrt{D}$: Suppose $a=b\sqrt{D}$, then $b\sqrt{D}$ is rational. However, if $b\neq 0$, $b\sqrt{D}\neq 0$ is irrational (since $b\sqrt{D}=a$, $\sqrt{D}=\frac{a}{b}\in\mathbb{Q}$, which contradicts), so b=0.
+These conditions imply that $a\neq b\sqrt{D}$: Suppose $a=b\sqrt{D}$, then $b\sqrt{D}$ is rational. However, if $b\neq 0$, $b\sqrt{D}\neq 0$ is not rational (since $b\sqrt{D}=a$, $\sqrt{D}=\frac{a}{b}\in\mathbb{Q}$, which contradicts), so b=0.
 Yet, this implies that $a=b\sqrt{D}=0\sqrt{D} = 0$, which $(a+b\sqrt{D}) = (0+0\sqrt{D}) = 0$, and this contradicts the assumption that $(a+b\sqrt{D})\neq 0$.
-
 So, $a\neq b\sqrt{D}$, which $(a-b\sqrt{D})\neq 0$.
 
 \hfill
@@ -155,7 +147,7 @@ Hence, every nonzero element of $\mathbb{Q}(\sqrt{D})$ has a multiplicative inve
 For all $w\in\mathbb{Q}(\sqrt{D})$, suppose $a,a_1,b,b_1\in\mathbb{Q}$ satisfy $(a+b\sqrt{D})=(a_1+b_1\sqrt{D})=w$. Then:
 $$a+b\sqrt{D}=a_1+b_1\sqrt{D},\quad (a-a_1)=(b_1\sqrt{D}-b\sqrt{D}) = (b_1-b)\sqrt{D}$$
 This implies that $(b_1-b)=0$: Suppose $(b_1-b)\neq 0$, then since $(a-a_1)$ is rational, the above equation implies $(a-a_1)=(b_1-b)\sqrt{D}\in\mathbb{Q}$.
-Which, $\sqrt{D}=\frac{(a-a_1)}{(b_1-b)}\in\mathbb{Q}$. Yet, since $D$ is not a square of any rational number, $\sqrt{D}$ must be irrational, 
+Which, $\sqrt{D}=\frac{(a-a_1)}{(b_1-b)}\in\mathbb{Q}$. Yet, since $D$ is not a square of any rational number, $\sqrt{D}$ must be not rational, 
 and this is a contradiction. Thus, $(b_1-b)=0$, or $b_1=b$.
 
 Then, $(a-a_1)=(b_1-b)\sqrt{D} = 0\sqrt{D} = 0$, which $a=a_1$.
@@ -169,7 +161,7 @@ So, there exists unique $a,b\in\mathbb{Q}$ with $w=a+b\sqrt{D}$, there exists a 
 Consider $D=-1$: For all $q\in\mathbb{Q}$, since $q^2 \geq 0$, so $q^2\neq -1=D$. Thus, $\sqrt{D}=\sqrt{-1}=i$, which $\mathbb{Q}(\sqrt{D}) \not\subseteq \mathbb{R}$,
 since $i = \sqrt{D} = 0+1\sqrt{D} \in \mathbb{Q}(\sqrt{D})$, while $i\notin \mathbb{R}$.
 
-In fact, if $D<0$, then $\mathbb{Q}(\sqrt{D})\not\subseteq \mathbb{R}$; but if $D \geq 0$, $\mathbb{Q}(\sqrt{D}) \subseteq \mathbb{R}$.
+In fact, if $D<0$, then $\mathbb{Q}(\sqrt{D})\not\subseteq \mathbb{R}$ (since $\sqrt{D} \notin \mathbb{R}$); but if $D \geq 0$, $\mathbb{Q}(\sqrt{D}) \subseteq \mathbb{R}$ (since $\sqrt{D}\in \mathbb{R}$).
 
 \break
 
@@ -285,7 +277,7 @@ We'll prove that both are subrings of $R$:
 \end{itemize}
 
 Thus, since both $R_1,R_2$ are closed under commutative and associative addition, has additive identity, and every element has additive inverse,
-both are groups under addition; also, since they're closed under matrix multiplication and both have multiplicative identities, they're both monoids under multiplication.
+so both are groups under addition; also, since they're closed under associative matrix multiplication and both have multiplicative identities, they're both monoids under multiplication.
 
 Also, the distributive property of $R_1, R_2$ follows from the distributive property of $M_2(\mathbb{R})$. So, $R_1,R_2$ are both rings, which they're subrings of $R$.
 
@@ -315,9 +307,9 @@ commutative ring.
 
 \textbf{Pf:}
 
-For all $a\in R$, since $(-a)^2=a^2$, then $-a=(-a)^2=a^2=a$. So, $(a-b)=(a+(-b))=(a+b)$. Thus, for all $a,b\in R$, consider $(a+b)=(a+b)^2 = (a+b)(a-b)$:
-$$(a+b)=(a+b)(a-b) = a(a-b)+b(a-b)$$
-$$ = a^2-ab+ba-b^2$$
+For all $a\in R$, since $(-a)^2=a^2$, then $-a=(-a)^2=a^2=a$. 
+Thus, for all $a,b\in R$, $(a-b)=(a+(-b))=(a+b)$. Now, consider $(a+b)=(a+b)^2 = (a+b)(a-b)$:
+$$(a+b)=(a+b)(a-b) = a(a-b)+b(a-b) = a^2-ab+ba-b^2$$
 Which, $a^2=a$ and $-b^2 = -b = b$. So:
 $$(a+b)=a-ab+ba+b,\quad 0 = -ab+ba,\quad ab=ba$$
 Since $ab=ba$ for all $a,b\in R$, $R$ is commutative under multiplication.
