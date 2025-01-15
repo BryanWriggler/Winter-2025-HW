@@ -1,0 +1,286 @@
+%Math_CS_Topology_HW1_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+%\linespread{1.5}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{question}
+    In a parallel universe, a topological space is defined in terms of closed sets,
+    and an open set is defined to be the complement of a closed set (rather than
+    the other way around). Complete the parallel universe definition: a topological
+    space is a set of points $ X$ and a collection of “closed” sets satisfying the following
+    axioms. Explain your answer, but you do not need a rigorous proof.
+\end{question}
+
+\textbf{Ans:}
+
+The collection of "closed" sets $\mathcal{C}$ would satisfy the following axioms:
+\begin{itemize}
+    \item[(1)] $\emptyset,\ X\in \mathcal{C}$. 
+    
+    The reason is that for the common definition of topology, 
+    empty set $\emptyset$ and $X$ (the whole space) are considered open, which their complement - $X$ and $\emptyset$ -
+    are considered as closed. In case to be consistent with the common definition, the two sets need to be closed.
+
+    \hfill
+
+    \item[(2)] For finite collection $C_1,...,C_n \in \mathcal{C}$, the union $\left(\bigcup_{i=1}^{n}C_i\right)\in \mathcal{C}$.
+    
+    The motivation comes from common definition of topology, where the intersection of finite collection of open sets are open.
+    Which, the intersection of complements is the same as complement of union, which for finitely many open sets,
+    their intersection can be thought of as intersection of finitely many "closed sets' complements", which is the complement of union of these closed sets.
+    
+    According to the definition in (2), this union is closed (since only finitely many is considered), then it's complement is closed,
+    thus the intersection of finitely many open sets is open, which is consistent with our definition.
+
+    \hfill
+
+    \item[(3)] For arbitrary collection of closed sets $\mathcal{F}\subseteq \mathcal{C}$, the intersection $\bigcap \mathcal{F}\in \mathcal{C}$.
+    
+    The reason is again from the common definition of topology, where the union of arbitrary collection of open sets are open.
+    Which, the union of complements is equivalent to complement of intersection, so union of arbitrary open sets,
+    is in fact union of arbitrary closed sets' complements, which is the complement of intersection of these closed sets.
+
+    Then, according to the definition in (3), this intersection is closed, which its complement - the union of arbitrary open sets, is therefore open.
+    
+\end{itemize}
+
+\break
+
+\section*{2}
+\begin{question}
+    For this question, a “neighborhood” of a point is a not necessarily open
+    set $ N$ such that $x\in U\subseteq N$ for some open set $U$. In a parallel universe, a
+    topological space is defined in terms of neighborhoods, and an open set is defined
+    to be a set that is a neighborhood of all of its points. Complete the parallel
+    universe definition: a topological space is a set of points $X$ and for every $x\in X$
+    a collection of “neighborhoods” that satisfy the following axioms. Explain your
+    answer, but you do not need a rigorous proof.
+\end{question}
+
+\textbf{Ans:}
+
+For all $x\in X$, a collection of "neighborhoods" $N_x$ would satisfy the following axioms:
+\begin{itemize}
+    \item[(1)]$N_x\neq \emptyset$.
+    
+    The reason behind this, is to ensure every element is covered by some open sets, so the following definition is meaningful.
+
+    \hfill
+
+    \item[(2)] For all $B\in N_x$, if $B\subseteq U\subseteq X$, then $U\in N_x$
+    
+    The motivation of this, is to ensure $X$ is open, and the union of open sets is open.
+
+    Since $X$ contains all possible subset, it contains a neighborhood of any $x\in X$, which this definition
+    imposes $X$ to be a neighborhood of all points, which is open by the given definition.
+
+    Also, For any collection of open sets, every of them is a neighborhood of elements contained in themselves.
+    Which, since the union contains all open sets, it automatically becomes a neighborhood of all elements in every
+    collected open sets, which it is a neighborhood of all its element, forcing the union to also be open.
+
+    \hfill
+
+    \item[(3)] For a finite collection $B_1,...,B_n\in N_x$, the intersection $\bigcap_{i=1}^{n}B_i \in N_x$.
+    
+    The idea behind this, is to ensure nonempty finite intersection of open sets are open.
+    If a finite collection of sets are open, then every set is a neighborhood of every of its points.
+    Then, for every point in the intersection, since every open set containing the intersection is a neighborhood of chosen point,
+    then their finite intersection is also a neighborhood of the chosen point. If the point is arbitrary, the the intersection is a 
+    neighborhood of all points in the intersection, making the finite intersection open.
+\end{itemize}
+
+Even though not explicitly stated, but $\emptyset$ is vacuously satisfying the condition of being an open set,
+since it contains no points, the given condition is vacuously true.
+
+
+
+\break
+
+\section*{3}
+\begin{question}
+    Give an example of a countably infinite basis for the standard topology on R, 
+    and prove it is a basis.
+\end{question}
+
+\textbf{Pf:}
+
+For all $q\in \mathbb{Q}$, let the collection $V_q=\{(q-r,q+r)\ |\ r\in\mathbb{Q},\ r>0\}$, 
+and define the collection of open sets $\mathcal{B}=\bigcup_{q\in \mathbb{Q}}V_q$.
+
+Since collection of positive integer is countable, thus for each $q\in\mathbb{Q}$, there are countable open intervals collected in $V_q$;
+and, since the rationals $\mathbb{Q}$ is countable, $\mathcal{B}=\bigcup_{q\in \mathbb{Q}}V_q$ is the union of countable collections of countable sets,
+which is also countable.
+
+\hfill
+
+\textbf{$\mathcal{B}$ is a basis:}
+
+There are two criteria to check:
+\begin{itemize}
+    \item[1.] For all $x\in\mathbb{R}$, since $\mathbb{Q}$ is dense in $\mathbb{R}$, then choose $\epsilon>0$ with $\epsilon <1$,
+    there exists rational number $q\in (x-\epsilon,x+\epsilon)$, which $|q-x|<\epsilon<1$.
+    Then, $x\in (q-1,q+1)$ (since its distance away from $q$ is strictly less than $1$), while $1\in \mathbb{Q}$ and $1>0$,
+    thus $(q-1,q+1)\in V_q \subset \mathcal{B}$.
+
+    So, every element $x\in\mathbb{R}$ is covered by an open interval in $\mathcal{B}$.
+
+    \hfill
+
+    \item[2.] For all $B_1,B_2\in\mathcal{B}$, there exists $q,q',r,r'\in \mathbb{Q}$ with $r,r'>0$, 
+    such that $B_1=(q-r,q+r)$ and $B_2=(q'-r',q'+r')$.
+
+    Now, consider $B_1\cap B_2$: if it is empty, then we don't need further proof;
+    else, if it is nonempty, we'll show that $B_1\cap B_2$ is actually an element of $\mathcal{B}$.
+
+    Given that $B_1\cap B_2\neq \emptyset$, then there exists $x\in B_1\cap B_2$, which $(q-r)<x<(q+r)$ and $(q'-r')<x<(q'+r')$.
+    Now, define $m=\max\{(q-r),(q'-r')\}$ and $M=\min\{(q+r),(q'+r')\}$ (which both $m,M\in \mathbb{Q}$, since the elements $(q-r),(q'-r'),(q+r),(q'+r')\in\mathbb{Q}$),
+    and let $q_0=\frac{m+M}{2}$, $r_0=\frac{M-m}{2}$.
+
+    \hfill
+
+    First, since $m,M\in\mathbb{Q}$, then $q_0,r_0\in\mathbb{Q}$; 
+    also, $(q-r),(q'-r')<x$ implies $m <x$, and $(q+r),(q'+r')>x$ implies $M>x$, thus $m<x<M$, or $r_0=\frac{M-m}{2}>0$.
+    Then, the set $B_3 = (q_0-r_0,q_0+r_0)\in V_{q_0}\subseteq\mathcal{B}$.
+
+    Now, we'll prove that $B_3 = (B_1\cap B_2)$:
+
+    (Note: $B_3 = (\frac{M+m}{2}-\frac{M-m}{2},\frac{M+m}{2}+\frac{M-m}{2}) = (m,M)$).
+    \begin{itemize}
+        \item[$\subseteq$:] For all $x\in B_3$, since $m<x<M$, then by the definition of $m$ and $M$,
+        since $(q-r),(q'-r')\leq m$ and $(q+r),(q'+r')\geq M$, then:
+        $$(q-r)\leq m<x<M\leq(q+r),\quad\quad (q'-r')\leq m<x<M\leq(q'+r')$$
+        Thus, $x\in (q-r,q+r)=B_1$, and $x\in (q'-r',q'+r')=B_2$, or $x\in B_1\cap B_2$.
+        This proves that $B_3\subseteq (B_1\cap B_2)$.
+
+        \hfill
+
+        \item[$\supseteq:$] For all $x\in (B_1\cap B_2)$, $x\in B_1$ implies $(q-r)<x<(q+r)$, and $x\in B_2$ implies $(q'-r')<x<(q'+r')$.
+        Which, $(q-r),(q'-r')<x$ implies $m<x$ (since $m\in\{(q-r),(q'-r')\}$ by the definition of maximum) and $(q+r),(q'+r')>x$ implies $M>x$
+        (again, since $M\in \{(q+r),(q'+r')\}$ by the definition of minimum).
+
+        Thus, $m<x<M$, which $x\in (m,M) = B_3$, this proves that $(B_1\cap B_2)\subseteq B_3$.
+    \end{itemize}
+
+    With the above two implications, $(B_1\cap B_2)=B_3$, while $B_3\in \mathcal{B}$, thus every element in the intersection $(B_1\cap B_2)$
+    is covered by an element $B_3=(B_1\cap B_2)\in\mathcal{B}$ that is a subset of the intersection (namely itself).
+\end{itemize}
+With the above two criteria, $\mathcal{B}$ is a basis of $\mathbb{R}$, and it is also countable.
+
+\hfill
+
+\textbf{$\mathcal{B}$ generates Standard Topology:}
+
+Let $\mathcal{T_B}$ be the topology generated by $\mathcal{B}$, and let $\mathcal{T}$ be the standard topology on $\mathbb{R}$.
+
+For all $U\in \mathcal{T_B}$, it is the union of some collection of basis elements in $\mathcal{B}$; but, every basis element in $\mathcal{B}$
+is in fact an open set under standard topology, thus $\mathcal{B}\subseteq \mathcal{T}$, which union of any collection of basis elements in $\mathcal{B}$
+is still an element of $\mathcal{T}$, thus $U\in \mathcal{T}$, or $\mathcal{T_B}\subseteq \mathcal{T}$.
+
+\hfill
+
+On the other hand, for all $V\in\mathcal{T}$, for any $x\in V$, there exists $\epsilon>0$, such that $(x-\epsilon,x+\epsilon)\subseteq V$.
+Which, $(x-\frac{\epsilon}{2},x+\frac{\epsilon}{2})\subseteq (x-\epsilon,x+\epsilon)\subseteq V$ by definition.
+
+Since $\mathbb{Q}$ is dense on $\mathbb{R}$, then there exists a rational number $q\in (x-\frac{\epsilon}{2},x+\frac{\epsilon}{2})$, with the following being true:
+$$(x-\frac{\epsilon}{2})<q<(x+\frac{\epsilon}{2}),\quad -\frac{\epsilon}{2}<(q-x)<\frac{\epsilon}{2}, \quad |q-x|<\frac{\epsilon}{2}$$
+Again, by denseness of $\mathbb{Q}$ on $\mathbb{R}$, there exists $r\in\mathbb{Q}$, with $0\leq |q-x| <r<\frac{\epsilon}{2}$.
+
+Now, consider the following open interval $(q-r,q+r)\in V_q\subseteq \mathcal{B}$:
+
+Since $|q-x|<r$, then $x\in (q-r,q+r)$; also, for all $z\in (q-r,q+r)$, $|q-z|<r<\frac{\epsilon}{2}$, while $|q-x|<\frac{\epsilon}{2}$, thus:
+$$|x-z| = |(x-q)+(q-z)| \leq |x-q|+|q-z| < \frac{\epsilon}{2}+\frac{\epsilon}{2} = \epsilon$$
+Thus, $z\in (x-\epsilon,x+\epsilon)$, or $(q-r,q+r)\subseteq(x-\epsilon,x+\epsilon)\subseteq V$.
+So, for every $x\in V$, there exists basis element $B\in\mathcal{B}$, with $x\in B\subseteq V$, which $V$ is open under the topology generated by $\mathcal{B}$,
+or $V\in \mathcal{T_B}$. Hence, $\mathcal{T}\subseteq \mathcal{T_B}$.
+
+\hfill
+
+With the two inclusions above, $\mathcal{T}=\mathcal{T_B}$, which we can conclude that $\mathcal{B}$ is a basis of Standard Topology.
+
+
+\break
+
+\section*{4}
+\begin{question}
+    A topological space $X$ is called Fréchet if: for every pair of distinct points 
+    $x, y \in X$ there exists an open neighborhood $U$ of $x$ such that $y\notin U$. Prove that 
+    $X$ is Fréchet if and only if every singleton in $X$ is closed.
+\end{question}
+
+\textbf{Pf:}
+\begin{itemize}
+    \item[$\implies:$]
+    Suppose $X$ is Fréchet, then for all distinct points $x,y\in X$, there exists open neighborhood $U$ of $x$, with $y\notin U$.
+    This implies that for arbitrary $x\in X$, since for any $y\in X\setminus\{x\}$, there exists open neighborhood $U_y$ of $y$, with $x\notin U_y$,
+    thus $x\in X\setminus U_y$. Now, consider the following set:
+    $$K=\bigcap_{y\in X\setminus\{x\}}(X\setminus U_y)$$
+    Since $x\in X\setminus U_y$ for all $y\in X\setminus\{x\}$, then $x\in K$; furthermore, for any $y\in X\setminus\{x\}$, 
+    since $y\in U_y$ by definitio, then $y\notin X\setminus U_y$, thus $y\notin K$. Which, we can conclude that $K=\{x\}$.
+
+    However, since for all $y\in X\setminus\{x\}$, $U_y$ is open, thus $X\setminus U_y$ is closed, so $K$ is arbitrary intersection of closed sets, 
+    which is also closed. Thus, $K=\{x\}$ is closed for arbitrary $x\in X$, all singleton set in $X$ is closed.
+    
+
+    \hfill
+
+    \item[$\impliedby:$] 
+    Suppose every singleton set in $X$ is closed, then for distinct $x,y\in X$, since $\{y\}$ is closed, $X\setminus\{y\}$ is open.
+    Which, since $x\in X\setminus\{y\}$ while $y\notin X\setminus\{y\}$, then $X\setminus\{y\}$ is the desired open neighborhood of $x$, 
+    proving that $X$ is actually Fréchet.
+
+\end{itemize}
+
+\hfill
+
+\section*{5}
+\begin{question}
+    Prove that if $X$ is finite then the only Hausdorff topology on $X$ is the discrete topology.
+\end{question}
+
+\textbf{Pf:}
+
+Suppose $X$ is finite, and a topology $\mathcal{T}$ on $X$ is Hausdorff. Then, for any $x,y\in X$, there exists disjoint sets $U,V\in\mathcal{T}$
+such that $x\in U$ and $y\in V$. Which, $y\notin U$ and $x\notin V$ in particular.
+
+Now, for arbitrary $x\in X$, since $\mathcal{T}$ is a Hausdorff topology, then for any $y\in X\setminus\{x\}$, there exists $U_y\in \mathcal{T}$,
+with $x\in U_y$ but $y\notin U_y$. (Note: Hausdorff imposes a stronger condition, but here we just need a set containing $x$ while not containing $y$).
+
+\hfill
+
+Then, consider the following set:
+$$K=\bigcap_{y\in X\setminus\{x\}}U_y$$
+By the definition above, since $x\in U_y$ for all $y\in X\setminus\{x\}$, then $x\in K$;
+however, for any $y\in X\setminus\{x\}$, since $y\notin U_y$, then $y\notin K$. Thus, $K=\{x\}$.
+
+Notice that since $X$ is finite, there are finitely many $y\in X\setminus\{x\}$, thus the collection $\{U_y\}_{y\in X\setminus\{x\}}$ is finite,
+$K$ is in fact intersection of finitely many open sets, which is open (since $U_y\in \mathcal{T}$ for all $y\in X\setminus\{x\}$).
+
+So, for arbitrary $x\in X$, the singleton set $\{x\}$ is open. Which, any subset $U\in \mathcal{P}(X)$ is union of singleton set of elements in $U$,
+and by the statement that all singleton set is open, the union $U$ is also open.
+
+\hfill
+
+Thus, every subset of $X$ is open, showing that $\mathcal{P}(X)\subseteq \mathcal{T}$; and since $\mathcal{T}$ is a collection of open sets in $X$, 
+it collects subsets of $X$, thus $\mathcal{T}\subseteq \mathcal{P}(X)$, or $\mathcal{T}=\mathcal{P}(X)$, showing that the topology is in fact discrete topology.
+
+
+\end{document}
