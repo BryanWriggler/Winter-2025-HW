@@ -48,7 +48,7 @@ The collection of "closed" sets $\mathcal{C}$ would satisfy the following axioms
     Which, the intersection of complements is the same as complement of union, which for finitely many open sets,
     their intersection can be thought of as intersection of finitely many "closed sets' complements", which is the complement of union of these closed sets.
     
-    According to the definition in (2), this union is closed (since only finitely many is considered), then it's complement is closed,
+    According to the definition in (2), this union is closed (since only finitely many is considered), then it's complement is open,
     thus the intersection of finitely many open sets is open, which is consistent with our definition.
 
     \hfill
@@ -104,7 +104,7 @@ For all $x\in X$, a collection of "neighborhoods" $N_x$ would satisfy the follow
     The idea behind this, is to ensure nonempty finite intersection of open sets are open.
     If a finite collection of sets are open, then every set is a neighborhood of every of its points.
     Then, for every point in the intersection, since every open set containing the intersection is a neighborhood of chosen point,
-    then their finite intersection is also a neighborhood of the chosen point. If the point is arbitrary, the the intersection is a 
+    then their finite intersection is also a neighborhood of the chosen point according to definition in (3). If the point is arbitrary, the the intersection is a 
     neighborhood of all points in the intersection, making the finite intersection open.
 \end{itemize}
 
@@ -236,15 +236,15 @@ With the two inclusions above, $\mathcal{T}=\mathcal{T_B}$, which we can conclud
     Since $x\in X\setminus U_y$ for all $y\in X\setminus\{x\}$, then $x\in K$; furthermore, for any $y\in X\setminus\{x\}$, 
     since $y\in U_y$ by definitio, then $y\notin X\setminus U_y$, thus $y\notin K$. Which, we can conclude that $K=\{x\}$.
 
-    However, since for all $y\in X\setminus\{x\}$, $U_y$ is open, thus $X\setminus U_y$ is closed, so $K$ is arbitrary intersection of closed sets, 
+    However, since for all $y\in X\setminus\{x\}$, $U_y$ is open, thus $X\setminus U_y$ is closed, so $K$ is an intersection of closed sets, 
     which is also closed. Thus, $K=\{x\}$ is closed for arbitrary $x\in X$, all singleton set in $X$ is closed.
     
 
     \hfill
 
     \item[$\impliedby:$] 
-    Suppose every singleton set in $X$ is closed, then for distinct $x,y\in X$, since $\{y\}$ is closed, $X\setminus\{y\}$ is open.
-    Which, since $x\in X\setminus\{y\}$ while $y\notin X\setminus\{y\}$, then $X\setminus\{y\}$ is the desired open neighborhood of $x$, 
+    Suppose every singleton set in $X$ is closed, then for all distinct $x,y\in X$, since $\{y\}$ is closed, $X\setminus\{y\}$ is open.
+    Which, since $x\in X\setminus\{y\}$ while $y\notin X\setminus\{y\}$, then $X\setminus\{y\}$ is the desired open neighborhood of $x$ not containing $y$, 
     proving that $X$ is actually Fréchet.
 
 \end{itemize}
@@ -279,8 +279,8 @@ and by the statement that all singleton set is open, the union $U$ is also open.
 
 \hfill
 
-Thus, every subset of $X$ is open, showing that $\mathcal{P}(X)\subseteq \mathcal{T}$; and since $\mathcal{T}$ is a collection of open sets in $X$, 
-it collects subsets of $X$, thus $\mathcal{T}\subseteq \mathcal{P}(X)$, or $\mathcal{T}=\mathcal{P}(X)$, showing that the topology is in fact discrete topology.
+Thus, every subset of $X$ is open, showing that $\mathcal{P}(X)\subseteq \mathcal{T}$; and since $\mathcal{T}$ is a collection of open subsets in $X$, 
+thus $\mathcal{T}\subseteq \mathcal{P}(X)$, or $\mathcal{T}=\mathcal{P}(X)$, showing that the topology is in fact discrete topology.
 
 
 \end{document}
