@@ -239,8 +239,50 @@ Regardless of the case, $R$ is always the radius of convergence, thus we can als
 
 \section*{4}
 \begin{question}
-
+    Ahlfors Pg. 41 Problem 9
 \end{question}
+
+\textbf{Pf:}
+
+Given the following series $\sum_{n=1}^{\infty}\frac{z^n}{1+z^{2n}}$, to indicate the values of $z\in\mathbb{C}$ that lead to convergence, there are three cases:
+
+\hfill
+
+\textbf{(i): When $|z|<1$:}
+
+For all $z\in\mathbb{C}$ with $|z|<1$, since $\lim_{n\rightarrow\infty}|z|^n=0$, choose $\epsilon=\frac{1}{2}$, there exists $N\in\mathbb{N}$, such that 
+$n\geq N$ implies $|z|^n < \frac{1}{2}$ (or $-|z|^n > -\frac{1}{2}$). Then, for all $n\geq N$ (which $2n\geq N$), the following is true:
+$$|1+z^{2n}| = |1-(-z^{2n})| \geq \left||1|-|-z^{2n}|\right| = 1-|z^{2n}| > 1-\frac{1}{2}=\frac{1}{2}$$
+Thus, for $n\geq N$, $\frac{1}{2} < |1+z^{2n}|$, which indicates the following:
+$$\frac{1}{|1+z^{2n}|}<2,\quad \left|\frac{z^n}{1+z^{2n}}\right| =\frac{|z^n|}{|1+z^{2n}|}<2|z^n|=2|z|^n$$
+Thus, if consider $\sum_{n=N}^{\infty}\left|\frac{z^n}{1+z^{2n}}\right|$, since every term satisfies $0\leq\left|\frac{z^n}{1+z^{2n}}\right|<2|z|^n$, and the series $\sum_{n=N}^{\infty}2|z|^n$ 
+converges due to the assumption that $|z|<1$, then by comparison test, the series $\sum_{n=N}^{\infty}\left|\frac{z^n}{1+z^{2n}}\right|$ converges, which implies
+$\sum_{n=N}^{\infty}\frac{z^n}{1+z^{2n}}$ also converges.
+
+Thus, given $|z|<1$, the series $\sum_{n=1}^{\infty}\frac{z^n}{1+z^{2n}}$ converges.
+
+\hfill
+
+\hfill
+
+\textbf{(ii): When $|z|=1$:}
+
+For all $z\in\mathbb{C}$ with $|z|=1$, and any $n\in\mathbb{N}$, consider $\left|\frac{z^n}{1+z^{2n}}\right|$:
+Suppose $1+z^{2n}\neq 0$, by the Triangle Inequality, since $|1+z^{2n}| \leq |1|+|z^{2n}|=2$, then:
+$$\frac{1}{|1+z^{2n}|} \geq \frac{1}{2},\quad \left|\frac{z^n}{1+z^{2n}}\right|\geq\frac{|z^n|}{2}=\frac{1}{2}$$
+This indicates that $\lim_{n\rightarrow\infty}\frac{z^n}{1+z^{2n}}\neq 0$, since choosing $\epsilon=\frac{1}{2}$, every $n\in\mathbb{N}$ with $(1+z^{2n})\neq 0$,
+satisfies $\left|\frac{z^n}{1+z^{2n}}-0\right|\geq \frac{1}{2}=\epsilon$. 
+
+Then, since the sequence is not converging to $0$ for all $z$ with $|z|=1$, the series $\sum_{n=1}^{\infty}\frac{z^n}{1+z^{2n}}$ diverges.
+
+\hfill
+
+\hfill
+
+\textbf{(iii): When $|z|>1$:}
+
+For all $z\in\mathbb{C}$ with $|z|>1$, then for all $n\in\mathbb{N}$, $|z|^{2n}>|z|^n>1$. Thus, the following is true:
+$$|1+z^{2n}|=|z^{2n}-(-1)|\geq \left||z^{2n}|-|-1|\right| = |z|^{2n}-1 >0$$
 
 \break
 
@@ -255,6 +297,10 @@ With $\alpha,\beta\in\mathbb{C}$, and $\gamma\notin \{-n\ |\ n\in\mathbb{N}\}$.
 
 \hfill
 
+\hfill
+
+\hfill
+
 Now, in \textbf{Question 3} it has proven, if the limit $\lim_{n\rightarrow\infty}\frac{|a_n|}{|a_{n+1}|}=R$ for some $R\in[0,\infty]$, then $R$ is precisely the radius of convergence.
 Then, define the coefficient $a_n$ as follow:
 $$a_n=\frac{\alpha(\alpha+1)...(\alpha+n-1)\beta(\beta+1)...(\beta+n-1))}{n!\gamma(\gamma+1)...(\gamma+n-1)}$$
@@ -265,7 +311,7 @@ Then, since $\lim_{n\rightarrow\infty}\frac{1}{n}=0$, then the following limit i
 $$\lim_{n\rightarrow\infty}\frac{|a_{n}|}{|a_{n+1}|} = \lim_{n\rightarrow\infty}\frac{1+(\gamma+1)/n+\gamma/n^2}{1+(\alpha+\beta)/n+\alpha\beta/n^2} = \frac{1+(\gamma+1)\cdot 0+\gamma\cdot 0}{1+(\alpha+\beta)\cdot 0+\alpha\beta\cdot 0}=1$$
 Which, the radius of convergence of hypergeometric series is $R=1$.
 
-\break
+\hfill
 
 \section*{6}
 \begin{question}
