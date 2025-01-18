@@ -15,7 +15,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
 
-\title{Latex Template}
+\title{Math 111B HW2}
 \author{Zih-Yu Hsieh}
 
 \begin{document}
@@ -72,6 +72,23 @@ Similarly, suppose $f'(x)<0$ for all $x\in (a,b)$, with the same $x,y$ above, by
 such that the following is true:
 $$\frac{f(y)-f(x)}{y-x}=f'(c) <0,\quad (f(y)-f(x))=f'(c)(y-x)$$
 Since $(y-x)>0$ and $f'(c)<0$, then $(f(y)-f(x))=f'(c)(y-x)<0$, of $f(y)<f(x)$, showing that $f$ is strictly decreasing.
+
+\hfill
+
+With the above condition, since $f$ is either strictly increasing or strictly decreasing on $[a,b]$, 
+then for all $x,y\in(a,b)$, $x\neq y$ implies $f(x)\neq f(y)$ (or else it's no longer strictly increasing or decreasing).
+Thus, $f$ is in fact one-to-one on $(a,b)$.
+
+\hfill
+
+\textbf{Counterexample of Converse:}
+
+Let $f:[-1,1]\rightarrow \mathbb{R}$ be $f(x)=x^3$, which $f'(x)=3x^2$, which $f'(0)=0$. 
+Yet, suppose $x,y\in (-1,1)$ has $x^3=y^3$, then:
+$$x^3-y^3=(x-y)(x^2+xy+y^2)=0$$
+Which, the only real solution is $x=y$ (since if treating $y$ as constant, $y^2-4y^2=-3y^2\leq 0$; the only time with real solution is when $y=0$, which implies $x^3=0$, or $x=0$).
+
+So, $f(x)=x^3$ is one-to-one on the region $(-1,1)$, but still has $f'(0)=0$, which is a counterexample.
 
 \break
 
