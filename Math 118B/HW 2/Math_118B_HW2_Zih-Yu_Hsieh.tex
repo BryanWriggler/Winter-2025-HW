@@ -94,8 +94,50 @@ So, $f(x)=x^3$ is one-to-one on the region $(-1,1)$, but still has $f'(0)=0$, wh
 
 \section*{2}
 \begin{question}
-    
+    Let $f : (a, b) \rightarrow R$ be a function such that:
+    $$\exists M,\exists\alpha,\ \forall x,y\in(a,b),\ |f(x)-f(y)|<M|x-y|^\alpha$$
+    If $\alpha\in(0,1)$, then $f$ is Holder of order $\alpha$ in $(a, b)$. If $\alpha$ = 1, then $f$ is Lipschitz.
+    Prove :
+
+    (a) If $\alpha>1$, then $f$ is constant.
+
+    (b) If $\alpha\in(0,1]$, then $f$ is uniformly continuous on $(a, b)$.
+
+    (c) Give an example such that $f$ is Lipschitz, but not differentiable.
+
+    (d) If $f$ is differentiable on $(a, b)$ and $f(x)$ is bounded on (a, b), then f is Lipschitz.
 \end{question}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] Suppose $\alpha>1$, then there exists $\epsilon>0$, such that $\alpha=1+\epsilon$. Which, for all $x,y\in (a,b)$ (with $x\neq y$), the following is true:
+    $$|f(x)-f(y)|<M|x-y|^\alpha = M|x-y|^{1+\epsilon} = M|x-y|\cdot|x-y|^{\epsilon}$$
+    $$\left|\frac{f(x)-f(y)}{x-y}\right| = \frac{|f(x)-f(y)|}{|x-y|}<M|x-y|^\epsilon$$
+    Which, fix arbitrary $x_0\in (a,b)$, for all $y\in(a,b)$ with $y\neq x_0$, the following is true:
+    $$0\leq \left|\frac{f(x_0)-f(y)}{x_0-y}\right|<M|x_0-y|^\epsilon,\quad -M|x_0-y|^\epsilon<\frac{f(x_0)-f(y)}{x_0-y}<M|x_0-y|^\epsilon$$
+    Since $\epsilon>0$, then $\lim_{y\rightarrow x_0}|x_0-y|^\epsilon=0$. Which, by Squeeze Theorem, the following is true:
+    $$0=\lim_{y\rightarrow x_0}-M|x_0-y|^\epsilon\leq \lim_{y\rightarrow x_0}\frac{f(x_0)-f(y)}{x_0-y} \leq \lim_{y\rightarrow x_0}M|x_0-y|^\epsilon = 0$$
+    Thus, $\lim_{y\rightarrow x_0}\frac{f(x_0)-f(y)}{x_0-y}=0$, or $f'(x_0)=0$.
+
+    \hfill
+
+    This implies that $f(x)$ is a constant function: Suppose $f(x)$ is not a constant function, then there exists $c,d\in (a,b)$ with $c<d$, such that $f(c)\neq f(d)$.
+
+    Notice that since $f'(x_0)$ exists for all $x_0\in(a,b)$, then by Mean Value Theorem, there exists $x\in (c,d)$, such that $f'(x)(d-c)=f(d)-f(c)$.
+
+    Yet, since $f'(x)=0$, while $f(d)-f(c)\neq 0$, $0 = f'(x)(d-c)\neq f(d)-f(c)$, which it is a contradiction.
+
+    Thus, $f(x)$ must be a constant function.
+
+    \hfill
+    
+    \item[(b)] Suppose $\alpha\in (0,1]$, notice that for all $x,y\in(a,b)$, the following is true:
+    $$a<x<b,\quad -b<-y<-a,\quad (a-b)=-(b-a)<(x-y)<(b-a),\quad |x-y|<|b-a|$$
+    Thus, $|x-y|^\alpha
+    \item[(c)]
+    \item[(d)]   
+\end{itemize}
 
 \break
 
