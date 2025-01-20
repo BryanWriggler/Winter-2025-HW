@@ -44,9 +44,14 @@
     \end{itemize}
     \item \hyperlink{section.2}{Argument by Contradiction}
     \begin{itemize}
-        \item{} Problem 2
-        \item{} Problem 3
-        \item{} Problem 5
+        \item{} \hyperlink{subsection.2.1}{Problem 1}
+        \item{} \hyperlink{subsection.2.2}{Problem 2}
+        \item{} \hyperlink{subsection.2.3}{Problem 3}
+        \item{} \hyperlink{subsection.2.4}{Problem 4}
+        \item{} \hyperlink{subsection.2.5}{Problem 5}
+        \item{} \hyperlink{subsection.2.6}{Problem 6}
+        \item{} \hyperlink{subsection.2.7}{Problem 7}
+        \item{} \hyperlink{subsection.2.8}{Problem 8}
     \end{itemize}
 \end{itemize}
 
@@ -159,5 +164,257 @@ it's the switch that’s currently on. If the bulb’s hot, it's the switch that
 \break
 
 \section{Argument by Contradiction}
+\subsection{Problem 1}
+
+\textbf{Prove that $\sqrt{2}+\sqrt{3}+\sqrt{5}$ is an irrational number.}
+
+\textbf{Pf:}
+
+Suppose $q=\sqrt{2}+\sqrt{3}+\sqrt{5}$ is rational. First, a lower bound and upper bound of $q$ can be figured out as follow:
+$$1 < 2 < 4 \implies 1 < \sqrt{2} < 2,\quad \quad 1 < 3 < 4 \implies 1 < \sqrt{3} < 2,\quad\quad 4 < 5 < 9 \implies 2<\sqrt{5}<3$$
+Which implies that $4=(1+1+2) < (\sqrt{2}+\sqrt{3}+\sqrt{5})<(2+2+3)=7$, thus $4<q<7$.
+
+\hfill
+
+Now, consider the following derivation:
+$$q=\sqrt{2}+\sqrt{3}+\sqrt{5} \implies (q-\sqrt{2})=(\sqrt{3}+\sqrt{5})\implies(q-\sqrt{2})^2=(\sqrt{3}+\sqrt{5})^2$$
+$$\implies q^2-2\sqrt{2}q+2=3+2\sqrt{15}+5\implies (q^2-6)=(2\sqrt{2}q+2\sqrt{15})\implies (q^2-6)^2=(2\sqrt{2}q+2\sqrt{15})^2$$
+$$\implies q^4-12q^2+36=8q^2+8\sqrt{30}q+60\implies (q^4-20q^2-24)=8\sqrt{30}q\implies (q^4-20q^2-24)^2=(8\sqrt{30}q)^2$$
+$$\implies q^8+(-20)^2q^4+(24)^2 - 2\cdot 20q^6+2\cdot20\cdot24q^2-2\cdot24q^4=64\cdot30 q^2$$
+$$\implies q^8-2\cdot 20q^6+(20^2-2\cdot24)q^4 + (40\cdot24-64\cdot30)q^2 + (24)^2=0$$
+
+Which, let $p(x)=x^8-2\cdot 20x^6+(20^2-2\cdot24)x^4 + (40\cdot24-64\cdot30)x^2 + (24)^2$, $p(q)=0$, which $q$ is a rational root of $p(x)$. Thus, by Rational Root Theorem, $q=\frac{b}{a}$, where $a, b$ are integers such that $a\bigm|1$ (coefficient of highest degree term, $x^8$) and $b\bigm|(24)^2$ (constant term, $(24)^2$). 
+
+Since $a$ divides $1$, $a=1$ or $a=-1$. Thus, $q=\frac{b}{a}$ can actually be expressed as $b$ or $-b$, showing that $q$ is an integer, and $q\bigm| (24)^2$. Furthermore, initially we've proven that $4<q<7$, the only possible integers are $q=5$ and $q=6$. Also, since $5$ is not a divisor of $(24)^2$, the only possibility is $q=6$.
+
+\hfill
+
+However, if $q=\sqrt{2}+\sqrt{3}+\sqrt{5}=6$, there is a contradiction: Consider squaring both sides, we get the following:
+$$(\sqrt{2}+\sqrt{3}+\sqrt{5})^2=6^2,\quad 2+3+5+2(\sqrt{6}+\sqrt{10}+\sqrt{15}) = 36$$
+$$2(\sqrt{6}+\sqrt{10}+\sqrt{15})=26,\quad \sqrt{6}+\sqrt{10}+\sqrt{15} = 13$$
+However, we can also yield an upper bound for $\sqrt{6}+\sqrt{10}+\sqrt{15}$:
+$$6<9\implies \sqrt{6}<3,\quad 10,15 < 16 \implies \sqrt{10},\sqrt{15} < 4$$
+Thus, $(\sqrt{6}+\sqrt{10}+\sqrt{15}) < (3+4+4) = 11$, or $13 = (\sqrt{6}+\sqrt{10}+\sqrt{15}) < 11$, which is a contradiction.
+
+\hfill
+
+Now, we can conclude that the assumption is false, which $(\sqrt{2}+\sqrt{3}+\sqrt{5})$ is irrational.
+
+\hfill
+
+\subsection{Problem 2}
+\textbf{Show that there are no positive integer solutions to the diophantine equation $x^2-y^2=1$.}
+
+\textbf{Pf:}
+
+Suppose there exists positive integer $x,y$ satisfying $x^2-y^2=1$.
+
+Since both $x,y$ are positive, $x,y\geq 1$, which $(x+y) \geq 2>0$. 
+
+Then, by factorization, $x^2-y^2=(x-y)(x+y)=1$, which both $(x-y)$ and $(x+y)$ are integers. Let $k=(x-y)$ be the integer, then $1=k(x+y)$, which implies that $1$ is divisible by $(x+y)$, a positive integer that is greater than 1. However, this is a contradiction, since the only positive integer that can divide 1 is 1 itself.
+
+So, the assumption is false, there are no positive integer solutions to $x^2-y^2=1$.
+
+\hfill
+
+\subsection{Problem 3}
+\textbf{Show that the equation $b^2+b+1=a^2$ has no positive integer solutions.}
+
+\textbf{Pf:}
+
+Suppose there exists positive integer $a,b$ satisfying $b^2+b+1=a^2$. Then, the following two equations are true:
+$$(b-1)^2  = b^2-2b+1 = (b^2+b+1)-3b = a^2-3b$$
+$$(b+1)^2 = b^2+2b+1=(b^2+b+1)+b = a^2+b$$
+Since we assume $b>0$, $-3b<0$. Hence the following two inequalities are true:
+$$(b-1)^2 = a^2-3b < a^2$$
+$$a^2 < a^2+b = (b+1)^2$$
+So, $(b-1)^2<a^2<(b+1)^2$.
+
+\hfill
+
+Now, because $b>0$, then $(b-1)\geq 0$ and $(b+1)>0$. Which, the above inequality implies the following:
+$$(b-1) < a < (b+1)$$
+Which, the only integer satisfying $(b-1)<a<(b+1)$ is $a=b$.
+
+Then, plug the solution back to the equation, we get $b^2+b+1=a^2=b^2$, or $b+1=0$, thus $b=-1$. However, this contradicts with our assumption that $b$ is positive. 
+
+So, the assumption is false, there doesn't exist positive integer solutions to the equation $b^2+b+1=a^2$.
+
+\hfill
+
+\subsection{Problem 4}
+\textbf{Prove that there is no polynomial $P(x)=a_nx^n+...+a_0$ with integer coefficients $a_i$ and of degree $n$ at least 1 with the property that $P(0), P(1), P(2),...$ are all prime numbers.}
+
+\textbf{Pf:}
+
+Suppose there exists polynomial $P(x)=a_nx^n+...+a_0$ with degree $n\geq 1$ that satisfies $P(n)$ is a prime number for all $n\in\mathbb{N}$.
+
+\hfill
+
+Since $P(0) = a_n0^n+a_{n-1}0^{n-1}+...+a_10+a_0 = a_0$, and $P(0)$ is prime, then $a_0$ is prime (which $a_0>0$).
+
+Then, for all positive integer $k$, since $ka_0$ is a positive integer, then: 
+$$P(ka_0) = a_n(ka_0)^n+a_{n-1}(ka_0)^{n-1}+...+a_1(ka_0)+a_0$$
+$$P(ka_0) = a_0(a_nk^na_0^{n-1}+a_{n-1}k^{n-1}a_0^{n-2}+...+a_1k+1)$$
+Thus, $P(ka_0)$ is divisible by $a_0$; however, since $P(ka_0)$ is also a prime by assumption, then $P(ka_0)=a_0$ is enforced (if $P(ka_0)\neq a_0$, then the two are distinct primes while $a_0\bigm| P(ka_0)$, which contradicts).
+
+\hfill
+
+Now, consider $Q(x)=P(x)-a_0$: from the above section, every positive integer $k$ satisfies $Q(ka_0)=P(ka_0)-a_0 = a_0-a_0 = 0$, thus $ka_0$ is a root from $Q(ka_0)$, or $Q(ka_0)$ has infinite roots; However, since $Q(x)=P(x)-a_0$:
+$$Q(x)=(a_nx^n+...+a_0)-a_0 = a_nx^n+...+n_1x$$
+Which, $Q(x)$ is also a polynomial of degree $n\geq 1$. Then, by Fundamental Theorem of Algebra, $Q(x)$ has at most  $n$ distinct roots, which contradicts the above statement that $Q(x)$ has infinite roots.
+
+\hfill
+
+Thus, the assumption is false, such polynomial doesn't exist.
+
+\hfill
+
+\subsection{Problem 5}
+\textbf{Show that there does not exist a function $f:\mathbf{Z}\rightarrow \{1,2,3\}$
+satisfying $f(x) \neq f(y)$ for all $x, y \in \mathbf{Z}$ such that $|x-y| \in \{2, 3, 5\}$.}
+
+\hfill
+
+\textbf{Pf:}
+
+Suppose there exists a function $f:\mathbf{Z}\rightarrow \{1,2,3\}$, such that for all $x,y\in\mathbf{Z}$ satisfying $|x-y|\in \{2, 3, 5\}$, $f(x)\neq f(y)$. Then, for all $n\in\mathbf{Z}$, consider $(n+2),(n+3),(n+5)\in\mathbf{Z}$:
+
+\hfill
+
+First, since $|(n+5)-n| = 5$, by assumption, this implies that $f(n+5)\neq f(n)$.
+
+Then, since $|(n+2)-n|=2$ and $|(n+3)-n|=3$, by assumption it implies that $f(n+2)\neq f(n)$ and $f(n+3)\neq f(n)$.
+
+Furthermore, since $|(n+5)-(n+2)|=3$ and $|(n+5)-(n+3)|=2$, by assumption it implies that $f(n+5)\neq f(n+2)$ and $f(n+5)\neq f(n+3)$.
+
+\hfill
+
+Now, consider the set $K=\{1,2,3\}\setminus \{f(n),f(n+5)\}$: since $f(n),f(n+5)\in\{1,2,3\}$ by how the function is defined, and $f(n)\neq f(n+5)$, then $K$ only has $(3-2)=1$ element. 
+
+Then, since $f(n+2), f(n+3)$ both are elements of $\{1,2,3\}$, while the values are different from both $f(n)$ and $f(n+5)$, hence $f(n+2),f(n+3)\in K$. Which, $K$ has only 1 element implies $f(n+2)=f(n+3)$.
+
+\hfill
+
+Since for all $n\in\mathbf{Z}$, we have $f(n+2)=f(n+3)$, then here is the contradiction: 
+
+Take $0$ and $1$ as input, which the following equations are true:
+$$f(2)=f(0+2)=f(0+3)=f(3),\quad f(3)=f(1+2)=f(1+3)=f(4)$$
+Which, we yield $f(2)=f(4)$; yet, since $|4-2|=2$, by assumption it implies $f(2)\neq f(4)$, which reaches a contradiction. So, the initial assumption is false, such function with given condition does not exist.
+
+\hfill
+
+\subsection{Problem 6}
+
+\hfill
+
+\subsection{Problem 7}
+\textbf{Show that the interval $[0, 1]$ cannot be partitioned into two disjoint sets $A$ and $B$ such that $B = A + r$ for some real number $r$.}
+
+\textbf{Pf:}
+
+Suppose there exists $A, B$ that are disjoint, such that $B=A+r$ for some real number $r$ and $A\cup B=[0,1]$.
+
+First, for all $a\in[0,1]$, $a\in A \iff (a+r)\in B$, so Without Loss of Generality, we can assume $r \geq 0$ (since if $r<0$, let $r'=-r >0$, then $A+r=B \iff A=B-r = B+r'$, which interchange $A$ and $B$ provides the same context). Also, both $A$ and $B$ are nonempty, since $A\neq \emptyset \iff B=(A+r)\neq \emptyset$, while $A\cup B=[0,1]$, so we need at least one of the set to be nonempty, which implies the other set is also nonempty.
+
+Now, based on the setup, we can prove some statements in the following order:
+\begin{itemize}
+    \item[(1)] \textbf{$r>0$:} Suppose $r=0$, then $B = A+r = A$. However, in case for $A\cap B = A\cap A = A$ to be empty ($A$ and $B$ are disjoint), $A=\emptyset$. Yet, $B=A+r=\emptyset$, which $A\cup B=\emptyset$, which is a contradiction. Therefore, $r>0$.
+
+    \item[(2)] $r<1$: Suppose $r\geq 1$. Then, since $A\neq \emptyset$, for all $a\in A \subseteq [0,1]$, $0\leq a$, thus $1 \leq r \leq (a+r)$. But, $(a+r)\in B\subseteq [0,1]$, thus $(a+r) \leq 1$, so $(a+r)=1$. Yet, this implies $a = (1-r)$, while $(1-r) \leq 1+(-1)=0$, which regarding $a \geq 0$ we get $a=0$. So, $A=\{0\}$ and $B=\{r\}$. Yet, $A\cup B\neq [0,1]$ based on this result, again it is a contradiction. Therefore, $r<1$.
+
+    \item[(3)] $0\in A$ and $1\in B$: It is clear that $0,1\in[0,1]=A\cup B$, which they must be contained in one of the sets.
+
+    Suppose $0\in B$, then since $0\in B\iff (0-r)\in A$, so $-r\in A$ (Note: if $b\in B$, then there exists $a\in A$ with $(a+r)=b$, thus $a=(b-r)$). However, based on (1), $r>0$ implies $-r<0$, which since $A\subseteq [0,1]$, it is a contradiction. Therefore, $0\notin B$, which $0\in A$.
+
+    Now, suppose $1\in A$, then it implies $(1+r)\in B$. However, since $r>0$ is proven in (1), then $(1+r)>1$; yet, $(1+r)\in B\subseteq [0,1]$ indicates $(1+r)\leq 1$, which is a contradiction. Therefore, $1\in B$.
+
+    \item[(4)] $r\in B$, and $r$ is the minimum of $B$: First, since $0\in A$ is proven in (3), then $0+r=r\in B$. Also, for all $b\in B$, there exists $a\in A$ with $(a+r)=b$. Since $0 \leq a$ (note: $A\in[0,1]$), then $r\leq (a+r)=b$, so $r$ is a lower bound of $B$. The two statements imply that $r$ is the minimum of $B$.
+
+    \item[(5)] $[0,r)\subseteq A$: From (4), since $r$ is the minimum of $B$, then for all $a\in[0,r)\subseteq [0,1]$, $a<r$, which $a\notin B$. Thus, $a\in A$, proving that $[0,r)\subseteq A$.
+\end{itemize}
+
+Now, define the set $K_0 = [0,r)$, and for all $n\in\mathbb{N}$, define $K_{n+1}=K_{n}+r=[(n+1)r,(n+2)r)$ recursively. Also, let $k\in\mathbb{N}$ be the smallest positive integer such that $kr >1$ (which based on Archimedean's Property, $r>0$ implies the existence of $k$, and $k>1$ since $1\cdot r <1$).
+
+Then, $K_k \not\subseteq [0,1]$, since $K_k=[kr,(k+1)r)$, while $kr >1$; also, $K_{k-1}\not\subseteq [0,1]$, since $K_{k-1}=[(k-1)r,kr)$, which by definition of $k$, $(k-1)r \leq 1 < kr$ (since $k$ is the minimum positive integer with $kr>1$, which $(k-1)<k$ doesn't satisfy the condition), so choose $b$ with $1<b<kr$, the $b\in K_{k-1}$ while $b\notin [0,1]$.
+
+\hfill
+
+Now, we can use induction to prove that for all $n\in\mathbb{N}$, if $K_n\subseteq [0,1]$, then $K_n\subseteq A$ or $K_n \subseteq B$ (must be a subset of one of the set, but not separate in two sets).
+
+For base case $n=0$, in (5) we've proven that $K_0=[0,r) \subseteq A$, which the hypothesis is true.
+
+Now, suppose for given $n\in\mathbb{N}$, $K_n\subseteq [0,1]$ implies $K_n\subseteq A$ or $K_n \subseteq B$: If $(n+1)$ satisfies $K_{n+1}=[(n+1)r,(n+2)r)\subseteq [0,1]$, then $0 \leq nr < (n+1)r \leq 1$, thus $K_n = [nr,(n+1)r)\subseteq [0,1]$.
+
+By induction hypothesis, since $K_n\subseteq [0,1]$, then $K_n\subseteq A$ or $K_n\subseteq B$:
+
+If $K_n\subseteq A$, then $K_{n+1}=(K_n+r)\subseteq (A+r) = B$, thus it is a subset of $B$.
+
+Else if $K_n \subseteq B$, then $K_{n+1}\subseteq A$ must be true: If $(K_n+r)=K_{n+1}\subseteq B=(A+r)$, then it indicates $K_n\subseteq A$. Yet, by assumption $K_n\subseteq B$, while $A,B$ are disjoint. So, this is a contradiction, indicating that $K_{n+1}\subseteq A$.
+
+This completes the induction.
+
+\hfill
+
+Finally, consider $1\in B$ (proven in (3)): By the definition of $k$ above, it is the smallest positive integer with $kr >1$, thus $(k-1)<k$ implies $(k-1)r \leq 1$, which $1 \in [(k-1)r,kr) = K_{k-1}$ (Note: $k>1$ has been proven, thus $(k-1)\geq 1$ and $(k-2)\geq 0$).
+
+Since $1\in B$, then $(1-r)\in A$. Which, since $K_{k-2}=[(k-2)r, (k-1)r)$, with $0 \leq (k-2)r < (k-1)r \leq 1$, thus $K_{k-2}\subseteq [0,1)$, which implies that $K_{k-2}\subseteq A$ or $K_{k-2}\subseteq B$. Also, since $1\in [(k-1)r,kr)$, then $(k-1)r\leq 1 < kr$, which $(k-2)r \leq (1-r) < (k-1)r$. Thus, $(1-r) \in K_{k-2}$.
+
+Since $(1-r)\in A$, then $K_{k-2}\subseteq A$ (or else if $K_{k-2}\subseteq B$, $(1-r)\in K_{k-2}\subseteq B$ would lead to a contradiction, since $A,B$ are disjoint).
+
+However, here is a contradiction: since $(1-r)\in K_{k-2}=[(k-2)r,(k-1)r)$, then $(1-r)<(k-1)r$. Now, choose $a$ with $(1-r)<a<(k-1)r$, which $a\in K_{k-2}\subseteq A$, indicating $(a+r)\in B$; yet, the inequality implies $1<(a+r)<kr$, which $(a+r)\notin [0,1]$, and this is a contradiction.
+
+So, the assumption must be false, $[0,1]$ can't be partitioned into two disjoint sets $A,B$ with $B=A+r$ for some real number $r$.
+
+\hfill
+
+\subsection{Problem 8}
+\textbf{If $a, b, c, d, e$ are real numbers such that the equation
+$ax^2+(b+c)x+(d+e)=0$
+has real roots greater than 1, show that the equation
+$ax^4+bx^3+cx^2+dx+e=0$
+has at least one real root.}
+
+\textbf{Pf:}
+
+Suppose the given equation $ax^2+(b+c)x+(d+e)=0$ has real roots $\alpha,\beta>1$, but the equation $ax^4+bx^3+cx^2+dx+e=0$ has no real root.
+
+\hfill
+
+First, let $p(x)=ax^4+bx^3+cx^2+dx+e$, since it is assumed to have no real roots, then $p(x)\neq 0$ for all $x\in\mathbb{R}$. This implies that $p(x)$ is strictly above $0$ for all input $x\in\mathbb{R}$, or strictly below $0$: If there exists $x,y\in\mathbf{R}$, with $p(x)<0$ and $p(y)>0$, then by Intermediate Value Theorem, since $p(x)<0<p(y)$ and $x\neq y$, there exists real number $z$ in between $x,y$, with $p(z)=0$, which contradicts the assumption. Thus, $p(x)$ can't obtain both negative and positive outputs, which the graph of $p(x)$ is strictly above, or strictly below $0$.
+
+\hfill
+
+Now, for the given $\alpha >1$, since $a\alpha^2 + (b+c)\alpha + (d+e)=0$, then:
+$$a\alpha^2 + c\alpha+e = -b\alpha-d=-(b\alpha+d)$$
+$$-(a\alpha^2 + c\alpha+e)=(b\alpha+d)$$
+Which, if we consider $x=\sqrt{\alpha}$ (Note: $\sqrt{\alpha}>1$, since $\alpha>1$), the polynomial $p(\sqrt{\alpha})$ could be expressed as:
+$$p(\sqrt{\alpha})=a(\sqrt{\alpha})^4+b(\sqrt{\alpha})^3+c(\sqrt{\alpha})^2+d\sqrt{\alpha}+e = (a\alpha^2+c\alpha+e)+b\alpha\sqrt{\alpha}+d\sqrt{\alpha}$$
+$$=(-b\alpha-d)+b\alpha\sqrt{\alpha}+d\sqrt{\alpha} = b\alpha(\sqrt{\alpha}-1)+d(\sqrt{\alpha}-1)$$
+$$=(b\alpha+d)(\sqrt{\alpha}-1) = -(a\alpha^2+c\alpha+e)(\sqrt{\alpha}-1)$$
+
+\hfill
+
+Then, consider the sign of $(a\alpha^2+c\alpha+e)$:
+
+First, we can express $(a\alpha^2+c\alpha+e)$ in terms of $p(\sqrt{\alpha})$ and $p(-\sqrt{\alpha})$:
+$$p(\sqrt{\alpha})=a(\sqrt{\alpha})^4+b(\sqrt{\alpha})^3+c(\sqrt{\alpha})^2+d\sqrt{\alpha}+e = (a\alpha^2+c\alpha+e)+\sqrt{\alpha}(b\alpha+d)$$
+$$p(-\sqrt{\alpha})=a(-\sqrt{\alpha})^4+b(-\sqrt{\alpha})^3+c(-\sqrt{\alpha})^2+d(-\sqrt{\alpha})+e = (a\alpha^2+c\alpha+e)-\sqrt{\alpha}(b\alpha+d)$$
+Which, the following is true:
+$$\frac{p(\sqrt{\alpha})+p(-\sqrt{\alpha})}{2}=\frac{2(a\alpha^2+c\alpha+e)}{2}=(a\alpha^2+c\alpha+e)$$
+
+\hfill
+
+Then for the first case, if for all $x\in\mathbb{R}$, $p(x)>0$, then $(a\alpha^2+c\alpha+e)=\frac{p(\sqrt{\alpha})+p(-\sqrt{\alpha})}{2}>0$ (since both $p(\sqrt{\alpha})$ and $p(-\sqrt{\alpha})$ are positive).
+
+Yet, this implies that $p(\sqrt{\alpha})=-(a\alpha^2+c\alpha+e)(\sqrt{\alpha}-1)<0$ (since $\sqrt{\alpha}>1$, and the other term is positive), which is a contradiction.
+
+\hfill
+
+Furthermore, for the second case, if for all $x\in\mathbb{R}$, $p(x)<0$, then we can simply multiply the polynomial by $-1$ to yield the same result as the first case.
+
+\hfill
+
+Regardless of the case, we'll eventually run into a contradiction, therefore the initial assumption is false, given that $ax^2+(b+c)x+(d+e)=0$ has real roots greater than $1$, the equation $ax^4+bx^3+cx^2+dx+e=0$ has real root.
 
 \end{document}
