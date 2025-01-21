@@ -9,6 +9,20 @@
 \usepackage{verbatim}
 \usepackage[utf8]{inputenc}
 %\linespread{1.5}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
 
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
@@ -22,13 +36,16 @@
 \maketitle
 
 \section*{1}
-\begin{question}
-    Let $f : (a, b) \rightarrow \mathbb{R}$ be differentiable on $(a, b)$.
-    
-    Prove : if $\forall x\in(a,b),\ f'(x)\neq 0$, then $f$ is one-to-one on $(a, b)$.
-    
-    Give an example showing that the converse statement is in general not true.
-\end{question}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f : (a, b) \rightarrow \mathbb{R}$ be differentiable on $(a, b)$.
+        
+        Prove : if $\forall x\in(a,b),\ f'(x)\neq 0$, then $f$ is one-to-one on $(a, b)$.
+        
+        Give an example showing that the converse statement is in general not true.     
+    \end{question}
+\end{myBox}
+
 
 \textbf{Pf:}
 
@@ -90,23 +107,27 @@ Which, the only real solution is $x=y$ (since if treating $y$ as constant, $y^2-
 
 So, $f(x)=x^3$ is one-to-one on the region $(-1,1)$, but still has $f'(0)=0$, which is a counterexample.
 
-\break
+\hfill
+
+\hfill
 
 \section*{2}
-\begin{question}
-    Let $f : (a, b) \rightarrow R$ be a function such that:
-    $$\exists M,\exists\alpha,\ \forall x,y\in(a,b),\ |f(x)-f(y)|<M|x-y|^\alpha$$
-    If $\alpha\in(0,1)$, then $f$ is Holder of order $\alpha$ in $(a, b)$. If $\alpha$ = 1, then $f$ is Lipschitz.
-    Prove :
-
-    (a) If $\alpha>1$, then $f$ is constant.
-
-    (b) If $\alpha\in(0,1]$, then $f$ is uniformly continuous on $(a, b)$.
-
-    (c) Give an example such that $f$ is Lipschitz, but not differentiable.
-
-    (d) If $f$ is differentiable on $(a, b)$ and $f(x)$ is bounded on (a, b), then f is Lipschitz.
-\end{question}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f : (a, b) \rightarrow R$ be a function such that:
+        $$\exists M>0,\exists\alpha>0,\ \forall x,y\in(a,b),\ |f(x)-f(y)|<M|x-y|^\alpha$$
+        If $\alpha\in(0,1)$, then $f$ is Holder of order $\alpha$ in $(a, b)$. If $\alpha$ = 1, then $f$ is Lipschitz.
+        Prove :
+    
+        (a) If $\alpha>1$, then $f$ is constant.
+    
+        (b) If $\alpha\in(0,1]$, then $f$ is uniformly continuous on $(a, b)$.
+    
+        (c) Give an example such that $f$ is Lipschitz, but not differentiable.
+    
+        (d) If $f$ is differentiable on $(a, b)$ and $f(x)$ is bounded on (a, b), then f is Lipschitz.
+    \end{question}
+\end{myBox}
 
 \textbf{Pf:}
 
@@ -134,17 +155,73 @@ So, $f(x)=x^3$ is one-to-one on the region $(-1,1)$, but still has $f'(0)=0$, wh
     
     \item[(b)] Suppose $\alpha\in (0,1]$, notice that for all $x,y\in(a,b)$, the following is true:
     $$a<x<b,\quad -b<-y<-a,\quad (a-b)=-(b-a)<(x-y)<(b-a),\quad |x-y|<|b-a|$$
-    Thus, $|x-y|^\alpha
-    \item[(c)]
-    \item[(d)]   
+    Which, since $\alpha>0$, then $|x-y|^\alpha<|b-a|^\alpha$. Now, for any $\epsilon>0$, define $\delta = (\frac{\epsilon}{M})^\frac{1}{\alpha}>0$, 
+    then for all $x,y\in (a,b)$, if $|x-y|<\delta$, the following is true:
+    $$|f(x)-f(y)|<M|x-y|^\alpha < M\cdot \delta^\alpha$$
+    (Note: the above inequality is true, since $\alpha>0$, then $0\leq |x-y|<|b-a|$ implies $|x-y|^\alpha < |b-a|^\alpha$).
+    Thus, it can be rewritten as:
+    $$|f(x)-f(y)| < M\cdot \delta^\alpha = M\cdot \left(\left(\frac{\epsilon}{M}\right)^\frac{1}{\alpha}\right)^\alpha = M \cdot \frac{\epsilon}{M} = \epsilon$$
+    Thus, since for all $\epsilon>0$, there exists $\delta>0$ with $|x-y|<\delta$ implies $|f(x)-f(y)|<\epsilon$, $f$ is uniformly continuous.
+
+    \hfill
+
+    \item[(c)] Consider the function $f:(-1,1)\rightarrow\mathbb{R}$ by $f(x)=|x|$.
+    
+    Choose $M=1.01$ and $\alpha=1$, then the following is true:
+    $$\forall x,y\in (-1,1),\quad |f(x)-f(y)| = \left||x|-|y|\right| \leq |x-y| = |x-y|^\alpha<1.01|x-y|^\alpha = M|x-y|^\alpha$$
+    Thus, $f$ is Lipschitz continuous.
+
+    Yet, $f$ is not differentiable at $x=0$: For all $x<0$ and $y>0$ (with $x,y\in(-1,1)$), the following is true:
+    $$\frac{f(x)-f(0)}{x-0} = \frac{|x|-0}{x-0} = \frac{-x}{x} = -1$$
+    $$\frac{f(y)-f(0)}{y-0}=\frac{|y|-0}{y-0}=\frac{y}{y}=1$$
+    Which, $\lim_{x\rightarrow 0}\frac{f(x)-f(0)}{x-0}$ is not defined, since the left and right limits as $x$ approaches $0$ are different.
+
+    \hfill
+    
+    \item[(d)] Suppose $f$ is differentiable on $(a,b)$ and $f'(x)$ is bounded on $(a,b)$, then there exists $M>0$, with $|f'(x)|<M$ for all $x\in (a,b)$.
+    Which, for all $x,y\in (a,b)$ with $x< y$, by the Mean Value Theorem, there exists $c\in (x,y)$, such that
+    $f(y)-f(x) = f'(c)(y-x)$. Which, the following is true:
+    $$|f(y)-f(x)| = |f'(c)|\cdot|y-x| < M|y-x|$$
+    Thus, $f$ is Lipschitz continuous.
+    
+
 \end{itemize}
 
 \break
 
 \section*{3}
-\begin{question}
+\begin{myBox}[]{}
+    \begin{question}
+        For any $a\geq 0$, define $f_a:\mathbb{R}\rightarrow\mathbb{R}$ as:
+        $$f_a(x)=\begin{cases}
+            x^asin(\frac{1}{x}) & x> 0\\
+            0 & x\leq 0
+        \end{cases}$$
+        (a) For which values of $a$ is $f_a$ continuous at 0.
+        
+        (b) For which values of $a$ is $f_a'(0)$ defined.
+        
+        (c) For which values of $a$ is $f_a'$ continuous at 0.
+        
+        (d) For which values of $a$ is $f_a''(0)$ defined.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] For $a=0$, the function $f_a(x)$ is not continuous: Choose the sequence $(x_n)_{n\in\mathbb{N}}$ by $x_n=\frac{1}{(2n+1/2)\pi} >0$, 
+    then $\lim_{n\rightarrow\infty}\frac{1}{(2n+1/2)\pi}=0$, thus $x_n$ converges to $0$; but, consider $(f_a(x_n))_{n\in\mathbb{N}}$:
+    $$\forall n\in\mathbb{N},\quad f_a(x_n) = x_n^0\sin\left(\frac{1}{x_n}\right) = \sin\left(\frac{1}{1/(2n+1/2)\pi}\right) = \sin((2n+1/2)\pi) = 1$$
+    Which, $\lim_{n\rightarrow\infty}f_a(x_n) = 1\neq 0 = f_a(0)$, thus $f_a(x_n)$ doesn't converge to $f_a(0)$, showing it's not continuous.
     
-\end{question}
+    \hfill
+
+    Now, for all $a>0$,
+    \item[(b)]
+    \item[(c)]
+    \item[(d)]   
+\end{itemize}
 
 \break
 
