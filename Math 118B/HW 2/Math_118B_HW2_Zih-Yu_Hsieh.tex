@@ -210,25 +210,73 @@ So, $f(x)=x^3$ is one-to-one on the region $(-1,1)$, but still has $f'(0)=0$, wh
 \textbf{Pf:}
 
 \begin{itemize}
-    \item[(a)] For $a=0$, the function $f_a(x)$ is not continuous: Choose the sequence $(x_n)_{n\in\mathbb{N}}$ by $x_n=\frac{1}{(2n+1/2)\pi} >0$, 
+    \item[(a)] \textbf{Ans: $a>0$}. For $a=0$, the function $f_a(x)$ is not continuous: Choose the sequence $(x_n)_{n\in\mathbb{N}}$ by $x_n=\frac{1}{(2n+1/2)\pi} >0$, 
     then $\lim_{n\rightarrow\infty}\frac{1}{(2n+1/2)\pi}=0$, thus $x_n$ converges to $0$; but, consider $(f_a(x_n))_{n\in\mathbb{N}}$:
     $$\forall n\in\mathbb{N},\quad f_a(x_n) = x_n^0\sin\left(\frac{1}{x_n}\right) = \sin\left(\frac{1}{1/(2n+1/2)\pi}\right) = \sin((2n+1/2)\pi) = 1$$
     Which, $\lim_{n\rightarrow\infty}f_a(x_n) = 1\neq 0 = f_a(0)$, thus $f_a(x_n)$ doesn't converge to $f_a(0)$, showing it's not continuous.
     
     \hfill
 
-    Now, for all $a>0$,
-    \item[(b)]
-    \item[(c)]
+    Now, for all $a>0$, for any $x>0$, since $x^a>0$, it satisfies the following:
+    $$-1\leq \sin\left(\frac{1}{x}\right)\leq 1,\quad -x^a\leq f_a(x)=x^a\sin\left(\frac{1}{x}\right)\leq x^a$$
+    Which, take the right limit of $x^a$ of $0$, $\lim_{x\rightarrow 0^+}x^a=0$, then by Squeeze Theorem, the following is true:
+    $$0 =\lim_{x\rightarrow 0^+}-x^a\leq \lim_{x\rightarrow 0^+}x^a\sin\left(\frac{1}{x}\right)\leq \lim_{x\rightarrow 0^+}x^a = 0$$
+    Thus, $\lim_{x\rightarrow 0^+}f_a(x)=0$.
+
+    Also, since $\lim_{x\rightarrow 0^-}f_a(x) = 0$ (since for $x<0$, $f_a(x)=0$), then the left and right limits both agree with $f_a(0)=0$, showing it's continuous at $0$.
+    Every $a>0$ has $f_a(x)$ being continuous at $0$.
+    
+    \hfill
+
+    \item[(b)] \textbf{Ans: $a>1$.} In case for $f_a'(0)$ to be defined, $f_a$ must be continuous at $0$. Thus, $a>0$ is required.
+    
+    Consider the slope $\frac{f_a(x)-f_a(0)}{x-0}$ for all $x\neq 0$.
+    If $x<0$, then since $f_a(x)=0$, then the slope is $0$. Thus, the left limit of the slope $\lim_{x\rightarrow 0^-}\frac{f_a(x)-f_a(0)}{x-0} = 0$.
+
+    Now, consider the slope from the right:
+    $$x>0,\quad \frac{f_a(x)-f_a(0)}{x-0} = \frac{x^a\sin(1/x)-0}{x-0} = x^{a-1}\sin\left(\frac{1}{x}\right)$$
+    Since the left limit is evaluated as $0$, in case for $f'(0)$ to be defined, the right limit also needs to converge to $0$.
+    
+    \hfill
+
+    First, notice that if $a \leq 1$, the right limit doesn't exist: 
+
+    Consider the same sequence $x_n = \frac{1}{(2n+1/2)\pi}>0$ used in part (a), then the following is true:
+    $$\forall n\in\mathbb{N},\quad (x_n)^{a-1}\sin\left(\frac{1}{x_n}\right) = \left(\frac{1}{(2n+1/2)\pi}\right)^{a-1}\sin((2n+1/2)\pi) = \left(\frac{1}{(2n+1/2)\pi}\right)^{a-1}$$
+    Which, if $a=1$ (or $a-1=0$), then $(x_n)^{a-1}\sin(1/x_n) = 1$ for all $n\in\mathbb{N}$, which $\lim_{n\rightarrow\infty}\frac{f_a(x_n)-f_a(0)}{x_n-0} = 1$, while $\lim_{n\rightarrow\infty}x_n=0$. 
+    This shows that the right limit of the slope is not $0$, which $f_a'(0)$ is not defined.
+
+    Else, if $a<1$ (or $a-1<0$), then $(x_n)^{a-1}\sin(1/x_n) = \left(\frac{1}{(2n+1/2)\pi}\right)^{a-1}= ((2n+1/2)\pi)^{1-a}$ is in fact unbounded as $n$ increases indefinitely (since $1-a>0$), 
+    so again the right limit of the slope is not defined, implying $f_a'(0)$ is not defined.
+
+    \hfill
+
+    So, in case for the right limit to be defined, $a>1$. Which, since $a-1>0$, then for all $x>0$, $x^{a-1}>0$, and $\lim_{x\rightarrow 0^+}a^{a-1}=0$. Thus based on Squeeze Theorem:
+    $$-1\leq \sin\left(\frac{1}{x}\right)\leq 1,\quad x>0,\quad -x^{a-1}\leq x^{a-1}\sin\left(\frac{1}{x}\right)\leq x^{a-1}$$
+    $$0=\lim_{x\rightarrow0^+}-x^{a-1} \leq \lim_{x\rightarrow0^+}x^{a-1}\sin\left(\frac{1}{x}\right) \leq \lim_{x\rightarrow0^+}x^{a-1}=0$$
+    So, the right limit of $x^{a-1}\sin(1/x)$ is $0$ when $x$ approaches $0$, which it agrees with the initial left limit,
+    hence for $a>1$, $\lim_{x\rightarrow 0}\frac{f_a(x)-f_a(0)}{x-0} = 0$, $f_a'(0)=0$ is defined.
+
+    \hfill
+
+    \item[(c)] For $f_a'$ to be continuous at $0$, $f_a'(0)$ needs to be defined. So, $a>1$ is required.
+    
+    Consider $f_a'(x)$ for $x\neq 0$, which by the differentiation rule, it is evaluated as:
+    $$f_a'(x)=ax^{a-1}\sin\left(\frac{1}{x}\right) + x^a\cos\left(\frac{1}{x}\right)\frac{-1}{x^2} = ax^{a-1}\sin\left(\frac{1}{x}\right) - x^{a-2}\cos\left(\frac{1}{x}\right)$$
+    
+    Since 
+    
     \item[(d)]   
 \end{itemize}
 
 \break
 
 \section*{4}
-\begin{question}
-    
-\end{question}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
 
 \break
 
