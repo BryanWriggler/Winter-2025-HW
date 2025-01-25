@@ -361,7 +361,7 @@ And, if take finite linear combination of different powers, for any real-valued 
 \hfill
 
 Now, we can use induction to prove that for all $n\in\mathbb{N}$,
-the function $f(x)=e^{-\frac{1}{x^2}}$ has $n^{th}$ derivative in the form $p(1/x)e^{-\frac{1}{x^2}}$ for some polynomial $p(h)$, and is infinitely differentiable at $0$.
+the function $f(x)=e^{-\frac{1}{x^2}}$ has $n^{th}$ derivative in the form $p(1/x)e^{-\frac{1}{x^2}}$ for some polynomial $p(h)$, and is differentiable at $0$, with $f^{(n)}(0)=0$.
 
 \hfill
 
@@ -369,13 +369,96 @@ First, for base case $n=1$, for all $x\neq 0$, $f'(x)=\frac{2}{x^3}e^{-\frac{1}{
 Which, $\lim_{x\rightarrow 0}\frac{2}{x^3}e^{-\frac{1}{x^2}}=0$, since $\lim_{x\rightarrow 0}\frac{1}{x^3}e^{-\frac{1}{x^2}}=0$ follows from the statment proven previously.
 
 Now, for $f'(0)$, consider $\lim_{x\rightarrow 0}\frac{f(x)-f(0)}{x-0}$:
-$$\lim_{x\rightarrow 0}\frac{f(x)-f(0)}{x-0}=\lim_{x\rightarrow 0}$$
+$$\lim_{x\rightarrow 0}\frac{f(x)-f(0)}{x-0}=\lim_{x\rightarrow 0}\frac{e^{-\frac{1}{x^2}-0}}{x} = \lim_{x\rightarrow 0}\frac{1}{x}e^{-\frac{1}{x^2}}=0$$
+Thus, we can conclude that $f'(0)=0$.
+
+\hfill
+
+Then, suppose for given $n\in\mathbb{N}$, the $n^{th}$ derivative is in the form $f^{(n)}(x)=p_n(1/x)e^{-\frac{1}{x^2}}$ for some real coefficient polynomial $p_n(h)$, and is differentiable at $0$.
+
+Which, for the $(n+1)^{th}$ derivative, since for $x\neq 0$, using differentiation rule:
+$$f^{(n+1)}(x)=p_n'(1/x)\frac{-1}{x^2}e^{-\frac{1}{x^2}}+p_n(1/x)e^{-\frac{1}{x^2}}\frac{-2}{x^3} = (\frac{2}{x^3}p_n(1/x)-\frac{1}{x^2}p_n'(1/x))e^{-\frac{1}{x^2}}$$
+Which, let $p_{(n+1)}(h)=2h^3p_n(h)-h^2p_n'(h)$ be the polynomial, $f^{(n+1)}(x)=p_{(n+1)}(1/x)e^{-\frac{1}{x^2}}$. Which, $\lim_{x\rightarrow 0}p_{(n+1)}(1/x)e^{-\frac{1}{x^2}}=0$ is proven initially.
+
+Now, for $f^{(n+1)}(0)$, consider $\lim_{x\rightarrow 0}\frac{f^{(n)}(x)-f^{(n)}(0)}{x-0}$:
+$$\lim_{x\rightarrow 0}\frac{f^{(n)}(x)-f^{(n)}(0)}{x-0} =\lim_{x\rightarrow 0}\frac{p_n(1/x)e^{-\frac{1}{x^2}}-0}{x} = \lim_{x\rightarrow 0}\frac{1}{x}p_n(1/x)e^{-\frac{1}{x^2}}$$
+Let $p(h)=hp_n(h)$ be the polynomial, the $p(1/x)e^{-\frac{1}{x^2}}=\frac{1}{x}p_n(1/x)e^{-\frac{1}{x^2}}$, thus the above limit is evaluated as $0$.
+Which, $f^{(n+1)}(0)=0$.
+
+\hfill
+
+By the principle of mathematical induction, we can conclude that for all $n\in\mathbb{N}$, the $n^{th}$ derivative is in the form $f^{(n)}(x)=p_n(1/x)e^{-\frac{1}{x^2}}$ for some polynomial $p_n(h)$, 
+and $f^{(n)}(0)=0$. Thus, $f(x)$ described in the problem is in fact infinitely differentiable, and $f^{(n)}(0)=0$ for all natural number
 
 \break
 
 \section*{5}
-\begin{question}
-    From the textbook solve exercises 2, 7 and 15 (first part) of Chapter 5.
-\end{question}
+\begin{myBox}[]{}
+    \begin{question}
+        From the textbook solve exercises 2, 7 and 15 (first part) of Chapter 5.
+    \end{question}
+\end{myBox}
+
+\hfill
+
+\begin{itemize}
+    \item \begin{myBox}[]{}
+        \textbf{Q2:} Suppose $f'(x)>0$ in $(a,b)$ Prove that $f$ is strictly increasing in $(a,b)$, and let $g$ be its inverse function. 
+        Prove that $g$ is differentiable, and that $g'(f(x))=1/f'(x)$ for $a<x<b$.
+    \end{myBox}
+
+    \textbf{Pf:}
+
+    First, to prove that $f$ is strictly increasing in $(a,b)$, we'll use contradiction: Suppose $f$ is not strictly increasing in $(a,b)$.
+    Then, there exists $c,d\in (a,b)$, where $c<d$, such that $f(c)\geq f(d)$. But, by Mean Value Theorem, thre exists $x\in (c,d0)$, with $'(x)=\frac{f(d)-f(c)}{d-c}$.
+    Which, since $f(d)\leq f(c)$, $f(d)-f(c)\leq 0$; and $c<d$ implies $\frac{1}{d-c}>0$. Thus, $f'(x)=\frac{f(d)-f(c)}{d-c}\leq 0$, but this is a contradiction (since $x\in (a,b)$ implies $f'(x)>0$).
+    So, the assumption is false, $f$ must be strictly increasing in $(a,b)$.
+
+    \hfill
+
+    Now, given that $g$ if the inverse of $f$, then for all $x\in(a,b)$, then $g(f(x))=x$.
+    Since $g$ is defined on the set $f((a,b))$, and $(a,b)$ is a connected interval while $f$ is continuous (recall that differentiability of $f$ implies continuity).
+
+    \hfill
+
+    \item \begin{myBox}[]{}
+        \textbf{Q7:} Suppose $f'(x), g'(x)$ exists, $g'(x)\neq 0$, and $f(x)=g(x)=0$. Prove that $\lim_{t\rightarrow x}\frac{f(t)}{g(t)}=\frac{f'(x)}{g'(x)}$. 
+    \end{myBox}
+
+    \textbf{Pf:}
+
+    Since $f'(x), g'(x)$ exists, within some neightborhood $(x-\epsilon,x+\epsilon)$, if $t$ is in the neighborhood, $\lim_{t\rightarrow x}\frac{f(t)-f(x)}{t-x}=f'(x)$ and $\lim_{t\rightarrow x}\frac{g(t)-g(x)}{t-x}=g'(x)$.
+    Thus, for all $t\neq x$ within the given neighborhood, if $g(t)\neq 0$, the following is true:
+    $$\frac{f(t)}{g(t)}=\frac{f(t)-0}{g(t)-0}=\frac{f(t)-f(x)}{g(t)-g(x)} = \frac{f(t)-f(x)}{t-x}\frac{t-x}{g(t)-g(x)} = \frac{f(t)-f(x)}{t-x}\frac{1}{\frac{g(t)-g(x)}{t-x}}$$
+    Notice that since $\lim_{t\rightarrow x}\frac{f(t)-f(x)}{t-x}=f'(x)$, and $\lim_{t\rightarrow x}\frac{g(t)-g(x)}{t-x}=g'(x)\neq 0$, thus $\lim_{t\rightarrow x}1/\left(\frac{g(t)-g(x)}{t-x}\right)=1/g'(x)$. So, the limit is given as follow:
+    $$\lim_{t\rightarrow x}\frac{f(t)}{g(t)}= \lim_{t\rightarrow x}\frac{f(t)-f(x)}{t-x}\frac{1}{\frac{g(t)-g(x)}{t-x}} = \left(\lim_{t\rightarrow x}\frac{f(t)-f(x)}{t-x}\right)\left(\lim_{t\rightarrow x}\frac{1}{\frac{g(t)-g(x)}{t-x}}\right) = f'(x)\frac{1}{g'(x)}$$
+    Hence, $\lim_{t\rightarrow x}\frac{f(t)}{g(t)}=\frac{f'(x)}{g'(x)}$.
+
+    \hfill
+
+    \item \begin{myBox}[]{}
+        \textbf{Q15:} Suppose $a\in\mathbb{R}$, $f$ is a twice-differentiable real function on $(a,\infty)$, and $M_0,M_1,M_2$ are the least upper bounds of $|f(x)|,|f'(x)|,|f''(x)|$, respectively, on $(a,\infty)$. 
+        Prove that $M_1^2\leq 4M_0M_2$.
+    \end{myBox}
+
+    \textbf{Pf:}
+
+    For all $x_0\in (a,\infty)$, consider the Taylor Polynomial $P_1(x)=f(x_0)+f'(x_0)(x-x_0)$. Which, for all $h>0$ ($2h>0$), since $x_0+2h>x_0$, so $(x_0+2h)\in (a,\infty)$. 
+    Thus, by Taylor's Theorem, there exists $z\in (x_0,x_0+2h)$, with $f(x_0+2h)-P_1(x_0+2h)=\frac{f''(z)}{2!}((x_0+2h)-x_0)^2$. Thus:
+    $$f(x_0+2h)-P_1(x_0+2h)=f(x_0+2h)-\left(f(x_0)+f'(x_0)((x_0+2h)-x_0)\right)$$
+    $$=f(x_0+2h)-f(x_0)-2hf'(x_0)$$
+
+    $$\frac{f''(z)}{2!}((x_0+2h)-x_0)^2 = \frac{f''(z)}{2}(2h)^2$$
+
+    So, $f(x_0+2h)-f(x_0)-2hf'(x_0)=\frac{f''(z)}{2}4h^2$, thus $2hf'(x_0)=f(x_0+2h)-f(x_0)-f''(z)2h^2$, or $f'(x_0)=\frac{1}{2h}f(x_0+2h)-f(x_0))-hf''(z)$. Hence, the following inequality is true:
+    $$|f'(x_0)| = \left|\frac{1}{2h}f(x_0+2h)-f(x_0))-hf''(z)\right| \leq \frac{1}{2h}(|f(x_0+2h)|+|f(x_0)|) + h|f''(z)|$$
+    $$|f'(x_0)| \leq \frac{1}{2h}2M_0 + hM_2 = \frac{M_0}{h}+hM_2$$
+    Which, if choose $h=\sqrt{M_0/M_2}$, the following is true:
+    $$|f'(x_0)| \leq \frac{M_0}{\sqrt{M_0/M_2}}+\sqrt{\frac{M_0}{M_2}}M_2 = \sqrt{M_0M_2}+\sqrt{M_0M_2}=2\sqrt{M_0M_2}$$
+    Thus, $2\sqrt{M_0M_2}$ is an upper bound of $|f'(x)|$ for all $x\in(a,\infty)$, hence $M_1\leq 2\sqrt{M_0M_2}$ (since $M_1$ by definition is the least upper bound of $|f'(x)|$). So:
+    $$M_1^2 \leq (2\sqrt{M_0M_2})^2 = 4M_0M_2$$
+
+
+\end{itemize}
 
 \end{document}
