@@ -1,0 +1,161 @@
+%Math_CS_Topology_HW2_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+%\linespread{1.5}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $A^*$ denote the set of limit points of $A$. Prove this satisfies:
+        \begin{itemize}
+            \item $\emptyset^*=\emptyset$
+            \item $x\notin \{x\}^*$
+            \item $A^{**}\subseteq A\cup A^*$
+            \item $(A\cup B)^*=A^*\cup B^*$
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+All the below proofs are based on a nonempty topological space $X$.
+
+\begin{itemize}
+    \item[1.] To prove that $\emptyset^*=\emptyset$, we'll use contradiction: Suppose there exists $x\in X$ with $x\in \emptyset^*$, with $x\in \emptyset^*$,
+    then by definition, every open neighborhood $U$ of $x$, the intersection $\emptyset \cap (U\setminus \{x\})\neq \emptyset$.
+
+    However, since every set $A$ satisfies $\emptyset \cap A=\emptyset$, the above condition is a contradiction. Therefore, there's no such $x\in X$ satisfying $x\in\emptyset^*$,
+    thus $\emptyset^*=\emptyset$.
+
+    \hfill
+
+    \item[2.] To prove that $x\notin\{x\}^*$, consider any arbitrary open neighborhood $U$ of $x$: Since $x\notin U\setminus\{x\}$, 
+    then $\{x\}\cap (U\setminus \{x\})=\emptyset$. Thus, $x$ is not a limit point of $\{x\}$, or $x\notin \{x\}^*$.
+
+    \hfill
+
+    \item[3.] To prove that $A^{**}\subseteq A\cup A^*$, consider any $x\in A^{**}$:
+    
+    If $x\in A$, then $x\in A\cup A^*$.
+
+    Else, if $x\notin A$, by definition, for every open neightborhood $U$ of $x$, there exists $y\in A^*\cap (U\setminus\{x\})$, 
+    which $y\in A^*$ and $y\in U$, thus $U$ is an open neighborhood of $y$.
+
+    Then, since $y$ is a limit point of $A$, then there exists $a\in A\cap (U\setminus \{y\})$, which $a\in A$ and $a\in U$.
+
+    Yet, since $x\notin A$, so $a\neq x$, thus $a\in U\setminus \{x\}$, proving that $A\cap (U\setminus\{x\})\neq \emptyset$.
+
+    Since every open neighborhood of $x$ satisfies $A\cap (U\setminus\{x\})\neq \emptyset$, then $x$ is a limit point of $A$, thus $x\in A^*\subseteq A\cup A^*$.
+
+    So, regardless of the case, $x\in A^{**}$ implies $x\in A\cup A^*$, thus $A^{**}\subseteq A\cup A^*$.
+
+    \hfill
+
+    \item[4.] To prove that $(A\cup B)^* = A^*\cup B^*$, consider the following:
+    
+    First, $A^*\cup B^*\subseteq (A\cup B)^*$: Since $A,B\subseteq (A\cup B)$, then if $x\in A^*$, every open neighborhood $U$ of $x$ satisfies $A\cap (U\setminus\{x\})\neq \emptyset$,
+    thus $(A\cup B)\cap (U\setminus\{x\})\neq \emptyset$, showing that $x\in (A\cup B)^*$, or $A^*\subseteq (A\cup B)^*$. 
+    Applying the same logic on $B^*$, we'll get $B^*\subseteq (A\cup B)^*$, hence $(A^*\cup B^*)\subseteq (A\cup B)^*$.
+
+    \hfill
+
+    Now, to prove that $(A\cup B)^* \subseteq (A^*\cup B^*)$, we'll approach by contradiction:
+
+    Suppose $(A\cup B)^*\not\subseteq (A^*\cup B^*)$, there exists $x\in (A\cup B)^*$, while $x\notin (A^*\cup B^*)$.
+
+    Then, since $x\notin A^*$, there exists open neighborhood $U_1$ of $x$, with $A\cap (U_1\setminus\{x\})=\emptyset$;
+    similarly, since $x\notin B^*$, there exists open neighborhood $U_2$ of $x$, with $B\cap (U_2\setminus\{x\})=\emptyset$.
+
+    Now, consider $U=U_1\cap U_2$: It is an open set, and since $x\in U_1$ and $x\in U_2$, then $x\in (U_1\cap U_2)=U$, thus $U$ is an open neighborhood of $x$.
+
+    However, since $U\subseteq U_1$, then $A\cap (U\setminus\{x\})=\emptyset$; similarly, $U\subseteq U_2$ implies $B\cap (U\setminus\{x\})=\emptyset$.
+
+    So, $(A\cup B)\cap (U\setminus\{x\})=(A\cap (U\setminus\{x\}))\cup (B\cap (U\setminus\{x\}))=\emptyset$. Yet, if $x\in (A\cup B)^*$, 
+    then every open neighborhood of $x$ should have nonempty intersection with $(A\cup B)$, while not including $x$.
+
+    So, this is a contradiction. Hence, $(A\cup B)^*\subseteq (A^*\cup B^*)$.
+
+    \hfill
+
+    With the above two statements, $(A\cup B)^*=A^*\cup B^*$.
+\end{itemize}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that the boundary operation satisfies:
+        \begin{itemize}
+            \item $\partial A=\partial(X\setminus A)$
+            \item $\partial\partial A\subseteq \partial A$
+            \item $\partial(A\cup B)\subseteq \partial A\cup \partial B$
+            \item $A\subseteq B\implies \partial A\subseteq (B\cup \partial B)$
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[1.] Given any set $A\subseteq X$, since $\partial A=\overline{A}\cap \overline{X\setminus A}$ and $\partial(X\setminus A)=\overline{X\setminus A}\cap \overline{X\setminus(X\setminus A)}=\overline{X\setminus A}\cap \overline{A}$,
+    thus $\partial A=\partial (X\setminus A)$.
+
+    \hfill
+
+    \item[2.] 
+    \item[3.]
+    \item[4.]  
+\end{itemize}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\end{document}
