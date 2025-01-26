@@ -409,6 +409,8 @@ and $f^{(n)}(0)=0$. Thus, $f(x)$ described in the problem is in fact infinitely 
 
     \textbf{Pf:}
 
+    \textbf{$f$ is Strictly Increasing:}
+
     First, to prove that $f$ is strictly increasing in $(a,b)$, we'll use contradiction: Suppose $f$ is not strictly increasing in $(a,b)$.
     Then, there exists $c,d\in (a,b)$, where $c<d$, such that $f(c)\geq f(d)$. But, by Mean Value Theorem, thre exists $x\in (c,d0)$, with $'(x)=\frac{f(d)-f(c)}{d-c}$.
     Which, since $f(d)\leq f(c)$, $f(d)-f(c)\leq 0$; and $c<d$ implies $\frac{1}{d-c}>0$. Thus, $f'(x)=\frac{f(d)-f(c)}{d-c}\leq 0$, but this is a contradiction (since $x\in (a,b)$ implies $f'(x)>0$).
@@ -416,8 +418,31 @@ and $f^{(n)}(0)=0$. Thus, $f(x)$ described in the problem is in fact infinitely 
 
     \hfill
 
+    \textbf{Continuity of $g$:}
+
+    Notice that $g$ is defined on $f((a,b))$, which for all $c\in (a,b)$, $g(f(c)) = c$, thus $g$ is a surjective function.
+
+    Also, suppose $x,y\in f((a,b))$ satisfies $g(x)=g(y)$, since there exists $c,d\in (a,b)$ with $f(c)=x$ and $f(d)=y$, 
+    then $c=g(f(c))=g(x)=g(y)=g(f(d))=d$, which $x=f(c)=f(d)=y$. So, $g$ is also injective.
+
+    Then, because $f:(a,b)\rightarrow f(a,b)$ and $g:f(a,b)\rightarrow (a,b)$ are bijective, then $f(g(U))=U$ for all $U\subseteq f((a,b))$ and $g(f(V))=V$ for all $V\subseteq (a,b)$.
+
+    \hfill
+
+    Which, because $f$ is continuous, then for all open sets $U\in (a,b)$, consider $g^{-1}(U)$:
+    Since $f(g(g^{-1}(U)))=g^{-1}(U)$, and $g$ is bijective implies $g(g^{-1}(U))=U$, thus $g^{-1}(U)=f(U)$.
+
+
+    \hfill
+
+    \textbf{Differentiability of $g$:}
+
     Now, given that $g$ if the inverse of $f$, then for all $x\in(a,b)$, then $g(f(x))=x$.
-    Since $g$ is defined on the set $f((a,b))$, and $(a,b)$ is a connected interval while $f$ is continuous (recall that differentiability of $f$ implies continuity).
+    Since $g$ is defined on the set $f((a,b))$, and $(a,b)$ is a connected interval while $f$ is continuous, the $f((a,b))$ is an interval
+    (recall that differentiability of $f$ implies continuity).
+
+    Which, take $D=(f((a,b)))^\circ$ an open set, for every point $x\in D$ there exists $r>0$, with $(x-r,x+r)\in D$.
+
 
     \hfill
 
