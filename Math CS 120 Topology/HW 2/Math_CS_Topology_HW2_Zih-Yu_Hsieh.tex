@@ -53,7 +53,7 @@ colback=blue!10
 All the below proofs are based on a nonempty topological space $X$.
 
 \begin{itemize}
-    \item[1.] To prove that $\emptyset^*=\emptyset$, we'll use contradiction: Suppose there exists $x\in X$ with $x\in \emptyset^*$, with $x\in \emptyset^*$,
+    \item[1.] To prove that $\emptyset^*=\emptyset$, we'll use contradiction: Suppose there exists $x\in X$ with $x\in \emptyset^*$,
     then by definition, every open neighborhood $U$ of $x$, the intersection $\emptyset \cap (U\setminus \{x\})\neq \emptyset$.
 
     However, since every set $A$ satisfies $\emptyset \cap A=\emptyset$, the above condition is a contradiction. Therefore, there's no such $x\in X$ satisfying $x\in\emptyset^*$,
@@ -100,7 +100,7 @@ All the below proofs are based on a nonempty topological space $X$.
 
     Now, consider $U=U_1\cap U_2$: It is an open set, and since $x\in U_1$ and $x\in U_2$, then $x\in (U_1\cap U_2)=U$, thus $U$ is an open neighborhood of $x$.
 
-    However, since $U\subseteq U_1$, then $A\cap (U\setminus\{x\})=\emptyset$; similarly, $U\subseteq U_2$ implies $B\cap (U\setminus\{x\})=\emptyset$.
+    However, since $U\subseteq U_1$, then $A\cap (U\setminus\{x\})\subseteq A\cap (U_1\setminus\{x\})=\emptyset$; similarly, $U\subseteq U_2$ implies $B\cap (U\setminus\{x\})\subseteq B\cap (U_2\setminus\{x\})=\emptyset$.
 
     So, $(A\cup B)\cap (U\setminus\{x\})=(A\cap (U\setminus\{x\}))\cup (B\cap (U\setminus\{x\}))=\emptyset$. Yet, if $x\in (A\cup B)^*$, 
     then every open neighborhood of $x$ should have nonempty intersection with $(A\cup B)$, while not including $x$.
@@ -221,7 +221,7 @@ First, since $U$ is open, then $X\setminus U$ is at most countable, according to
 
 Then, since $U,V$ are disjoint, then every point $z\in V$ satisfies $z\notin U$, or $z\in X\setminus U$. Hence, $V\subseteq X\setminus U$, which implies $V$ is also countable (subset of at most countable set is at most countable).
 
-However, this implies that $X\setminus V$ is not countable: If $X\setminus V$ is countable, then $V\cup (X\setminus V)=X$ is countable, which contradicts the fact that $X$ is uncountable.
+However, this implies that $X\setminus V$ is not countable: If $X\setminus V$ is countable, then $V\cup (X\setminus V)=X$ is countable, which contradicts the assumption that $X$ is uncountable.
 
 Yet, if $X\setminus V$ is not countable, $V$ is no longer open, which again contradicts our assumption that $V$ is open.
 
@@ -233,7 +233,11 @@ Thus, the initial assumption is false, the Cocountable Topology on $X$ is not Ha
 
 \textbf{Type of convergent sequences in Cocountable Topology:}
 
-We'll prove by contradiction, that the sequence $(x_n)_{n\in\mathbb{N}}\subset X$ converges implies it is eventually constant (which, after some index $k$, $n\geq k$ implies $x_n=x$ for some $x\in X$).
+We'll prove that the sequence $(x_n)_{n\in\mathbb{N}}\subset X$ converges iff it is eventually constant (which, after some index $k$, $n\geq k$ implies $x_n=x$ for some $x\in X$).
+
+\hfill
+
+To prove the forward implication, we'll use contradiction.
 
 Suppose there exists a sequence $(x_n)_{n\in\mathbb{N}}$ that's not eventually constant, but still converges to $x\in X$.
 
@@ -257,11 +261,18 @@ So, the assumption must be false, $(x_n)_{n\in\mathbb{N}}\subset X$ converges im
 
 \hfill
 
+To prove the converse, suppose the sequence $(x_n)_{n\in\mathbb{N}}$ is eventually constant, there exists $x\in X$ and index $N$, with $n\geq N$ implies $x_n=x$.
+
+Which, for all open neighborhood $U$ of $x$, choose the index $N$, for all $n\geq N$ satisfies $x_n=x \in U$, thus by the definition of convergence,
+$\lim_{n\rightarrow\infty}x_n=x$.
+
+\hfill
+
 \hfill
 
 \textbf{Limit of Converging Sequence has at most one limit:}
 
-In previous section, we've proven that a sequence $(x_n)_{n\in\mathbb{N}}\subset X$ converges, implies it is eventually constant.
+In previous section, we've proven that a sequence $(x_n)_{n\in\mathbb{N}}\subset X$ converges iff it is eventually constant.
 Then, there exists an index $N$, such that $n\geq N$ implies $x_n=x$. This implies that the limit is actually unique:
 
 For all $x'\in X$ with $x'\neq x$, consider any open neighborhood $U$ of $x'$: Since $X\setminus U$ is at most countable, then $X\setminus(U\setminus\{x\})=\{x\}\cup (X\setminus U)$ is also at most countable.
@@ -270,8 +281,8 @@ Hence, $U\setminus\{x\}$ is an open neighborhood of $x'$.
 
 However, if consider all index $n\geq N$, since $x_n=x$, then $x_n \notin U\setminus\{x\}$, this indicates that $(x_n)_{n\in\mathbb{N}}$ is not converging to $x'$.
 
-Since for all $x'\in X$ with $x'\neq x$, it is not a limit of $(x_n)_{n\in\mathbb{N}}$, then the only possible limit is $x$,
-indicating that there is at most one limit for $(x_n)_{n\in\mathbb{N}}$ (in fact, $x$ is the limit).
+Since for all $x'\in X$ with $x'\neq x$, it is not a limit of $(x_n)_{n\in\mathbb{N}}$, then the only limit is $x$,
+indicating that there is at most one limit for $(x_n)_{n\in\mathbb{N}}$.
 
 
 So, under Cocountable Topology for an uncountable set $X$, even though the space is not Hausdorff, but the limit is still unique.
