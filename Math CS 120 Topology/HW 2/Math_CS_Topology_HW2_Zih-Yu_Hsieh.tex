@@ -29,7 +29,7 @@ colback=blue!10
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
 
-\title{Latex Template}
+\title{Math CS Topology HW2}
 \author{Zih-Yu Hsieh}
 
 \begin{document}
@@ -112,7 +112,9 @@ All the below proofs are based on a nonempty topological space $X$.
     With the above two statements, $(A\cup B)^*=A^*\cup B^*$.
 \end{itemize}
 
-\break
+\hfill
+
+\hfill
 
 \section*{2}
 \begin{myBox}[]{}
@@ -135,9 +137,32 @@ All the below proofs are based on a nonempty topological space $X$.
 
     \hfill
 
-    \item[2.] 
-    \item[3.]
-    \item[4.]  
+    \item[2.] Given $\partial A=\overline{A}\cap \overline{X\setminus A}$, since $\overline{A}$ and $\overline{X\setminus A}$ are both closed, the $\partial A$ is closed (intersection of arbitrary closed set is closed).
+    Which, $\overline{\partial A}=\partial A$. Hence, $\partial \partial A=\overline{\partial A}\cap \overline{X\setminus \partial A}\subseteq \overline{\partial A}=\partial A$.
+    So, $\partial\partial A\subseteq \partial A$.
+
+    \hfill
+
+    \item[3.] For all $x\in \partial(A\cup B)$, $x\in \overline{A\cup B} = \overline{A}\cup \overline{B}$, and $x\in \overline{X\setminus(A\cup B)}=\overline{(X\setminus A)\cap (X\setminus B)}\subseteq (\overline{X\setminus A}\cap \overline{X\setminus B})$. 
+    Then, there are two cases to consider:
+    
+    First, if $x\in \overline{A}$, since $x\in (\overline{X\setminus A}\cap \overline{X\setminus B})\subseteq \overline{X\setminus A}$, then $x\in \partial A = \overline{A}\cap\overline{X\setminus A}$.
+
+    Else, if $x\in \overline{B}$, since $x\in (\overline{X\setminus A}\cap \overline{X\setminus B})\subseteq \overline{X\setminus B}$, then $x\in \partial B = \overline{B}\cap\overline{X\setminus B}$.
+
+    In either case, $x\in \partial A\cup \partial B$, thus we can conclude that $\partial(A\cup B)\subseteq \partial A\cup \partial B$.
+
+    \hfill
+
+    \item[4.] Suppose $A\subseteq B$, then $\overline{A}\subseteq \overline{B}$. Thus, $\partial A=\overline{A}\cap\overline{X\setminus A}\subseteq \overline{A}\subseteq \overline{B}$. 
+    Now, for all $x\in \partial A\subseteq \overline{B}$, there are two cases:
+    
+    If $x\in B$, then $x\in (B\cup \partial B)$.
+
+    Else, if $x\notin B$, then $x\in X\setminus B\subseteq \overline{X\setminus B}$. With the statement that $x\in \overline{B}$, $x\in \overline{B}\cap \overline{X\setminus B} = \partial B$.
+    Hence again, $x\in (B\cup \partial B)$.
+
+    So, regardless of the case, $x\in \partial A$ implies $x\in (B\cup \partial B)$, thus $\partial A\subseteq (B\cup \partial B)$.
 \end{itemize}
 
 \break
@@ -145,17 +170,109 @@ All the below proofs are based on a nonempty topological space $X$.
 \section*{3}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let A be a set in a topological space. Prove that the closure of the interior of
+        the closure of the interior of A equals the closure of the interior of A.
     \end{question}
 \end{myBox}
 
-\break
+\textbf{Pf:}
+
+Let $B=\overline{A^\circ}$ (the closure of the interior of $A$), which $\overline{B^\circ}$ is the closure of the interior of closure of the interior of $A$.
+
+Notice that since $B^\circ \subseteq B$, then $\overline{B^\circ}\subseteq \overline{B}$; and since $B=\overline{A^\circ}$, which is already closed, then $\overline{B}=B$.
+Thus, $\overline{B^\circ}\subseteq \overline{B}=B$.
+
+\hfill
+
+Also, since $A^\circ \subseteq \overline{A^\circ}=B$ while $A^\circ$ is open, then $A^\circ \subseteq B^\circ$; hence, $B=\overline{A^\circ}\subseteq \overline{B^\circ}$.
+
+\hfill
+
+Combining both criteria, $B=\overline{B^\circ}$, so the Closure of the Interior of $A$, equals to the Closure of the Interior of the Closure of the Interior of $A$.
+
+\hfill
+
+\hfill
 
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Give an example of a topological space that is not Hausdorff, but still has
+        the property that every sequence converges to at most one point. Prove your
+        answer is correct. I suggest using the “countable complement” (also called
+        “cocountable”) topology.
     \end{question}
 \end{myBox}
 
+\textbf{Pf:}
+
+Given not countable set $X$, and consider the Countable Complement Topology on $X$ (which, $U\subseteq X$ is open iff either $X\setminus U$ is at most countable, or $U=\emptyset$).
+
+\hfill
+
+\hfill
+
+\textbf{The Cocountable Topology on $X$ is not Hausdorff:}
+
+We'll prove by contradiction. Suppose the given topology is Hausdorff, then for all $x,y\in X$ with $x\neq y$, there exists disjoint open neighborhood $U,V\subseteq X$,
+with $x\in U$ and $y\in V$ (which $y\notin U$ and $x\notin V$).
+
+First, since $U$ is open, then $X\setminus U$ is at most countable, according to the definition of cocountable topology.
+
+Then, since $U,V$ are disjoint, then every point $z\in V$ satisfies $z\notin U$, or $z\in X\setminus U$. Hence, $V\subseteq X\setminus U$, which implies $V$ is also countable (subset of at most countable set is at most countable).
+
+However, this implies that $X\setminus V$ is not countable: If $X\setminus V$ is countable, then $V\cup (X\setminus V)=X$ is countable, which contradicts the fact that $X$ is uncountable.
+
+Yet, if $X\setminus V$ is not countable, $V$ is no longer open, which again contradicts our assumption that $V$ is open.
+
+Thus, the initial assumption is false, the Cocountable Topology on $X$ is not Hausdorff.
+
+\hfill
+
+\hfill
+
+\textbf{Type of convergent sequences in Cocountable Topology:}
+
+We'll prove by contradiction, that the sequence $(x_n)_{n\in\mathbb{N}}\subset X$ converges implies it is eventually constant (which, after some index $k$, $n\geq k$ implies $x_n=x$ for some $x\in X$).
+
+Suppose there exists a sequence $(x_n)_{n\in\mathbb{N}}$ that's not eventually constant, but still converges to $x\in X$.
+
+Since it's not eventually constant, for all $N>0$, there exists index $n\geq N$, with $x_n \neq x$. 
+
+Which, consider an arbitrary open neighborhood $U$ of $x$, and consider the set $V=\{x\}\cup (U\setminus (x_n)_{n\in\mathbb{N}})$:
+
+Taking the complement:
+$$X\setminus V = X\setminus(\{x\}\cup (U\setminus (x_n)_{n\in\mathbb{N}})) = (X\setminus \{x\})\cap (X\setminus(U\setminus (x_n)_{n\in\mathbb{N}}))$$
+$$= (X\setminus\{x\})\cap ((x_n)_{n\in\mathbb{N}}\cup (X\setminus U))$$
+Notice that the set $(x_n)_{n\in\mathbb{N}}$ is at most countable, and since $U$ is open, $X\setminus U$ is also at most countable.
+Thus, the set $(x_n)_{n\in\mathbb{N}}\cup (X\setminus U)$ is at most countable, which $X\setminus V$ as a subset of $(x_n)_{n\in\mathbb{N}}\cup (X\setminus U)$, must also be at most countable.
+
+Hence, $V$ is actually an open set, which since $x\in V$, it is an open neighborhood of $x$.
+
+However, for all $N>0$, there exists $n\geq N$, with $x_n\neq x$, which $x_n\notin (U\setminus (x_n)_{n\in\mathbb{N}})$, and $x_n\notin \{x\}$,
+hence $x_n \notin V=\{x\}\cup (U\setminus (x_n)_{n\in\mathbb{N}})$. This contradictts with the fact that $(x_n)_{n\in\mathbb{N}}$ converges to $x$,
+since there should exist $N$, with $n\geq N$ implies $x_n \in V$.
+
+So, the assumption must be false, $(x_n)_{n\in\mathbb{N}}\subset X$ converges implies it is eventually constant.
+
+\hfill
+
+\hfill
+
+\textbf{Limit of Converging Sequence has at most one limit:}
+
+In previous section, we've proven that a sequence $(x_n)_{n\in\mathbb{N}}\subset X$ converges, implies it is eventually constant.
+Then, there exists an index $N$, such that $n\geq N$ implies $x_n=x$. This implies that the limit is actually unique:
+
+For all $x'\in X$ with $x'\neq x$, consider any open neighborhood $U$ of $x'$: Since $X\setminus U$ is at most countable, then $X\setminus(U\setminus\{x\})=\{x\}\cup (X\setminus U)$ is also at most countable.
+Thus, the set $U\setminus \{x\}$ is open under cocountable topology, and $x'\in U\setminus\{x\}$ (since $x'\in U$ and $x'\neq x$).
+Hence, $U\setminus\{x\}$ is an open neighborhood of $x'$.
+
+However, if consider all index $n\geq N$, since $x_n=x$, then $x_n \notin U\setminus\{x\}$, this indicates that $(x_n)_{n\in\mathbb{N}}$ is not converging to $x'$.
+
+Since for all $x'\in X$ with $x'\neq x$, it is not a limit of $(x_n)_{n\in\mathbb{N}}$, then the only possible limit is $x$,
+indicating that there is at most one limit for $(x_n)_{n\in\mathbb{N}}$ (in fact, $x$ is the limit).
+
+
+So, under Cocountable Topology for an uncountable set $X$, even though the space is not Hausdorff, but the limit is still unique.
 \end{document}
