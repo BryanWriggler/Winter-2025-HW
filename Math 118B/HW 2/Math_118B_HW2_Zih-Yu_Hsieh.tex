@@ -390,7 +390,9 @@ Which, $f^{(n+1)}(0)=0$.
 By the principle of mathematical induction, we can conclude that for all $n\in\mathbb{N}$, the $n^{th}$ derivative is in the form $f^{(n)}(x)=p_n(1/x)e^{-\frac{1}{x^2}}$ for some polynomial $p_n(h)$, 
 and $f^{(n)}(0)=0$. Thus, $f(x)$ described in the problem is in fact infinitely differentiable, and $f^{(n)}(0)=0$ for all natural number
 
-\break
+\hfill
+
+\hfill
 
 \section*{5}
 \begin{myBox}[]{}
@@ -420,28 +422,48 @@ and $f^{(n)}(0)=0$. Thus, $f(x)$ described in the problem is in fact infinitely 
 
     \textbf{Continuity of $g$:}
 
-    Notice that $g$ is defined on $f((a,b))$, which for all $c\in (a,b)$, $g(f(c)) = c$, thus $g$ is a surjective function.
+    Since $g$ is the inverse of $f$, then for all $U\subseteq (a,b)$, $g^{-1}(U)=f(U)$,
+    hence to prove that $g$ is continuous, it suffices to prove that for all $U\subseteq (a,b)$ that is open,
+    $g^{-1}(U)=f(U)$ is open (or $f(U)$ is an open map). Also, because in $\mathbb{R}$, any open set is countable
+    disjoint union of open intervals, thus it again suffices to prove that all open intervals in $(a,b)$ gets mapped to an open set in $f((a,b))$.
 
-    Also, suppose $x,y\in f((a,b))$ satisfies $g(x)=g(y)$, since there exists $c,d\in (a,b)$ with $f(c)=x$ and $f(d)=y$, 
-    then $c=g(f(c))=g(x)=g(y)=g(f(d))=d$, which $x=f(c)=f(d)=y$. So, $g$ is also injective.
-
-    Then, because $f:(a,b)\rightarrow f(a,b)$ and $g:f(a,b)\rightarrow (a,b)$ are bijective, then $f(g(U))=U$ for all $U\subseteq f((a,b))$ and $g(f(V))=V$ for all $V\subseteq (a,b)$.
+    For all $c,d\in (a,b)$ with $c<d$, consider $[c,d]\subseteq (a,b)$: since $f$ is continuous while $[c,d]$ is both compact and connected,
+    the set $f([c,d])$ is compact and connected, which is a closed interval; also, for all $c<x<d$, since $f(c)<f(x)<f(d)$ because $f$ is strictly increasing,
+    thus $f(c)$ is the minimum of $f([c,d])$ and $f(d)$ is the maximum of $f([c,d])$, so $f([c,d])=[f(c),f(d)]$.
 
     \hfill
 
-    Which, because $f$ is continuous, then for all open sets $U\in (a,b)$, consider $g^{-1}(U)$:
-    Since $f(g(g^{-1}(U)))=g^{-1}(U)$, and $g$ is bijective implies $g(g^{-1}(U))=U$, thus $g^{-1}(U)=f(U)$.
+    Now, consider $f((c,d))$: from the above statement about $[c,d]$, we know for all $x\in (c,d)$, $f(c)<f(x)<f(d)$,
+    so $f(x)\in (f(c),f(d))$, or $f((c,d))\subseteq (f(c),f(d))$;
 
+    then, for all $y \in (f(c),f(d))\subseteq [f(c),f(d)]$, since $[f(c),f(d)]=f([c,d])$, there exists $x\in [c,d]$ with $f(x)=y$;
+    also, since $f(c)<f(x)=y<f(d)$, then $c<x<d$, thus $f(x)=y \in f((c,d))$, showing that $(f(c),f(d))\subseteq f((c,d))$.
+
+    With the above two statements, $f((c,d))=(f(c),f(d))$, thus $f$ maps open intervals to open intervals, showing that $f$ is an open map.
+
+    This from the above prove, implies that every open set $U\subseteq (a,b)$, $f(U) = g^{-1}(U)$ is open, which is equivalent to $g$ is continuous.
 
     \hfill
 
     \textbf{Differentiability of $g$:}
 
-    Now, given that $g$ if the inverse of $f$, then for all $x\in(a,b)$, then $g(f(x))=x$.
-    Since $g$ is defined on the set $f((a,b))$, and $(a,b)$ is a connected interval while $f$ is continuous, the $f((a,b))$ is an interval
-    (recall that differentiability of $f$ implies continuity).
+    Take $D=(f((a,b)))^\circ$ an interior of the image of $f$ (which is open), for every point $x\in D$ there exists $r>0$, with $(x-r,x+r)\subseteq D$.
 
-    Which, take $D=(f((a,b)))^\circ$ an open set, for every point $x\in D$ there exists $r>0$, with $(x-r,x+r)\in D$.
+    Now, consider any $y\in (x-r,x+r)$: Since $x,y\in D\subseteq f((a,b))$, there exists unique $c,d\in (a,b)$ with $f(c)=x$ and $f(d)=y$;
+    then, by the definition of inverse, $g(x)=g(f(c))=c$, and $g(y)=g(f(d))=d$.
+
+    \hfill
+
+    Consider the differentiability of $f$ at $c$, $\lim_{d\rightarrow c}\frac{f(c)-f(d)}{c-d}=f'(c)$. And, since $f'(c)\neq 0$, then:
+    $$\lim_{d\rightarrow c}\frac{c-d}{f(c)-f(d)}=\lim_{d\rightarrow c}1/\frac{f(c)-f(d)}{c-d}=\frac{1}{f'(c)}$$
+    So, for all $\epsilon>0$, there exists $\delta>0$, with $|c-d|<\delta$ implies $\left|\frac{c-d}{f(c)-f(d)}-\frac{1}{f'(c)}\right|<\epsilon$.
+
+    Also, since $c=g(x)$ and $d=g(y)$, then for the given $\delta>0$, there exists $\delta'>0$, with $|x-y|<\delta'$ implies $|g(x)-g(y)|=|c-d|<\delta$.
+
+    So, for any $y\in D$, if $|x-y|<\delta'$, since it implies $|c-d|<\delta$, then by the differentiability definition:
+    $$\left|\frac{g(x)-g(y)}{x-y}-\frac{1}{f'(c)}\right|=\left|\frac{g(f(c))-g(f(d))}{f(c)-f(d)}-\frac{1}{f'(c)}\right|=\left|\frac{c-d}{f(c)-f(d)}-\frac{1}{f'(c)}\right|<\epsilon$$
+    Hence, we can conclude $\lim_{y\rightarrow x}\frac{g(x)-g(y)}{x-y} = \frac{1}{f'(c)}$, or:
+    $$g'(x) = g'(f(c))=\frac{1}{f'(c)}$$
 
 
     \hfill
