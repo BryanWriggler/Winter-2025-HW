@@ -89,7 +89,7 @@ So, for commutative ring, $R[X]=Z(R)[X]=Z(R[X])$. So, the following proof is bas
     Which, for all $q\in R[X]$, there exists $q_0,q_1,...,q_m$, with $q = q_0+q_1X+...+q_mX^m$.
     Then, the multiplication is as follow:
     $$pq = c_0+c_1X+...+c_{m+n}X^{m+n},\quad c_k=\sum_{i,j,\ i+j=k}p_iq_j$$
-    $$qp = c_0'+c_1'X+...+c_{m+n}'X^{m+n},\quad c_k' = \sum_{j,i,\ j+i=k}q_jp_i$$
+    $$qp = c_0'+c_1'X+...+c_{m+n}'X^{m+n},\quad c_k' = \sum_{j,i,\ j+i=k}q_jp_i=\sum_{i,j,\ i+j=k}p_iq_j=c_k$$
     Since all $p_i\in Z(R)$, they commute with all elements in $R$, thus $c_k = c_k'$ for all index $k$,
     hence $pq=qp$. So, $p\in Z(R[X])$, indicating that $Z(R)[X]\subseteq Z(R[X])$.
 
@@ -153,9 +153,9 @@ then $q_m = q_{m-0}=0$.
 Now, suppose for given $k\in \{0,...,m-1\}$, every integer $0\leq n \leq k$ satisfies $q_{m-n}=0$, then, $q$ can be expressed as follow:
 $$q = q_0 + q_1X +... + q_{m-(k+1)}X^{m-(k+1)} + q_{m-k}X^{m-k}+...+q_mX^m$$
 $$=q_0 + q_1X +... + q_{m-(k+1)}X^{m-(k+1)}$$
-Which, $pq$ has the coefficient of $(n+(m-(k+1)))$ being $p_nq_{m-(k+1)}$, since $k\leq (m-1)$, the $(k+1)\leq m$, thus $(m-(k+1))\geq 0$.
+Which, $pq$ has the coefficient of $(n+(m-(k+1)))$ being $p_nq_{m-(k+1)}$. S    ince $k\leq (m-1)$, then $(k+1)\leq m$, thus $(m-(k+1))\geq 0$.
 So, since $n>0$, $(n+(m-(k+1)))>0$; however, since $pq=1$ a constant polynomial, so the coefficient of degree $(n+(m-(k+1)))>0$ is in fact $0$,
-showing that $p_nq_{m-(k+1)}=0$. Again, since $p_n\neq 0$ by assumption, then $q_{m-(k+1)}=0$.
+showing that $p_nq_{m-(k+1)}=0$. Again, since $p_n\neq 0$ by assumption, then $q_{m-(k+1)}=0$ (since $R$ is an integral domain).
 
 \hfill
 
@@ -199,7 +199,7 @@ Hence, $(R[X])^\times \neq R^\times$ in this case.
 \break
 
 
-\section*{5 (Not done)}
+\section*{5}
 \begin{myBox}[]{}
     \begin{question}
         Prove or disprove that only ideals of $M_2(\mathbb{R})$ are $(0)$ and $M_2(\mathbb{R})$.
@@ -209,7 +209,7 @@ Hence, $(R[X])^\times \neq R^\times$ in this case.
 \textbf{Pf:}
 
 Since $(0)$ is automatically an Ideal, thus to find some nontrivial ideal $I\subseteq M_2(\mathbb{R})$, we'll assume $I\neq (0)$ (so there are nonzero elements).
-Which, let $A\in I$ be a nonzero element, it has some entriy being $a\neq 0$. 
+Which, let $A\in I$ be a nonzero element, it has some entry being $a\neq 0$. 
 
 \hfill
 
@@ -368,7 +368,7 @@ So, given an ideal $I\neq (0)$, we have $I=M_2(\mathbb{R})$, hence the only idea
 
 There does not exist a field of order $6$. 
 
-In general, given $F$ a finite field, it's order must be a prime power (there must exists prime $p$ and positive integer $n$, with $|R|=p^n$). Furthermore, $p=char(F)$.
+In general, given $F$ a finite field, its order must be a prime power (there must exists prime $p$ and positive integer $n$, with $|R|=p^n$). Furthermore, $p=char(F)$.
 
 \hfill
 
@@ -385,11 +385,10 @@ Hence, $q\cdot a=p\cdot q=0$.
 
 Yet, here is a contradiction:
 
-First, if $q>p$ (or $(q-p)>0$), then the above equation implies $(q-p)\cdot a=0$, so $order(a)<(q-p)<q=order(a)$, which is a contradiction.
+First, if $q>p$, then since $p\cdot a=0$, so $order(a)<p<q=order(a)$, which is a contradiction.
 
-Else, if $p>q$ (or $(p-q)>0$), then since $(p-q)\cdot a=0$, then either $a=0$ or $(p-q)$ is a multiple of the order of $a$, namly $q\bigm| (p-q)$.
-Yet, if $a=0$, then $order(a)=1\neq q$ (since prime $q>1$), which is a contradiction;
-also, because $p,q$ are distinct primes, $p$ is not a multiple of $q$, which $(p-q)$ is also not a multiple of $q$, which is again a contradiction.
+Else, if $p>q$ (or $(p-q)>0$), then since $p\cdot a=0$, then either $a=0$ or $p$ is multiple of $q$ (multiple of the order of $a$). But, since $a$ has order $q>0$, then $a\neq 0$;
+also, because $p,q$ are distinct primes, $p$ is not a multiple of $q=order(a)$, which is again a contradiction (since $a\neq 0$, and $p$ is not a multiple of $q$, while $p\cdot a=0$).
 
 \hfill
 
@@ -434,11 +433,11 @@ Consider the set $S=\{\frac{m}{2^n}\in\mathbb{Q}\ |\ n\in\mathbb{N},\ m\in\mathb
 
     \hfill
 
-    \item[(2)] Since $0 = \frac{0}{2^1}$ abd $1=\frac{2}{2^1}$, then $0,1\in S$, so both the zero and unity element of $\mathbb{Q}$ are in $S$.
+    \item[(2)] Since $0 = \frac{0}{2^1}$ and $1=\frac{2}{2^1}$, then $0,1\in S$, so both the zero and unity element of $\mathbb{Q}$ are in $S$.
     
     \hfill
 
-    \item[(3)] Given any $\frac{m}{2^n}\in S$, the inverse $\frac{-m}{2^n}\in S$, thus the additive inverse also exists.
+    \item[(3)] Given any $\frac{m}{2^n}\in S$, the additive inverse $\frac{-m}{2^n}\in S$ (since $m,-m\in \mathbb{Z}$), thus the additive inverse also exists in $S$.
 \end{itemize}
 
 With the properties above, $S$ is a subring of $\mathbb{Q}$:
@@ -469,7 +468,7 @@ Hence, we can conclude that $S\subseteq R$, showing that $S$ is the smallest sub
 
 \textbf{Pf:}
 
-(Note: The original problem is not possible, since if $\mathbb{Z}\subseteq R$, then take $2\in \mathbb{Z}$, $2^3=8\neq 2$. THe above is the modified question).
+(Note: The original problem is not possible, since if $\mathbb{Z}\subseteq R$, then take $2\in \mathbb{Z}$, $2^3=8\neq 2$. The above is the modified question).
 
 \hfill
 
@@ -489,9 +488,9 @@ Then, since $order(1)$ is finite, this implies $char(R)\neq 0$, and $char(R)=ord
 
 For $char(R)=2$, consider $\mathbb{Z}_2$: since $0^3 = 0$ and $1^3=1$, the property is satisfied
 
-For $char(R)=3$, consider $\mathbb{Z}_3$: it satisfies $0^3=0$, $1^3=1$, and $2^3 = 8 = 2 (\mod\ 3)$, thus the property is satisfied.
+For $char(R)=3$, consider $\mathbb{Z}_3$: it satisfies $0^3=0$, $1^3=1$, and $2^3 = 8 = 2\ (\mod\ 3)$, thus the property is satisfied.
 
-For $char(R)=6$, consider $\mathbb{Z}_6$: it satisfies $0^3=0$, $1^3=1$, $2^3=8=2(\mod\ 6)$, $3^3=27=3 (\mod\ 6)$, $4^3=64=4(\mod\ 6)$, and $5^3=125=5(\mod\ 6)$, hence the property is again satisfied.
+For $char(R)=6$, consider $\mathbb{Z}_6$: it satisfies $0^3=0$, $1^3=1$, $2^3=8=2\ (\mod\ 6)$, $3^3=27=3\ (\mod\ 6)$, $4^3=64=4\ (\mod\ 6)$, and $5^3=125=5\ (\mod\ 6)$, hence the property is again satisfied.
 
 \hfill
 
@@ -554,11 +553,11 @@ $$\begin{pmatrix}
 The above equation indicates that $k!\begin{pmatrix}
     p\\k
 \end{pmatrix}$ is divisible by $p$. Yet, since $k<p$, then $k!=1\cdot 2...(k-1)k$ is not divisible by $p$ (since it is a product of numbers coprime to $p$).
-Then, in case for the numbe to be divisible by $p$, $\begin{pmatrix}
+Then, in case for the number to be divisible by $p$, $\begin{pmatrix}
     p\\k
 \end{pmatrix}$ must be a multiple of $p$ (or else if $\begin{pmatrix}
     p\\k
-\end{pmatrix})$ is also coprime to $p$, the product $k!\begin{pmatrix}
+\end{pmatrix}$ is also coprime to $p$, the product $k!\begin{pmatrix}
     p\\k
 \end{pmatrix}$ is also coprime to $p$, which is a contradiction). So, the lemma is true.
 
@@ -594,7 +593,6 @@ $$(x+y)^p = \sum_{k=0}^{p}\begin{pmatrix}
 \end{pmatrix}x^ky^{p-k} = y^p + \sum_{k=1}^{p-1}\begin{pmatrix}
     p\\k
 \end{pmatrix}x^ky^{p-k} + x^p$$
-Notice that the binomial expansion is true because $R$ is an integral domain, which is commutative. 
 
 Then, by \textbf{Lemma 1}, for $k\in\{1,...,p-1\}$, since $\begin{pmatrix}
     p\\k
@@ -603,6 +601,8 @@ Then, by \textbf{Lemma 1}, for $k\in\{1,...,p-1\}$, since $\begin{pmatrix}
 \end{pmatrix}x^ky^{p-k}=0$ (since here $\begin{pmatrix}p\\k \end{pmatrix}$ is some integer multiple of the characteristic of $R$, namely $p$).
 
 So, $(x+y)^p = y^p + x^p$. For all $x,y\in R$, $x^p, y^p\in A$ satisfies $x^p+y^p = (x+y)^p \in A$, thus $A$ is closed under multiplication.
+
+Since $A$ is closed under addition, has zero element, and every element has an inverse, hence $A$ is an abelian subgroup under addition.
 
 \hfill
 
