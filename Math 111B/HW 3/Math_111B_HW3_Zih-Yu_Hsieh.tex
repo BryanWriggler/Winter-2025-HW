@@ -174,7 +174,9 @@ Then, suppose $q\in R[X]$ is an inverse of $p$, based on the same logic, $q$ has
 With both statements above, $(R[X])^\times = R^\times$.
 
 
-\break
+\hfill
+
+\hfill
 
 
 \section*{4}
@@ -207,15 +209,155 @@ Hence, $(R[X])^\times \neq R^\times$ in this case.
 \textbf{Pf:}
 
 Since $(0)$ is automatically an Ideal, thus to find some nontrivial ideal $I\subseteq M_2(\mathbb{R})$, we'll assume $I\neq (0)$ (so there are nonzero elements).
+Which, let $A\in I$ be a nonzero element, it has some entriy being $a\neq 0$. 
 
 \hfill
 
-Because Ideal is an abelian subgroup under addition, which 
+Then, notice that by multiplying $\frac{1}{a}\begin{pmatrix}
+    1&0\\0&1
+\end{pmatrix}$ to $A$, the nonzero entry $a$ gets rescaled to 1, so WLOG, we can assume the nonzero entry is $1$. (Note: because $I$ is an ideal, then every matrix in $M_2(\mathbb{R})$ multiplied by any matrix in $I$ stays in $I$).
+
+Also, regardless of which entry $1$ is in, we can always use permutation matrix to permute the entry with 1 to any other entry. (Note 2: Use $z_1,z_2,z_3$ to represent the remaining entries):
+$$\begin{pmatrix}
+    1& z_1\\z_2&z_3
+\end{pmatrix}\begin{pmatrix}
+    0&1\\1&0
+\end{pmatrix}=\begin{pmatrix}
+    z_1&1\\z_3&z_2
+\end{pmatrix},\quad \begin{pmatrix}
+    0&1\\1&0
+\end{pmatrix}\begin{pmatrix}
+    z_1&1\\z_3&z_2
+\end{pmatrix}=\begin{pmatrix}
+    z_3&z_2\\
+    z_1&1
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+    z_3&z_2\\
+    z_1&1
+\end{pmatrix}\begin{pmatrix}
+    0&1\\1&0
+\end{pmatrix}=\begin{pmatrix}
+    z_2&z_3\\
+    1&z_1
+\end{pmatrix},\quad \begin{pmatrix}
+    0&1\\1&0
+\end{pmatrix}\begin{pmatrix}
+    z_2&z_3\\
+    1&z_1
+\end{pmatrix}=\begin{pmatrix}
+    1&z_1\\
+    z_2&z_3
+\end{pmatrix}$$
+So, by multiplying the permutation matrix on the left or right, we can permute the nonzero entry to any other entries,
+hence WLOG, we can assume for every entry, there exists some matrix with that entry being nonzero.
+
+\hfill
+
+Now, we'll prove that all standard basis matrices of $M_2(\mathbb{R})$ are in $I$:
+$$\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&z_1\\z_2&z_3
+\end{pmatrix}\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}=\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&0\\z_2&0
+\end{pmatrix}=\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&z_1\\z_2&z_3
+\end{pmatrix}\begin{pmatrix}
+    0&1\\0&0
+\end{pmatrix}=\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}
+\begin{pmatrix}
+    0&1\\0&z_2
+\end{pmatrix}=\begin{pmatrix}
+    0&1\\0&0
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+    0&0\\1&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&z_1\\z_2&z_3
+\end{pmatrix}\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}=\begin{pmatrix}
+    0&0\\1&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&0\\z_2&0
+\end{pmatrix}=\begin{pmatrix}
+    0&0\\1&0
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+    0&0\\1&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&z_1\\z_2&z_3
+\end{pmatrix}\begin{pmatrix}
+    0&1\\0&0
+\end{pmatrix}=\begin{pmatrix}
+    0&0\\1&0
+\end{pmatrix}
+\begin{pmatrix}
+    0&1\\0&z_2
+\end{pmatrix}=\begin{pmatrix}
+    0&0\\0&1
+\end{pmatrix}$$
+Hence, $I$ contains the standard basis of $M_2(\mathbb{R})$.
+
+\hfill
+
+Then, for all matrix $B\in M_2(\mathbb{R})$, the following is true:
+$$B=\begin{pmatrix}
+    a&b\\c&d
+\end{pmatrix}=a\begin{pmatrix}
+    1&0\\0&1
+\end{pmatrix}\begin{pmatrix}
+    1&0\\0&0
+\end{pmatrix}+b\begin{pmatrix}
+    1&0\\0&1
+\end{pmatrix}\begin{pmatrix}
+    0&1\\0&0
+\end{pmatrix}+c\begin{pmatrix}
+    1&0\\0&1
+\end{pmatrix}\begin{pmatrix}
+    0&0\\1&0
+\end{pmatrix}+d\begin{pmatrix}
+    1&0\\0&1
+\end{pmatrix}\begin{pmatrix}
+    0&0\\0&1
+\end{pmatrix}$$
+Which each individual component by definition of ideals lie in $I$, since the basis elements are all in $I$;
+also, since $I$ is an abelian group under addition, then the sum also stays in the group.
+Hence, $B\in I$, showing that $M_2(\mathbb{R})\subseteq I$, or $I=M_2(\mathbb{R})$.
+
+\hfill
+
+So, given an ideal $I\neq (0)$, we have $I=M_2(\mathbb{R})$, hence the only ideal for $M_2(\mathbb{R})$ is $(0)$ and itself.
+
+
+
 
 \break
 
 
-\section*{6 (Not done)}
+\section*{6}
 \begin{myBox}[]{}
     \begin{question}
         Does there exist a field of order 6? Justify your answer.
@@ -224,7 +366,47 @@ Because Ideal is an abelian subgroup under addition, which
 
 \textbf{Pf:}
 
-There does not exist a field of order $6$.
+There does not exist a field of order $6$. 
+
+In general, given $F$ a finite field, it's order must be a prime power (there must exists prime $p$ and positive integer $n$, with $|R|=p^n$). Furthermore, $p=char(F)$.
+
+\hfill
+
+We'll prove it by contradiction: Suppose there exists a finite field $F$, which the order is not a prime power.
+
+Then, since $F$ is finite, $char(F)\neq 0$, then since $F$ is an integral domain, $order(1)=char(F)=p$ for some prime number $p$ (which since $F$ is a group under addition, $p$ divides $|F|$).
+
+However, since we assume $|F|$ is not a prime power, there exists some distinct prime $q\neq p$, with $q$ divides $|F|$.
+Then, based on Cauchy's Theorem, since $F$ is a finite abelian group with $q$ divides $|F|$, there exists an element $a\in F$, with $order(a)=q$. Thus, the following is true:
+$$\sum_{i=1}^{q}a = q\cdot a = 0$$
+Similarly, because $p$ is the characteristic of $F$, the following is also true:
+$$\sum_{i=1}^{p}a=p\cdot a = 0$$
+Hence, $q\cdot a=p\cdot q=0$.
+
+Yet, here is a contradiction:
+
+First, if $q>p$ (or $(q-p)>0$), then the above equation implies $(q-p)\cdot a=0$, so $order(a)<(q-p)<q=order(a)$, which is a contradiction.
+
+Else, if $p>q$ (or $(p-q)>0$), then since $(p-q)\cdot a=0$, then either $a=0$ or $(p-q)$ is a multiple of the order of $a$, namly $q\bigm| (p-q)$.
+Yet, if $a=0$, then $order(a)=1\neq q$ (since prime $q>1$), which is a contradiction;
+also, because $p,q$ are distinct primes, $p$ is not a multiple of $q$, which $(p-q)$ is also not a multiple of $q$, which is again a contradiction.
+
+\hfill
+
+So, regardless of the case, we'll eventually run into a contradiction, then given finite field $F$, its order must be a prime power.
+
+Furthermore, since $char(F)=p=order(1)$, then $p$ divides $|F|$, showing that $|F|$ is not only a prime power, but prime power of $p$, its characteristic.
+
+\hfill
+
+\hfill
+
+\textbf{No Field has Order 6:}
+
+Since $6=2\cdot 3$, which $6$ is not a prime power. Thus, there doesn't exists a field with order $6$ (since all finite field must have order being a prime power, as proven above).
+
+
+
 
 \break
 
@@ -281,21 +463,63 @@ Hence, we can conclude that $S\subseteq R$, showing that $S$ is the smallest sub
 \section*{8}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Suppose a commutative ring $R$ satisfies $x^3=x$ for all $x\in R$, what are the possible values of $char(R)$?
     \end{question}
 \end{myBox}
 
-\break
+\textbf{Pf:}
+
+(Note: The original problem is not possible, since if $\mathbb{Z}\subseteq R$, then take $2\in \mathbb{Z}$, $2^3=8\neq 2$. THe above is the modified question).
+
+\hfill
+
+Suppose commutative ring $R$ satisfies $x^3=x$ for all $x\in R$, then in particular, $(1+1)^3 = (1+1)$. So:
+$$8\cdot 1 = (1+1)^3 = (1+1)=2\cdot 1$$ 
+Hence, $8\cdot 1 = 2\cdot 1$, or $6\cdot 1 = 0$. This implies that $order(1) \leq 6$, and also $order(1)$ divides 6.
+
+So, the possible orders are $1,2,3,6$; yet, since $1\neq 0$ by convention, the $order(1)\neq 1$, so the only possibilities are $2,3,6$.
+
+\hfill
+
+Then, since $order(1)$ is finite, this implies $char(R)\neq 0$, and $char(R)=order(1)$. Thus, the possible characteristics are $2,3,6$.
+
+\hfill
+
+\textbf{Examples:}
+
+For $char(R)=2$, consider $\mathbb{Z}_2$: since $0^3 = 0$ and $1^3=1$, the property is satisfied
+
+For $char(R)=3$, consider $\mathbb{Z}_3$: it satisfies $0^3=0$, $1^3=1$, and $2^3 = 8 = 2 (\mod\ 3)$, thus the property is satisfied.
+
+For $char(R)=6$, consider $\mathbb{Z}_6$: it satisfies $0^3=0$, $1^3=1$, $2^3=8=2(\mod\ 6)$, $3^3=27=3 (\mod\ 6)$, $4^3=64=4(\mod\ 6)$, and $5^3=125=5(\mod\ 6)$, hence the property is again satisfied.
+
+\hfill
+
+\hfill
 
 
 \section*{9}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Prove or Disprove there is an integral domain $R$ of order 15.
     \end{question}
 \end{myBox}
 
-\break
+\textbf{Pf:}
+
+There does not exist an integral domain $R$ with order 15.
+
+In class, we've proven that for a finite commutative ring $R$, $R$ is an integral domain if and only if $R$ itself is a field.
+
+Thus, if we assume there exists an integral domain $R$ with order 15, since $R$ is a finite field, its order must be a prime power (proven in \textbf{Question 6}).
+
+Yet, since $|R|=15=3\cdot 5$, it is not a prime power, which is a contradiction.
+
+So, the assumption is false, there doesn't exist an integral domain with order 15.
+
+\hfill
+
+\hfill
 
 
 \section*{10}
@@ -355,15 +579,16 @@ Furthermore, since $1^p=1\in A$, then the unity element is also in $A$, showing 
 
 Given that $0^p = 0 \in A$, $A$ contains the zero element.
 
-For all $x\in R$, there are two cases for the inverse:
+For all $x\in R$, there are two cases for the additive inverse:
 \begin{itemize}
-    \item If $p=2$, then $x^2\in R$ implies $x^2+x^2=0$ (by the definition of characteristic), thus $x^2=-x^2$, so $x^2\in A$ has an inverse in $A$.
+    \item If $p=2$, then $x^2\in R$ implies $x^2+x^2=0$ (by the definition of characteristic), thus $x^2=-x^2$, so $x^2\in A$ has an additive inverse in $A$.
     \item Else if $p\neq 2$, then $p$ is odd ($p=2k+1$ for some $k\in\mathbb{Z}$). Thus:
     $$(-x)^p = (-x)^{2k+1} = ((-x)^2)^k(-x) = (x^2)^k(-x) = -x^{2k}x = -x^{2k+1}=-x^p$$
-    So, $x^p\in A$ while $-x^p\in A$, hence $x^p$ has an inverse in $A$.
+    So, $x^p\in A$ while $-x^p\in A$, hence $x^p$ has an additive inverse in $A$.
 \end{itemize}
 
-Now, the only problem remain is addition: To prove that $A$ is closed under addition, consider arbitrary $x,y\in R$, and the expression $(x+y)^p$:
+Now, the only problem remain is addition: To prove that $A$ is closed under addition, consider arbitrary $x,y\in R$, and the expression $(x+y)^p$.
+Under any commutative ring, the Binomial Theorem is true:
 $$(x+y)^p = \sum_{k=0}^{p}\begin{pmatrix}
     p\\k
 \end{pmatrix}x^ky^{p-k} = y^p + \sum_{k=1}^{p-1}\begin{pmatrix}
@@ -375,7 +600,7 @@ Then, by \textbf{Lemma 1}, for $k\in\{1,...,p-1\}$, since $\begin{pmatrix}
     p\\k
 \end{pmatrix}$ is a multiple of $p$, hence the expression $\begin{pmatrix}
     p\\k
-\end{pmatrix}x^ky^{p-k}=0$ (since the integer multiple of $x^ky^{p-k}$ is some multiple of the characteristic of $R$, namely $p$).
+\end{pmatrix}x^ky^{p-k}=0$ (since here $\begin{pmatrix}p\\k \end{pmatrix}$ is some integer multiple of the characteristic of $R$, namely $p$).
 
 So, $(x+y)^p = y^p + x^p$. For all $x,y\in R$, $x^p, y^p\in A$ satisfies $x^p+y^p = (x+y)^p \in A$, thus $A$ is closed under multiplication.
 
