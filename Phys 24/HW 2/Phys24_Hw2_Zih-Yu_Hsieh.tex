@@ -1,0 +1,106 @@
+%Phys24_Hw2_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+%\linespread{1.5}
+\usepackage{fancyhdr}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Phys 24 HW2}
+\author{Zih-Yu Hsieh}
+
+\fancypagestyle{plain}{%
+   \fancyhead[L]\textbf{Hsieh}
+   \renewcommand{\headrulewidth}{0pt}
+}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Suppose the current I that flows in the circuit in the figure below is
+        20 amperes. The distance between the wires is 5 cm. How large
+        is the force, per meter of length, that pushes horizontally on one of
+        the wires?
+    \end{question}
+
+    \begin{center}
+        \includegraphics*[width=40mm]{Purcell 6.33.png}
+    \end{center}
+\end{myBox}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        A long copper rod 8 cm in diameter has an off-center cylindrical
+        hole, as shown in Fig. 6.43, down its full length. This conductor
+        carries a current of 900 amps flowing in the direction “into the
+        paper.” What is the direction, and strength in gauss, of the magnetic
+        field at the point P that lies on the axis of the outer cylinder?
+    \end{question}
+
+    \begin{center}
+        \includegraphics*[width=40mm]{Purcell 6.37.png}
+    \end{center}
+\end{myBox}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        A round wire of radius $r_0$ carries a current $I$ distributed uniformly
+        over the cross section of the wire. Let the axis of the wire be the $z$
+
+        axis, with $\hat{z}$ the direction of the current. Show that a vector poten-
+        tial of the form $\bar{A}=A_0\hat{z}(x^2+y^2)$ will correctly give the magnetic
+
+        field $\bar{B}$ of this current at all points inside the wire. What is the value
+        of the constant, $A_0$?
+    \end{question}
+\end{myBox}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        In class, we calculate the vector potential $\bar{A}(\bar{r})$ and the magnetic induction $\bar{B}(\bar{r})$ of a circular
+        thread of current. The current density is given in cylindrical coordinates as
+        $$\bar{J}(\bar{r})=I\delta(\rho-R)\delta(z)\hat{\phi}$$
+        See lecture 4, page 1.44 and continued. The calculation of the vector potential $\bar{A}(\bar{r})$ leads to
+        an ellipitic integral, which cannot be solved analytically. Estimate the integral for the limit
+        $\rho>> R$, by a Taylor expansion. Show that in this case a dipole field emerges!
+
+    \end{question}
+\end{myBox}
+
+\end{document}
