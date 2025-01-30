@@ -263,7 +263,17 @@ $$=\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}(-\sin(\theta),\cos(\theta),0
 Given the above vector potential, then take the curl in cylindrical coordinate, we get the following:
 $$\nabla\times \bar{A}=\left(\frac{1}{\rho}\frac{\partial A_z}{\partial \phi}-\frac{\partial A_\phi}{\partial z}\right)\hat{\rho}+\left(\frac{\partial A_z}{\partial \rho}-\frac{\partial A_\rho}{\partial z}\right)\hat{\phi}+\frac{1}{\rho}\left(\frac{\partial \rho A_\phi}{\partial \rho}-\frac{\partial A_\rho}{\partial \phi}\right)\hat{z}$$
 Since $A_\rho=A_z=0$ given in the previous part, it can be simplified as:
-$$\nabla\times \bar{A}=-\frac{1}{\rho}\frac{\partial}{\partial z}\left(\frac{\mu_0I\rho R}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{\rho}+\frac{1}{\rho}\frac{\partial}{\partial \rho}\left(\rho \frac{\mu_0I\rho R}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{z}$$
-$$-\frac{1}{\rho}\left(-\frac{3}{2}\frac{\mu_0I\rho R\cdot 2z}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(2\rho\frac{\mu_0IR}{4(\rho^2+z^2)^\frac{3}{2}}-\frac{3}{2}\rho^2\frac{\mu_0IR\cdot 2\rho}{4(\rho^2+z^2)^\frac{5}{2}}\right)\hat{z}$$
+$$\nabla\times \bar{A}=-\frac{\partial}{\partial z}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(A_\phi+\rho\frac{\partial A_\phi}{\partial \rho}\right)\hat{z}$$
+$$=-\left(-\frac{3}{2}\frac{\mu_0I\rho R\cdot 2z}{4(\rho^2+z^2)^\frac{5}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}+\rho \frac{\partial}{\partial \rho}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\right)\right)\hat{z}$$
+$$=\frac{3}{2}\frac{\mu_0I\rho R\cdot 2z}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}+\left(-\frac{3}{2}\frac{\mu_0I\rho R^2\cdot 2\rho}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\right)\hat{z}$$
+$$=\frac{3\mu_0I\rho Rz}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\hat{z}$$
+So, we can conclude that for $\rho >> R$, the magnetic field is given by:
+$$\bar{B}(\bar{r})=\nabla\times \bar{A}=\frac{3\mu_0I\rho Rz}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\hat{z}$$
+
+Then, to show that it is similar to a dipole, set $z=0$ (solely in the xy plane), then the above becomes:
+$$\bar{B}(\bar{r})=\left(\frac{\mu_0IR^2}{4(\rho^2+0^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+0^2)^{\frac{5}{2}}}\right)\hat{z}$$
+$$=\left(\frac{\mu_0IR^2}{4\rho^3}-\frac{3\mu_0I\rho^2R^2}{4\rho^5}\right)\hat{z}$$
+$$=-\frac{\mu_0IR^2}{2\rho^3}\hat{z}$$
+Which the field strength is proportional to $\frac{1}{\rho^3}$, showing that it's similar to a dipole when far away.
 
 \end{document}
