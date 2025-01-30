@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  30 JAN 2025 12:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  30 JAN 2025 13:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -569,30 +569,31 @@ File: Purcell 6.37.png Graphic file (type png)
 <use Purcell 6.37.png>
 Package pdftex.def Info: Purcell 6.37.png  used on input line 126.
 (pdftex.def)             Requested size: 113.81102pt x 151.74452pt.
- [2 <./Purcell 6.37.png>] [3] [4]
-Overfull \hbox (21.3929pt too wide) detected at line 252
-\OT1/cmr/m/n/10 = [] []
- []
-
-[5] [6] (./Phys24_Hw2_Zih-Yu_Hsieh.aux)
+ [2 <./Purcell 6.37.png>] [3] [4] [5]
+<dipole.png, id=79, 198.7425pt x 193.6836pt>
+File: dipole.png Graphic file (type png)
+<use dipole.png>
+Package pdftex.def Info: dipole.png  used on input line 283.
+(pdftex.def)             Requested size: 284.52756pt x 277.31711pt.
+ [6] [7 <./dipole.png>] (./Phys24_Hw2_Zih-Yu_Hsieh.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21111 strings out of 474116
- 454843 string characters out of 5743681
- 1948187 words of memory out of 5000000
- 43118 multiletter control sequences out of 15000+600000
+ 21118 strings out of 474116
+ 454961 string characters out of 5743681
+ 1947187 words of memory out of 5000000
+ 43125 multiletter control sequences out of 15000+600000
  566324 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  93i,11n,99p,495b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Phys24_Hw2_Zih-Yu_Hsieh.pdf (6 pages, 351879 bytes).
+Output written on Phys24_Hw2_Zih-Yu_Hsieh.pdf (7 pages, 370626 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 145 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 179 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 

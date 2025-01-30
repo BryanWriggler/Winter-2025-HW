@@ -94,7 +94,7 @@ Hence, the magnetic field of the wire on the right is $\bar{B}=\frac{\mu_0I}{2\p
 
 \textbf{Plug in:}
 
-Before that, since both wires are straight, then the small change in current component $d\hat{r}$ and the displacement vector $\bar{r}-\bar{r}'$ on the wire itself are actually parallel,
+Before that, since the wires are straight, then the small change in current component $d\bar{r}$ and the displacement vector $\bar{r}-\bar{r}'$ on the wire itself are actually parallel,
 hence $d\bar{r}\times (\bar{r}-\bar{r}')=\bar{0}$, showing that a straight wire is not exerting force on itself by its own magnetic field.
 
 \hfill
@@ -103,7 +103,7 @@ Thus, to consider the affect on the left wire, only need to consider the magneti
 
 If consider just the force on one meter of the left wire, since the left wire has current $I$ traveling in the $-\hat{z}$ direction (opposite from the right wire),
 then the force on it is given by:
-$$\bar{F}=I\int_{0}^{1}d\bar{r}\times \bar{B}(\bar{r}) = I\int_{0}^{1}-dr\hat{z}\times \hat{\phi}\frac{\mu_0I}{2\pi r} = \frac{\mu_0I^2}{2\pi r}\int_{0}^{1}dr (\hat{\phi}\times \hat{z}) = \frac{\mu_0I^2}{2\pi r}\hat{r}$$
+$$\bar{F}=I\int_{0}^{1}d\bar{r}\times \bar{B}(\bar{r}) = I\int_{0}^{1}-dz\hat{z}\times \hat{\phi}\frac{\mu_0I}{2\pi r} = \frac{\mu_0I^2}{2\pi r}\int_{0}^{1}dr (\hat{\phi}\times \hat{z}) = \frac{\mu_0I^2}{2\pi r}\hat{r}$$
 Given that $r=5cm = 0.05m$, $I=20A$, and $\mu_0 = 1.257\cdot 10^{-6}N\cdot A^{-2}$, the magnitude of the force is:
 $$\|\bar{F}\|=\frac{\mu_0I^2}{2\pi r}=\frac{1.257\cdot 10^{-6}\cdot (20)^2}{2\pi \cdot 0.05} \approx 0.0016 N$$
 So, the magnitude of force per meter of length, is about $1.6 \cdot 10^{-3}N/m$.
@@ -134,10 +134,10 @@ we can think of it as two currents combined - both current have the same strengt
 with the larger wire having a current density pointing into the page, while the smaller hole having a current density pointing outward.
 
 Then, under a constant current density strength $J$, the current into the page is $\pi (0.04)^2 J$ (area of the wire),
-while the current coming out of the page is $\pi (0,02)^2 J$ (based on the area of the hole).
+while the current coming out of the page is $\pi (0.02)^2 J$ (based on the area of the hole).
 (Note: Here we convert the radius back to meters instead of $cm$).
 
-Which, the total current going into the loop is given by $\pi (0.04)^2J-\pi(0.02)^2J = \pi J(0.02\cdot 0.06) = 3\pi (0.02)^2 J$, which is 
+Which, the total current going into the page is given by $\pi (0.04)^2J-\pi(0.02)^2J = \pi J(0.02\cdot 0.06) = 3\pi (0.02)^2 J$, which is 
 set to be $900A$, thus $\pi(0.02)^2J$ represents $300A$, and $\pi(0.04)^2J = 4\pi(0.02)^2J$ represents $1200A$.
 
 (Note: for the problem, let $\hat{z}$ point into the page, and use cylindrical coordinate).
@@ -156,7 +156,7 @@ the field shouldn't change at the center).
 
 Now, construct an Amperian loop wih radius $r= 0.02 m$ (diameter $d= 4 cm$) concentric to the small hole, and travel in $\hat{\phi}$ direction.
 
-Since the hole has $I=300A$ flowing out the page (or $-I=-300A$ flowing into the page), the ammount of current enclosed by the loop,
+Since the hole has $I=\pi(0.02)^2J=300A$ flowing out the page (or $-I=-300A$ flowing into the page), the ammount of current enclosed by the loop,
 is the whole current (everything in the small hole), which is $-I$.
 
 Again, by Maxwell's equation, $\int_{\partial A}\bar{B}\cdot d\bar{s}=\mu_0 I_{enc}$ (with $I_{enc}=-I=-300A$ in this case), while using similar equation as the previous section:
@@ -194,8 +194,8 @@ Also, from the previous part, it showed that the direction of the field is to th
 
 Given that $\bar{A}(\bar{r})=A_0\hat{z}(x^2+y^2)$ in cartesian coordinate, or $\bar{A}(\bar{r})=A_0r^2\hat{z} = 0\hat{r}+0\hat{\phi}+A_0r^2\hat{z}$ in cylindrical coordinate.
 Which, consider the curl in cylindrical coordinate, the following is true:
-$$\nabla\times \bar{A}=\frac{1}{r}\left(\frac{\partial A_z}{\partial \phi}-\frac{\partial A_\phi}{\partial z}\right)\hat{r}+\left(\frac{\partial A_z}{\partial r}-\frac{\partial A_r}{\partial z}\right)\hat{\phi}+\frac{1}{r}\left(\frac{\partial rA_\phi}{\partial r}-\frac{\partial A_r}{\partial \phi}\right)\hat{r}$$
-$$=\frac{1}{r}\left(0-0\right)\hat{r}+\left(\frac{\partial}{\partial r}(A_0r^2)-0\right)\hat{\phi}+\frac{1}{r}\left(\frac{\partial r\cdot 0}{\partial r}-0\right)\hat{r} =2A_0r\hat{\phi}$$
+$$\nabla\times \bar{A}=\left(\frac{1}{r}\frac{\partial A_z}{\partial \phi}-\frac{\partial A_\phi}{\partial z}\right)\hat{r}+\left(\frac{\partial A_z}{\partial r}-\frac{\partial A_r}{\partial z}\right)\hat{\phi}+\frac{1}{r}\left(\frac{\partial rA_\phi}{\partial r}-\frac{\partial A_r}{\partial \phi}\right)\hat{r}$$
+$$=\left(\frac{1}{r}\cdot 0-0\right)\hat{r}+\left(\frac{\partial}{\partial r}(A_0r^2)-0\right)\hat{\phi}+\frac{1}{r}\left(\frac{\partial r\cdot 0}{\partial r}-0\right)\hat{r} =2A_0r\hat{\phi}$$
 So, $\bar{B}(\bar{r})=\nabla\times \bar{A}=2A_0r\hat{\phi}$.
 
 \hfill
@@ -229,32 +229,31 @@ So, we can say the given vector potential agrees with the actual magnetic field.
 
 \textbf{Pf:}
 
-For any position $\bar{r}=(\rho \cos(\theta),\rho\sin(\theta),z)$ in cartesian coordinate, since the position on the loop can be denoted as $\bar{r}'=(R\cos(\phi),R\sin(\phi),0)$ for $\phi\in[0,2\pi]$,
+For any position $\bar{r}=(\rho \cos(\theta),\rho\sin(\theta),z)$ in cartesian coordinate (which WLOG, by rotational symmetry around $\hat{z}$, we can assume $\theta=0$, or $\bar{r}=(\rho,0,z)$). 
+Since the position on the loop can be denoted as $\bar{r}'=(R\cos(\phi),R\sin(\phi),0)$ for $\phi\in[0,2\pi]$,
 then the magnitude of displacement is as follow:
-$$\|\bar{r}-\bar{r}'\|=\sqrt{(\rho\cos(\theta)-R\cos(\phi))^2+(\rho\sin(\theta)-R\sin(\phi))^2+z^2}$$
-$$=\sqrt{\rho^2+R^2+z^2-2\rho R\cos(\theta)\cos(\phi)-2\rho R\sin(\theta)\sin(\phi)}$$
-$$=\sqrt{\rho^2+R^2+z^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}$$
+$$\|\bar{r}-\bar{r}'\|=\sqrt{(\rho-R\cos(\phi))^2+(0-R\sin(\phi))^2+z^2}$$
+$$=\sqrt{\rho^2+R^2+z^2-2\rho R\cos(\phi)}$$
 Which, the vector potential is given as follow:
 $$\bar{A}(\bar{r})=\frac{\mu_0}{4\pi}\int_{V}\frac{\bar{J}(\bar{r}')}{\|\bar{r}-\bar{r}'\|}dV=\frac{\mu_0}{4\pi}\int_{C}\frac{I}{\|\bar{r}-\bar{r}'\|}d\bar{r}$$
 The $C$ above indicates the ring itself, which $d\bar{r}=Rd\phi\hat{\phi}=Rd\phi(-\sin(\phi),\cos(\phi),0)$ in cartesian coordinate. So, the above integral becomes:
-$$\bar{A}(\bar{r})=\frac{\mu_0}{4\pi}\int_{\phi=0}^{2\pi}\frac{I(-\sin(\phi),\cos(\phi),0)R}{\sqrt{\rho^2+R^2+z^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}}d\phi$$
+$$\bar{A}(\bar{r})=\frac{\mu_0}{4\pi}\int_{\phi=0}^{2\pi}\frac{I(-\sin(\phi),\cos(\phi),0)R}{\sqrt{\rho^2+R^2+z^2-2\rho R\cos(\phi)}}d\phi$$
 
 Given that $\rho>>R$, we can do the following to the square root:
-$$\frac{1}{\sqrt{\rho^2+R^2+z^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}}$$
-$$=\frac{1}{\sqrt{\rho^2+z^2}}\left(1+\frac{R^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{\rho^2+z^2}\right)^{-\frac{1}{2}}$$
+$$\frac{1}{\sqrt{\rho^2+R^2+z^2-2\rho R\cos(\phi)}}$$
+$$=\frac{1}{\sqrt{\rho^2+z^2}}\left(1+\frac{R^2-2\rho R\cos(\phi)}{\rho^2+z^2}\right)^{-\frac{1}{2}}$$
 Using the Taylor Polynomial $(1+x)^{-\frac{1}{2}}\approx 1-\frac{1}{2}x$, since $\rho>>R$, the above fraction quantity is close to $0$, hence the approximation makes sense:
-$$\frac{1}{\sqrt{\rho^2+z^2}}\left(1+\frac{R^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{\rho^2+z^2}\right)^{-\frac{1}{2}}$$
-$$\approx \frac{1}{\sqrt{\rho^2+z^2}}\left(1-\frac{1}{2}\frac{R^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{\rho^2+z^2}\right)$$
-$$=\frac{1}{\sqrt{\rho^2+z^2}}\left(1-\frac{R^2}{2(\rho^2+z^2)}\right)+\frac{\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{(\rho^2+z^2)^{\frac{3}{2}}}$$
+$$\frac{1}{\sqrt{\rho^2+z^2}}\left(1+\frac{R^2-2\rho R\cos(\phi)}{\rho^2+z^2}\right)^{-\frac{1}{2}}$$
+$$\approx \frac{1}{\sqrt{\rho^2+z^2}}\left(1-\frac{1}{2}\frac{R^2-2\rho R\cos(\phi)}{\rho^2+z^2}\right)$$
+$$=\frac{1}{\sqrt{\rho^2+z^2}}\left(1-\frac{R^2}{2(\rho^2+z^2)}\right)+\frac{\rho R\cos(\phi)}{(\rho^2+z^2)^{\frac{3}{2}}}$$
 Then, given that the integral of $\sin$ and $\cos$ from $0$ to $2\pi$ is $0$, then we can ignore the above constant term (since after multiplying by $\sin$ or $\cos$, the integral with the constant term is $0$).
 Thus, it suffices to evaluate the following:
-$$\bar{A}(\bar{r})=\frac{\mu_0 I}{4\pi}\int_{0}^{2\pi}(-\sin(\phi),\cos(\phi),0)\frac{\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))R}{(\rho^2+z^2)^{\frac{3}{2}}}d\phi$$
-$$=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^{\frac{3}{2}}}\left(\int_{0}^{2\pi}-(\cos(\theta)\sin(\phi)\cos(\phi)+\sin(\theta)\sin^2(\phi))d\phi,\int_{0}^{2\pi}(\cos(\theta)\cos^2(\phi)+\sin(\theta)\sin(\phi)\cos(\phi))d\phi,0\right)$$
-Now, notice that since $\sin(\phi)\cos(\phi)=\frac{1}{2}\sin(2\phi)$, which integrating from $0$ to $2\pi$ is again $0$, thus the above integral can ignore the part with $\sin(\phi)\cos(\phi)$, and left with the following:
-$$\bar{A}(\bar{r})=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^\frac{3}{2}}\left(\int_{0}^{2\pi}-\sin(\theta)\sin^2(\phi)d\phi,\int_{0}^{2\pi}\cos(\theta)\cos^2(\phi)d\phi,0\right)$$
-Then, because the integrall of $\sin^2,\cos^2$ from $0$ to $2\pi$ is $\pi$, the above can be written as:
-$$\bar{A}(\bar{r})=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^\frac{3}{2}}\left(-\sin(\theta)\pi,\cos(\theta)\pi,0\right)$$
-$$=\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}(-\sin(\theta),\cos(\theta),0)=\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\hat{\phi}$$
+$$\bar{A}(\bar{r})=\frac{\mu_0 I}{4\pi}\int_{0}^{2\pi}(-\sin(\phi),\cos(\phi),0)\frac{\rho R\cos(\phi)R}{(\rho^2+z^2)^{\frac{3}{2}}}d\phi$$
+$$=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^{\frac{3}{2}}}\left(\int_{0}^{2\pi}-\sin(\phi)\cos(\phi)d\phi,\int_{0}^{2\pi}\cos^2(\phi)d\phi,0\right)$$
+Now, notice that since $\sin(\phi)\cos(\phi)=\frac{1}{2}\sin(2\phi)$, which integrating from $0$ to $2\pi$ is again $0$, thus the above integral can ignore the part with $\sin(\phi)\cos(\phi)$, 
+and also because the integrall of $\sin^2,\cos^2$ from $0$ to $2\pi$ is $\pi$, the above can be written as:
+$$\bar{A}(\bar{r})=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^\frac{3}{2}}\left(0,\pi,0\right)=\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\hat{\phi}$$
+(Note: set $\theta=0$ implies $\hat{\phi}=\hat{y}$ in cartesian coordinate).
 
 \hfill
 
@@ -264,16 +263,24 @@ Given the above vector potential, then take the curl in cylindrical coordinate, 
 $$\nabla\times \bar{A}=\left(\frac{1}{\rho}\frac{\partial A_z}{\partial \phi}-\frac{\partial A_\phi}{\partial z}\right)\hat{\rho}+\left(\frac{\partial A_z}{\partial \rho}-\frac{\partial A_\rho}{\partial z}\right)\hat{\phi}+\frac{1}{\rho}\left(\frac{\partial \rho A_\phi}{\partial \rho}-\frac{\partial A_\rho}{\partial \phi}\right)\hat{z}$$
 Since $A_\rho=A_z=0$ given in the previous part, it can be simplified as:
 $$\nabla\times \bar{A}=-\frac{\partial}{\partial z}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(A_\phi+\rho\frac{\partial A_\phi}{\partial \rho}\right)\hat{z}$$
-$$=-\left(-\frac{3}{2}\frac{\mu_0I\rho R\cdot 2z}{4(\rho^2+z^2)^\frac{5}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}+\rho \frac{\partial}{\partial \rho}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\right)\right)\hat{z}$$
-$$=\frac{3}{2}\frac{\mu_0I\rho R\cdot 2z}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}+\left(-\frac{3}{2}\frac{\mu_0I\rho R^2\cdot 2\rho}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\right)\hat{z}$$
-$$=\frac{3\mu_0I\rho Rz}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\hat{z}$$
+$$=-\left(-\frac{3}{2}\frac{\mu_0I\rho R^2\cdot 2z}{4(\rho^2+z^2)^\frac{5}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}+\rho \frac{\partial}{\partial \rho}\left(\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\right)\right)\hat{z}$$
+$$=\frac{3\mu_0I\rho R^2z}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}+\left(-\frac{3}{2}\frac{\mu_0I\rho R^2\cdot 2\rho}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\right)\hat{z}$$
+$$=\frac{3\mu_0I\rho R^2z}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\hat{z}$$
 So, we can conclude that for $\rho >> R$, the magnetic field is given by:
-$$\bar{B}(\bar{r})=\nabla\times \bar{A}=\frac{3\mu_0I\rho Rz}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\hat{z}$$
+$$\bar{B}(\bar{r})=\nabla\times \bar{A}=\frac{3\mu_0I\rho R^2z}{4(\rho^2+z^2)^\frac{5}{2}}\hat{\rho}+\left(\frac{\mu_0IR^2}{4(\rho^2+z^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+z^2)^{\frac{5}{2}}}\right)\hat{z}$$
 
 Then, to show that it is similar to a dipole, set $z=0$ (solely in the xy plane), then the above becomes:
 $$\bar{B}(\bar{r})=\left(\frac{\mu_0IR^2}{4(\rho^2+0^2)^{\frac{3}{2}}}-\frac{3\mu_0I\rho^2 R^2}{4(\rho^2+0^2)^{\frac{5}{2}}}\right)\hat{z}$$
 $$=\left(\frac{\mu_0IR^2}{4\rho^3}-\frac{3\mu_0I\rho^2R^2}{4\rho^5}\right)\hat{z}$$
 $$=-\frac{\mu_0IR^2}{2\rho^3}\hat{z}$$
 Which the field strength is proportional to $\frac{1}{\rho^3}$, showing that it's similar to a dipole when far away.
+
+\hfill
+
+Here is a graph of the given field:
+
+\begin{center}
+    \includegraphics*[width=100mm]{dipole.png}
+\end{center}
 
 \end{document}
