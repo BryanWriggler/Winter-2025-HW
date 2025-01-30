@@ -130,52 +130,49 @@ So, the magnitude of force per meter of length, is about $1.6 \cdot 10^{-3}N/m$.
 \textbf{Pf:}
 
 Instead of thinking it as having $900A$ of current flowing into the paper under the remaining region,
-we can think of it as two currents combined - $900A$ going into the page with the larger copper rod, 
-and $900A$ coming out of the page with the smaller hole (so in the hole region, the net current is $0$, identical to have noting flowing through it).
+we can think of it as two currents combined - both current have the same strength of uniform current density,
+with the larger wire having a current density pointing into the page, while the smaller hole having a current density pointing outward.
 
-Let the direction pointing into the page be $\hat{z}$, and use the cylindrical coordinate.
+Then, under a constant current density strength $J$, the current into the page is $\pi (0.04)^2 J$ (area of the wire),
+while the current coming out of the page is $\pi (0,02)^2 J$ (based on the area of the hole).
+(Note: Here we convert the radius back to meters instead of $cm$).
 
-Again, based on the same symmetry argument done in \textbf{Question 1}, we can assume the magnetic field is purely in angular direction $\hat{\phi}$.
+Which, the total current going into the loop is given by $\pi (0.04)^2J-\pi(0.02)^2J = \pi J(0.02\cdot 0.06) = 3\pi (0.02)^2 J$, which is 
+set to be $900A$, thus $\pi(0.02)^2J$ represents $300A$, and $\pi(0.04)^2J = 4\pi(0.02)^2J$ represents $1200A$.
 
-\hfill
-
-\textbf{Field of current flowing into the page:}
-
-Construct an Amperian loop with radius $r<4cm$ (diameter $d<8cm$) centered at $P$ (big disk's center) and travel in $\hat{\phi}$ direction.
-
-Since the wire has $I=900A$ flowing into the page, while the cross-section area of the whole disk is $\pi\cdot 4 cm^2$, then the amount of current enclosed by
-the loop is $I\cdot \frac{\pi r^2}{\pi \cdot 4^2} = \frac{r^2}{4^2}I$.
-
-Now, by Maxwell's Equation, since $\int_{\partial A}\bar{B}\cdot d\bar{s}=\mu_0 I$ ($I$ is the enclosed current, here it is $\frac{r^2}{4}I$), while the magnetic field $\bar{B}=B_\phi\hat{\phi}$, and the spacial differential $d\bar{s}=r\hat{\phi}d\phi$,
-then the integral is given by:
-$$\int_{\partial A}\bar{B}\cdot d\bar{s}=\int_{0}^{2\pi}(A_\phi\hat{\phi})\cdot rd\phi \hat{\phi} = 2\pi r B_\phi$$
-Which, $B_\phi$ is again a constant given that $r$ is fixed. So, $2\pi rB_\phi = \frac{\mu_0r^2}{4^2}I$, then $B_\phi = \frac{\mu_0r}{32\pi}I$.
-
-Since point $P$ is at the center, then $r=0$, thus $B_\phi = 0$, showing that the current going into the page is not producing a net field at point $P$.
+(Note: for the problem, let $\hat{z}$ point into the page, and use cylindrical coordinate).
 
 \hfill
 
-\textbf{Field of current flowing out the page:}
+\textbf{Field of current flowing into the page in the wire:}
 
-Now, construct an Amperian loop wih radius $r= 2cm$ (diameter $d= 4 cm$) concentric to the small hole, and travel in $\hat{\phi}$ direction.
+Based on the argument done in \textbf{Question 1}, one can argue that the field is solely in $\hat{\phi}$; which, since point $P$ is at the center
+of the circular wire, then based on rotational symmetry, it should have no field provided by the circular wire (since after rotating for some angle,
+the field shouldn't change at the center).
 
-Since the wire has $I=900A$ flowing out the page (or $-I=-900A$ flowing into the page), the ammount of current enclosed by the loop,
+\hfill
+
+\textbf{Field of current flowing out from the hole:}
+
+Now, construct an Amperian loop wih radius $r= 0.02 m$ (diameter $d= 4 cm$) concentric to the small hole, and travel in $\hat{\phi}$ direction.
+
+Since the hole has $I=300A$ flowing out the page (or $-I=-300A$ flowing into the page), the ammount of current enclosed by the loop,
 is the whole current (everything in the small hole), which is $-I$.
 
-Again, by Maxwell's equation, $\int_{\partial A}\bar{B}\cdot d\bar{s}=-\mu_0 I$ (because with respect to the corrdinate, the current here is negative), while using similar equation as the previous section:
-$$\int_{\partial A}\bar{B}\cdot d\bar{s}=\int_{0}^{2\pi}(A_\phi\hat{\phi})\cdot rd\phi \hat{\phi} = 2\pi r B_\phi$$
+Again, by Maxwell's equation, $\int_{\partial A}\bar{B}\cdot d\bar{s}=\mu_0 I_{enc}$ (with $I_{enc}=-I=-300A$ in this case), while using similar equation as the previous section:
+$$\int_{\partial A}\bar{B}\cdot d\bar{s}=\int_{0}^{2\pi}(B_\phi\hat{\phi})\cdot rd\phi \hat{\phi} = 2\pi r B_\phi$$
 Which, $B_\phi$ is again a constant given that $r$ is fixed. So, $2\pi rB_\phi = -\mu_0I$, then $B_\phi = -\frac{\mu_0}{2\pi r}I$.
-Since point $P$ is $2cm$ away from the center, then $\bar{B}(P)=-\frac{\mu_0}{2\pi \cdot 2}I\hat{\phi}$, and since $\hat{z}$ is pointing into the page,
+Since point $P$ is $0.02m$ away from the center, then $\bar{B}(P)=-\frac{\mu_0}{2\pi \cdot 0.02}I\hat{\phi}$, and since $\hat{z}$ is pointing into the page,
 here $\hat{\phi}$ is pointing to the right, or $\bar{B}(P)$ is pointing to the left.
 
 \hfill
 
-Add the two fields up, since the current pointing into the page (provided by the outer cylinder) provide $\bar{B}=\bar{0}$, then the field is purely provided by the current out of the page (by the hole), or $\bar{B}(P)=-\frac{\mu_0}{2\pi \cdot 2}I\hat{\phi}$.
+Add the two fields up, since the current pointing into the page (provided by the outer cylinder) provide $\bar{B}=\bar{0}$, then the field is purely provided by the current out of the page (by the hole), or $\bar{B}(P)=-\frac{\mu_0}{2\pi \cdot 0.02}I\hat{\phi}$.
 
-Given that $\mu_0=1.257\cdot 10^{-6}N\cdot A^{-2}$, $I=900A$, $2$ above is in $cm$, thus convert to $0.02m$, then the magnitude of the field is:
-$$\|\bar{B}(P)\|=\frac{\mu_0I}{2\pi\cdot 0.02} = \frac{1.257\cdot 10^{-6}\cdot 900}{2\pi \cdot 0.02} = 0.009 N/(A\cdot m)$$
-Since $1G = 10^{-4}T = 10^{-4}N/(A\cdot m)$, while $\|\bar{B}(P)\| = 9\cdot 10^{-3} N/(A\cdot m)=90 \cdot 10^{-4}T$,
-then $\|\bar{B}(P)\| = 90G$.
+Given that $\mu_0=1.257\cdot 10^{-6}N\cdot A^{-2}$, $I=300A$, then the magnitude of the field is:
+$$\|\bar{B}(P)\|=\frac{\mu_0I}{2\pi\cdot 0.02} = \frac{1.257\cdot 10^{-6}\cdot 300}{2\pi \cdot 0.02} = 0.003 N/(A\cdot m)$$
+Since $1G = 10^{-4}T = 10^{-4}N/(A\cdot m)$, while $\|\bar{B}(P)\| = 3\cdot 10^{-3} N/(A\cdot m)=30 \cdot 10^{-4}T$,
+then $\|\bar{B}(P)\| = 30G$.
 
 Also, from the previous part, it showed that the direction of the field is to the left of the page.
 
@@ -214,7 +211,7 @@ Then, the following is true:
 $$2\pi rB_\phi(r)=\mu_0 I_{enc}=\mu_0\frac{r^2}{r_0^2}I,\quad B_\phi(r)=\frac{\mu_0r}{2\pi r_0^2}I$$
 Hence, $\bar{B}(\bar{r})=\frac{\mu_0r}{2\pi r_0^2}I\hat{\phi}=2A_0r\hat{\phi}$, so: 
 $$A_0 = \frac{\mu_0I}{4\pi r_0^2}$$
-So, we can say the given vector potential agrees with the 
+So, we can say the given vector potential agrees with the actual magnetic field.
 
 \break
 
@@ -227,8 +224,46 @@ So, we can say the given vector potential agrees with the
         See lecture 4, page 1.44 and continued. The calculation of the vector potential $\bar{A}(\bar{r})$ leads to
         an ellipitic integral, which cannot be solved analytically. Estimate the integral for the limit
         $\rho>> R$, by a Taylor expansion. Show that in this case a dipole field emerges!
-
     \end{question}
 \end{myBox}
+
+\textbf{Pf:}
+
+For any position $\bar{r}=(\rho \cos(\theta),\rho\sin(\theta),z)$ in cartesian coordinate, since the position on the loop can be denoted as $\bar{r}'=(R\cos(\phi),R\sin(\phi),0)$ for $\phi\in[0,2\pi]$,
+then the magnitude of displacement is as follow:
+$$\|\bar{r}-\bar{r}'\|=\sqrt{(\rho\cos(\theta)-R\cos(\phi))^2+(\rho\sin(\theta)-R\sin(\phi))^2+z^2}$$
+$$=\sqrt{\rho^2+R^2+z^2-2\rho R\cos(\theta)\cos(\phi)-2\rho R\sin(\theta)\sin(\phi)}$$
+$$=\sqrt{\rho^2+R^2+z^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}$$
+Which, the vector potential is given as follow:
+$$\bar{A}(\bar{r})=\frac{\mu_0}{4\pi}\int_{V}\frac{\bar{J}(\bar{r}')}{\|\bar{r}-\bar{r}'\|}dV=\frac{\mu_0}{4\pi}\int_{C}\frac{I}{\|\bar{r}-\bar{r}'\|}d\bar{r}$$
+The $C$ above indicates the ring itself, which $d\bar{r}=Rd\phi\hat{\phi}=Rd\phi(-\sin(\phi),\cos(\phi),0)$ in cartesian coordinate. So, the above integral becomes:
+$$\bar{A}(\bar{r})=\frac{\mu_0}{4\pi}\int_{\phi=0}^{2\pi}\frac{I(-\sin(\phi),\cos(\phi),0)R}{\sqrt{\rho^2+R^2+z^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}}d\phi$$
+
+Given that $\rho>>R$, we can do the following to the square root:
+$$\frac{1}{\sqrt{\rho^2+R^2+z^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}}$$
+$$=\frac{1}{\sqrt{\rho^2+z^2}}\left(1+\frac{R^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{\rho^2+z^2}\right)^{-\frac{1}{2}}$$
+Using the Taylor Polynomial $(1+x)^{-\frac{1}{2}}\approx 1-\frac{1}{2}x$, since $\rho>>R$, the above fraction quantity is close to $0$, hence the approximation makes sense:
+$$\frac{1}{\sqrt{\rho^2+z^2}}\left(1+\frac{R^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{\rho^2+z^2}\right)^{-\frac{1}{2}}$$
+$$\approx \frac{1}{\sqrt{\rho^2+z^2}}\left(1-\frac{1}{2}\frac{R^2-2\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{\rho^2+z^2}\right)$$
+$$=\frac{1}{\sqrt{\rho^2+z^2}}\left(1-\frac{R^2}{2(\rho^2+z^2)}\right)+\frac{\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))}{(\rho^2+z^2)^{\frac{3}{2}}}$$
+Then, given that the integral of $\sin$ and $\cos$ from $0$ to $2\pi$ is $0$, then we can ignore the above constant term (since after multiplying by $\sin$ or $\cos$, the integral with the constant term is $0$).
+Thus, it suffices to evaluate the following:
+$$\bar{A}(\bar{r})=\frac{\mu_0 I}{4\pi}\int_{0}^{2\pi}(-\sin(\phi),\cos(\phi),0)\frac{\rho R(cos(\theta)\cos(\phi)+\sin(\theta)\sin(\phi))R}{(\rho^2+z^2)^{\frac{3}{2}}}d\phi$$
+$$=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^{\frac{3}{2}}}\left(\int_{0}^{2\pi}-(\cos(\theta)\sin(\phi)\cos(\phi)+\sin(\theta)\sin^2(\phi))d\phi,\int_{0}^{2\pi}(\cos(\theta)\cos^2(\phi)+\sin(\theta)\sin(\phi)\cos(\phi))d\phi,0\right)$$
+Now, notice that since $\sin(\phi)\cos(\phi)=\frac{1}{2}\sin(2\phi)$, which integrating from $0$ to $2\pi$ is again $0$, thus the above integral can ignore the part with $\sin(\phi)\cos(\phi)$, and left with the following:
+$$\bar{A}(\bar{r})=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^\frac{3}{2}}\left(\int_{0}^{2\pi}-\sin(\theta)\sin^2(\phi)d\phi,\int_{0}^{2\pi}\cos(\theta)\cos^2(\phi)d\phi,0\right)$$
+Then, because the integrall of $\sin^2,\cos^2$ from $0$ to $2\pi$ is $\pi$, the above can be written as:
+$$\bar{A}(\bar{r})=\frac{\mu_0I\rho R^2}{4\pi(\rho^2+z^2)^\frac{3}{2}}\left(-\sin(\theta)\pi,\cos(\theta)\pi,0\right)$$
+$$=\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}(-\sin(\theta),\cos(\theta),0)=\frac{\mu_0I\rho R^2}{4(\rho^2+z^2)^\frac{3}{2}}\hat{\phi}$$
+
+\hfill
+
+\textbf{Magnetic Field:}
+
+Given the above vector potential, then take the curl in cylindrical coordinate, we get the following:
+$$\nabla\times \bar{A}=\left(\frac{1}{\rho}\frac{\partial A_z}{\partial \phi}-\frac{\partial A_\phi}{\partial z}\right)\hat{\rho}+\left(\frac{\partial A_z}{\partial \rho}-\frac{\partial A_\rho}{\partial z}\right)\hat{\phi}+\frac{1}{\rho}\left(\frac{\partial \rho A_\phi}{\partial \rho}-\frac{\partial A_\rho}{\partial \phi}\right)\hat{z}$$
+Since $A_\rho=A_z=0$ given in the previous part, it can be simplified as:
+$$\nabla\times \bar{A}=-\frac{1}{\rho}\frac{\partial}{\partial z}\left(\frac{\mu_0I\rho R}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{\rho}+\frac{1}{\rho}\frac{\partial}{\partial \rho}\left(\rho \frac{\mu_0I\rho R}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{z}$$
+$$-\frac{1}{\rho}\left(-\frac{3}{2}\frac{\mu_0I\rho R\cdot 2z}{4(\rho^2+z^2)^\frac{3}{2}}\right)\hat{\rho}+\frac{1}{\rho}\left(2\rho\frac{\mu_0IR}{4(\rho^2+z^2)^\frac{3}{2}}-\frac{3}{2}\rho^2\frac{\mu_0IR\cdot 2\rho}{4(\rho^2+z^2)^\frac{5}{2}}\right)\hat{z}$$
 
 \end{document}
