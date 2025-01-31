@@ -1,0 +1,156 @@
+%Math_CS_Topology_HW3_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+%\linespread{1.5}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS Topology HW3}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that every subspace of a Hausdorff space is Hausdorff.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Suppose $X$ is a Hausdorff topological space, and define the subspace topology on $A\subseteq X$.
+
+Then, for all distinct elements $a,b\in A\subseteq X$, since $X$ is Hausdorff, there exists two disjoint open sets $U,V\subseteq X$, 
+with $a\in U$ and $b\in V$ (which $a\notin V$ and $b\notin U$).
+
+Then, since $a\in U\cap A$ (which is an open neighborhood of $a$ in subspace topology on $A$) and $b\in V\cap A$ (which is an open neighborhood of $b$ in subspace topology on $A$).
+
+Also, since $U\cap V=\emptyset$, then $(U\cap A)\cap (V\cap A)=(U\cap V)\cap A=\emptyset$, hence the two open sets are disjoint.
+
+\hfill
+
+So, for any two points $a,b\in A$, there exists two disjoint open sets $(U\cap A)$ and $(V\cap A)$ under subspace topology,
+such that $a\in (U\cap A)$ and $b\in (V\cap A)$, showing that $A$ is Hausdorff under subspace topology.
+
+\hfill
+
+\hfill
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that every product of two Hausdorff spaces is Hausdorff.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given $X,Y$ two Hausdorff topological space, and define the product topology on $X\times Y$.
+Then, for any distinct elements $(x_1,y_1),(x_2,y_2)\in X\times Y$, either $x_1\neq x_2$ or $y_1\neq y_2$.
+
+\hfill
+
+If $x_1\neq x_2$, then since $X$ is Hausdorff, there exists two disjoint open sets $U,V\subseteq X$, with $x_1\in U$ and $x_2\in V$.
+Then, consider the basis element $U\times Y$ and $V\times Y$: From the above construction, $(x_1,y_1)\in U\times Y$ while $(x_2,y_2)\in V\times Y$;
+also, since $(U\times Y)\cap (V\times Y) = (U\cap V)\times (Y\cap Y) = \emptyset$ (since $U\cap V=\emptyset$), then the two basis elements of product topology are disjoint,
+while each cover one of the given points.
+
+Else, if $y_1\neq y_2$, by similar logic ($Y$ is Hausdorff), there exists two disjoint open sets $A,B\subseteq Y$, which $y_1\in A$ and $y_2\in B$.
+Then, the basis element $X\times A$ and $X\times B$ satisfies $(X\times A)\cap (X\times B)=(X\cap X)\times (A\cap B)=\emptyset$ (since $A\cap B=\emptyset$ by assumption),
+and $(x_1,y_1)\in X\times A$ while $(x_2,y_2)\in X\times B$, which again the disjoint basis elements each cover one of the given points.
+
+\hfill
+
+Regardless of the case, we'll find two open sets (basis elements) that cover $(x_1,y_1)$ and $(x_2,y_2)$ respectively,
+showing that $X\times Y$ under product topology is also Hausdorff.
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Give an example of a quotient of a Hausdorff space that is not Hausdorff.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given $\mathbb{R}$ with the standard topology, and the following function $f:\mathbb{R}\rightarrow\mathbb{Z}$:
+$$f(x)=\begin{cases}
+    x & x\in\mathbb{Z}\\
+    2n & x\notin \mathbb{Z},\ n\in\mathbb{Z},\ |x-2n|=\min\{|x-2k|\ :\ k\in\mathbb{Z}\}
+\end{cases}$$
+So, if $x\in\mathbb{Z}$, the function does nothing; else if $x\notin Z$, then it gets mapped to the closest even integer in $\mathbb{Z}$, which the function is surjective.
+(Note: this is the Digital Line Topology covered in class).
+
+\hfill
+
+Now, if we apply the quotient topology on $\mathbb{Z}$ according to this surjective function, the space is not Hausdorff:
+
+Consider the element $1\in\mathbb{Z}$. For all open neighborhood $V\subseteq \mathbb{Z}$ of $1$, $f^{-1}(V)\subseteq \mathbb{R}$ is open.
+
+Which, since $1\in\mathbb{R}$ satisfies $f(1)=1$, then $1\in f^{-1}(V)$; and since $f^{-1}(V)\subseteq \mathbb{R}$ is open under standard topology,
+there exists radius $r>0$, such that $(1-r,1+r)\subseteq f^{-1}(V)$ (also for simplicity, choose $r<1$).
+
+Then, consider the element $(1-\frac{r}{2})\in (1-r,1+r)\subseteq f^{-1}(V)$: since $0<r<1$, then $0<(1-\frac{r}{2})<1<2$, which the closest even integer to $(1-\frac{r}{2})$ is $0$.
+Thus, $f(1-\frac{r}{2})=0$, showing that $0\in V$.
+
+So, any open neighborhood $V\subseteq \mathbb{Z}$ of $1$ must contain $0$, there doesn't exist two disjoint open subsets $U,V\subseteq \mathbb{Z}$
+with $1\in V$ and $0\in U$, showing that $\mathbb{Z}$ is not Hausdorff under this quotient topology, while $\mathbb{R}$ is in fact Hausdorff under standard topology.
+
+\hfill
+
+\hfill
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that a Möbius band can be obtained by gluing two of the edges of a
+        triangle. This can be a topology-style proof that relies heavily on pictures.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+The following graph shows how having the two edges of the triangle needs to be glued in opposite orientation, 
+we can form a Möbius band out of it: By cutting the triangle that separates the two sides with opposite orientation,
+we can glue the two original sides together with the orientation agrees with each other.
+
+Now, it will form a rectangle with the diagonal being the original two edges of the triangle, 
+and the edge created by the cut becomes the two opposite sides with opposite orientations, whch is topologically equivalent
+to a Möbius band.
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=100mm]{mobius.jpg}
+        \caption{The Equivalence of Triangle, Rectangle, and Möbius Band under some Orientation}
+    \end{center}
+\end{figure}
+
+\end{document}
