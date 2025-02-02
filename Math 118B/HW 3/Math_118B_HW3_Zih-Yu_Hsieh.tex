@@ -121,7 +121,7 @@ Then, since $\mathcal{F}$ covers the $\bigcup_{n\in\mathbb{Z}_+}E_n$, and the se
 
 \rule{15.5cm}{0.1mm}
 
-\hfill
+\break
 
 \subsection*{3}
 \begin{myBox2}[]{}
@@ -196,7 +196,7 @@ This demonstrates that $\lim_{\eta\rightarrow 0^+}\Omega(f,x,\eta)=\omega=\inf_{
 
 \rule{15.5cm}{0.1mm}
 
-\hfill
+\break
 
 \subsection*{5}
 \begin{myBox2}[]{}
@@ -296,7 +296,7 @@ this implies $x\in A_{1/j}=\left\{x\in[a,b]\ :\ \omega_f(x)\geq \frac{1}{j}\righ
 
 \rule{15.5cm}{0.1mm}
 
-\hfill
+\break
 
 \subsection*{8}
 \begin{myBox2}[]{}
@@ -387,7 +387,39 @@ So, this $\eta>0$ satisfies the desired condition.
     
     \hfill
 
-    \item[$\impliedby:$] 
+    \hfill
+
+    \item[$\impliedby:$] Suppose $D_f$ has measure $0$. Then, for all $\epsilon>0$, since $\frac{\epsilon}{(b-a)}>0$, by Archimedean's Property, there exists $j\in\mathbb{N}$, with $\frac{1}{j}<\frac{\epsilon}{(b-a)}$.
+    Then, consider the set $A_{1/j}\subseteq D_f$:
+    
+    \hfill
+
+    \textbf{Partition for Points in $A_{1/j}$:}
+
+    Before starting this, since the function $f$ is bounded, there exists $M>0$, such that $|f(x)|<M$ for all $x\in[a,b]$. Hence, for all $x_1,x_2\in[a,b]$,
+    $|f(x_1)-f(x_2)|\leq |f(x_1)|+|f(x_2)| < 2M$.
+
+    \hfill
+
+    Given that $A_{1/j}\subseteq D_f$ and $D_f$ has measure $0$, then $A_{1/j}$ has measure $0$ (or else, if $A_{1/j}$ has nonzero measure, then ever open interval cover of $D_f$ covers $A_{1/j}$, which must have some nonzero total length greater than some $r>0$, showing that $D_f$ also has nonzero measure).
+
+    Hence, for given $\epsilon>0$, since $\frac{\epsilon}{2M}>0$, there exists collection of open interval covering $\{I_n\}_{n\in\mathbb{Z}_+}$ for $A_{1/j}$, with $\sum_{n=1}^{\infty}|I_n|<\frac{\epsilon}{2M}$.
+    Then, by statement proven in \textbf{Question 6}, since $A_{1/j}$ is compact, there exists $n_1,...,n_k\in\mathbb{Z}_+$, with $A_{1/j}\subseteq \bigcup_{i=1}^{k}I_{n_i}$ 
+    
+    (Note 1: WLOG, assume the open intervals in this collection is mutually disjoint; if not, we can take the union of the ones with common intersection instead, while the length is still bounded by $\frac{\epsilon}{2M}$).
+    
+    (Note 2: Assume each $I_{n_i}$ has nonempty intersection with $A_{1/j}$).
+
+    Let $P_1$ be a partition consists of the infimum and supremum of each interval $I_{n_i}\cap [a,b]$, which will be used later.
+
+    \hfill
+
+    \textbf{Partition for Points outside $A_{1/j}$:}
+
+    Consider the set $K=[a,b]\setminus A_{1/j}$: By definition of $A_{1/j}$ in \textbf{Question 6}, for every $x\in K$, since $x\notin A_{1/j}$, then $\omega_f(x)<\frac{1}{j}$.
+
+    
+
     
 \end{itemize}
 
