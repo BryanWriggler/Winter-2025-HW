@@ -387,9 +387,11 @@ So, this $\eta>0$ satisfies the desired condition.
     
     \hfill
 
+    \rule{155mm}{0.1mm}
+
     \hfill
 
-    \item[$\impliedby:$] Suppose $D_f$ has measure $0$. Then, for all $\epsilon>0$, since $\frac{\epsilon}{(b-a)}>0$, by Archimedean's Property, there exists $j\in\mathbb{N}$, with $\frac{1}{j}<\frac{\epsilon}{(b-a)}$.
+    \item[$\impliedby:$] Suppose $D_f$ has measure $0$. Then, for all $\epsilon>0$, since $\frac{\epsilon}{2(b-a)}>0$, by Archimedean's Property, there exists $j\in\mathbb{N}$, with $\frac{1}{j}<\frac{\epsilon}{2(b-a)}$.
     Then, consider the set $A_{1/j}\subseteq D_f$:
     
     \hfill
@@ -416,9 +418,25 @@ So, this $\eta>0$ satisfies the desired condition.
 
     \textbf{Partition for Points outside $A_{1/j}$:}
 
-    Consider the set $K=[a,b]\setminus A_{1/j}$: By definition of $A_{1/j}$ in \textbf{Question 6}, for every $x\in K$, since $x\notin A_{1/j}$, then $\omega_f(x)<\frac{1}{j}$.
+    Consider the set $K=[a,b]\setminus (\bigcup_{i=1}^{k} I_{n_i})$: By definition of $A_{1/j}$ in \textbf{Question 6}, for every $x\in K$, since $x\notin \bigcup_{i=1}^{k} I_{n_i}$ while $A_{1/j}\subseteq \bigcup_{i=1}^{k} I_{n_i}$, then $x\notin A_{1/j}$, hence $\omega_f(x)<\frac{1}{j}$.
+    Then, because $\bigcup_{i=1}^{k} I_{n_i}$ is open, then $\left(\bigcup_{i=1}^{k} I_{n_i}\right)^C$ is closed, hence $K=[a,b]\cap \left(\bigcup_{i=1}^{k} I_{n_i}\right)^C$ is closed and bounded, which is compact.
+    Which, using the same proof in \textbf{Question 8}, since $\omega_f(x)<\frac{1}{j}$ for all $x\in K$ while $K$ is compact, then there exists $\eta>0$, such that for all $x\in K$,
+    $\Omega(f,x,\eta)<\frac{1}{j}$ (Note: the proof is by swapping $[a,b]$ with $K$; since $K$ is compact, same proof relying on the compactness of $[a,b]$ would work on $K$ also).
 
-    
+    Which, Consider the partition $P_2$ of $K$ with $\|P_2\|=\max\{(x_i-x_{i-1})\ :\ [x_{i-1},x_i]\subseteq K\}<\eta$.
+
+    \hfill
+
+    \textbf{The Difference in Upper and Lower Sum:}
+
+    Consider the partition $P=P_1\cup P_2$: If consider the difference in Upper and Lower Sum based on this partition, it is as follow:
+    $$U(f,P)-L(f,P)=\sum_{i=1}^{m}\left(\sup_{x\in I'_i}\{f(x)\}-\inf_{x\in I'_i}\{f(x)\}\right)\cdot |I'_i|$$
+    Which, there are two cases to consider for each interval.
+
+    \hfill
+
+    Suppose $m_1,...,m_{k'}$ is a collection of indices with each $I'_{m_l}\subseteq \overline{I_{n_i}}$ provided for $A_{1/j}$.
+
 
     
 \end{itemize}
