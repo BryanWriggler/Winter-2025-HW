@@ -358,7 +358,32 @@ So, this $\eta>0$ satisfies the desired condition.
     \hfill
 
     With the given $j_0\in\mathbb{Z}_+$, consider any partition $P=\{x_0=a,x_1,...,x_{n-1},x_n=b\}$ with $x_{i-1}<x_i$ for all index $i$.
-    Since $A_{1/j_0}\subseteq [a,b]$, there exists some intervals in the partition $I_{n_1},...,I_{n_i}$ that covers 
+    Since $A_{1/j_0}\subseteq [a,b]$, there exists some intervals in the partition $I_{n_1},...,I_{n_i}$ that covers $A_{1/j_0}$ (here, assume every chosen interval covered some part of $A_{1/j_0}$, not disjoint with it).
+
+    WLOG, we can assume that for each interval $I_{n_j}$, there exists a point of discontinuity $x\in A_{1/j_0}$ that is an interior point of $I_{n_j}$:
+    If $x=x_i$ for some $i\neq 0$ and $i\neq n$, then we can combine two intervals $I'=I_{i}\cup I_{i+1}=[x_{i-1},x_{i+1}]$, which $x_i$ becomes the interior point of the modified interval;
+    else if $x=a$ or $x=b$, since all the definition only consider the cases in $[a,b]$, then $a,b$ is could be considered as the interior point of $[a,b]$ under subspace topology.
+
+    \hfill
+    
+    Because $A_{1/j_0}$ has nonzero measure, then there exists $\epsilon>0$, such that for any open interval covering $\{I_j\}_{j\in\mathbb{Z}_+}$ of $A_{1/j_0}$, the sum of length of the intervals $\sum_{j=1}^{\infty}|I_{j}|\geq \epsilon$, regardless of the collection of open intervals
+    (in particular, $\sum_{j=1}^{i}|I_{n_j}|\geq \epsilon$, since each interval has the same length with its interior).
+    
+    Furthermore, from the previous assumption, there exists $x\in A_{1/j_0}$ that is an interior point of $I_{n_j}$ for each $j\in\{1,...,i\}$,
+    hence there exists radius $r_j>0$, with $B_{r_j}(x)\cap [a,b]\subseteq I_{n_j}$.
+    Now, by definition, since for all $x_1,x_2\in B_{r_j}(x)\cap [a,b]\subseteq I_{n_j}$ satisfies $\inf_{x\in I_{n_j}}\{f(x)\}\leq f(x_1),f(x_2)\leq \sup_{x\in I_{n_j}}\{f(x)\}$, hence:
+    $$|f(x_1)-f(x_2)|\leq \left(\sup_{x\in I_{n_j}}\{f(x)\}-\inf_{x\in I_{n_j}}\{f(x)\}\right)$$
+    This implies the following: 
+    $$\sup\{|f(x_1)-f(x_2)|\ :\ x_1,x_2\in B_{r_j}(x)\cap [a,b]\}=\Omega(f,x,r_j)\leq \left(\sup_{x\in I_{n_j}}\{f(x)\}-\inf_{x\in I_{n_j}}\{f(x)\}\right)$$
+    $$\frac{1}{j_0}\leq \omega_f(x)\leq \Omega(f,x,r_j)\leq \left(\sup_{x\in I_{n_j}}\{f(x)\}-\inf_{x\in I_{n_j}}\{f(x)\}\right)$$
+    Hence, consider the difference in upper and lower sum, we yield:
+    $$U(f,P)-L(f,P)=\sum_{k=1}^{n}\left(\sup_{x\in I_{k}}\{f(x)\}-\inf_{x\in I_{k}}\{f(x)\}\right)\cdot |I_k| \geq \sum_{j=1}^{i}\left(\sup_{x\in I_{n_j}}\{f(x)\}-\inf_{x\in I_{n_j}}\{f(x)\}\right)\cdot |I_{n_j}|$$
+    $$U(f,P)-L(f,P)\geq \sum_{j=1}^{i}\left(\sup_{x\in I_{n_j}}\{f(x)\}-\inf_{x\in I_{n_j}}\{f(x)\}\right)\cdot |I_{n_j}| \geq \sum_{j=1}^{i}\frac{1}{j_0}|I_{n_j}|$$
+    $$U(f,P)-L(f,P)\geq \frac{1}{j_0}\sum_{j=1}^{i}|I_{n_j}| \geq \frac{1}{j_0}\cdot\epsilon$$
+    (Note: The above is true, since the collection $I_{n_1},...,I_{n_j}$ is part of the partition).
+
+    Hence, the difference in the upper and lower sum for any $P$ is at least $\epsilon/j_0>0$, showing that $f$ is not Riemann Integrable.
+    Yet, this contradicts our initial assumption; hence, the assumption is false, $f$ is Riemann Integrable implies $D_f$ has measure $0$.
     
     \hfill
 
