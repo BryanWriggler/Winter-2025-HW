@@ -398,21 +398,30 @@ So, this $\eta>0$ satisfies the desired condition.
 
     \textbf{Partition for Points in $A_{1/j}$:}
 
-    Before starting this, since the function $f$ is bounded, there exists $M>0$, such that $|f(x)|<M$ for all $x\in[a,b]$. Hence, for all $x_1,x_2\in[a,b]$,
-    $|f(x_1)-f(x_2)|\leq |f(x_1)|+|f(x_2)| < 2M$, or $\Omega(f,x,\eta)\leq 2M$ for all $x\in [a,b]$ and $\eta>0$.
+    Before starting this, since the function $f$ is bounded, there exists $M>0$, such that $|f(x)|<M$ for all $x\in[a,b]$. In other word, for all $x\in[a,b]$,
+    $-M<f(x)<M$.
 
     \hfill
 
     Given that $A_{1/j}\subseteq D_f$ and $D_f$ has measure $0$, then $A_{1/j}$ has measure $0$ (or else, if $A_{1/j}$ has nonzero measure, then ever open interval cover of $D_f$ covers $A_{1/j}$, which must have some nonzero total length greater than some $r>0$, showing that $D_f$ also has nonzero measure).
 
-    Hence, for given $\epsilon>0$, since $\frac{\epsilon}{2M}>0$, there exists collection of open interval covering $\{I_n\}_{n\in\mathbb{Z}_+}$ for $A_{1/j}$, with $\sum_{n=1}^{\infty}|I_n|<\frac{\epsilon}{2M}$.
-    Then, by statement proven in \textbf{Question 6}, since $A_{1/j}$ is compact, there exists $n_1,...,n_k\in\mathbb{Z}_+$, with $A_{1/j}\subseteq \bigcup_{i=1}^{k}I_{n_i}$ 
-    
-    (Note 1: WLOG, assume the open intervals in this collection is mutually disjoint; if not, we can take the union of the ones with common intersection instead, while the length is still bounded by $\frac{\epsilon}{2M}$).
-    
-    (Note 2: Assume each $I_{n_i}$ has nonempty intersection with $A_{1/j}$).
+    Hence, for given $\epsilon>0$, since $\frac{\epsilon}{4M}>0$, there exists collection of open interval covering $\{I_n\}_{n\in\mathbb{Z}_+}$ for $A_{1/j}$, with $\sum_{n=1}^{\infty}|I_n|<\frac{\epsilon}{4M}$.
+    Then, by statement proven in \textbf{Question 6}, since $A_{1/j}$ is compact, there exists $n_1,...,n_k\in\mathbb{Z}_+$, with $A_{1/j}\subseteq \bigcup_{i=1}^{k}I_{n_i}$.
 
-    Let $P_1$ be a partition consists of the infimum and supremum of each interval $I_{n_i}\cap [a,b]$, which will be used later.
+    Let $P_1$ be a partition consists of the infimum and supremum of each interval $I_{n_i}\cap [a,b]$, which for each $x_i\in P_1$,
+    it is the endpoints of the closure of $I_{n_i}\cap [a,b]$ (which, any point $x\in A_{1/j}$ must be contained in between some $x_{i-1},x_i\in P_1$).
+
+    \hfill
+
+    Then, for any interval described by $P_1$ (each is a closure of $I_{n_i}\cap [a,b]$), since for $x\in \overline{I_{n_i}\cap[a,b]}$, we have $-M<f(x)<M$. Hence:
+    $$-M\leq \inf_{x\in \overline{I_{n_i}\cap[a,b]}}(f(x))\leq \sup_{x\in \overline{I_{n_i}\cap[a,b]}}(f(x))\leq M$$
+    $$\left(\sup_{x\in \overline{I_{n_i}\cap[a,b]}}(f(x))-\inf_{x\in \overline{I_{n_i}\cap[a,b]}}(f(x))\right)\leq 2M$$
+    So, taking the difference of upper sum and lower sum over these intervals, we get:
+    $$U(f,P_1)-L(f,P_1)=\sum_{i=1}^{k}\left(\sup_{x\in \overline{I_{n_i}\cap[a,b]}}(f(x))-\inf_{x\in \overline{I_{n_i}\cap[a,b]}}(f(x))\right)\cdot |\overline{I_{n_i}\cap[a,b]}|$$
+    $$\leq \sum_{i=1}^{k}2M \cdot |I_{n_i}| \leq 2M\sum_{n=1}^{\infty}|I_n| < 2M\cdot \frac{\epsilon}{4M}=\frac{\epsilon}{2}$$
+    So, consider the partition over the region covering $A_{1/j}$, the difference in upper and lower sum is bounded by $\frac{\epsilon}{2}$.
+
+    (Note: this upper and lower sum is evaluating over the intervals covering $A_{1/j}$ only, not the whole $[a,b]$).
 
     \hfill
 
@@ -423,23 +432,36 @@ So, this $\eta>0$ satisfies the desired condition.
     Which, using the same proof in \textbf{Question 8}, since $\omega_f(x)<\frac{1}{j}$ for all $x\in K$ while $K$ is compact, then there exists $\eta>0$, such that for all $x\in K$,
     $\Omega(f,x,\eta)<\frac{1}{j}$ (Note: the proof is by swapping $[a,b]$ with $K$; since $K$ is compact, same proof relying on the compactness of $[a,b]$ would work on $K$ also).
 
-    Which, Consider the partition $P_2$ of $K$ with $\|P_2\|=\max\{(x_i-x_{i-1})\ :\ [x_{i-1},x_i]\subseteq K\}<\eta$.
+    Then, Consider the partition $P_2'$ of $[a,b]$ with $\|P_2'\|=\max\{(x_i-x_{i-1})\}<\eta$, and take $P_2 = P_2'\setminus (\bigcup_{i=1}^{k}I_{n_i})$
+    (the goal here is to construct partitions for the rest of the part not covered by the open interval covering of $A_{1/j}$).
 
     \hfill
 
-    \textbf{The Difference in Upper and Lower Sum:}
+    For any interval $I_i$ described by $P_2$ (the interval disjoint from the previous part that cover $A_{1/j}$), since each $x\in I_i$ is not in $A_{1/j}$,
+    then we know: 
+    $$\sup\{|f(x_1)-f(x_2)|\ :\ x_1,x_2\in (x-\eta,x+\eta)\cap [a,b]\} =\Omega(f,x,\eta)<\frac{1}{j}$$
+    Also, notice that since $|I_i| \leq \|P_2'\| < \eta$, hence $I_i\subseteq (x-\eta,x+\eta)$, hence for all $x_1,x_2\in I_i$ (WLOG, assume $f(x_1)>f(x_2)$),
+    we have $|f(x_1)-f(x_2)|=(f(x_1)-f(x_2))\leq  \Omega(f,x,\eta)<\frac{1}{j}$, which $\frac{1}{j}$ is an upper bound of the difference.
 
-    Consider the partition $P=P_1\cup P_2$: If consider the difference in Upper and Lower Sum based on this partition, it is as follow:
-    $$U(f,P)-L(f,P)=\sum_{i=1}^{m}\left(\sup_{x\in I'_i}\{f(x)\}-\inf_{x\in I'_i}\{f(x)\}\right)\cdot |I'_i|$$
-    Which, there are two cases to consider for each interval.
+    Hence, if consider the fact that $(f(x_1)-f(x_2))\leq \left(\sup_{x\in I_i}(f(x))-\inf_{x\in I_i}(f(x))\right)$, and this quantity is the supremum of the difference,
+    then $(\sup_{x\in I_i}(f(x))-\inf_{x\in I_i}(f(x))) \leq \frac{1}{j}$. 
+
+    If there are total of $m$ intervals described in $P_2$, then the following is true:
+    $$U(f,P_2)-L(f,P_2) = \sum_{i=1}^{m}(\sup_{x\in I_i}(f(x))-\inf_{x\in I_i}(f(x)))\cdot |I_i| \leq \sum_{i=1}^{m}\frac{1}{j}\cdot|I_i|$$
+    $$\leq \frac{\epsilon}{2(b-a)}\sum_{i=1}^{m}|I_i| \leq \frac{\epsilon}{2(b-a)}(b-a)=\frac{\epsilon}{2}$$
+    (Note: the initial construction states that $\frac{1}{j}<\frac{\epsilon}{2(b-a)}$, and the sum of all length of intervals in $P_2$, is at most $(b-a)$ due to the fact that $P_2\subseteq P_2'$, and $P_2'$ is a partition of $[a,b]$, which the total length is at most $(b-a)$).
+
+    (Note 2: the upper and lower sum here is only for the regions not covered by the intervals used to cover $A_{1/j}$, which might not cover the whol $[a,b]$).
 
     \hfill
 
-    Suppose $m_1,...,m_{k'}$ is a collection of indices with each $I'_{m_l}\subseteq \overline{I_{n_i}}$ provided for $A_{1/j}$.
-    Then, 
-
-
-    
+    Hence, for both cases above, take $P=P_1\cup P_2$, then evaluating the difference in upper sum and lower sum, it will be the sum of the difference from above, which is at most $\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$.
+    Then, because we can choose a partition, such that the difference in upper and lower sum is at most $\epsilon$ for arbitrary $\epsilon$,
+    we can conclude that $f$ is Riemann Integrable on $[a,b]$.
 \end{itemize}
+
+\hfill
+
+Combining both statements above, we can conclude that $f$ is Riemann Integrable, iff the points of discontinuities, $D_f$ has measure $0$.
 
 \end{document}
