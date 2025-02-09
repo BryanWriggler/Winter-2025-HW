@@ -46,6 +46,50 @@ colback=blue!10
 
 \textbf{Pf:}
 
+Consider the following transformation $g:\mathbb{C}\cup\{\infty\}\rightarrow\mathbb{C}\cup\{\infty\}$:
+$$f(z)=\frac{z+1}{z-1}\cdot \frac{-i-1}{-i+1},\quad g(z)=e^{\pi f(z)}$$
+
+First, if consider the points $-i,-1,1$ respectively on $|z|=1$, linear transformation $f$ maps the following:
+$$f(-i)=\frac{-i+1}{-i-1}\cdot\frac{-i-1}{-i+1}=1,\quad f(-1)=\frac{-1+1}{-1-1}\cdot\frac{-i=1}{-i+1}=0,\quad f(1)=\infty$$
+(Note: Since $f(1)$ is not defined under $\mathbb{C}$, it gets map to $\infty$).
+
+Because the orientation of $|z|=1$ is $-i$ to $-1$ to $1$, going clockwise, and the orientation of the image is $1$ to $0$ to $\infty$, 
+which on the right side is the half plane with positive imaginary parts. Hence, the right of $|z|=1$ under this orientation (which is the interior of $|z|=1$)
+gets mapped to the half plane $Im(z)>0$.
+
+\textbf{Insert Image Here}
+
+\hfill
+
+Now, consider the points $\frac{1}{2}(1-i), 0, 1$ on $|z-\frac{1}{2}|=\frac{1}{2}$, linear transformation $f$ maps the following:
+$$f\left(\frac{1}{2}(1-i)\right)=\frac{(\frac{1}{2}-\frac{1}{2}i)+1}{(\frac{1}{2}-\frac{1}{2}i)-1}\cdot\frac{-i-1}{-i+1} = \frac{(1-i)+2}{(1-i)-2}\cdot\frac{-i-1}{-i+1}=\frac{3-i}{-1-i}\cdot\frac{-1-i}{1-i}$$
+$$=\frac{3-i}{1-i}=\frac{(3-i)(1+i)}{(1-i)(1+i)}=\frac{3+1-i+3i}{2}=\frac{4+2i}{2}=2+i$$
+$$f(0)=\frac{1}{-1}\cdot\frac{-i-1}{-i+1}=-\frac{-(1+i)^2}{(1-i)(1+i)}=\frac{2i}{2}=i,\quad f(1)=\infty$$
+
+So, since the three points gets mapped to $(2+i), i, \infty$ respectively, and linear transformation maps circle to circle,
+hence this is a circle passing through $\infty$, or a straight line passing through $i$ and $(2+i)$, which is the line $Im(z)=1$.
+Then, with the orientation $\frac{1}{2}(1-i)$ to $0$ to $1$, the image has orientation $(2+i)$ to $i$ to $\infty$, which the left side is the half plane $Im(z)<1$.
+Hence, the left of $|z-\frac{1}{2}|=\frac{1}{2}$ under this orientation (the exterior of $|z-\frac{1}{2}|=1$) gets mapped to the half plane $Im(z)<1$.
+
+\textbf{Insert Image Here}
+
+\hfill
+
+With the above statements, all points in the region between $|z|=1$ and $|z-\frac{1}{2}|=\frac{1}{2}$ are in the interior of $|z|=1$, and in the exterior of $|z-\frac{1}{2}|=\frac{1}{2}$.
+So, they are the intersection of $Im(z)>0$ and $Im(z)<1$.
+
+Which, $\pi f(z)$ represents the region $0<Im(z)<\pi$.
+
+So, for all $z_0$ in the given open region, $z_0=a+bi$, where $a\in \mathbb{R}$, and $0<b<\pi$. So:
+$$e^{z_0}=e^{a+bi}=e^a\cdot e^{ib},\quad b\in (0,\pi)$$
+Hence, $e^{z_0}$ satisfies $\arg(e^{z_0})=b\in (0,\pi)$, and $|e^{z_0}|=e^a>0$, hence the image of the region $0<Im(z)<\pi$ is in the half plane $Im(z)>0$
+(in fact, the image is the whole half plane, since the choice of $a\in \mathbb{R}$ and $b\in (0,\pi)$ are arbitrary, hence $e^a\in (0,\infty)$ could be any value in the given region).
+
+\hfill
+
+Eventually, since $\pi f(z)$ maps the region between $|z|=1$ and $|z-\frac{1}{2}|=\frac{1}{2}$ onto the region $0<Im(z)<1$,
+while $e^z_0$ maps this new region onto the half plane $Im(z)>0$, then the composition $e^{\pi f(z)}$ maps the desired region to the half plane $Im(z)>0$.
+
 \break
 
 \section*{2}
@@ -59,6 +103,67 @@ colback=blue!10
 \end{myBox}
 
 \textbf{Pf:}
+
+WLOG, assume $a>0$ (Note: $a<0$ can be replaced with $(-a)$ instead). Under this configuration, the vertex is when $y=0$, or $x=a$ for the right hand branch (the vertex is $z=a$).
+Also, the focus is given by $(ka,0)$ with $k=\sqrt{1+\frac{b'^2}{a'^2}}$ when given the hyperbola $\frac{x^2}{a'^2}-\frac{y^2}{b'^2}=1$,
+which under this configuration, $a'=b'=a$, hence $k=\sqrt{2}$ (so the focus is $z=\sqrt{2}a$).
+
+(Note 2: under the requirement, the focus and vertex needs to be two distinct points, hence $a\neq 0$).
+
+\hfill
+
+\textbf{Map of $z^2$:}
+
+Notice that for all $z\in\mathbb{C}$, since $z=x+iy$ for some $x,y\in\mathbb{R}$, then $z^2=(x^2-y^2)+i\cdot 2xy$.
+
+If take the plane $Re(z)>0$ (where $x>0$), the map is injective: Suppoze $z^2=z_1^2$ for $z,z_1\in\mathbb{C}$, 
+then $z^2-z_1^2=(z-z_1)(z+z_1)=0$, hence $z=z_1$ or $z=-z_1$. However, if restrict onto the plane $Re(z)>0$, then $z=-z_1$ is impossible for all values on this plane, hence $z=z_1$, showing it's injective.
+
+\hfill
+
+Now, consider the inside of the right-hand branch of the hyperbola $x^2-y^2=a^2$, which is restricted by the condition $x^2-y^2\geq a^2$:
+For all $z=x+iy$ in the given region, $x^2-y^2\geq a^2$; hence, $z^2=(x^2-y^2)+i\cdot 2xy$ is in the half plane $Re(w)\geq a^2$.
+Also, for all $w$ in the half plane $Re(w)\geq a^2$ ($a^2>0$), since it is in the domain of $\sqrt{z}$ (which is in $\mathbb{C}\setminus\{x\in\mathbb{R}\ |\ x\leq 0\}$),
+then there exists $z=x+iy$ with $z^2=w$, hence $Re(w)=Re(z^2)=(x^2-y^2)\geq a^2$, showing that $z$ is in the given region.
+
+Hence, we can conclude that the function $z^2$ restricting onto the inside of the right-hand branch of the given hyperbola (with condition $x^2-y^2\geq a^2$),
+it is an injective function mapping the region onto the half plane $Re(z)\geq a^2$.
+
+\hfill
+
+\textbf{Mapping the Half Plane $Re(z)\geq a^2$ onto the Unit Disk:}
+
+Consider the following linear transformation:
+$$f(w)=1-\frac{2a^2}{w}$$
+For the points $w_0$ on the line $Re(w)=a^2$, $w_0=a^2+iv$ for some $v\in\mathbb{R}$, hence the following is true:
+$$f(w_0)=1-\frac{2a^2}{w_0}=\frac{w_0-2a^2}{w_0}=\frac{(a^2+iv)-2a^2}{a^2+iv}=\frac{-a^2+iv}{a^2+iv} = \frac{-(a^2-iv)}{a^2+iv} = -\frac{\bar{w_0}}{w_0}$$
+Hence, $|f(w_0)|=\left|-\frac{\bar{w_0}}{w_0}\right|=\frac{|\bar{w_0}|}{|w_0|}=1$, the boundary or the half plane gets mapped to the boundary of the unit disk $|w|<1$;
+
+Also, for all points $w_1$ in the plane $Re(w)>a^2$ (let $w=u+iv$ for $u,v\in \mathbb{R}$, hence $u>a^2$), there are two cases to conside.
+The following is what $w_1$ gets mapped to:
+$$f(w_1)=1-\frac{2a^2}{w_1}=\frac{w_1-2a^2}{w_1}=\frac{(u-2a^2)+iv}{u+iv}$$
+
+First, if $u\leq 2a^2$, notice that since $0\leq |u-2a^2| = (2a^2-u) < (2a^2-a^2)=a^2 < u$, then, $|(u-2a^2)+iv|=\sqrt{(u-2a^2)^2+v^2}< \sqrt{u^2+v^2} = |w_1|$,
+hence $|f(w_1)|=\frac{|(u-2a^2)+iv|}{|u+iv|} < 1$.
+
+Else, if $u>2a^2$, then since $0<(u-2a^2)<u$, then again $|(u-2a^2)+iv|=\sqrt{(u-2a^2)^2+v^2}< \sqrt{u^2+v^2} = |w_1|$, hence $|f(w_1)|=\frac{|(u-2a^2)+iv|}{|u+iv|} < 1$ is still true.
+
+So, we can conclude that the half plane $Re(w)\geq a^2$ gets mapped to the unit disk $|w|=1$, and since this is a linear transformation, the map is bijective.
+
+\hfill
+
+\textbf{Mapping Inside of Hyperbola to Unit Disk:}
+
+If Compose the two functions above, consider the following transformation $\bar{f}(z)=f(z^2)=1-\frac{2a^2}{z^2}$:
+First, for all $z$ in the inside of the given branch of hyperboala (in the region $x^2-y^2\geq a^2$), $z^2$ appears in the half plane $Re(w)\geq a^2$, and there is a one-to-one correspondence between the two regions under the map;
+furthermore, since $f$ maps the half plane $Re(w)\geq a^2$ to the unit disk $|w|\leq 1$, and is also a one-to-one correspondence, then the composition $f(z^2)$ maps the interior of the hyperbola to the unit disk.
+
+Also, computing the following, we get:
+$$\bar{f}(a)=1-\frac{2a^2}{a^2}=1-2=-1,\quad \bar{f}(\sqrt{2}a)=1-\frac{2a^2}{(\sqrt{2}a)^2}=1-\frac{2a^2}{2a^2}=1-1=0$$
+Which, since given the right branch of hyperbola $x^2-y^2=a^2$, $z_0=a$ is the vertex and $z_1=\sqrt{2}a$ is the focus,
+then the vertex gets mapped to $-1$, and the focus gets mapped to $0$, hence this conformal map satisfies the given condition.
+
+\textbf{Insert Image Here}
 
 \break
 
@@ -74,6 +179,8 @@ colback=blue!10
 
 \textbf{Pf:}
 
+Let $S:\mathbb{C}\cup\{\infty\}\rightarrow \mathbb{C}\cup\{\infty\}$
+
 \break
 
 \section*{4}
@@ -82,13 +189,14 @@ colback=blue!10
         Ahlors Pg. 80 Problem 3:
 
         If the consecutive vertices $z_1,z_2,z_3,z_4$ of a quadrilateral lie on a circle, prove that
-        $$|z_1-z_3|\cdot|z_2-z_4|=|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|_1-z_4|$$
+        $$|z_1-z_3|\cdot|z_2-z_4|=|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|$$
         and interpret the result geometrically.
     \end{question}
 \end{myBox}
-$\phi$
 
 \textbf{Pf:}
+
+Ptolemy's Theorem (try to look over that)
 
 \break
 
@@ -104,6 +212,8 @@ $\phi$
 
 \textbf{Pf:}
 
+The symmetric point of the origin is some point, then try to unravel the mapping.
+
 \break
 
 \section*{6}
@@ -118,6 +228,8 @@ $\phi$
 
 \textbf{Pf:}
 
+Not sure if it's rigorous enough, but can argue that $z_1,z_2$ stay on the same side iff they both get mapped to positive numbers.
+
 \break
 
 \section*{7}
@@ -130,6 +242,9 @@ $\phi$
 \end{myBox}
 
 \textbf{Pf:}
+
+Textbook Pg. 87, 88 were talking about this (about under conformal linear transformation, all the circles orthogonal to the two should correspond to a family of circles,
+all ampped to similar lines.)
 
 
 \end{document}
