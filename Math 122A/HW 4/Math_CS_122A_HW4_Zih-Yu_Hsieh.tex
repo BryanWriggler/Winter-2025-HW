@@ -292,6 +292,54 @@ $$|z_3-z_1|\cdot|z_2-z_4|=|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|$$
 The following map:
 $$z\mapsto w=(\frac{1}{2}z+1)\mapsto \frac{-(1-i)w}{2w-(1-i)}$$
 
+\textbf{Symmetric points:}
+
+First, for circle $|z|=2$, since the origin $0$ is not on the circle, then to find a precise map, we also need to consider
+its symmetric point, namely $\infty$. (Note: the symmetric point of the center of a circle is always $\infty$).
+
+\hfill
+
+Now, consider the points they get mapped to: Since any linear transformation should preserve the symmetric points,
+then as $0$ gets mapped to $i$, $\infty$ gets mapped to the symmetric point of $i$ on the circle $|z+1|=1$.
+The following is the computation based on the formula given in the textbook. Let $z_0=i$, radius $r=1$, and the center $a=-1$, then its symmetric point $z_0^*$ is given by:
+$$z_0^*=\frac{r^2}{(\bar{z_0}-a)}+a = \frac{1}{-i-(-1)}-1 = \frac{1}{1-i}-1 = \frac{(1+i)}{(1-i)(1+i)}-1$$
+$$=\frac{1+i}{2}-1 = -\frac{1}{2}+\frac{1}{2}i$$
+Hence, under the desired linear transformation, $\infty$ gets mapped to $z_0^*=-\frac{1}{2}+\frac{1}{2}i$.
+
+\hfill
+
+\textbf{Formula for Linear Transformation:}
+
+Given that $-2\mapsto 0$, $0\mapsto i$, and $\infty\mapsto (-\frac{1}{2}+\frac{1}{2}i)$, consider the following map:
+$$f(z) = \frac{-(1-i)z-2(1-i)}{2z+2(1+i)}$$
+Which, it maps the given point as follow:
+$$f(-2)=\frac{-(1-i)(-2)-2(1-i)}{2(-2)+2(1+i)}=\frac{0\cdot(1-i)}{-4+2+2i}=0$$
+$$f(0)=\frac{-(1-i)\cdot 0-2(1-i)}{2\cdot 0+2(1+i)}=\frac{-2(1-i)}{2(1+i)}=-\frac{(1-i)^2}{(1-i)(1+i)} = -\frac{1-1-2i}{1+1}=\frac{2i}{2}=i$$
+$$f(\infty)=\lim_{z\rightarrow\infty}\frac{-(1-i)z-2(1-i)}{2z+2(1+i)} = \frac{-(1-i)}{2} = -\frac{1}{2}+\frac{1}{2}i$$
+Hence, the given linear transformation maps the three points to the correct locations.
+
+\hfill
+
+\textbf{Circle Maps to Circle:}
+
+To verify that $|z|=2$ gets mapped to $|z+1|=1$, it suffices to show that three points on $|z|=2$ get mapped onto $|z+1|=1$.
+
+First, we already have $-2 \mapsto 0$, which is a point satisfying the condition.
+
+Now, consider the point $2i, -2i$ on the circle $|z|=2$:
+$$f(2i)=\frac{-(1-i)2i-2(1-i)}{2\cdot 2i+2(1+i)} = \frac{-2(1+i)(1-i)}{2+6i}=\frac{-2}{1+3i}=\frac{-2(1-3i)}{(1+3i)(1-3i)}=\frac{-2+6i}{10}=\frac{-1+3i}{5}$$
+$$f(-2i)=\frac{-(1-i)(-2i)-2(1-i)}{2(-2i)+2(1+i)}=\frac{-2(1-i)(1-i)}{2-2i}=-(1-i)$$
+Then, consider the distance $|f(2i)+1|$ and $|f(-2i)+1|$, we get:
+$$|f(2i)+1|=\left|\frac{-1+3i}{5}+1\right|=\left|\frac{4+3i}{5}\right|=\sqrt{\left(\frac{4}{5}\right)^2+\left(\frac{3}{5}\right)^2}=1$$
+$$|f(-2i)+1|=|-(1-i)+1|=|i|=1$$
+Hence, $f(2i),f(-2i)$ are two points on the circle $|z+1|=1$.
+
+Since $-2,2i,-2i$ are three points on the circle $|z|=2$, and they get mapped to points on $|z+1|=1$ by the linear transformation $f$,
+hence $|z|=2$ is mapped to $|z+1|=1$, showing that $f$ is in fact the desired linear transformation.
+
+
+
+
 \break
 
 \section*{6}
@@ -306,7 +354,23 @@ $$z\mapsto w=(\frac{1}{2}z+1)\mapsto \frac{-(1-i)w}{2w-(1-i)}$$
 
 \textbf{Pf:}
 
-Not sure if it's rigorous enough, but can argue that $z_1,z_2$ stay on the same side iff they both get mapped to positive numbers.
+Given four distinct points $z_1,z_2,z_3,z_4\in\mathbb{C}$, to determine the cross ratio $(z_1,z_2,z_3,z_4)$, it is given by the linear transformation
+that gives $z_2\mapsto 1$, $z_3\mapsto 0$, and $z_4\mapsto \infty$.
+
+If consider the orientation as $z_2,z_3,z_4$ respectively:
+
+If $z_1,z_3,z_4$ has the same orientation as above, then $z_1,z_2$ needs to be on the same arc when the circle is separated by $z_3$ and $z_4$.
+
+Which, this happens if the linear transformation would transform $z_1,z_2$ onto the same side of the real line, so $z_1$ gets mapped to a positive value.
+Hence, $(z_1,z_2,z_3,z_4)>0$.
+
+\textbf{Insert Image Here}
+
+\hfill
+
+Conversely, if $(z_1,z_2,z_3,z_4)>0$, then $z_1$ gets mapped to a positive value on the real axis.
+Which, since the orienation is given by $z_2,z_3,z_4$ in order, and $z_1,z_2$ both get mapped to positive values while $z_3$ gets mapped to $0$,
+hence the orientation $z_1,z_3,z_4$ must have the same orientation as $z_2,z_3,z_4$.
 
 \break
 
@@ -321,8 +385,7 @@ Not sure if it's rigorous enough, but can argue that $z_1,z_2$ stay on the same 
 
 \textbf{Pf:}
 
-Textbook Pg. 87, 88 were talking about this (about under conformal linear transformation, all the circles orthogonal to the two should correspond to a family of circles,
-all ampped to similar lines.)
+
 
 
 \end{document}
