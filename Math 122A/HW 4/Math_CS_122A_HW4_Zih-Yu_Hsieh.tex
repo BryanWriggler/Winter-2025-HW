@@ -57,8 +57,6 @@ Because the orientation of $|z|=1$ is $-i$ to $-1$ to $1$, going clockwise, and 
 which on the right side is the half plane with positive imaginary parts. Hence, the right of $|z|=1$ under this orientation (which is the interior of $|z|=1$)
 gets mapped to the half plane $Im(z)>0$.
 
-\textbf{Insert Image Here}
-
 \hfill
 
 Now, consider the points $\frac{1}{2}(1-i), 0, 1$ on $|z-\frac{1}{2}|=\frac{1}{2}$, linear transformation $f$ maps the following:
@@ -70,8 +68,6 @@ So, since the three points gets mapped to $(2+i), i, \infty$ respectively, and l
 hence this is a circle passing through $\infty$, or a straight line passing through $i$ and $(2+i)$, which is the line $Im(z)=1$.
 Then, with the orientation $\frac{1}{2}(1-i)$ to $0$ to $1$, the image has orientation $(2+i)$ to $i$ to $\infty$, which the left side is the half plane $Im(z)<1$.
 Hence, the left of $|z-\frac{1}{2}|=\frac{1}{2}$ under this orientation (the exterior of $|z-\frac{1}{2}|=1$) gets mapped to the half plane $Im(z)<1$.
-
-\textbf{Insert Image Here}
 
 \hfill
 
@@ -89,6 +85,15 @@ Hence, $e^{z_0}$ satisfies $\arg(e^{z_0})=b\in (0,\pi)$, and $|e^{z_0}|=e^a>0$, 
 
 Eventually, since $\pi f(z)$ maps the region between $|z|=1$ and $|z-\frac{1}{2}|=\frac{1}{2}$ onto the region $0<Im(z)<1$,
 while $e^z_0$ maps this new region onto the half plane $Im(z)>0$, then the composition $e^{\pi f(z)}$ maps the desired region to the half plane $Im(z)>0$.
+
+\hfill
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=150mm]{moon to half plane.jpg}
+        \caption{Transformation between regions}
+    \end{center}
+\end{figure}
 
 \break
 
@@ -163,7 +168,14 @@ $$\bar{f}(a)=1-\frac{2a^2}{a^2}=1-2=-1,\quad \bar{f}(\sqrt{2}a)=1-\frac{2a^2}{(\
 Which, since given the right branch of hyperbola $x^2-y^2=a^2$, $z_0=a$ is the vertex and $z_1=\sqrt{2}a$ is the focus,
 then the vertex gets mapped to $-1$, and the focus gets mapped to $0$, hence this conformal map satisfies the given condition.
 
-\textbf{Insert Image Here}
+\hfill
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=140mm]{hyperbola to circle.jpg}
+        \caption{Transformation between Hyperbola and Circle}
+    \end{center}
+\end{figure}
 
 \break
 
@@ -246,14 +258,24 @@ Notice that since $z_1,z_2,z_3,z_4$ is consecutive vertices on a circle, then th
 furthermore, by the statement in \textbf{Question 6}, since $z_1,z_3,z_4$ and $z_2,z_3,z_4$ have the same orientation,
 hence the cross ratio $(z_1,z_2,z_3,z_4)>0$.
 
-\textbf{Insert Image Here}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=80mm]{cross ratio 1.jpg}
+    \end{center}
+    \caption{Cross Ratio of $(z_1,z_2,z_3,z_4)$}
+\end{figure}
 
 \hfill
 
 Similarly, when viewing in order of $z_1,z_3,z_2,z_4$, the orientation $z_1,z_3,z_4$ and $z_3,z_2,z_4$ are different,
-hence the cross ratio $(z_1,z_3,z_2,z_4)<0$.
+hence the cross ratio $(z_1,z_3,z_2,z_4)<0$. (In \textbf{Figure 4})
 
-\textbf{Insert Image Here}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=80mm]{cross ratio 2.jpg}
+    \end{center}
+    \caption{Cross Ratio of $(z_1,z_3,z_2,z_4)$}
+\end{figure}
 
 \hfill
 
@@ -288,9 +310,6 @@ $$|z_3-z_1|\cdot|z_2-z_4|=|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|$$
 \end{myBox}
 
 \textbf{Pf:}
-
-The following map:
-$$z\mapsto w=(\frac{1}{2}z+1)\mapsto \frac{-(1-i)w}{2w-(1-i)}$$
 
 \textbf{Symmetric points:}
 
@@ -337,10 +356,9 @@ Hence, $f(2i),f(-2i)$ are two points on the circle $|z+1|=1$.
 Since $-2,2i,-2i$ are three points on the circle $|z|=2$, and they get mapped to points on $|z+1|=1$ by the linear transformation $f$,
 hence $|z|=2$ is mapped to $|z+1|=1$, showing that $f$ is in fact the desired linear transformation.
 
+\hfill
 
-
-
-\break
+\hfill
 
 \section*{6}
 \begin{myBox}[]{}
@@ -364,13 +382,20 @@ If $z_1,z_3,z_4$ has the same orientation as above, then $z_1,z_2$ needs to be o
 Which, this happens if the linear transformation would transform $z_1,z_2$ onto the same side of the real line, so $z_1$ gets mapped to a positive value.
 Hence, $(z_1,z_2,z_3,z_4)>0$.
 
-\textbf{Insert Image Here}
-
 \hfill
 
 Conversely, if $(z_1,z_2,z_3,z_4)>0$, then $z_1$ gets mapped to a positive value on the real axis.
 Which, since the orienation is given by $z_2,z_3,z_4$ in order, and $z_1,z_2$ both get mapped to positive values while $z_3$ gets mapped to $0$,
-hence the orientation $z_1,z_3,z_4$ must have the same orientation as $z_2,z_3,z_4$.
+hence $z_1,z_2$ must be on the same side of the circle when the circle is separated by $z_3,z_4$, the orientation $z_1,z_3,z_4$ must have the same orientation as $z_2,z_3,z_4$.
+
+\hfill
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=100mm]{Cross Ratio and Orientation.jpg}
+        \caption{Cross Ratio and Orientation}
+    \end{center}
+\end{figure}
 
 \break
 
@@ -385,7 +410,26 @@ hence the orientation $z_1,z_3,z_4$ must have the same orientation as $z_2,z_3,z
 
 \textbf{Pf:}
 
+Given the two circles $|z|=1$ and $|z-1|=4$, notice that the relationship is similar to the Circle of Apollonius 
+(which there exists a fixed ratio for any circle, such that the distance from any points on the circle to some two points $k,k_0$ always form that fixed ratio).
+Then, the two limit points $k,k_0$ of the given circles, every circle in the system has a center collinear to the two limit points.
+Hence, with both circles $|z|=1$ and $|z-1|=4$ that have center $0$ and $1$, we can conclude that the limit points both lie on the real axis ($k,k_0\in\mathbb{R}\cup\{\infty\}$).
 
+\hfill
+
+Also, the two limit points are in fact symmetric points under any circle in the given system, so they must satisfy the following relation:
+$$r_1=1,\quad c_1=0,\quad k_0=\frac{r_1^2}{\bar{k}-\bar{c_1}}+c_1 = \frac{1}{k}$$
+$$r_2=4,\quad c_2=1,\quad k_0=\frac{r_2^2}{\bar{k}-\bar{c_2}}+c_2=\frac{16}{k-1}+1$$
+(Note: the above equations are based on the relation of symmetric points with respect to each circle, where $r$ is the radius and $c$ is the center; and, since $k\in\mathbb{R}\cup\{\infty\}$, can assume $\bar{k}=k$).
+
+Hence, we can deduce the following:
+$$\frac{1}{k}=\frac{16}{k-1}+1,\quad (k-1)=16k+k(k-1),\quad k^2+14k+1=0$$
+$$k=-7\pm 4\sqrt{3}$$
+Which, take $k=-7+4\sqrt{3}$, $k_0=\frac{1}{k}=-7-4\sqrt{3}$, so the two points satisfy the given condition.
+
+\hfill
+
+Now, if we consider the linear transformation $\frac{z-k}{z-k_0}$'
 
 
 \end{document}

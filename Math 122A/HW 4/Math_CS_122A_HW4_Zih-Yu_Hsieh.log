@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  8 FEB 2025 21:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  9 FEB 2025 15:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,25 +558,58 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] (./Math_CS_122A_HW4_Zih-Yu_Hsieh.aux)
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<moon to half plane.jpg, id=57, 1744.5175pt x 1282.7925pt>
+File: moon to half plane.jpg Graphic file (type jpg)
+<use moon to half plane.jpg>
+Package pdftex.def Info: moon to half plane.jpg  used on input line 93.
+(pdftex.def)             Requested size: 426.79134pt x 313.82692pt.
+ [2 <./moon to half plane.jpg>] [3]
+<hyperbola to circle.jpg, id=69, 1600.98125pt x 1301.86375pt>
+File: hyperbola to circle.jpg Graphic file (type jpg)
+<use hyperbola to circle.jpg>
+Package pdftex.def Info: hyperbola to circle.jpg  used on input line 175.
+(pdftex.def)             Requested size: 398.33858pt x 323.91568pt.
+ [4 <./hyperbola to circle.jpg>] [5]
+<cross ratio 1.jpg, id=78, 1887.05pt x 753.81625pt>
+File: cross ratio 1.jpg Graphic file (type jpg)
+<use cross ratio 1.jpg>
+Package pdftex.def Info: cross ratio 1.jpg  used on input line 263.
+(pdftex.def)             Requested size: 227.62204pt x 90.92564pt.
+<cross ratio 2.jpg, id=80, 1708.3825pt x 669.50125pt>
+File: cross ratio 2.jpg Graphic file (type jpg)
+<use cross ratio 2.jpg>
+Package pdftex.def Info: cross ratio 2.jpg  used on input line 275.
+(pdftex.def)             Requested size: 227.62204pt x 89.19374pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <./cross ratio 1.jpg>] [7 <./cross ratio 2.jpg>] [8]
+<Cross Ratio and Orientation.jpg, id=94, 1735.48375pt x 674.52pt>
+File: Cross Ratio and Orientation.jpg Graphic file (type jpg)
+<use Cross Ratio and Orientation.jpg>
+Package pdftex.def Info: Cross Ratio and Orientation.jpg  used on input line 395.
+(pdftex.def)             Requested size: 284.52756pt x 110.58083pt.
+ [9 <./Cross Ratio and Orientation.jpg>] [10] (./Math_CS_122A_HW4_Zih-Yu_Hsieh.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21184 strings out of 474116
- 457606 string characters out of 5743681
+ 21221 strings out of 474116
+ 458672 string characters out of 5743681
  1947187 words of memory out of 5000000
- 43180 multiletter control sequences out of 15000+600000
+ 43217 multiletter control sequences out of 15000+600000
  565971 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  93i,7n,99p,503b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Math_CS_122A_HW4_Zih-Yu_Hsieh.pdf (11 pages, 203305 bytes).
+Output written on Math_CS_122A_HW4_Zih-Yu_Hsieh.pdf (10 pages, 1187124 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 166 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 
