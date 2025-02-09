@@ -179,7 +179,43 @@ then the vertex gets mapped to $-1$, and the focus gets mapped to $0$, hence thi
 
 \textbf{Pf:}
 
-Let $S:\mathbb{C}\cup\{\infty\}\rightarrow \mathbb{C}\cup\{\infty\}$
+Let $S:\mathbb{C}\cup\{\infty\}\rightarrow \mathbb{C}\cup\{\infty\}$ be arbitrary linear transformation that transforms the real axis to itself, then if restricted onto $\mathbb{R}$, 
+the image of the function is also the real axis. 
+
+Notice that since the transformation is bijective,
+there exists distinct points $z_1,z_2,z_3\in\mathbb{C}\cup\{\infty\}$, with $S(z_1)=1$, $S(z_2)=0$, and $S(z_3)=\infty$.
+Which, this indicates that $z_1,z_2,z_3$ is in fact on $\mathbb{R}\cup\{\infty\}$:
+
+Suppose there exists a point not on $\mathbb{R}\cup\{\infty\}$, then the circle (or straight line if one of them is $\infty$) determined by $z_1,z_2,z_3$ is not on $\mathbb{R}\cup\{\infty\}$;
+yet, since the image of $z_1,z_2,z_3$ is on the straight line $\mathbb{R}\cup\{\infty\}$,
+that means the circle deteined by $z_1,z_2,z_3$ is mapped onto $\mathbb{R}\cup\{\infty\}$, which contradicts the fact that the preimage
+of the real axis should be the real axis, under the given condition.
+
+\hfill
+
+Hence, $z_1,z_2,z_3\in \mathbb{R}\cup\{\infty\}$. Then, based on the formula for cross ratio,
+the unique transformation $S$ with $S(z_1)=1, S(z_2)=0$, and $S(z_3)=\infty$, has the following formula:
+$$S(z)=\frac{z-z_2}{z-z_3}\cdot\frac{z_1-z_3}{z_1-z_2}$$
+Hence, since $z_1,z_2,z_3\in \mathbb{R}\cup\{\infty\}$, then the above transformation can be simplified to real coefficients.
+
+\hfill
+
+\textbf{For all three points being real:}
+
+$S(z)$ is in the given form above, where every coefficients are real.
+
+\hfill
+
+\textbf{For one points being $\infty$:}
+
+If $z_1=\infty$:
+$$S(z)=\lim_{z_1\rightarrow\infty}\frac{z-z_2}{z-z_3}\cdot\frac{z_1-z_3}{z_1-z_2}=\frac{z-z_2}{z-z_3}$$
+If $z_2=\infty$:
+$$S(z)=\lim_{z_2\rightarrow\infty}\frac{z-z_2}{z-z_3}\cdot\frac{z_1-z_3}{z_1-z_2}=\frac{z_1-z_3}{z-z_3}$$
+Else if $z_3=\infty$:
+$$S(z)=\lim_{z_3\rightarrow\infty}\frac{z-z_2}{z-z_3}\cdot\frac{z_1-z_3}{z_1-z_2}=\frac{z-z_2}{z_1-z_2}$$
+
+
 
 \break
 
@@ -196,7 +232,48 @@ Let $S:\mathbb{C}\cup\{\infty\}\rightarrow \mathbb{C}\cup\{\infty\}$
 
 \textbf{Pf:}
 
-Ptolemy's Theorem (try to look over that)
+First, consider the right hand side of the equation:
+$$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4| = |z_2-z_3|\cdot|z_1-z_4|\cdot\left(\left|\frac{(z_1-z_2)\cdot(z_3-z_4)}{(z_2-z_3)\cdot(z_1-z_4)}\right|+1\right)$$
+Then, recall that the cross ratio of $(z_1,z_3,z_2,z_4)$ can be expressed as:
+$$(z_1,z_3,z_2,z_4)=\frac{(z_1-z_2)\cdot(z_3-z_4)}{(z_1-z_4)\cdot(z_3-z_2)}$$
+Hence, the above expression can be rewritten as:
+$$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4| = |z_2-z_3|\cdot|z_1-z_4|\cdot\left(\left|-\frac{(z_1-z_2)\cdot(z_3-z_4)}{(z_3-z_2)\cdot(z_1-z_4)}\right|+1\right)$$
+$$=|z_2-z_3|\cdot|z_1-z_4|\cdot(|-(z_1,z_3,z_2,z_4)|+1)$$
+
+\hfill
+
+Notice that since $z_1,z_2,z_3,z_4$ is consecutive vertices on a circle, then the cross ratio is real; 
+furthermore, by the statement in \textbf{Question 6}, since $z_1,z_3,z_4$ and $z_2,z_3,z_4$ have the same orientation,
+hence the cross ratio $(z_1,z_2,z_3,z_4)>0$.
+
+\textbf{Insert Image Here}
+
+\hfill
+
+Similarly, when viewing in order of $z_1,z_3,z_2,z_4$, the orientation $z_1,z_3,z_4$ and $z_3,z_2,z_4$ are different,
+hence the cross ratio $(z_1,z_3,z_2,z_4)<0$.
+
+\textbf{Insert Image Here}
+
+\hfill
+
+Then, since $(z_1,z_3,z_2,z_4)<0$, $-(z_1,z_3,z_2,z_4)>0$, hence $|-(z_1,z_3,z_2,z_4)|=-(z_1,z_3,z_2,z_4)$. The above identity becomes:
+$$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|=|z_2-z_3|\cdot|z_1-z_4|\cdot(|-(z_1,z_3,z_2,z_4)|+1)$$
+$$|z_2-z_3|\cdot|z_1-z_4|\cdot|(-(z_1,z_3,z_2,z_4)+1)|$$
+
+Compute the third term in the equation, we get:
+$$-(z_1,z_3,z_2,z_4)+1=-\frac{(z_1-z_2)\cdot(z_3-z_4)}{(z_3-z_2)\cdot(z_1-z_4)}+1$$
+$$=\frac{(z_3-z_2)(z_1-z_4)-(z_1-z_2)(z_3-z_4)}{(z_3-z_2)(z_1-z_4)}$$
+$$=\frac{(z_1z_3-z_1z_2-z_3z_4+z_2z_4)-(z_1z_3-z_1z_4-z_2z_3+z_2z_4)}{(z_3-z_2)(z_1-z_4)}$$
+$$=\frac{-z_1z_2-z_3z_4+z_1z_4+z_2z_3}{(z_3-z_2)(z_1-z_4)}=\frac{z_1(z_4-z_2)+z_3(z_2-z_4)}{(z_3-z_2)(z_1-z_4)}$$
+$$=\frac{(z_3-z_1)(z_2-z_4)}{(z_3-z_2)(z_1-z_4)}$$
+
+Hence, plug back into the original equation, we get:
+$$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|=|z_2-z_3|\cdot|z_1-z_4|\cdot|(-(z_1,z_3,z_2,z_4)+1)|$$
+$$=|z_2-z_3|\cdot|z_1-z_4|\cdot\left|\frac{(z_3-z_1)(z_2-z_4)}{(z_3-z_2)(z_1-z_4)}\right|=\left|(z_3-z_1)(z_2-z_4)\right|$$
+So, the original original formula is true:
+$$|z_3-z_1|\cdot|z_2-z_4|=|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|$$
+
 
 \break
 
@@ -212,7 +289,8 @@ Ptolemy's Theorem (try to look over that)
 
 \textbf{Pf:}
 
-The symmetric point of the origin is some point, then try to unravel the mapping.
+The following map:
+$$z\mapsto w=(\frac{1}{2}z+1)\mapsto \frac{-(1-i)w}{2w-(1-i)}$$
 
 \break
 
