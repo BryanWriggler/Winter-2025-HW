@@ -129,7 +129,7 @@ then $z^2-z_1^2=(z-z_1)(z+z_1)=0$, hence $z=z_1$ or $z=-z_1$. However, if restri
 Now, consider the inside of the right-hand branch of the hyperbola $x^2-y^2=a^2$, which is restricted by the condition $x^2-y^2\geq a^2$:
 For all $z=x+iy$ in the given region, $x^2-y^2\geq a^2$; hence, $z^2=(x^2-y^2)+i\cdot 2xy$ is in the half plane $Re(w)\geq a^2$.
 Also, for all $w$ in the half plane $Re(w)\geq a^2$ ($a^2>0$), since it is in the domain of $\sqrt{z}$ (which is in $\mathbb{C}\setminus\{x\in\mathbb{R}\ |\ x\leq 0\}$),
-then there exists $z=x+iy$ with $z^2=w$, hence $Re(w)=Re(z^2)=(x^2-y^2)\geq a^2$, showing that $z$ is in the given region.
+then there exists $z=x+iy$ with $z=\sqrt{w}$, hence $Re(w)=Re(z^2)=(x^2-y^2)\geq a^2$, showing that $z$ is in the given region.
 
 Hence, we can conclude that the function $z^2$ restricting onto the inside of the right-hand branch of the given hyperbola (with condition $x^2-y^2\geq a^2$),
 it is an injective function mapping the region onto the half plane $Re(z)\geq a^2$.
@@ -200,7 +200,7 @@ Which, this indicates that $z_1,z_2,z_3$ is in fact on $\mathbb{R}\cup\{\infty\}
 
 Suppose there exists a point not on $\mathbb{R}\cup\{\infty\}$, then the circle (or straight line if one of them is $\infty$) determined by $z_1,z_2,z_3$ is not on $\mathbb{R}\cup\{\infty\}$;
 yet, since the image of $z_1,z_2,z_3$ is on the straight line $\mathbb{R}\cup\{\infty\}$,
-that means the circle deteined by $z_1,z_2,z_3$ is mapped onto $\mathbb{R}\cup\{\infty\}$, which contradicts the fact that the preimage
+that means the circle determined by $z_1,z_2,z_3$ is mapped onto $\mathbb{R}\cup\{\infty\}$, which contradicts the fact that the preimage
 of the real axis should be the real axis, under the given condition.
 
 \hfill
@@ -281,7 +281,7 @@ hence the cross ratio $(z_1,z_3,z_2,z_4)<0$. (In \textbf{Figure 4})
 
 Then, since $(z_1,z_3,z_2,z_4)<0$, $-(z_1,z_3,z_2,z_4)>0$, hence $|-(z_1,z_3,z_2,z_4)|=-(z_1,z_3,z_2,z_4)$. The above identity becomes:
 $$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|=|z_2-z_3|\cdot|z_1-z_4|\cdot(|-(z_1,z_3,z_2,z_4)|+1)$$
-$$|z_2-z_3|\cdot|z_1-z_4|\cdot|(-(z_1,z_3,z_2,z_4)+1)|$$
+$$|z_2-z_3|\cdot|z_1-z_4|\cdot|-(z_1,z_3,z_2,z_4)+1|$$
 
 Compute the third term in the equation, we get:
 $$-(z_1,z_3,z_2,z_4)+1=-\frac{(z_1-z_2)\cdot(z_3-z_4)}{(z_3-z_2)\cdot(z_1-z_4)}+1$$
@@ -291,7 +291,7 @@ $$=\frac{-z_1z_2-z_3z_4+z_1z_4+z_2z_3}{(z_3-z_2)(z_1-z_4)}=\frac{z_1(z_4-z_2)+z_
 $$=\frac{(z_3-z_1)(z_2-z_4)}{(z_3-z_2)(z_1-z_4)}$$
 
 Hence, plug back into the original equation, we get:
-$$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|=|z_2-z_3|\cdot|z_1-z_4|\cdot|(-(z_1,z_3,z_2,z_4)+1)|$$
+$$|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|=|z_2-z_3|\cdot|z_1-z_4|\cdot|-(z_1,z_3,z_2,z_4)+1|$$
 $$=|z_2-z_3|\cdot|z_1-z_4|\cdot\left|\frac{(z_3-z_1)(z_2-z_4)}{(z_3-z_2)(z_1-z_4)}\right|=\left|(z_3-z_1)(z_2-z_4)\right|$$
 So, the original original formula is true:
 $$|z_3-z_1|\cdot|z_2-z_4|=|z_1-z_2|\cdot|z_3-z_4|+|z_2-z_3|\cdot|z_1-z_4|$$
@@ -321,7 +321,7 @@ its symmetric point, namely $\infty$. (Note: the symmetric point of the center o
 Now, consider the points they get mapped to: Since any linear transformation should preserve the symmetric points,
 then as $0$ gets mapped to $i$, $\infty$ gets mapped to the symmetric point of $i$ on the circle $|z+1|=1$.
 The following is the computation based on the formula given in the textbook. Let $z_0=i$, radius $r=1$, and the center $a=-1$, then its symmetric point $z_0^*$ is given by:
-$$z_0^*=\frac{r^2}{(\bar{z_0}-a)}+a = \frac{1}{-i-(-1)}-1 = \frac{1}{1-i}-1 = \frac{(1+i)}{(1-i)(1+i)}-1$$
+$$z_0^*=\frac{r^2}{(\bar{z_0}-\bar{a})}+a = \frac{1}{-i-(-1)}-1 = \frac{1}{1-i}-1 = \frac{(1+i)}{(1-i)(1+i)}-1$$
 $$=\frac{1+i}{2}-1 = -\frac{1}{2}+\frac{1}{2}i$$
 Hence, under the desired linear transformation, $\infty$ gets mapped to $z_0^*=-\frac{1}{2}+\frac{1}{2}i$.
 
@@ -437,10 +437,32 @@ Now, if we consider the linear transformation $w=\frac{z-k}{z-k_0}$, based on th
 the circles $|z|=1$ and $|z-1|=4$ get mapped to concentric circles around origin (since every point on the same circle has a fixed ratio between distances from $k$ and $k_0$).
 Hence, every circle that's orthogonal to both circles, must get mapped to circles that are orthogonal to the concentric circles through the origin in the image.
 
-This could happen only if the image of the circle is a straight line through the origin, which is parametrized by $z=w_0t$ for nonzero number $w_0\in\mathbb{C}$, and $t\in\mathbb{R}$.
+This could happen only if the image of the circle is a straight line through the origin, which is parametrized by $w=w_0t$ for nonzero number $w_0\in\mathbb{C}$, and $t\in\mathbb{R}$.
 
 To reconstruct the preimage, consider the inverse of the above linear transformation, given by $z=\frac{k_0w-k}{w-1}$.
+Then, each straight line through the origin $w=w_0t$, has the preimage $z=\frac{k_0w_0t-k}{w_0t-1}$, which is a circle passing through both $k$ and $k_0$
+(Take $t=0$, $z=\frac{-k}{-1}=k$; else, take $t=\infty$, then $z=\lim_{t\rightarrow\infty}\frac{k_0w_0t-k}{w_0t-1}=\frac{k_0w_0}{w_0}=k_0$).
 
+So, any circle passing through both $k_0=-7+4\sqrt{3}$ and $k=-7-4\sqrt{3}$ is a circle orthogonal to both circles $|z|=1$ and $|z-1|=4$.
 
+\hfill
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=120mm]{circles 1.png}
+        
+        \hfill
+
+        \includegraphics*[width=120mm]{circles 2.png}
+        \caption{Comparison of Circles with Fixed Distance Ratio to $k,k_0$}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=120mm]{orthogonal circle.png}
+        \caption{Parametrization of Circles orthogonal to given circles}
+    \end{center}
+\end{figure}
 
 \end{document}
