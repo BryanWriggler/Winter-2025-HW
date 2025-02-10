@@ -427,9 +427,20 @@ $$\frac{1}{k}=\frac{16}{k-1}+1,\quad (k-1)=16k+k(k-1),\quad k^2+14k+1=0$$
 $$k=-7\pm 4\sqrt{3}$$
 Which, take $k=-7+4\sqrt{3}$, $k_0=\frac{1}{k}=-7-4\sqrt{3}$, so the two points satisfy the given condition.
 
+(Note: in \textbf{HW 2, Ahlfors Pg. 33 Problem 4}, if the modulus of a circle after a rational function is constant,
+then the pole $w^*$ and the zero $w$ satisfy the relation $w^*=\frac{1}{\bar{w}}$, the two points are the symmetric points under linear transformation.
+Conversely, we can also conclude that since the given circles have $k,k_0$ being the symmetric points, the distance from the circle to the two points form a constrant ratio).
+
 \hfill
 
-Now, if we consider the linear transformation $\frac{z-k}{z-k_0}$'
+Now, if we consider the linear transformation $w=\frac{z-k}{z-k_0}$, based on the previous logic, 
+the circles $|z|=1$ and $|z-1|=4$ get mapped to concentric circles around origin (since every point on the same circle has a fixed ratio between distances from $k$ and $k_0$).
+Hence, every circle that's orthogonal to both circles, must get mapped to circles that are orthogonal to the concentric circles through the origin in the image.
+
+This could happen only if the image of the circle is a straight line through the origin, which is parametrized by $z=w_0t$ for nonzero number $w_0\in\mathbb{C}$, and $t\in\mathbb{R}$.
+
+To reconstruct the preimage, consider the inverse of the above linear transformation, given by $z=\frac{k_0w-k}{w-1}$.
+
 
 
 \end{document}
