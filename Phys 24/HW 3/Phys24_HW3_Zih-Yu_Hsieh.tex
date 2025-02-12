@@ -1,0 +1,260 @@
+%Phys24_HW3_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 7.21:
+
+        What is the maximum electromotive force induced in a coil of
+        4000 turns, average radius 12 cm, rotating at 30 revolutions per
+        second in the earth’s magnetic field where the field intensity is
+        0.5 gauss?
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+If assume the field is in $\hat{x}$ direction, with strength $0.5$ gauss (or $5\cdot 10^{-5} T$), and the coil has a normal always pointing in the xy-plane.
+Since it rotates 30 revolution every second, then frequency $f=30 Hz$, or the angular frequency $\omega = 2\pi f = 2\pi \cdot 30 = 60\pi$.
+Then, assume at initial $t=0$, the normal is pointing in $\hat{x}$ direction, then the normal $\bar{n}$ can be parametrized as $\bar{n}=(\cos(\omega t),\sin (\omega t),0)$.
+
+\hfill
+
+Then, since the coil has 4000 turns, and the average radius is $12 cm = 0.12 m$, if consider the magnetic flux through each turn, we get:
+$$\phi = \int_A\bar{B}\cdot d\bar{s} = \int_A B\hat{x} \cdot\bar{n} dA = B\int_A\hat{x}\cdot (\cos(\omega t),\sin(\omega t),0)dA = B\cos(\omega t)\int_AdA$$
+(Note: above equation is true, since the field can be treated as constant direction that's not changing).
+
+Given that $\int_A dA$ is the area of the coil, which is given by $\pi \cdot (0.12)^2$, hence the magnetic flux for each turn is $\phi = B\cos(\omega t)\pi \cdot (0.12)^2$.
+With $4000$ turns, the total magnetic flux is $\phi_{tot}=4000 \cdot \pi \cdot (0.12)^2 B\cos(\omega t)$.
+
+\hfill
+
+Now, since $\varepsilon=-\frac{d}{dt}\phi_{tot} = 4000\cdot\pi\cdot(0.12)^2B\omega\sin(\omega t)$, and $|\sin(\omega t)\leq 1$, then the maximum of $\varepsilon$ is given as:
+$$\max|\varepsilon| =4000\cdot \pi \cdot (0.12)^2 B\omega $$
+With $B=5\cdot 10^{-5}T$ (or unit in $\frac{V\cdot s}{m^2}$), $\omega = 60\pi\ rad/s$, then the maximum EMF is given by:
+$$\max|\varepsilon| = 4000\cdot\pi\cdot((0.12)^2m^2)\cdot \left(5\cdot 10^{-5}\ \frac{V\cdot s}{m^2}\right)\cdot (60\pi\ rad/s) \approx 1.7055 V$$
+So, the maximum EMF is approximately $1.7055 V$.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 7.22:
+
+        In the central region of a solenoid that is connected to a radiofrequency 
+        power source, the magnetic field oscillates at $2.5\cdot 10^6$
+        cycles per second with an amplitude of 4 gauss. What is the amplitude of 
+        the oscillating electric field at a point 3 cm from the axis?
+
+        (This point lies within the region where the magnetic field is nearly
+        uniform.)
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given the oscillation happens at $2.5\cdot 10^6$ cycles per second (frequency), then the angular frequency $\omega = 2.5 \cdot 10^6\pi$.
+Then, assume at $t=0$, the magnetic field strength is $0$, the field strength can be modeled as:
+$$B(t)=4\cdot 10^{-4}\sin(\omega t)$$
+(Note: $4$ gauss is $4\cdot 10^{-4} T$). Which, we treat the direction of magnetic field as $\hat{z}$ for simplicity.
+
+\hfill
+
+Now, consider an imaginary conducting circle with radius $r$ concentric to the axis of the solenoid pointing in $\hat{z}$ (and $r$ is small compared to the solenoid's radius).
+Through this imaginary conducting loop, WLOG, we can assume when an electric field is generated, it is always pointing in $\hat{\phi}$ direction
+(since the current is traveling in $\hat{\phi}$ direction, which current density is pointing in the same direction; and, because $\bar{J}=\sigma\bar{E}$, can assume electric field is also pointing in the same direction).
+Which, let $\bar{E}=E(t)\hat{\phi}$, we can calculate the EMF as:
+$$\varepsilon = \int_{\partial A}\bar{E}\cdot d\bar{r} = E(t) 2\pi r$$
+(Note: $\bar{E}$ and $d\bar{r}$ are always parallel, since on the circle we constructed, both are in $\hat{\phi}$ direction; and, can assume $\bar{E}$ has constant magnitude by symmetry, when the time $t$ is fixed).
+
+\hfill
+
+Then, consider the magnetic flux through this conducting loop: Since $\bar{B}(t)=B(t)\hat{z}$, and the normal of the circle is also in $\hat{z}$ direction, then the flux is given as follow:
+$$\phi = \int_A\bar{B}(t)\cdot d\bar{s}=B(t) \pi r^2 = \pi r^2 \cdot (4\cdot 10^{-4})\sin(\omega t)$$
+(Note: because $\bar{B}(t)$ and $d\bar{s}$ are parallel, and $B(t)$ is assumed to be constant, hence the flux is field strnegth times area of the loop).
+
+Hence, EMF is also given as follow:
+$$E(t)2\pi r=\varepsilon=-\frac{d}{dt}\phi = -\pi r^2\cdot (4\cdot 10^{-4})\omega \cos(\omega t)$$
+Which, we can derive the following:
+$$E(t)=-\frac{r}{2}(4\cdot 10^{-4})\omega \cos(\omega t)$$
+Since $|\cos(\omega t)|\leq 1$, then the maximum of $E(t)$ is given as:
+$$\max|E(t)|=\frac{r}{2}\cdot (4\cdot 10^{-4})\omega$$
+
+\hfill
+
+Now, with $r=3\ cm=0.03\ m$, $4\cdot 10^{-4}$ is given as $T$ (or $\frac{N\cdot s}{C\cdot m}$), and $\omega = 2.5\cdot 10^6\ rad/s$, we get:
+$$\max|E(t)|=\frac{0.03 m}{2}\left(4\cdot 10^{-4} \frac{N\cdot s}{C\cdot m}\right)(2.5\cdot 10^6\ rad/s)\approx 15 \frac{N}{C}$$
+Hence, the amplitude of the oscillating electric field is given by $15\ N/C$.
+
+\break
+
+\section*{3 (Not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 7.25:
+
+        A long straight stationary wire is parallel to the $y$ axis and passes
+        through the point $z = h$ on the $z$ axis. A current $I$ flows in this
+        wire, returning by a remote conductor whose field we may neglect.
+
+        Lying in the $xy$ plane is a square loop with two of its sides, of
+        length $b$, parallel to the long wire. This loop slides with constant
+        speed $v$ in the $\hat{x}$ direction. 
+        
+        Find the magnitude of the electromotive
+        force induced in the loop at the moment when the center of the
+        loop crosses the $y$ axis.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        A metal crossbar of mass $m$ slides without friction on two long
+        parallel conducting rails a distance $b$ apart (see Figure below). 
+        
+        A resistor $R$ is connected across the rails at one end; compared with $R$, 
+        the resistance of bar and rails is negligible. 
+        
+        There is a uniform field $B$ perpendicular to the plane of the figure. 
+        At time $t = 0$ the crossbaris given a velocity $v_0$ toward the right. 
+        What happens afterward?
+
+        \begin{itemize}
+            \item[(a)]Does the rod ever stop moving? If so, when?
+            \item[(b)]How far does it go?
+            \item[(c)] How about conservation of energy?
+        \end{itemize}
+    \end{question}
+
+    \begin{center}
+        \includegraphics*[width=80mm]{7.25.png}
+    \end{center}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        An infinite solenoid with radius $b$ has $n$ turns per unit length. The
+        current varies in time according to $I(t) = I_0\cos(\omega t)$ (with positive 
+        defined as shown in the Figure below). 
+        
+        A ring with radius $r < b$ and resistance $R$ is centered on the solenoid’s axis, 
+        with its plane perpendicular to the axis.
+
+        \begin{itemize}
+            \item[(a)] What is the induced current in the ring?
+            \item[(b)] A given little piece of the ring will feel a magnetic force. For
+            what values of t is this force maximum?
+            \item[(c)] What is the effect of the force on the ring? That is, does the
+            force cause the ring to translate, spin, flip over, stretch/
+            shrink, etc.?
+        \end{itemize}
+    \end{question}
+
+    \begin{center}
+        \includegraphics*[width=30mm]{7.26.png}
+    \end{center}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{6}
+\begin{myBox}[]{}
+    \begin{question}
+        A nonconducting thin ring of radius a carries a static charge q.
+        This ring is in a magnetic field of strength $B_0$, parallel to the ring’s
+        axis, and is supported so that it is free to rotate about that axis.
+
+        If the field is switched off, how much angular momentum will be
+        added to the ring? Supposing the mass of the ring to be $m$, show
+        that the ring, if initially at rest, will acquire an angular velocity
+        $\omega=\frac{qB_0}{2m}$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Suppose the field strength $B(t)$ is modeled as $B(0)=B_0\neq 0$, $B(t_1)=0$ for some $t_1>0$, and for all $t\geq t_1$, $B(t)=0$ (assume it's differentiable on the interval $(0,t_1)$),
+and both $\bar{B}$ and the axis are poiting in $\hat{z}$ direction (so $\bar{B}=B(t)\hat{z}$).
+
+At any moment $t\in (0,t_1)$, the magnetic flux is given as $\phi=\int_A\bar{B}\cdot d\bar{s}=B(t)\cdot \pi a^2$ 
+(since $\bar{B}$ and the normal $d\bar{s}$ is always parallel, and field strength across the ring is constant, then the flux is field strength $\times$ area of the ring).
+Hence, the EMF $\varepsilon = -\frac{d}{dt}\phi = -\frac{dB}{dt}\cdot \pi a^2$.
+
+\hfill
+
+Also, notice that WLOG, we can assume when the electric field is generated in the ring, the field strength is constant at anywhere in the ring, and it's always pointing in the $\phi$ direction of the ring, based on symmetry.
+Let $\bar{E}=E(t)\hat{\phi}$, which the EMF is also calculated as $\varepsilon = \int_{\partial A}\bar{E}\cdot d\bar{r} = E(t)\cdot 2\pi a$ (since $\bar{E}$ and $d\bar{r}$ are all in $\phi$ direction on the ring, and $E(t)$ is constant
+at fixed time $t$, so the integral is field strength $\times$ length of circumference of the ring).
+
+Combining the two equations above, we get:
+$$E(t)\cdot 2\pi a=-\frac{dB}{dt}\cdot \pi a^2,\quad E(t)=-\frac{a}{2}\cdot\frac{dB}{dt}$$
+Hence, $\bar{E}=-\frac{a}{2}\cdot \frac{dB}{dt}$.
+
+\hfill
+
+Now, if assume the charge $q$ is distributed uniformly around the ring, then for each small portion of angle $d\phi$, the corresponding charge is given by $dq = \frac{q}{2\pi a}\cdot a\cdot d\phi = \frac{q}{2\pi} d\phi$.
+Then, the force on the component is given by $d\bar{F}=dq\cdot \bar{E} = -\frac{qa\cdot d\phi}{4\pi}\cdot \frac{dB}{dt}\hat{\phi}$, which the torque on the component (with position about the axis given by $\bar{r}=a\hat{r}$),
+is then given by $d\bar{\tau}=\bar{r}\times d\bar{F} = -\frac{qa^2\cdot d\phi}{4\pi}\cdot \frac{dB}{dt}(\hat{r}\times \hat{\phi}) = -\frac{qa^2\cdot d\phi}{4\pi}\cdot \frac{dB}{dt}\hat{z}$.
+
+So, the total torque is given as:
+$$\bar{\tau}=\int_{\phi=0}^{2\pi}d\bar{\tau}=\int_{0}^{2\pi}-\frac{qa^2\cdot d\phi}{4\pi}\cdot \frac{dB}{dt}\hat{z} = -\frac{qa^2}{4\pi}\cdot \frac{dB}{dt}\hat{z} \cdot 2\pi = \frac{-qa^2}{2}\cdot \frac{dB}{dt}\hat{z}$$
+Recall that $\bar{\tau} = I\bar{\alpha}$, and for a circular ring with radius $a$ and mass $m$, the moment of inertia $I=ma^2$. Hence, the angular acceleration is given by:
+$$\bar{\alpha}=\frac{1}{I}\bar{\tau} = \frac{1}{ma^2}\cdot \left(\frac{-qa^2}{2}\cdot \frac{dB}{dt}\hat{z}\right) = \frac{-q}{2m}\cdot \frac{dB}{dt}\hat{z}$$
+Then, the change in angular velocity over time interval $(0,t_1)$ is then given by:
+$$\Delta\bar{\omega}=\int_{t=0}^{t_1}\bar{\alpha}\hat{z} dt = \frac{-q}{2m}\int_{t=0}^{t_1}\frac{dB}{dt} dt \hat{z} = -\frac{q}{2m}(B(t_1)-B(0))\hat{z} = -\frac{q}{2m}(0-B_0)\hat{z} = \frac{qB_0}{2m}\hat{z}$$
+With the initial angular velocity being $\bar{w}=\bar{0}$ (since it's initially at rest), then the angular velocity at $t_1$ is given by $\Delta\bar{\omega} = \frac{qB_0}{2m}\hat{z}$.
+
+And, since after $t_1$, $\frac{dB}{dt}=0$ (never changing after decrease to $0$), then $\bar{\alpha}=\bar{0}$, angular velocity is no longer increasing.
+So, the final angular velocity is $\omega = \frac{qB_0}{2m}$.
+
+\end{document}
