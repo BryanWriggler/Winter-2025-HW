@@ -152,6 +152,8 @@ Hence, the amplitude of the oscillating electric field is given by $15\ N/C$.
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
+        Purcell 7.26:
+
         A metal crossbar of mass $m$ slides without friction on two long
         parallel conducting rails a distance $b$ apart (see Figure below). 
         
@@ -159,7 +161,7 @@ Hence, the amplitude of the oscillating electric field is given by $15\ N/C$.
         the resistance of bar and rails is negligible. 
         
         There is a uniform field $B$ perpendicular to the plane of the figure. 
-        At time $t = 0$ the crossbaris given a velocity $v_0$ toward the right. 
+        At time $t = 0$ the crossbar is given a velocity $v_0$ toward the right. 
         What happens afterward?
 
         \begin{itemize}
@@ -176,11 +178,66 @@ Hence, the amplitude of the oscillating electric field is given by $15\ N/C$.
 
 \textbf{Pf:}
 
+Before heading into the problem, we need some preliminary setup to understand the relationship of the force, position, velocity, and acceleration.
+
+\hfill
+
+WLOG, assume the magnetic field is pointing out of the plane. Let the rightward direction be $\hat{x}$, upward direction be $\hat{y}$, and the direction out of the page be $\hat{z}$.
+
+Let the left most position of the rail be position $x=0$, and say initially the crossbar is at distance $x=x_0$, and at time $t$, 
+the cross bar is at distance $x(t)$.
+
+Then, the magnetic flux at time $t$ is given by $\phi=\int_A\bar{B}\cdot d\bar{s} = B\cdot x(t)b$ 
+(Note: since $\bar{B}$ and $d\bar{s}$ the normal of the area is always parallel, or pointing out of the page, while $\bar{B}$ has constant magnitude,
+then the flux is field strength $\times$ area).
+Which, the EMF at time $t$ is given by: $\varepsilon(t)=-\frac{d}{dt}\phi = -Bb\frac{dx}{dt} = -Bb\cdot v(t)$ (where $v(t)$ is the velocity to the right).
+
+So, with the resistance $R$, at time $t$, the induced current is $I_{ind}=\frac{\varepsilon}{R} = -\frac{Bb}{R}v(t)$.
+(Note: Based on Lenz's Law, if $v(t)>0$ - when the crossbar is traveling to the right, we have $\frac{d\phi}{dt}>0$, hence with the normal pointing out of the page,
+the current is going clockwise, with magnitde $\frac{Bb}{R}v(t)$).
+
+\hfill
+
+Now, notice that if consider the top rail as $l=0$, and the bottom rail as $l=b$, with the field $\bar{B}$ pointing out of the page ($\hat{z}$ direction), the force on the crossbar is given by:
+$$\bar{F}=\int_c I_{ind}d\bar{r}\times \bar{B} = \int_{l=0}^{b}\frac{Bb}{R}v(t)dl \cdot B (-\hat{y}\times \hat{z}) = -\frac{B^2b}{R}v(t)\hat{x}\int_{l=0}^{b}dl = -\frac{B^2b^2}{R}v(t)\hat{x}$$
+
+Let $a(t)=\frac{dv}{dt}$ be the acceleration toward the right direction for time $t>0$. Since $\bar{F}=m\bar{a}$, then $\frac{dv}{dt}=\bar{a}=-\frac{B^2b^2}{mR}v(t)\hat{x}$, or $\frac{dv}{dt}=-\frac{B^2b^2}{mR}v(t)$.
+
+\hfill
+
+\begin{itemize}
+    \item[(a)] Based on the preliminary derivation above, since $\frac{dv}{dt}=-\frac{B^2b^2}{mR}v$, then the solution to the differential equation is:
+    $$v(t)=Ce^{-\frac{B^2b^2}{mR}t}$$
+    Which, for $v(0)=v_0=Ce^0$, $C=v_0$. So $v(t)=v_0e^{-\frac{B^2b^2}{mR}t}$.
+    
+    By the property of exponential function, $v(t)\neq 0$, hence the crossbar never stops in finite amount of time.
+
+    \hfill
+
+    \item[(b)] If consider the total distance the crossbar can travel, for any $t_1>0$, consider the following:
+    $$\Delta x = \int_{t=0}^{t_1}v(t)dt = \int_{t=0}^{t_1}v_0e^{-\frac{B^2b^2}{mR}t}dt = -\frac{v_0mR}{B^2b^2}e^{-\frac{B^2b^2}{mR}t}\bigg|_{0}^{t_1} = \frac{v_0mR}{B^2b^2}\left(1-e^{-\frac{B^2b^2}{mR}t_1}\right)$$
+    Then, if take the limit as $t_1$ approaches infinity, the above term becomes $\frac{v_0mR}{B^2b^2}$,
+    hence this is the largest distance the crossbar can travel. It travels distance of at most $\frac{v_0mR}{B^2b^2}$.
+
+    \hfill
+
+    \item[(c)] The initial kinetic energy is given by $\frac{1}{2}mv_0^2$. If there are no other external sources dissipating the energy, then the energy would be dissipated by the resistor.
+    
+    Notice that the power dissipated by the resistor is given by $P=I^2R$, which over time the energy dissipated is given by:
+    $$\int_{t=0}^{\infty}I^2Rdt = \int_{t=0}^{\infty}\left(-\frac{Bb}{R}v(t)\right)^2R dt = \frac{B^2b^2v_0^2}{R^2}\int_{t=0}^{\infty}e^{-\frac{2B^2b^2}{mR}t}dt$$
+    $$=\frac{B^2b^2v_0^2}{R^2}\cdot\left(-\frac{mR}{2B^2b^2}\right)e^{-\frac{2B^2b^2}{mR}t}\bigg|_{0}^{\infty} = \frac{mv_0^2}{2}$$
+    Hence, the total energy dissipated forthe whole time interval matches with the initial kinetic energy in the system,
+    showing that energy is conserved.
+    
+\end{itemize}
+
 \break
 
 \section*{5}
 \begin{myBox}[]{}
     \begin{question}
+        Purcell 7.27:
+
         An infinite solenoid with radius $b$ has $n$ turns per unit length. The
         current varies in time according to $I(t) = I_0\cos(\omega t)$ (with positive 
         defined as shown in the Figure below). 
@@ -205,11 +262,54 @@ Hence, the amplitude of the oscillating electric field is given by $15\ N/C$.
 
 \textbf{Pf:}
 
-\break
+Let the solenoid's axis be in the $\hat{z}$ direction (pointing upward), and use cylindrical coordinates for the problem.
+
+Recall that in lecture, the magnetic field of the interior of the solenoid with current $I$ passing through, is given by $\bar{B}=\mu_0 nI\hat{z}$,
+where $n$ is the number of turns per unit length. Hence, consider time dependence, $\bar{B}(t)=\mu_0nI(t)\hat{z}$.
+
+\begin{itemize}
+    \item[(a)] Consider the magnetic flux $\phi = \int_A \bar{B}\cdot d\bar{s}$. At any instant $t$, since $\bar{B}$ is nearly a constant near the center of the solenoid,
+    while both $\bar{B}$ and $d\bar{s}$ (normal of the area of the ring) are both pointing in $\hat{z}$ direction. Hence, it can be simplified to $\phi=B(t)\cdot \pi r^2$
+    (which, $B(t)=\mu_0nI(t)$, the magnitude of magnetic field; and, $\pi r^2$ is the area of the ring), or $\phi(t)=\mu_0n\cdot\pi r^2 I(t)$.
+    Which, consider time dependence, we can yield the EMF by:
+    $$\varepsilon=-\frac{d}{dt}\phi = -\mu_0n\pi r^2\frac{dI}{dt}$$
+    With theresistance $R$ of the ring, then by Ohm's Law $\varepsilon=I_{ind}R$, we yield:
+    $$I_{ind}=\frac{\varepsilon}{R}=-\frac{\mu_0n\pi r^2}{R}\cdot\frac{dI}{dt}$$
+    So, with $I(t)=I_0\cos(\omega t)$, which $I'(t)=-\omega I_0\sin(\omega t)$, the induced current in the ring is $I_{ind}=\frac{\mu_0n\pi r^2}{R}\cdot\omega I_0\sin(\omega t)$.
+
+    \hfill
+
+    \item[(b)] Given the circular ring, at any instant the current is always traveling in $\hat{\phi}$ direction. Hence, given a small portion of the angle $d\phi$,
+    the corresponding force on the component is given by $I_{ind} d\bar{r}\times \bar{B}$.
+    Which, $I_{ind}(t)=\frac{\mu_0n\pi r^2\cdot \omega I_0}{R}\sin(\omega t)$, $d\bar{r}=rd\phi \hat{\phi}$, and $\bar{B}=\mu_0nI(t)\hat{z} = \mu_0nI_0\cos(\omega t)\hat{z}$.
+    Then, the force component can be calculated as:
+    $$d\bar{F}=\frac{\mu_0n\pi r^2\cdot \omega I_0}{R}\sin(\omega t)\cdot rd\phi \cdot\mu_0nI_0\cos(\omega t)(\hat{\phi}\times \hat{z})$$
+    In case to maximize the force component with respect to time, it suffices to maximize $\sin(\omega t)\cos(\omega t)=\frac{1}{2}\sin(2\omega t)$.
+    Which, the maximum of the amplitude occurs when the input $2\omega t=\frac{(2n+1)}{2}\pi = n\pi + \frac{\pi}{2}$ (for $n\in\mathbb{Z}$).
+    Hence, for $t=\frac{2n+1}{4\omega}\pi$, the force component caused by magnetic field on the ring is maximized. (not regarding the direction here).
+    
+    \hfill
+
+    \item[(c)] The force would stretch / shrink the ring in radial direction. Since the current in the wire is going in the $\phi$ direction, this is also 
+    the change in direction $d\bar{r}$ when finding the force on the whole ring. Then, because $\bar{B}$ is pointing in $\hat{z}$ direction,
+    then each small component of force has direction being the same as $d\bar{r}\times \bar{B} = rd\phi\cdot B(\hat{\phi}\times \hat{z}) = rd\phi\cdot B\hat{r}$, 
+    which the force is solely in radial direction at each location.
+
+    Then, because when the induced current occurs, we can assume the current has equal strength at each location,
+    and the magnetic field strength is also nearly constant near the ring, then the force component at each location has the same magnitude.
+    So, the net force on the ring is $0$ (since the ring has rotation symmetry, which the force in radial direction cancels each other out),
+    but it creates a force that stretches or shinks the ring in radial direction.
+\end{itemize}
+
+\hfill
+
+\hfill
 
 \section*{6}
 \begin{myBox}[]{}
     \begin{question}
+        Purcell 7.33:
+
         A nonconducting thin ring of radius a carries a static charge q.
         This ring is in a magnetic field of strength $B_0$, parallel to the ring’s
         axis, and is supported so that it is free to rotate about that axis.
