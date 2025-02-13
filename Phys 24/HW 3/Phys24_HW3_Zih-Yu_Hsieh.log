@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  12 FEB 2025 09:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  12 FEB 2025 18:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,37 +558,43 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<7.25.png, id=65, 426.59375pt x 215.80624pt>
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<Diagram for magnetic field.jpg, id=61, 1753.55125pt x 1041.8925pt>
+File: Diagram for magnetic field.jpg Graphic file (type jpg)
+<use Diagram for magnetic field.jpg>
+Package pdftex.def Info: Diagram for magnetic field.jpg  used on input line 159.
+(pdftex.def)             Requested size: 284.52756pt x 169.04321pt.
+ [3 <./Diagram for magnetic field.jpg>] [4]
+<7.25.png, id=71, 426.59375pt x 215.80624pt>
 File: 7.25.png Graphic file (type png)
 <use 7.25.png>
-Package pdftex.def Info: 7.25.png  used on input line 208.
+Package pdftex.def Info: 7.25.png  used on input line 213.
 (pdftex.def)             Requested size: 227.62204pt x 115.15388pt.
- [4 <./7.25.png>] [5]
-<7.26.png, id=76, 306.14375pt x 592.2125pt>
+ [5 <./7.25.png>] [6]
+<7.26.png, id=82, 306.14375pt x 592.2125pt>
 File: 7.26.png Graphic file (type png)
 <use 7.26.png>
-Package pdftex.def Info: 7.26.png  used on input line 292.
+Package pdftex.def Info: 7.26.png  used on input line 297.
 (pdftex.def)             Requested size: 85.35826pt x 165.11353pt.
- [6 <./7.26.png>] [7] [8] (./Phys24_HW3_Zih-Yu_Hsieh.aux)
+ [7 <./7.26.png>] [8] [9] (./Phys24_HW3_Zih-Yu_Hsieh.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21204 strings out of 474116
- 457888 string characters out of 5743681
- 1946187 words of memory out of 5000000
- 43200 multiletter control sequences out of 15000+600000
+ 21213 strings out of 474116
+ 458202 string characters out of 5743681
+ 1942187 words of memory out of 5000000
+ 43209 multiletter control sequences out of 15000+600000
  565971 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  93i,7n,99p,495b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Phys24_HW3_Zih-Yu_Hsieh.pdf (8 pages, 287587 bytes).
+Output written on Phys24_HW3_Zih-Yu_Hsieh.pdf (9 pages, 454479 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 160 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 179 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -29,7 +29,7 @@ colback=blue!10
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
 
-\title{Latex Template}
+\title{Phys 24 HW3}
 \author{Zih-Yu Hsieh}
 
 \begin{document}
@@ -150,29 +150,34 @@ Since calculating the general behavior is tedious, we'll just focus on the local
 Assume at time $t=0$, the center of the loop crosses the $y$ axis, and at time $t=\Delta t$, the loop has a displacement $v\cdot \Delta t$ toward the $x$ direction.
 
 If the change $\Delta t$ is small enough, we can treat the magnetic field at the position of area encountering the change as constant.
-Which, the changes happen at $y=-\frac{b}{2}$, and $y=\frac{b}{2}$.
+Which, the changes happen at $x=-\frac{b}{2}$, and $x=\frac{b}{2}$.
 
 \hfill
 
-\textbf{Insert Image here}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=100mm]{Diagram for magnetic field.jpg}
+        \caption{Diagram of Magnetic Field near the two ends of the Loop}
+    \end{center}
+\end{figure}
 
 Based on the graph, at the two location, the radial distance from the wire is $r=\sqrt{(\frac{b}{2})^2+h^2} = \frac{1}{2}\sqrt{b^2+4h^2}$,
 which the field strength is given by $B=\frac{\mu_0I}{2\pi r}$, and pointing in $\hat{\phi}$ direction.
 
 However, to calculate the flux through the area (with normal $\hat{z}$), we need to consider the component of the fiel that is orthogonal to the area (pointing in $\hat{z}$ direction):
-At $y=-\frac{b}{2}$, if the angle is given by $\phi$, then $\sin(\phi)=\frac{b/2}{r}$, which the component of the field that's orthogonal, is given by:
+At $x=-\frac{b}{2}$, if the angle is given by $\phi$, then $\sin(\phi)=\frac{b/2}{r}$, which the component of the field that's orthogonal, is given by:
 $$\bar{B}^\perp_{-\frac{b}{2}}=-B\cdot \sin(\phi)\hat{z} = -\frac{\mu_0I}{2\pi r^2}\cdot \frac{b}{2}\hat{z} = -\frac{\mu_0Ib}{4\pi r^2}\hat{z}$$
-Similarly, at $y=\frac{b}{2}$, since the angle is the same, the only difference is now the component is pointing upward. So:
+Similarly, at $x=\frac{b}{2}$, since the angle is the same, the only difference is now the component is pointing upward. So:
 $$\bar{B}^\perp_{\frac{b}{2}}=\frac{\mu_0Ib}{4\pi r^2}\hat{z}$$
 
 \hfill
 
-Now, let $\hat{z}$ be the normal vector of the loop, then during the time $\Delta t$, the loop decreases an area of $b\cdot v\Delta t$ at $y=-\frac{b}{2}$,
+Now, let $\hat{z}$ be the normal vector of the loop, then during the time $\Delta t$, the loop decreases an area of $b\cdot v\Delta t$ at $x=-\frac{b}{2}$,
 which the change in flux is given by:
 $$\Delta\phi_{-\frac{b}{2}}=\bar{B}^\perp_{-\frac{b}{2}}\cdot\left(-b\cdot v\Delta t\hat{z}\right) = \frac{\mu_0Ib^2\cdot v\Delta t}{4\pi r^2}$$
 (Note: The area is negative, because there is a decrease in area).
 
-Similarly, for the corresponding increase of area $b\cdot v\Delta t$ at $y=\frac{b}{2}$, the change in flux is given by:
+Similarly, for the corresponding increase of area $b\cdot v\Delta t$ at $x=\frac{b}{2}$, the change in flux is given by:
 $$\Delta\phi_{\frac{b}{2}}=\bar{B}^\perp_{\frac{b}{2}}\cdot\left(b\cdot v\Delta t\hat{z}\right)=\frac{\mu_0Ib^2\cdot v\Delta t}{4\pi r^2}$$
 Hence, the total change in flux is $\Delta \phi = \Delta\phi_{-\frac{b}{2}}+\Delta\phi_{\frac{b}{2}}=\frac{\mu_0Ib^2\cdot v\Delta t}{2\pi r^2}$. Then, the instantaneous rate of change in flux is:
 $$\frac{d\phi}{dt} = \lim_{\Delta t\rightarrow 0^+}\frac{\Delta \phi}{\Delta t}=\lim_{\Delta t\rightarrow 0^+}\frac{\mu_0Ib^2\cdot v\Delta t}{2\pi r^2}\cdot \frac{1}{\Delta t}=\frac{\mu_0Ib^2v}{2\pi r^2}$$
