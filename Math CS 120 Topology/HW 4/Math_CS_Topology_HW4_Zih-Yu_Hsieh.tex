@@ -1,0 +1,156 @@
+% Math_CS_Topology_HW4_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS Topology HW4}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1 (Not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f:X\rightarrow Y$ be a continuous map between topological spaces, and suppose
+        $Y$ is Hausdorff. Prove that the graph $\{(x,f(x))\ |\ x\in X\}$ is a closed subset of
+        $X\times Y$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Let $G=\{(x,f(x))\ |\ x\in X\}$ be the graph.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that if $X$ and $Y$ are nonempty topological spaces then 
+        $X$ is homeomorphic to a subspace of $X\times Y$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Since $Y$ is not empty, there exists $y_0\in Y$. Consider the following map $f:X\rightarrow X\times Y$, such that for all $x\in X$,
+$f(x)=(x,y_0)$, which $f(X)=X\times \{y_0\}$ (since for all $x\in X$, $f(x)=(x,y_0)\in X\times \{y_0\}$, and for all $(x,y_0)\in X\times \{y_0\}$, $f(x)=(x,y_0)$).
+So, we'll restrict the codomain to the set $X\times \{y_0\}$, letting $f:X\rightarrow X\times \{y_0\}$.
+
+\hfill
+
+\textbf{$f$ is Bijective:}
+
+First, we've verified that $f(X)=X\times \{y_0\}$, hence restricting the codomain to the image had made the map surjective.
+
+To verify injectivity, consider $x_1,x_2 \in X$: If $f(x_1)=f(x_2)$, then $(x_1,y_0)=(x_2,y_0)$, so $x_1=x_2$, proving that it's injective.
+
+So, the map $f$ is bijective, and $f^{-1}:X\times \{y_0\}\rightarrow X$ satisfies $f(x,y_0)=x$.
+
+\hfill
+
+\textbf{$f$ is Continuous:}
+
+For all ope subset $U'\subseteq X\times \{y_0\}$, there exists open subset $U\subseteq X\times Y$, with $U\cap (X\times \{y_0\}) = U'$.
+Now, consider the preimage $f^{-1}(U')$: For all $x\in f^{-1}(U')$, since $f(x)=(x,y_0)\in U' \subseteq U$, there exists a basis element $A\times B$ 
+(where $A\subseteq X$ and $B\subseteq Y$ are both open), such that $(x,y_0)\in A\times B \subseteq U$.
+Which:
+$$A\times \{y_0\} = (A\cap X)\times (B\cap \{y_0\}) = (A\times B)\cap (X\times \{y_0\}) \subseteq U\cap (X\times \{y_0\})=U'$$
+So, $A\times \{y_0\}$ is an open subset of $X\times \{y_0\}$ under subspace topology, and $(A\times \{y_0\})\subseteq U'$.
+
+Now, consider all $a\in A\subseteq X$: Since $f(a)=(a,y_0)\in (A\times \{y_0\})\subseteq U'$, then $a\in f^{-1}(U')$.
+Hence, $A\subseteq f^{-1}(U')$. Also, recall that $x\in A$, hence $x\in A \subseteq f^{-1}(U')$. 
+
+So, for every $x\in f^{-1}(U')$, there is an open subset $A\subseteq X$, with $x\in A\subseteq f^{-1}(U')$, showing that $f^{-1}(U')\subseteq X$ is open.
+
+Therefore, we can conclude that $f$ is continuous, since every open subset of $X\times \{y_0\}$ the image, the preimage in $X$ is open.
+
+\hfill
+
+\textbf{$f^{-1}$ is Continuous:}
+
+For all open subset $U\subseteq X$, notice that for all $(x,y_0)\in X\times \{y_0\}$, $f^{-1}(x,y_0)=x\in U$ if and only if $x\in U$,
+hence the preimage $(f^{-1})^{-1}(U) = U\times \{y_0\}$. Which, consider $U\times Y$ an open subset of $X\times Y$, the following is true:
+$$(U\times Y)\cap (X\times \{y_0\}) = (U\cap X)\times (Y\cap \{y_0\}) = U\times \{y_0\}$$
+Hence, $U\times \{y_0\}$ is an intersection of $X\times \{y_0\}$ and $(U\times Y)$, proving that $U\times \{y_0\}$ is an open subset of $X\times \{y_0\}$ under subspace topology,
+so the preimage of $U$ under $f^{-1}$, $(f^{-1})^{-1}(U) = U\times \{y_0\}$ is open, showing that $f^{-1}$ is continuous, since all open subset of $X$ has a preimage being open.
+
+\hfill
+
+Because $f^{-1}$ exists when restricting the codomain to $X\times \{y_0\}$, and both $f$ and $f^{-1}$ are continuous using the given topology,
+hence $f$ is a homeomorphism, showing that $X$ and $X\times \{y_0\}$ (as a subspace of $X\times Y$) are homeomorphic.
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        If $X$ is a metric space, prove that the distance function $d:X\times X\rightarrow \mathbb{R}$ is
+        continuous, where $X\times X$ has the product of the metric topologies.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+For all open subset $U\subseteq \mathbb{R}$, consider the preimage $d^{-1}(U)\subseteq X\times X$:
+
+For all $(x_1,x_2)\in d^{-1}(U)$, since $y=d(x_1,x_2)\in U$ while $U$ is open under standard topology of $\mathbb{R}$, 
+then there exists $r>0$, such that $(y-\frac{r}{3},y+\frac{r}{3})\subseteq (y-r,y+r) \subseteq U$.
+
+\hfill
+
+Now, consider the basis element $\left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)\subseteq X\times X$ under product topology:
+For all $(a,b)\in \left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)$, the following is true:
+$$d(a,b) \leq d(a,x_1) + d(x_1,b) \leq d(a,x_1)+d(x_1,x_2)+d(x_2,b) < \frac{r}{3}+y+\frac{r}{3} = y+\frac{2r}{3}$$
+(Note: the above is true, since $a\in B_d(x_1,\frac{r}{3})$ and $b\in B_d(x_2,\frac{r}{3})$).
+
+Hence, since $y<y+\frac{2r}{3} < y+r$, then $d(a,b)=(y+\frac{2r}{3}) \in (y-r,y+r)\subseteq U$, showing that $(a,b)\in d^{-1}(U)$.
+And, since the choice of $(a,b)\in \left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)$ is arbitrary, $\left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right) \subseteq f^{-1}(U)$.
+
+\hfill
+
+So, for all $(x_1,x_2) \in d^{-1}(U) \subseteq X\times X$, there exists a basis element $\left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)$, 
+such that $(x_1,x_2)\in \left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)\subseteq d^{-1}(U)$,
+hence $d^{-1}(U)$ is open.
+
+Which, we can conclude that $d:X\times X\rightarrow \mathbb{R}$ is continuous under product topology of $X\times X$ (based on metric topology of $X$), and standard topology of $\mathbb{R}$.
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
