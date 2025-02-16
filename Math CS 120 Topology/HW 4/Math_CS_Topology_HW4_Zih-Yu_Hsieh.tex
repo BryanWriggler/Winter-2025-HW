@@ -35,7 +35,7 @@ colback=blue!10
 \begin{document}
 \maketitle
 
-\section*{1 (Not done)}
+\section*{1}
 \begin{myBox}[]{}
     \begin{question}
         Let $f:X\rightarrow Y$ be a continuous map between topological spaces, and suppose
@@ -46,17 +46,29 @@ colback=blue!10
 
 \textbf{Pf:}
 
-Let $G=\{(x,f(x))\ |\ x\in X\}$ be the graph. To prove that $G$ is closed, it suffices to show that $\overline{G}=G$.
+Let $G=\{(x,f(x))\ |\ x\in X\}$ be the graph. To prove that $G$ is closed, it is equivalent to show that $X\setminus G$ is open.
+
+For all $(x,y)\in X\setminus G$, since the element is not in $G$, then $y\neq f(x)$. Then, by the Hausdorff Property of $Y$, 
+there exists disjoint open subsets $U,V\subseteq Y$, such that $f(x)\in U$ and $y\in V$.
 
 \hfill
 
-Recall that a function is continuous, implies that for all sequence $(x_n)_{n\in\mathbb{N}}$, $x_n$ converges to $x$ implies $f(x_n)$ converges to $f(x)$.
+Notice that because $f$ is continuous, then $f^{-1}(U)$ and $f^{-1}(V)$ are open; furthermore, since $U\cap V=\emptyset$, 
+then $f^{-1}(U)\cap f^{-1}(V)=\emptyset$.
 
-Also, since $Y$ is Hausdorff, then the sequential limit is unique. Hence, $f(x_n)$ converges to a unique point, namely $f(x)$.
+Now, consider the basis element $f^{-1}(U)\times V$: First, it is an open neighborhood of $(x,y)$, since $y\in V$ and $f(x)\in U$ (which implies $x\in f^{-1}(U)$);
+futhermore, for all $a\in f^{-1}(U)$, since $f^{-1}(U)\cap f^{-1}(V)=\emptyset$, then $f(a)\notin V$. 
+Hence, for all $(a,b)\in f^{-1}(U)\times V$, since $f(a)\notin V$, $(a,f(a))\notin f^{-1}(U)\times V$, hence $(a,b)\neq (a,f(a))$ (which $b\neq f(a)$),
+showing that $(a,b)\notin G$.
+
+Therefore, $(a,b)\in X\setminus G$, implying that $f^{-1}(U)\times V\subseteq G$.
 
 \hfill
 
-Now, suppose $(x,y)\in \overline{G}$
+So, for all $(x,y)\in X\setminus G$, there exists a basis element $B$ (Note: $B=f^{-1}(U)\times V$ in the above construction),
+such that $(x,y)\in B\subseteq X\setminus G$, hence $X\setminus G$ is open, showing that its complement $G$ is closed.
+
+Hence, the graph $G=\{(x,f(x))\ |\ x\in X\}$ is closed.
 
 \break
 
