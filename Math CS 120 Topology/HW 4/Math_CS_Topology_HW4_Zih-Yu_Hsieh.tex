@@ -46,7 +46,11 @@ colback=blue!10
 
 \textbf{Pf:}
 
-Let $G=\{(x,f(x))\ |\ x\in X\}$ be the graph.
+Let $G=\{(x,f(x))\ |\ x\in X\}$ be the graph. To prove that $G$ is closed, it suffices to show that $\overline{G}=G$.
+
+\hfill
+
+We'll prove by contradiction: Suppose there exists $(x,y)\in \overline{G}\setminus G$, then $y\neq f(x)$.
 
 \break
 
@@ -147,10 +151,42 @@ Which, we can conclude that $d:X\times X\rightarrow \mathbb{R}$ is continuous un
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $x$ be a point in a metric space $X$. Prove that $\{y\in X\ |\ d(x,y)\leq 1\}$ is
+        closed, but is not necessarily equal to the closure of the unit open ball $B(x, 1)$.
+        (This is contrary to Exercise 5.14b in my copy of the textbook.)
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+To prove that $C=\{y\in X\ |\ d(x,y)\leq 1\}$ is closed, it suffices to prove that $X\setminus C = \{y\in X\ |\ d(x,y)>1\}$ is open.
+
+For all $y\in X\setminus C$, $d(x,y)>1$. Which, consider $r=d(x,y)-1>0$, and the open ball $B(y,r)$:
+For all $z\in B(y,r)$, $d(y,z) < r = d(x,y)-1$. Which, consider $d(x,z)$, the following is true:
+$$d(x,y) \leq d(x,z)+d(y,z) < d(x,z)+d(x,y)-1$$
+$$0 < d(x,z)-1,\quad 1<d(x,z)$$
+Hence, we can conclude that $z\in X\setminus C$, which $y\in B(y,r)\subseteq (X\setminus C)$.
+
+Since for all points in $X\setminus C$, there exists a basis element containing the point, that is a subset of $X\setminus C$,
+then $X\setminus C$ is open, hence $C$ is closed.
+
+\hfill
+
+\textbf{Closure of Open Ball and Closed Ball could be Different:}
+
+For any nonempty set $X$ with more than one element, consider the discrete metric $d:X\times X\rightarrow \mathbb{R}$ defined as follow:
+$$d(x,y)=\begin{cases}
+    1 & x=y\\
+    0 & x\neq y
+\end{cases}$$
+For all $x\in X$, the ball $B(x,1)=\{x\}$, since for all $y\in X$ with $y\neq x$, $d(x,y)=1$, so $y \notin B(x,1)$ (since the distance is strictly smaller than 1).
+
+Which, if we take the closed ball of distance $1$ around $x$, $CB(x,1)=\{y\in X\ |\ d(x,y)\leq 1\}=X$ (since everything has distance at most $1$ from $x$).
+
+Yet, the closure of open ball with radius 1, is $\overline{B(x,1)}=\{x\}$, since under discrete metric,
+$\{x\}$ is also a closed set containing itself, hence the closure (which is the intersection of closed set containing $\{x\}$) must be $\{x\}$,
+because it is the smallest closed set containing itself.
+
+Hence, $CB(x,1)\neq \overline{B(x,1)}$, showing that under extreme cases (like discrete metric), the two may not be the same.
 
 \end{document}
