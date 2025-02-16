@@ -66,9 +66,9 @@ Therefore, $(a,b)\in X\setminus G$, implying that $f^{-1}(U)\times V\subseteq G$
 \hfill
 
 So, for all $(x,y)\in X\setminus G$, there exists a basis element $B$ (Note: $B=f^{-1}(U)\times V$ in the above construction),
-such that $(x,y)\in B\subseteq X\setminus G$, hence $X\setminus G$ is open, showing that its complement $G$ is closed.
+such that $(x,y)\in B\subseteq X\setminus G$, which $X\setminus G$ is open, showing that its complement $G$ is closed.
 
-Hence, the graph $G=\{(x,f(x))\ |\ x\in X\}$ is closed.
+Therefore, the graph $G=\{(x,f(x))\ |\ x\in X\}$ is closed.
 
 \break
 
@@ -144,16 +144,19 @@ hence $f$ is a homeomorphism, showing that $X$ and $X\times \{y_0\}$ (as a subsp
 For all open subset $U\subseteq \mathbb{R}$, consider the preimage $d^{-1}(U)\subseteq X\times X$:
 
 For all $(x_1,x_2)\in d^{-1}(U)$, since $y=d(x_1,x_2)\in U$ while $U$ is open under standard topology of $\mathbb{R}$, 
-then there exists $r>0$, such that $(y-\frac{r}{3},y+\frac{r}{3})\subseteq (y-r,y+r) \subseteq U$.
+then there exists $r>0$, such that $(y-r,y+r) \subseteq U$.
 
 \hfill
 
-Now, consider the basis element $\left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)\subseteq X\times X$ under product topology:
-For all $(a,b)\in \left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)$, the following is true:
-$$d(a,b) \leq d(a,x_1) + d(x_1,b) \leq d(a,x_1)+d(x_1,x_2)+d(x_2,b) < \frac{r}{3}+y+\frac{r}{3} = y+\frac{2r}{3}$$
-(Note: the above is true, since $a\in B_d(x_1,\frac{r}{3})$ and $b\in B_d(x_2,\frac{r}{3})$).
+Now, consider the basis element $\left(B_d(x_1,\frac{r}{2})\times B_d(x_2,\frac{r}{2})\right)\subseteq X\times X$ under product topology:
+For all $(a,b)\in \left(B_d(x_1,\frac{r}{2})\times B_d(x_2,\frac{r}{2})\right)$, the following is true:
+$$d(a,b) \leq d(a,x_1) + d(x_1,b) \leq d(a,x_1)+d(x_1,x_2)+d(x_2,b) < \frac{r}{2}+y+\frac{r}{2} = y+r$$
 
-Hence, since $y<y+\frac{2r}{3} < y+r$, then $d(a,b)=(y+\frac{2r}{3}) \in (y-r,y+r)\subseteq U$, showing that $(a,b)\in d^{-1}(U)$.
+$$y=d(x_1,x_2) \leq d(x_1,a)+d(a,x_2)\leq d(x_1,a)+d(a,b)+d(b,x_2) < \frac{r}{2}+d(a,b)+\frac{r}{2} = d(a,b)+r$$
+$$y-r < d(a,b)$$
+(Note: the above is true, since $a\in B_d(x_1,\frac{r}{2})$ and $b\in B_d(x_2,\frac{r}{2})$).
+
+Hence, since $y-r < d(a,b) < y+r$, then $d(a,b)\in (y-r,y+r)\subseteq U$, showing that $(a,b)\in d^{-1}(U)$.
 And, since the choice of $(a,b)\in \left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right)$ is arbitrary, $\left(B_d(x_1,\frac{r}{3})\times B_d(x_2,\frac{r}{3})\right) \subseteq f^{-1}(U)$.
 
 \hfill
