@@ -27,6 +27,7 @@ colback=blue!10
 
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
 
@@ -130,19 +131,86 @@ Which, $\lim_{n\rightarrow \infty}\frac{r_0^n}{n!} = 0$ based on the above inequ
 Then, looking back to the inequality $|f^{(n)}(z_0)| \leq \frac{n!M}{r^n}$, since $\frac{M^{1/n}}{r}>0$, there exists $N$, such that $n\geq N$ implies $\frac{M}{r^n}=\left(\frac{M^{1/n}}{r}\right)^n < n!$. Hence, the following inequality is true:
 $$|f^{(n)}(z_0)| \leq \frac{n!M}{r^n}  < n!\cdot n! = (n!)^2$$
 So, we can conclude that for some $N\in\mathbb{N}$, $n\geq N$ implies $|f^{(n)}(z_0)| < (n!)^2$,
-which is a stricter condition than $n!n^n$, since $\lim_{n\rightarrow\infty}\frac{n!}{n^n}=0$ (so for all sufficiently large $n$, $n!<n^n$).
+which is a stricter condition than $n!n^n$, since $\lim_{n\rightarrow\infty}\frac{n!}{n^n}=0$ (Because this implies that for all sufficiently large $n$, $n!<n^n$).
 
-\break
+\hfill
+
+\hfill
 
 \section*{3}
 \begin{myBox}[]{}
     \begin{question}
         Ahlfors Pg. 130 Problem 2:
 
+        Show that a function which is analytic in the whole plane and has
+        a nonessential singularity at $\infty$ reduces to a polynomial.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+Before starting the proof, we'll first prove a lemma for this problem:
+
+\begin{lemma}
+    Suppose $f$ is analytic in the whole plane, and $\lim_{z\rightarrow\infty}f(z)$ converges to some value in $\mathbb{C}$, then $f$ is a constant function.
+\end{lemma}
+
+To show this, since $\lim_{z\rightarrow\infty}f(z)=L$ for some $L\in\mathbb{C}$, then for all $\epsilon>0$, there exists $M_1>0$,
+such that $|z|>M_1$ implies $|f(z)-L|<\epsilon$, hence $|f(z)|=|(f(z)-L)+L| \leq |f(z)-L|+|L| < |L|+\epsilon$.
+
+Also, consider the closed disk $\mathbb{D}_{M_1}$: Since it is a bounded closed set, then it is compact. Hence, since $|f|$ is continuous,
+$|f|(\mathbb{D}_{M_1})\subseteq \mathbb{R}$ is also a compact set, hence there exists $M_2>0$, such that for all $z\in\mathbb{D}_{M_1}$,
+$|f(z)| \leq M_2$.
+
+Then, fix $\epsilon>0$ and take $M=\max\{|L|+\epsilon,M_2\}$, for all $z\in\mathbb{C}$, if $z\in\mathbb{D}_{M_1}$, then $|f(z)|\leq M_2\leq M$; else if $z\notin \mathbb{D}_{M_1}$,
+then $|z|>M_1$, hence $|f(z)| < |L|+\epsilon \leq M$. This shows that $f$ is bounded on the whole plane,
+which by Liouville's Theorem, $f$ must be a constant function, and the Lemma has been proven.
+
+\hfill
+
+\textbf{Function is a Polynomial:}
+
+Given that $f$ only has a nonessential singularity at $\infty$, while analytic on the whole plane, there are two cases to consider: First, if $f$ is a removable singularity (which $\lim_{z\rightarrow\infty}f(z)=L$ for some $L\in\mathbb{C}$),
+or $f$ has a pole at $\infty$.
+
+\hfill
+
+For the first case, since $f$ is analytic on the whole plane, while $lim_{z\rightarrow\infty}f(z)$ converges to some $L\in\mathbb{C}$, then apply \textbf{Lemma 1},
+we get that $f$ is a constant function, which is a polynomial.
+
+\hfill
+
+For the second case, take $g(z)=f(\frac{1}{z})$ as the analytic function, then since $\lim_{z\rightarrow 0}g(z)= \lim_{z\rightarrow 0}f(\frac{1}{z})=\infty$ ($f(z)$ has a pole at $\infty$, which $g(z)=f(\frac{1}{z})$ has a pole at $0$),
+then suppose $g$ has the pole at $0$ with order $h\in\mathbb{N}$, there exists some analytic function $g_h(z)$ that is analytic at $0$,
+with $g(z)=\frac{1}{z^h}g_h(z)$.
+
+Notice that since $g(z)=f(\frac{1}{z})=\frac{1}{z^h}g_h(z)$ is analytic for all $z\neq 0$ (because $\frac{1}{z}\in\mathbb{C}$, while $f$ is analytic on the whole plane),
+then $g_h(z) = z^hg(z)$ is analytic at all $z\neq 0$, while also analytic at $0$ from the above statement, hence $g_h(z)$ is analytic on the whole plane $\mathbb{C}$.
+
+Also, $\lim_{z\rightarrow\infty}g(z)$ must also converge to some value in $\mathbb{C}$, since it is equivalent to $\lim_{z\rightarrow\infty}f(\frac{1}{z})=\lim_{z\rightarrow 0}f(z)=f(0)$.
+Then, this implies for all $\epsilon>0$, there exists $M>0$, such that $|z|>M$ implies $|g(z)-f(0)| < \epsilon$,
+hence, the following is true:
+$$|g(z)| = |(g(z)-f(0))+f(0)| \leq |g(z)-f(0)|+|f(0)| < |f(0)|+\epsilon$$
+$$|g(z)|=\left|\frac{1}{z^h}g_h(z)\right| < |f(0)|+\epsilon,\quad |g_h(z)| < (|f(0)+\epsilon)|z|^h$$
+Which, let $C=|f(0)|+\epsilon>0$, for all $z$ with $|z|>M$, we have $|g_h(z)| < C|z|^h$, which let $M'=\max\{M, C\}$, when $|z|>M'$,
+since $|z|>C$ and $|z|>M$, the following is true:
+$$|g_h(z)|<C|z|^h < |z|^{h+1}$$
+Now, apply the statement proven in \textbf{Question 1}, since for sufficiently large $|z|$, $g_h(z)$ is analytic on the whole plane, while $|g_h(z)|< |z|^{h+1}$ (with $(h+1)\in\mathbb{N}$ being fixed),
+then $g_h(z)$ reduces to a polynomial, and with degree at most $(h+1)$. Hence, $g_h(z)=a_0+a_1z+...+a_{h+1}z^{h+1}$ for some $a_0,a_1,...,a_{h+1}\in\mathbb{C}$.
+
+Then, recall the fact that $f(\frac{1}{z})=g(z)$, then $f(z)=g(\frac{1}{z})=\frac{1}{(1/z)^h}g_h(\frac{1}{z})$, we get the following:
+$$f(z)=z^h\cdot \left(a_0+a_1\frac{1}{z}+...+a_{h+1}\frac{1}{z^{h+1}}\right) = a_0z^h + a_1z^{h-1}+...+a_h+a_{h+1}\frac{1}{z}$$
+Also, notice that since $f(0)$ is defined, then we must have $a_{h+1}=0$ (or else the above function wouldn't be defined).
+
+Hence, $f(z)=a_0z^h + a_1z^{h-1}+...+a_h$, which is a polynomial.
+
+\hfill
+
+\hfill
+
+Regardless of the case, we always get the fact that $f(z)$ is a polynomial, hence having $f$ being analytic on the whole plane,
+while having a nonessential singularity at $\infty$ implies that $f(z)$ must be a polynomial.
+
 
 \break
 
@@ -150,12 +218,60 @@ which is a stricter condition than $n!n^n$, since $\lim_{n\rightarrow\infty}\fra
 \begin{myBox}[]{}
     \begin{question}
         Ahflors Pg. 130 Problem 6:
+
+        Show that an isolated singularity of $f(z)$ cannot be a pole of $\exp(f(z))$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
 
-\break
+Suppose $f(z)$ has an isolated singularity at $a\in\mathbb{C}$, there are three cases to consider:
+Whether $a$ is a removable singularity, an essential singularity, or a pole at $a$.
+
+\hfill
+
+\textbf{When $f$ has a Removable Singularity at $a$:}
+
+Since it's removable at $a$, $\lim_{z\rightarrow a}f(z) = L$ for some $L\in\mathbb{C}$, hence $\lim_{z\rightarrow a}e^{f(z)}=e^L\in\mathbb{C}$,
+so it is also a removable singularity for $e^f$, not a pole.
+
+\hfill
+
+\textbf{When $f$ has an Essential Singularity at $a$:}
+
+Since it is an essential singularity at $a$, for all $z\in\mathbb{C}$ (except possibly finitely many points), every neighborhood of $a$ has value of $f$
+being arbitrarily close to $z$, then take $\log(z)\in\mathbb{C}$ (except for $z=0$), since $f$ can get arbitrarily close th $\log(z)$ in any of the neighborhood of $a$,
+then $e^f$ can get arbitrarily close to $e^{log(z)} = z$ for every neighborhood around $a$, showing that $e^f$ also has an essential singularity at $a$, instead of a pole.
+
+\hfill
+
+\textbf{When $f$ has a Pole at $a$:}
+
+Suppose $f$ has a pole of order $h$ at $a$, then $f(z)=\frac{1}{(z-a)^h}f_h(z)$ for some analytic function $f_h(z)$ that's analytic at $a$ (so, $f_h(a)$ is defined, and $f_h(a)\neq 0$).
+
+First, for all $w\in\mathbb{C}$, $w=|w|\cdot e^{i\cdot \arg(w)}$, for $k\in\mathbb{N}$, define $w^\frac{1}{k} = |w|^\frac{1}{k}\cdot e^{i\cdot\frac{\arg(w)}{k}}$ for simplicity.
+
+Now, for all $z\in\mathbb{C}$ (where $z\neq 0$), since $e^{f_h(a)}\neq 0$, then $z\cdot e^{f_h(a)}$ can be arbitrary member of $\mathbb{C}$ besides $0$. Consider the sequence $(z_n)_{n\in\mathbb{N}}$ defined by:
+$$\forall n\in\mathbb{N},\quad z_n=\left(\frac{1}{\ln|z|+i\cdot(\arg(z)+2n\pi)}\right)^\frac{1}{h}+a$$
+Then, since as $\lim_{n\rightarrow\infty}z_n=a$ (because the first fraction term converges to $0$ due to an unbounded denominator), then $\lim_{n\rightarrow\infty}f(z_n)=\infty$.
+
+However, when consider $e^{f(z_n)}$, we yield the following:
+$$e^{f(z_n)}=\exp\left(\frac{1}{(z_n-a)^h}f_h(z_n)\right)=\exp\left(\frac{1}{\left(\left(\frac{1}{\ln|z|+i\cdot(\arg(z)+2n\pi)}\right)^\frac{1}{h}+a-a\right)^h}f_h(z_n)\right)$$
+$$=\exp\left(\frac{1}{1/(\ln|z|+i\cdot(\arg(z)+2n\pi))}f_h(z_n)\right) = \exp\left(\ln|z|+i\cdot(\arg(z)+2n\pi)\right)\cdot e^{f_h(z_n)}$$
+$$= z\cdot e^{f_h(z_n)}$$
+Which, taking $n\rightarrow\infty$, we get the following:
+$$\lim_{n\rightarrow\infty}e^{f(z_n)} = \lim_{n\rightarrow\infty}ze^{f_h(z_n)} = z\cdot e^{f_h(a)}$$
+Since $z\cdot e^{f_h(a)}$ can be arbitrary within $\mathbb{C}\setminus\{0\}$, then for any neighborhood of $a$, the function $e^{f(z)}$ can be close to arbitrary values besides $0$
+(since there exists a sequence $(z_n)_{n\in\mathbb{N}}$ such that $e^{f(z_n)}$ converging to such arbitrary value),
+then $e^f$ has an essential singularity at $a$, instead of having a pole.
+
+\hfill
+
+Hence, in all cases, when $f$ has an isolated singularity at $a$, $e^f$ has either a removable, or essential singularity at $a$, showing that an isolated singularity of $f(z)$ cannot be a pole of $e^{f(z)}$.
+
+\hfill
+
+\hfill
 
 \section*{5}
 \begin{myBox}[]{}
@@ -201,7 +317,23 @@ hence $2|f'(0)| \leq \inf\{\frac{d}{r}\ |\ r\in(0,1)\} = d$.
 \hfill
 
 \textbf{Equality under Linear Functions:}
-Let $f(z)=a_0+a_1z$ for $a_0,a_1\in\mathbb{C}$, then $f'(z) = a_1$, 
+
+Let $f(z)=a_0+a_1z$ for $a_0,a_1\in\mathbb{C}$, then $f'(z) = a_1$, hence $2|f'(0)| = 2|a_1|$. (Note: if $|a_1|=0$, then $f'=0$, which $f$ is a constant, hence $d=\sup_{z,w\in\mathbb{D}}|f(z)-f(w)|=0$ regardless; so, assume $|a_1|\neq 0$).
+
+Now, for all $z,w\in\mathbb{D}$ (which $|z|,|w|<1$), $f(z)-f(w)=(a_0+a_1z)-(a_0+a_1w) = a_1(z-w)$, which: 
+$$|f(z)-f(w)| = |a_1|\cdot |z-w| \leq |a_1|\cdot (|z|+|w|) < 2|a_1|$$
+So, we can first conclude that $d=\sup_{z,w\in\mathbb{D}}|f(z)-f(w)| \leq 2|a_1|$ (since $2|a_1|$ is an upper bound).
+
+Then, for all $\epsilon>0$ (and let $\epsilon<4|a_1|$ for simplicity), consider $2|a_1|-\epsilon$:
+Let $z=(1-\frac{\epsilon}{4|a_1|}) \in \mathbb{D}$ (which $0<z<1$, since $0<\frac{\epsilon}{4|a_1|}<\frac{4|a_1|}{4|a_1|}=1$), consider $|f(z)-f(-z)|$:
+$$|f(z)-f(-z)| = |a_1|\cdot |z-(-z)| = |a_1|\cdot |2z| = 2|a_1|\cdot|z| = 2|a_1|\cdot z = 2|a_1|\left(1-\frac{\epsilon}{4|a_1|}\right)$$
+$$|f(z)-f(-z)| = 2|a_1|-\frac{\epsilon}{2} > 2|a_1|-\epsilon$$
+Since $z,-z\in \mathbb{D}$, then $|f(z)-f(-z)|>(2|a_1|-\epsilon)$ indicates that $(2|a_1|-\epsilon)$ is no longer an upper bound.
+Hence, $2|a_1|$ is in fact $\sup_{z,w\in\mathbb{D}}|f(z)-f(w)|$.
+
+\hfill
+
+So, recall that $2|f'(0)|=2|a_1|$, then $2|f'(0)| = \sup_{z,w\in\mathbb{D}}|f(z)-f(w)| = d$, which the equality is true.
 
 \break
 
@@ -221,6 +353,37 @@ Let $f(z)=a_0+a_1z$ for $a_0,a_1\in\mathbb{C}$, then $f'(z) = a_1$,
 
 \textbf{Pf:}
 
-\break
+First, WLOG, we can assume $\eta\geq 0$: For all $z$ in the given region, since $|z|\geq 0$, then $(1+|z|)\geq 1$.
+Hence, if $\eta<0$ (which $|\eta|>0$, and $\eta=-|\eta|$), since $(1+|z|)^{|\eta|} \geq (1+|z|)\geq 1$, the following inequality is true:
+$$|f(z)| \leq A(1+|z|)^\eta\leq A(1+|z|)^{-|\eta|}\cdot(1+|z|)^{|\eta|}=A(1+|z|)^0$$
+Hence, choose $\eta'=0$, $|f(z)| \leq A(1+|z|)^{\eta'}$ is still valid. Also, since $|f(z)|\geq 0$, and $(1+|z|)^\eta\geq 0$ for all $z$ in the given strip,
+then $A\geq 0$ is also enforced.
+
+\hfill
+
+Now, given any $x\in\mathbb{R}$, it is also within the given region (since $y=Im(x)=0$). Then, choose radius $r=\frac{1}{2}$, 
+construct the circle $\gamma_x$ by $|z-x|=r$: Since for all $z\in\gamma_x$, $|Im(z)| = |Im(z)-Im(x)| \leq |z-x| =\frac{1}{2}$,
+then $z$ is also within the given region (since $-1<-\frac{1}{2}<Im(z)<\frac{1}{2}<1$), so it is a valid circle to use or Cauchy's Integral Formula.
+
+\hfill
+
+\textbf{Construction of $A_n$:}
+
+Based on Cauchy's Integral Formula, the $n^{th}$ derivative can be governed by the following:
+$$f^{(n)}(x)=\frac{n!}{2\pi i}\int_{\gamma_{x}}\frac{f(\zeta)}{(\zeta-x)^{n+1}}d\zeta$$
+Which, for all $\zeta\in \gamma_x$, $|\zeta-x|^{n+1}=r^{n+1}$; furthermore, since $|f(\zeta)|\leq A(1+|\zeta|)^\eta$, while $\zeta = x+re^{i\theta}$ for some $\theta\in [0,2\pi)$,
+hence by Triangle Inequality, the following is true:
+$$|\zeta| = |x+re^{i\theta}| \leq |x|+|re^{i\theta}|=|x|+r$$
+Hence, $(1+|\zeta|)\leq (1+|x|+r) = (\frac{3}{2}+|x|)$, and since $|x|\geq 0$, then $(\frac{3}{2}+|x|)\leq(\frac{3}{2}+\frac{3}{2}|x|)= \frac{3}{2}(1+|x|)$.
+Therefore, with $\eta\geq 0$, we have $(1+|\zeta|)^\eta \leq (\frac{3}{2})^\eta \cdot (1+|x|)^\eta$.
+
+\hfill
+
+Now, apply these inequalities into the Integral Formula, we get the following inequality:
+$$|f^{(n)}(x)| = \left|\frac{n!}{2\pi i}\int_{\gamma_{x}}\frac{f(\zeta)}{(\zeta-x)^{n+1}}d\zeta\right| \leq \frac{n!}{2\pi}\int_{\gamma_x}\frac{|f(\zeta)|}{|\zeta-x|^{n+1}}\cdot|d\zeta|\leq \frac{n!}{2\pi}\int_{\gamma_x}\frac{A(1+|\zeta|)^\eta}{r^{n+1}}\cdot|d\zeta|$$
+$$|f^{(n)}(x)|\leq \frac{n!}{2\pi}\int_{\gamma_x}\frac{A(1+|\zeta|)^\eta}{r^{n+1}}\cdot|d\zeta| \leq \frac{n!}{2\pi r^{n+1}}\int_{\gamma_x}A(3/2)^\eta\cdot(1+|x|)^\eta\cdot |d\zeta| $$
+$$|f^{(n)}(x)|\leq \frac{n!\cdot A(3/2)^\eta}{2\pi r^{n+1}}\cdot (1+|x|)^\eta\cdot 2\pi r = \frac{n! A(3/2)^\eta}{r^n}(1+|x|)^\eta$$
+Recall that $r=\frac{1}{2}$, then the above expression can be simplified to $|f^{(n)}(x)|\leq 2^nn!A(3/2)^\eta\cdot (1+|x|)^\eta$.
+Hence, let $A_n = 2^n\cdot n!\cdot A(3/2)^\eta$, all $x\in\mathbb{R}$ and $n\in\mathbb{N}$ satisfies $|f^{(n)}(x)|\leq A_n(1+|x|)^\eta$.
 
 \end{document}
