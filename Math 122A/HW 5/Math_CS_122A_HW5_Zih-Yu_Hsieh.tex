@@ -1,0 +1,189 @@
+% Math_CS_122A_HW5_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122A HW5}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 123 Problem 2:
+
+        Prove that a function which is analytic in the whole plane and
+        satisfies an inequality $|f(z)| < |z|^n$ for some nand all sufficiently large $|z|$
+        reduces to a polynomial.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given that for $z\in\mathbb{C}$ with $|z|$ being sufficiently large, $|f(z)|< |z|^n$ is satisfied, 
+then there exists a radius $r>0$, such that $|z|\geq r$ implies $|f(z)|<|z|^n$. Which, we'll consider the $n^{th}$ derivative,
+$f^{(n)}(z)$. (Note: Since $f$ is analytic on the whole plane, then all of its derivative exists, and is analytic on the whole plane).
+
+\hfill
+
+First, consider the disk $D_{2r} = \{z\in\mathbb{C}\ |\ |z|\leq 2r\}$: Since it is a closed and bounded set,
+then it is compact. Hence, since $|f^{(n)}|$ is also continuous due to the analytic nature of $f^{(n)}$, 
+then $|f^{(n)}|(D_{2r}) \subseteq \mathbb{R}$ is also compact, hence there exists $M>0$, such that for all $z\in D_{2r}$,
+$|f^{(n)}(z)| \leq M$.
+
+\hfill
+
+Then, for all $z\in \mathbb{C}\setminus D_{2r}$, we'll consider $f^{(n)}(z)$ using Cauchy's Integral Formula:
+Let $\gamma$ be the curve of the circle $|z|=r$, then for all $z$ not on the given circle, the following is true:
+$$f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{n+1}}d\zeta$$
+Which, for $z\in \mathbb{C}\setminus D_{2r}$ , since $|z| > 2r > r$, then for all $\zeta \in \gamma$ (which $|\zeta|=r$), the following is true:
+$$|\zeta-z| \geq ||\zeta|-|z|| = |r-|z|| = |z|-r > 2r-r = r,\quad |\zeta-z|^{n+1}> r^{n+1},\quad \frac{1}{|\zeta-z|^{n+1}} < \frac{1}{r^{n+1}}$$
+Similarly, since $|\zeta|\geq r$, then based on the assumption, $|f(\zeta)| < |\zeta|^n = r^n$.
+Hence, the following inequality is true:
+$$|f^{(n)}(z)| = \left|\frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{n+1}}d\zeta\right| \leq \frac{n!}{2\pi}\int_{\gamma}\left|\frac{f(\zeta)}{(\zeta-z)^{n+1}}\right|\cdot|d\zeta| < \frac{n!}{2\pi}\int_{\gamma}\frac{r^n}{r^{n+1}}\cdot|d\zeta|$$
+$$|f^{(n)}(z)| < \frac{n!}{2\pi}\cdot\frac{1}{r}\cdot 2\pi r = n!$$
+(Note: the first inequality is true, based on the statement that $|f(\zeta)|< r^n$ and $\frac{1}{|\zeta-z|^{n+1}}<\frac{1}{r^{n+1}}$).
+
+Hence, take $M'=\max\{M, n!\}$, then for all $z\in\mathbb{C}$, if $z\in D_{2r}$, then $|f^{(n)}(z)| \leq M \leq M'$; else if $z\in \mathbb{C}\setminus D_{2r}$, then $|f^{n}(z)| \leq n! \leq M'$.
+So, the analytic function $f^{(n)}(z)$ is bounded on the whole plane, which by Liouville's Theorem, $f^{(n)}(z)$ must be a constant function.
+
+Then, since the $n^{th}$ derivative of $f$ is a constant, then $f$ must be a polynomial (in fact, with degree at most $n$).
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 123 Problem 5:
+
+        Show that the successive derivatives of an analytic function at a
+        point can never satisfy $|f^{(n)}(z)| > n!n^n$. Formulate a sharper theorem of
+        the same kind.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Let the analytic function $f$ be defined on an open set $\Omega$, which for all $z_0\in\Omega$, 
+there exists $r'>0$, such that the open disk $|z-z_0| < r'$ is within $\Omega$. If we let $r=\frac{r'}{2}>0$,
+then the closed disk $|z-z_0|\leq r$ is fully contained in $|z-z_0|<r'$, which is within $\Omega$.
+
+\hfill
+
+Now, let $\gamma$ be the circle $|z-z_0|=r$, since it is a compact set where $|f|$ is defined while $f$ is continuous,
+then $|f|(\gamma)\subseteq \mathbb{R}$ has a maximum, there exists $M>0$, such that for all $z\in \gamma$, $|f(z)|\leq M$ (For simplicity, choose $M\geq 1$).
+
+Hence, based on Cauchy's Integral Formula, for all $n\in\mathbb{N}$, the following formula is true:
+$$f^{(n)}(z_0) = \left|\frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\right| \leq \frac{n!}{2\pi}\int_{\gamma}\frac{|f(\zeta)|}{|\zeta-z_0|^{n+1}}\cdot|d\zeta| \leq \frac{n!}{2\pi}\int_{\gamma}\frac{M}{r^{n+1}}\cdot|d\zeta|$$
+$$f^{(n)}(z_0) \leq \frac{n!}{2\pi \cdot \frac{M}{r^{n+1}}}\cdot 2\pi r = \frac{n!M}{r^n}$$
+(Note: For all $\zeta\in \gamma$, $|\zeta-z_0|=r$, and $|f(\zeta)|\leq M$).
+
+Notice that since $\frac{M}{r}>0$, then by Archimedean's Property, there exists $k\in\mathbb{N}$, with $k> \frac{M}{r}$,
+which since $M\geq 1$ is assumed, the following inequality is true:
+$$k^k > \left(\frac{M}{r}\right)^k = \frac{M^k}{r^k} \geq \frac{M}{r^k},\quad |f^{(k)}(z_0)| \leq \frac{k!M}{r^k} < k!k^k$$
+Also, for all integer $n\geq k$, the following is satisfied:
+$$n^n \geq k^n > \left(\frac{M}{r}\right)^n = \frac{M^n}{r^n} \geq \frac{M}{r^n},\quad |f^{(n)}(z_0)| \leq \frac{n!M}{r^n} < n!n^n$$
+So, for all $z_0\in\Omega$, there exists $k\in\mathbb{N}$, such that $n\geq k$ implies $|f^{(n)}(z_0)| < n!n^n$, showing that $|f^{(n)}(z)| > n!n^n$ can never be satisfied by any point $z$ and for all but finitely many $n\in\mathbb{N}$.
+
+\hfill
+
+\textbf{Stronger Condition:}
+
+Recall that for all $r_0>0$, by Archimedean's Property, there exists $N\in\mathbb{N}$ with $N>r_0$. Therefore, for $n\geq N$,
+$\frac{r_0^{n+1}}{(n+1)!}  = \frac{r_0}{(n+1)}\cdot \frac{r_0^n}{n!} < \frac{r_0}{N}\cdot \frac{r_0^n}{n!}$, which for all positive integer $k$, we can inductively prove that
+$\frac{r_0^{N+k}}{(N+k)!} < \left(\frac{r_0}{N}\right)^k\cdot\frac{r_0^N}{N!}$. 
+
+Hence, since $\frac{r_0}{N}<1$, then the following is true:
+$$0 < \frac{r_0^{N+k}}{(N+k)!} < \left(\frac{r_0}{N}\right)^k\cdot \frac{r_0^N}{N!}$$
+$$0 \leq \lim_{k\rightarrow \infty} \frac{r_0^{N+k}}{(N+k)!} \leq \lim_{k\rightarrow \infty} \left(\frac{r_0}{N}\right)^k\cdot \frac{r_0^N}{N!} = 0$$
+Which, $\lim_{n\rightarrow \infty}\frac{r_0^n}{n!} = 0$ based on the above inequality, so there exists $N\in\mathbb{N}$, such that $n\geq N$ implies $\frac{r_0^n}{n!} <1$, or $r_0^n < n!$.
+
+Then, looking back to the inequality $|f^{(n)}(z_0)| \leq \frac{n!M}{r^n}$, since $\frac{M^{1/n}}{r}>0$, there exists $N$, such that $n\geq N$ implies $\frac{M}{r^n}=\left(\frac{M^{1/n}}{r}\right)^n < n!$. Hence, the following inequality is true:
+$$|f^{(n)}(z_0)| \leq \frac{n!M}{r^n}  < n!\cdot n! = (n!)^2$$
+So, we can conclude that for some $N\in\mathbb{N}$, $n\geq N$ implies $|f^{(n)}(z_0)| < (n!)^2$,
+which is a stricter condition than $n!n^n$, since $\lim_{n\rightarrow\infty}\frac{n!}{n^n}=0$ (so for all sufficiently large $n$, $n!<n^n$).
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 130 Problem 2:
+
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahflors Pg. 130 Problem 6:
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 66 Problem 7:
+        
+        Suppose $f:\mathbb{D}\rightarrow \mathbb{C}$ is holomorphic. Show that the diameter $d=\sup_{z,w\in\mathbb{D}}|f(z)-f(w)|$ 
+        of the image of $f$ satisfies $2|f'(0)| \leq d$.
+
+        Moreover, it can be shown that equality holds precisely when $f$ is linear, $f(z) =
+        a_0 + a_1z$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+
+
+\break
+
+\section*{6}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 66 Problem 8:
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\end{document}
