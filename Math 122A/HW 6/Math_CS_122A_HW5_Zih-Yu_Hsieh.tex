@@ -172,7 +172,36 @@ which is a stricter condition than $n!n^n$, since $\lim_{n\rightarrow\infty}\fra
 
 \textbf{Pf:}
 
+Fix an $r\in(0,1)$, and let $\gamma$ be the circle $|z|=r$. Then, based on Cauchy's Integral Formula, $f'(0)$ can be extracted as:
+$$f'(0)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{\zeta^2}d\zeta$$
+Which, if consider $f(-z)$ instead, its derivative is given by $-f'(-z)$, hence with $z=0$, the following is true:
+$$-f'(0)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(-\zeta)}{\zeta^2}d\zeta,\quad f'(0)=-\frac{1}{2\pi i}\int_{\gamma}\frac{f(-\zeta)}{\zeta^2}d\zeta$$
+Which, adding the two equations together, we yield:
+$$2f'(0)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)-f(-\zeta)}{\zeta^2}d\zeta$$
+Given that $g(z)=f(z)-f(-z)$ is an analytic function (sum and composition of analytic functions), and $\gamma$ is a compact set (boundary of a bounded circle),
+then since $|g|$ is continuous, $|g|(\gamma)$ is a compact set. Hence, there exists a maximum on $\gamma$, for some $z_0\in\gamma$, all $z\in\gamma$ satisfies:
+$$|f(z)-f(-z)|=|g(z)|\leq |g(z_0)|=|f(z_0)-f(-z_0)|$$
+And, notice that since $z_0, -z_0$ have modulus $r$ (since they're on $\gamma$), then $z_0,-z_0\in \mathbb{D}$. Therefore,
+$|g(z_0)|=|f(z_0)-f(-z_0)| \leq \sup_{z,w\in\mathbb{D}}|f(z)-f(w)| = d$, thus for all $z\in\gamma$, $|g(z)|\leq d$.
 
+\hfill
+
+Now, going back to the third equation, since for all $\zeta\in\gamma$, it satisfies $|g(\zeta)|\leq d$ and $|\zeta| = r$, we can conclude the following inequality:
+$$2|f'(0)| = |2f'(0)| = \left|\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)-f(-\zeta)}{\zeta^2}d\zeta\right|\leq\frac{1}{2\pi}\int_{\gamma}\frac{|g(\zeta)|}{|\zeta|^2}\cdot|d\zeta| \leq \frac{1}{2\pi}\int_{\gamma}\frac{d}{r^2}\cdot |d\zeta|$$
+$$2|f'(0)| \leq \frac{1}{2\pi}\cdot \frac{d}{r^2}\cdot 2\pi r = \frac{d}{r}$$
+Also, notice that the above inequality is true for all $r\in (0,1)$, since $d = \inf\{\frac{d}{r}\ |\ r\in(0,1)\}$,
+
+(Note: since for all $r\in (0,1)$, $\frac{1}{r}>1$, then $\frac{d}{r}>d$; on the other hand, for all $\epsilon>0$, since $d+\epsilon/2 = d(1+\frac{\epsilon}{2d}) = \frac{d}{1/(1+\frac{\epsilon}{2d})}$,
+because $(1+\frac{\epsilon}{2d})>1$, then $0<1/(1+\frac{\epsilon}{2d})<1$, hence $(1+\frac{\epsilon}{2d})\in (0,1)$, or $d+\epsilon/2=\frac{d}{(1+\frac{\epsilon}{2d})}\in \{\frac{d}{r}\ |\ r\in(0,1)\}$.
+However, since $d+\epsilon/2 < d+\epsilon$, then $d+\epsilon$ is not a lower bound of the set. Hence, $d=\inf\{\frac{d}{r}\ |\ r\in(0,1)\}$).
+
+then, since $2|f'(0)| \leq \frac{d}{r}$ for all $r\in(0,1)$, then $2|f'(0)|$ is a lower bound of $\{\frac{d}{r}\ |\ r\in(0,1)\}$,
+hence $2|f'(0)| \leq \inf\{\frac{d}{r}\ |\ r\in(0,1)\} = d$.
+
+\hfill
+
+\textbf{Equality under Linear Functions:}
+Let $f(z)=a_0+a_1z$ for $a_0,a_1\in\mathbb{C}$, then $f'(z) = a_1$, 
 
 \break
 
@@ -180,6 +209,13 @@ which is a stricter condition than $n!n^n$, since $\lim_{n\rightarrow\infty}\fra
 \begin{myBox}[]{}
     \begin{question}
         Stein and Shakarchi Pg. 66 Problem 8:
+
+        If $f$ is a holomorphic function on the strip $-1 <y< 1$, $x\in\mathbb{R}$ with
+        $$|f(z)|\leq A(1+|z|)^\eta$$
+        $\eta$ a fixed real number and for all z in that strip.
+        
+        Show that for each integer $n\geq 0$ there exists $A_n\geq 0$ so that
+        $$|f^{(n)}(x)|\leq A_n(1+|x|)^\eta$$
     \end{question}
 \end{myBox}
 
