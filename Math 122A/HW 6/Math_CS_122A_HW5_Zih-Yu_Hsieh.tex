@@ -58,7 +58,7 @@ $f^{(n)}(z)$. (Note: Since $f$ is analytic on the whole plane, then all of its d
 
 First, consider the disk $D_{2r} = \{z\in\mathbb{C}\ |\ |z|\leq 2r\}$: Since it is a closed and bounded set,
 then it is compact. Hence, since $|f^{(n)}|$ is also continuous due to the analytic nature of $f^{(n)}$, 
-then $|f^{(n)}|(D_{2r}) \subseteq \mathbb{R}$ is also compact, hence there exists $M>0$, such that for all $z\in D_{2r}$,
+then $|f^{(n)}|(D_{2r}) \subseteq \mathbb{R}$ is also compact, there exists $M>0$, such that for all $z\in D_{2r}$,
 $|f^{(n)}(z)| \leq M$.
 
 \hfill
@@ -70,7 +70,7 @@ Which, for $z\in \mathbb{C}\setminus D_{2r}$ , since $|z| > 2r > r$, then for al
 $$|\zeta-z| \geq ||\zeta|-|z|| = |r-|z|| = |z|-r > 2r-r = r,\quad |\zeta-z|^{n+1}> r^{n+1},\quad \frac{1}{|\zeta-z|^{n+1}} < \frac{1}{r^{n+1}}$$
 Similarly, since $|\zeta|\geq r$, then based on the assumption, $|f(\zeta)| < |\zeta|^n = r^n$.
 Hence, the following inequality is true:
-$$|f^{(n)}(z)| = \left|\frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{n+1}}d\zeta\right| \leq \frac{n!}{2\pi}\int_{\gamma}\left|\frac{f(\zeta)}{(\zeta-z)^{n+1}}\right|\cdot|d\zeta| < \frac{n!}{2\pi}\int_{\gamma}\frac{r^n}{r^{n+1}}\cdot|d\zeta|$$
+$$|f^{(n)}(z)| = \left|\frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{n+1}}d\zeta\right| \leq \frac{n!}{2\pi}\int_{\gamma}\frac{|f(\zeta)|}{|\zeta-z|^{n+1}}\cdot|d\zeta| < \frac{n!}{2\pi}\int_{\gamma}\frac{r^n}{r^{n+1}}\cdot|d\zeta|$$
 $$|f^{(n)}(z)| < \frac{n!}{2\pi}\cdot\frac{1}{r}\cdot 2\pi r = n!$$
 (Note: the first inequality is true, based on the statement that $|f(\zeta)|< r^n$ and $\frac{1}{|\zeta-z|^{n+1}}<\frac{1}{r^{n+1}}$).
 
@@ -100,12 +100,12 @@ then the closed disk $|z-z_0|\leq r$ is fully contained in $|z-z_0|<r'$, which i
 
 \hfill
 
-Now, let $\gamma$ be the circle $|z-z_0|=r$, since it is a compact set where $|f|$ is defined while $f$ is continuous,
+Now, let $\gamma$ be the circle $|z-z_0|=r$, since it is a compact set where $|f|$ is continuous since $f$ is analytic,
 then $|f|(\gamma)\subseteq \mathbb{R}$ has a maximum, there exists $M>0$, such that for all $z\in \gamma$, $|f(z)|\leq M$ (For simplicity, choose $M\geq 1$).
 
 Hence, based on Cauchy's Integral Formula, for all $n\in\mathbb{N}$, the following formula is true:
 $$f^{(n)}(z_0) = \left|\frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\right| \leq \frac{n!}{2\pi}\int_{\gamma}\frac{|f(\zeta)|}{|\zeta-z_0|^{n+1}}\cdot|d\zeta| \leq \frac{n!}{2\pi}\int_{\gamma}\frac{M}{r^{n+1}}\cdot|d\zeta|$$
-$$f^{(n)}(z_0) \leq \frac{n!}{2\pi \cdot \frac{M}{r^{n+1}}}\cdot 2\pi r = \frac{n!M}{r^n}$$
+$$f^{(n)}(z_0) \leq \frac{n!}{2\pi} \cdot \frac{M}{r^{n+1}}\cdot 2\pi r = \frac{n!M}{r^n}$$
 (Note: For all $\zeta\in \gamma$, $|\zeta-z_0|=r$, and $|f(\zeta)|\leq M$).
 
 Notice that since $\frac{M}{r}>0$, then by Archimedean's Property, there exists $k\in\mathbb{N}$, with $k> \frac{M}{r}$,
@@ -191,16 +191,16 @@ Also, $\lim_{z\rightarrow\infty}g(z)$ must also converge to some value in $\math
 Then, this implies for all $\epsilon>0$, there exists $M>0$, such that $|z|>M$ implies $|g(z)-f(0)| < \epsilon$,
 hence, the following is true:
 $$|g(z)| = |(g(z)-f(0))+f(0)| \leq |g(z)-f(0)|+|f(0)| < |f(0)|+\epsilon$$
-$$|g(z)|=\left|\frac{1}{z^h}g_h(z)\right| < |f(0)|+\epsilon,\quad |g_h(z)| < (|f(0)+\epsilon)|z|^h$$
-Which, let $C=|f(0)|+\epsilon>0$, for all $z$ with $|z|>M$, we have $|g_h(z)| < C|z|^h$, which let $M'=\max\{M, C\}$, when $|z|>M'$,
+$$|g(z)|=\left|\frac{1}{z^h}g_h(z)\right| < |f(0)|+\epsilon,\quad |g_h(z)| < (|f(0)|+\epsilon)|z|^h$$
+Which, let $C=|f(0)|+\epsilon>0$, for all $z$ with $|z|>M$, we have $|g_h(z)| < C|z|^h$; which let $M'=\max\{M, C\}$, when $|z|>M'$,
 since $|z|>C$ and $|z|>M$, the following is true:
 $$|g_h(z)|<C|z|^h < |z|^{h+1}$$
-Now, apply the statement proven in \textbf{Question 1}, since for sufficiently large $|z|$, $g_h(z)$ is analytic on the whole plane, while $|g_h(z)|< |z|^{h+1}$ (with $(h+1)\in\mathbb{N}$ being fixed),
+Now, apply the statement proven in \textbf{Question 1}, since $g_h(z)$ is analytic on the whole plane, while for sufficiently large $|z|$, $|g_h(z)|< |z|^{h+1}$ (with $(h+1)\in\mathbb{N}$ being fixed),
 then $g_h(z)$ reduces to a polynomial, and with degree at most $(h+1)$. Hence, $g_h(z)=a_0+a_1z+...+a_{h+1}z^{h+1}$ for some $a_0,a_1,...,a_{h+1}\in\mathbb{C}$.
 
 Then, recall the fact that $f(\frac{1}{z})=g(z)$, then $f(z)=g(\frac{1}{z})=\frac{1}{(1/z)^h}g_h(\frac{1}{z})$, we get the following:
 $$f(z)=z^h\cdot \left(a_0+a_1\frac{1}{z}+...+a_{h+1}\frac{1}{z^{h+1}}\right) = a_0z^h + a_1z^{h-1}+...+a_h+a_{h+1}\frac{1}{z}$$
-Also, notice that since $f(0)$ is defined, then we must have $a_{h+1}=0$ (or else the above function wouldn't be defined).
+Also, notice that since $f(0)$ is defined, then we must have $a_{h+1}=0$ (or else the above function wouldn't be defined at $0$).
 
 Hence, $f(z)=a_0z^h + a_1z^{h-1}+...+a_h$, which is a polynomial.
 
@@ -208,7 +208,9 @@ Hence, $f(z)=a_0z^h + a_1z^{h-1}+...+a_h$, which is a polynomial.
 
 \hfill
 
-Regardless of the case, we always get the fact that $f(z)$ is a polynomial, hence having $f$ being analytic on the whole plane,
+Regardless of the case, we always get the fact that $f(z)$ is a polynomial.
+
+Hence, having $f$ being analytic on the whole plane,
 while having a nonessential singularity at $\infty$ implies that $f(z)$ must be a polynomial.
 
 
@@ -240,7 +242,7 @@ so it is also a removable singularity for $e^f$, not a pole.
 \textbf{When $f$ has an Essential Singularity at $a$:}
 
 Since it is an essential singularity at $a$, for all $z\in\mathbb{C}$ (except possibly finitely many points), every neighborhood of $a$ has value of $f$
-being arbitrarily close to $z$, then take $\log(z)\in\mathbb{C}$ (except for $z=0$), since $f$ can get arbitrarily close th $\log(z)$ in any of the neighborhood of $a$,
+being arbitrarily close to $z$, then take $\log(z)\in\mathbb{C}$ (except for $z=0$), since $f$ can get arbitrarily close to $\log(z)$ in any of the neighborhood of $a$,
 then $e^f$ can get arbitrarily close to $e^{log(z)} = z$ for every neighborhood around $a$, showing that $e^f$ also has an essential singularity at $a$, instead of a pole.
 
 \hfill
@@ -251,7 +253,7 @@ Suppose $f$ has a pole of order $h$ at $a$, then $f(z)=\frac{1}{(z-a)^h}f_h(z)$ 
 
 First, for all $w\in\mathbb{C}$, $w=|w|\cdot e^{i\cdot \arg(w)}$, for $k\in\mathbb{N}$, define $w^\frac{1}{k} = |w|^\frac{1}{k}\cdot e^{i\cdot\frac{\arg(w)}{k}}$ for simplicity.
 
-Now, for all $z\in\mathbb{C}$ (where $z\neq 0$), since $e^{f_h(a)}\neq 0$, then $z\cdot e^{f_h(a)}$ can be arbitrary member of $\mathbb{C}$ besides $0$. Consider the sequence $(z_n)_{n\in\mathbb{N}}$ defined by:
+Now, for all $z\in\mathbb{C}$ (where $z\neq 0$), since $e^{f_h(a)}\neq 0$, then $z\cdot e^{f_h(a)}$ can be arbitrary member of $\mathbb{C}\setminus\{0\}$. Consider the sequence $(z_n)_{n\in\mathbb{N}}$ defined by:
 $$\forall n\in\mathbb{N},\quad z_n=\left(\frac{1}{\ln|z|+i\cdot(\arg(z)+2n\pi)}\right)^\frac{1}{h}+a$$
 Then, since as $\lim_{n\rightarrow\infty}z_n=a$ (because the first fraction term converges to $0$ due to an unbounded denominator), then $\lim_{n\rightarrow\infty}f(z_n)=\infty$.
 
@@ -295,7 +297,7 @@ $$-f'(0)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(-\zeta)}{\zeta^2}d\zeta,\quad f'(0
 Which, adding the two equations together, we yield:
 $$2f'(0)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)-f(-\zeta)}{\zeta^2}d\zeta$$
 Given that $g(z)=f(z)-f(-z)$ is an analytic function (sum and composition of analytic functions), and $\gamma$ is a compact set (boundary of a bounded circle),
-then since $|g|$ is continuous, $|g|(\gamma)$ is a compact set. Hence, there exists a maximum on $\gamma$, for some $z_0\in\gamma$, all $z\in\gamma$ satisfies:
+then since $|g|$ is continuous, $|g|(\gamma)\subseteq \mathbb{R}$ is a compact set. Hence, there exists a maximum on $\gamma$, for some $z_0\in\gamma$, all $z\in\gamma$ satisfies:
 $$|f(z)-f(-z)|=|g(z)|\leq |g(z_0)|=|f(z_0)-f(-z_0)|$$
 And, notice that since $z_0, -z_0$ have modulus $r$ (since they're on $\gamma$), then $z_0,-z_0\in \mathbb{D}$. Therefore,
 $|g(z_0)|=|f(z_0)-f(-z_0)| \leq \sup_{z,w\in\mathbb{D}}|f(z)-f(w)| = d$, thus for all $z\in\gamma$, $|g(z)|\leq d$.
@@ -305,13 +307,13 @@ $|g(z_0)|=|f(z_0)-f(-z_0)| \leq \sup_{z,w\in\mathbb{D}}|f(z)-f(w)| = d$, thus fo
 Now, going back to the third equation, since for all $\zeta\in\gamma$, it satisfies $|g(\zeta)|\leq d$ and $|\zeta| = r$, we can conclude the following inequality:
 $$2|f'(0)| = |2f'(0)| = \left|\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)-f(-\zeta)}{\zeta^2}d\zeta\right|\leq\frac{1}{2\pi}\int_{\gamma}\frac{|g(\zeta)|}{|\zeta|^2}\cdot|d\zeta| \leq \frac{1}{2\pi}\int_{\gamma}\frac{d}{r^2}\cdot |d\zeta|$$
 $$2|f'(0)| \leq \frac{1}{2\pi}\cdot \frac{d}{r^2}\cdot 2\pi r = \frac{d}{r}$$
-Also, notice that the above inequality is true for all $r\in (0,1)$, since $d = \inf\{\frac{d}{r}\ |\ r\in(0,1)\}$,
+Also, notice that the above inequality is true for all $r\in (0,1)$.
 
 (Note: since for all $r\in (0,1)$, $\frac{1}{r}>1$, then $\frac{d}{r}>d$; on the other hand, for all $\epsilon>0$, since $d+\epsilon/2 = d(1+\frac{\epsilon}{2d}) = \frac{d}{1/(1+\frac{\epsilon}{2d})}$,
 because $(1+\frac{\epsilon}{2d})>1$, then $0<1/(1+\frac{\epsilon}{2d})<1$, hence $(1+\frac{\epsilon}{2d})\in (0,1)$, or $d+\epsilon/2=\frac{d}{(1+\frac{\epsilon}{2d})}\in \{\frac{d}{r}\ |\ r\in(0,1)\}$.
 However, since $d+\epsilon/2 < d+\epsilon$, then $d+\epsilon$ is not a lower bound of the set. Hence, $d=\inf\{\frac{d}{r}\ |\ r\in(0,1)\}$).
 
-then, since $2|f'(0)| \leq \frac{d}{r}$ for all $r\in(0,1)$, then $2|f'(0)|$ is a lower bound of $\{\frac{d}{r}\ |\ r\in(0,1)\}$,
+Since $d = \inf\{\frac{d}{r}\ |\ r\in(0,1)\}$,then, since $2|f'(0)| \leq \frac{d}{r}$ for all $r\in(0,1)$, then $2|f'(0)|$ is a lower bound of $\{\frac{d}{r}\ |\ r\in(0,1)\}$,
 hence $2|f'(0)| \leq \inf\{\frac{d}{r}\ |\ r\in(0,1)\} = d$.
 
 \hfill
@@ -356,7 +358,7 @@ So, recall that $2|f'(0)|=2|a_1|$, then $2|f'(0)| = \sup_{z,w\in\mathbb{D}}|f(z)
 First, WLOG, we can assume $\eta\geq 0$: For all $z$ in the given region, since $|z|\geq 0$, then $(1+|z|)\geq 1$.
 Hence, if $\eta<0$ (which $|\eta|>0$, and $\eta=-|\eta|$), since $(1+|z|)^{|\eta|} \geq (1+|z|)\geq 1$, the following inequality is true:
 $$|f(z)| \leq A(1+|z|)^\eta\leq A(1+|z|)^{-|\eta|}\cdot(1+|z|)^{|\eta|}=A(1+|z|)^0$$
-Hence, choose $\eta'=0$, $|f(z)| \leq A(1+|z|)^{\eta'}$ is still valid. Also, since $|f(z)|\geq 0$, and $(1+|z|)^\eta\geq 0$ for all $z$ in the given strip,
+Hence, choose $\eta'=0$, $|f(z)| \leq A(1+|z|)^{\eta'}$ is still valid. Also, since $|f(z)|\geq 0$, and $(1+|z|)^\eta> 0$ for all $z$ in the given strip,
 then $A\geq 0$ is also enforced.
 
 \hfill
@@ -374,7 +376,7 @@ $$f^{(n)}(x)=\frac{n!}{2\pi i}\int_{\gamma_{x}}\frac{f(\zeta)}{(\zeta-x)^{n+1}}d
 Which, for all $\zeta\in \gamma_x$, $|\zeta-x|^{n+1}=r^{n+1}$; furthermore, since $|f(\zeta)|\leq A(1+|\zeta|)^\eta$, while $\zeta = x+re^{i\theta}$ for some $\theta\in [0,2\pi)$,
 hence by Triangle Inequality, the following is true:
 $$|\zeta| = |x+re^{i\theta}| \leq |x|+|re^{i\theta}|=|x|+r$$
-Hence, $(1+|\zeta|)\leq (1+|x|+r) = (\frac{3}{2}+|x|)$, and since $|x|\geq 0$, then $(\frac{3}{2}+|x|)\leq(\frac{3}{2}+\frac{3}{2}|x|)= \frac{3}{2}(1+|x|)$.
+Hence, $(1+|\zeta|)\leq (1+|x|+r) = (\frac{3}{2}+|x|)$ (Note: $r=\frac{1}{2}$), and since $|x|\geq 0$, then $(\frac{3}{2}+|x|)\leq(\frac{3}{2}+\frac{3}{2}|x|)= \frac{3}{2}(1+|x|)$.
 Therefore, with $\eta\geq 0$, we have $(1+|\zeta|)^\eta \leq (\frac{3}{2})^\eta \cdot (1+|x|)^\eta$.
 
 \hfill
