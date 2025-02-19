@@ -77,7 +77,7 @@ hence since $a,a^{-1}\in\mathbb{Z}[X]$ and $aa^{-1}=a^{-1}a=1$, then $a,a^{-1}\i
 Then, suppose $f(X)\in (\mathbb{Z}[X])^\times$, there exists $g(X)\in(\mathbb{Z}[X])^\times$, with $f(X)g(X)=1$. Yet, since $1\neq 0$, then $f(X),g(X)\neq 0$; 
 also, since $\mathbb{Z}$ is an integral domain, then: 
 $$0=\deg(1)=\deg(f(X)g(X))=\deg(f(X))+\deg(g(X))$$
-Since $\deg(f(X)),\deg(g(X))\geq 0$, then the only possibility is $\deg(F(X))=\deg(g(X))=0$.
+Since $\deg(f(X)),\deg(g(X))\geq 0$, then the only possibility is $\deg(f(X))=\deg(g(X))=0$.
 Hence, both $f(X),g(X)$ are constant, hence $f(X),g(X)\in\mathbb{Z}$, while $f(X)g(X)=1$, showing that $f(X),g(X)\in(\mathbb{Z})^\times$.
 Therefore, $(\mathbb{Z}[X])^\times \subseteq(\mathbb{Z})^\times$.
 
@@ -129,7 +129,7 @@ $$f(X)=3X^2\cdot g(X)+(4X^3+X^2+1) = 3X^2\cdot g(X)+4X\cdot g(X)+(2X+1) = (3X^2+
 
 Since $(2X+1)$ has degree 1, which is less than 2 the degree of $g(X)$, hence the division process ends here.
 
-Which, let $q(X)=(3X^2+4X)$ and $r(X)=(2X+1)$, then $f(X)=q(X)g(X)+r(X)$.
+Which, let $q(X)=(3X^2+4X)$ and $r(X)=(2X+1)$, then $f(X)=q(X)g(X)+r(X)$, with $1=\deg(r(X))< \deg(g(X))=2$.
 
 The division of $f(X)$ by $g(X)$ has the quotient $q(X)=3X^2+4X$, and remainder $r(X)=2X+1$.
 
@@ -150,6 +150,10 @@ Then, since $|\mathbb{Z}_{37}| = 37$, we have $|(\mathbb{Z}_{37})^\times| = |\ma
 
 \hfill
 
+First, notice that $1\in\mathbb{Z}_{37}$ satisfies $f(1)=1^25-1 = 1-1 = 0$, hence $1$ is a zero of $f(X)$.
+
+\hfill
+
 Then, suppose $a\in\mathbb{Z}_{37}$ is a zero of $f(X)=X^{25}-1$, which $f(a)=a^{25}-1 = 0$, showing that $a^{25}=1$.
 
 Since $a\cdot a^{24} = a^{24}\cdot a=1$, then $a$ is invertible, hence $a\in(\mathbb{Z}_{37})^\times$.
@@ -159,7 +163,7 @@ dividing the order of the group.
 
 Similarly, since $a^{25}=1$, then $order(a)\ \bigm | 25$ (since the power of 25 returns to the identity of the group).
 
-Hence, $order(a)$ must be a common factor of $25 = 5^2$ and $36 = 2^2\cdot 3^2$, hence $order(a)\ \bigm |\ \gcd(25,36)=1$.
+Hence, $order(a)$ must be a common factor of $25 = 5^2$ and $36 = 2^2\cdot 3^2$, which $order(a)\ \bigm |\ \gcd(25,36)=1$.
 
 \hfill
 
@@ -211,7 +215,7 @@ Hence, $(6X^2+X+1)=6g(X)+(3X+2)$. Plug into the previous equation:
 $$f(X)=(3X^2+X^2)g(X)+(6X^2+X+1) = (3X^3+X^2)g(X)+6g(X)+(3X+2) = (3X^3+X^2+6)g(X)+(3X+2)$$
 Since $(3X+2)$ has degree $1$, which is less than $2$ the degree of $g(X)$, hence the division process ends here.
 
-Which, let $q(X)=(3X^3+X^2+6)$ and $r(X)=(3X+2)$, then $f(X)=q(X)g(X)+r(X)$.
+Which, let $q(X)=(3X^3+X^2+6)$ and $r(X)=(3X+2)$, then $f(X)=q(X)g(X)+r(X)$, while $1=\deg(r(X))<\deg(g(X))=2$.
 The division of $f(X)$ by $g(X)$ has the quotient $q(X)=3X^3+X^2+6$, and $r(X)=3X+2$.
 
 \hfill
@@ -227,6 +231,10 @@ The division of $f(X)$ by $g(X)$ has the quotient $q(X)=3X^3+X^2+6$, and $r(X)=3
 \end{myBox}
 
 \textbf{Pf:}
+
+Given $p$ as a prime, we'll prove that there doesn't exist a non-constant polynomial in $\mathbb{Z}_p[X]$ that has a multiplicative inverse.
+
+\hfill
 
 Since $p$ is a prime, then the base ring $\mathbb{Z}_p$ is an integral domain. 
 
@@ -290,18 +298,18 @@ Therefore, we can conclude that $I$ is a subgroup under addition.
 Then, to show that $I$ is an ideal, it suffices to show that for all $f(X)\in I$, all $a\in k$, and all $l\in\mathbb{N}$, $aX^l\cdot f(X)\in I$.
 
 Again, let $f(X)=a_0+a_1X+...+a_nX^n$, which $\sum_{i=0}^{n}a_i=0$. Then, consider the following: 
-$$aX^l\cdot f(X)= aa_0X^l+a_1X^{1+l}+...+aa_nX^{n+l} = \sum_{i=0}^{l-1}0\cdot aX^i + \sum_{j=0}^{n}aa_jX^{j+l}$$
+$$aX^l\cdot f(X)= a\cdot a_0X^l+a\cdot a_1X^{1+l}+...+a\cdot a_nX^{n+l} = \sum_{i=0}^{l-1}0\cdot aX^i + \sum_{j=0}^{n}a\cdot a_jX^{j+l}$$
 (Note: if $k=0$, then the first summation term above can be ignored).
 
 The sum of coefficient of $X^k\cdot f(X)$ is as follow:
-$$\sum_{i=0}^{l-1}0 + \sum_{j=0}^{n}aa_j = 0+a\sum_{j=0}^{n}a_j=0+0=0$$
+$$\sum_{i=0}^{l-1}0 + \sum_{j=0}^{n}a\cdot a_j = 0+a\sum_{j=0}^{n}a_j=0+0=0$$
 Hence, given that $f(X)\in I$, every $a\in k$ and $l\in\mathbb{N}$ satisfies $aX^l\cdot f(X)\in I$.
 
 \hfill
 
-Which, for all $g(X)\in R$, $g(X)=b_0+b_1X+...+b_mX^m$ for some $b_0,b_1,...,b_m\in k$. Hence, given $f(X)\in I$, $g(X)\cdot f(X)$ is as follow:
+Which, for all $g(X)\in k[X]$, $g(X)=b_0+b_1X+...+b_mX^m$ for some $b_0,b_1,...,b_m\in k$. Hence, given $f(X)\in I$, $g(X)\cdot f(X)$ is as follow:
 $$g(X)\cdot f(X)= b_0f(X)+b_1X\cdot f(X)+...+b_mX^m\cdot f(X)$$
-For all $i\in\{0,1,...,m\}$, since $b_i\in k$, then $b_iX^i\cdot f(X) \in I$; and since $I$ is a subgroup under addition, then $g(X)\cdot f(X)$ is a sum of elements in $I$, 
+For all $l\in\{0,1,...,m\}$, since $b_l\in k$, then $b_lX^l\cdot f(X) \in I$; and since $I$ is a subgroup under addition, then $g(X)\cdot f(X)$ is a sum of elements in $I$, 
 which $g(X)\cdot f(X)\in I$.
 
 Hence, we can conclude that $I$ is in fact an ideal.
@@ -313,7 +321,7 @@ Hence, we can conclude that $I$ is in fact an ideal.
 \textbf{$I$ is a Principal Ideal:}
 
 Recall that given a commutative ring $R$, $R[X]$ is a Principal Ideal Domain if and only if $R$ is a field, hence since $k$ is a field, $k[X]$ must be a Principal Ideal Domain.
-So, $I\subset k[X]$ is a principal ideal.
+So, the ideal $I\subset k[X]$ is a principal ideal.
 
 \hfill
 
@@ -321,7 +329,7 @@ So, $I\subset k[X]$ is a principal ideal.
 
 Now, consider the polynomial $X-1\ \in k[X]$: Its sum of coefficients is given as $1+(-1)=0$, hence $X-1\ \in I$, implying that $(X-1)\subseteq I$.
 
-Also, for all $f(X)\in I$, let $f(X)=a_0+a_1X+...+a_nX^n$, which $\sum_{i=0}^{n}a_n=0$. Then, consider the following polynomial $g(X)\in k[X]$ defined as follow:
+Also, for all $f(X)\in I$, let $f(X)=a_0+a_1X+...+a_nX^n$, which $\sum_{i=0}^{n}a_n=0$. Then, consider the polynomial $g(X)\in k[X]$ defined as follow:
 $$g(X)=-\sum_{i=0}^{n-1}\left(\sum_{j=0}^{i}a_j\right)X^i$$
 Which, $(X-1)g(X)$ is given as follow:
 $$(X-1)g(X)= X\cdot g(X)-g(X) = -\sum_{i=0}^{n-1}\left(\sum_{j=0}^{i}a_j\right)X^{i+1}+\sum_{i=0}^{n-1}\left(\sum_{j=0}^{i}a_j\right)X^i$$
