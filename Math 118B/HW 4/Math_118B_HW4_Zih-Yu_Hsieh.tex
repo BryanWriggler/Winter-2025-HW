@@ -29,7 +29,7 @@ colback=blue!10
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
 
-\title{Latex Template}
+\title{Math 118B HW4}
 \author{Zih-Yu Hsieh}
 
 \begin{document}
@@ -38,62 +38,326 @@ colback=blue!10
 \section*{1}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $g : [0, 1]\rightarrow\mathbb{R}$ be a continuous function with $g(1) = 0$. Show that the
+        sequence $f_n:[0,1]\rightarrow\mathbb{R}$ defined as $f_n(x)=x^ng(x)$ converges uniformly to zero.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+Intuitively, we'll break this into two parts: A region containing $1$ (where $x^n$ is not converging to $0$),
+and the other region by some choice of $\delta>0$.
+
+Before starting, fix an arbitrary $\epsilon>0$ for all purposes.
+
+\hfill
+
+\textbf{Behaviors around $x=1$:}
+
+Given that $g$ is continuous at $1$, then for the chosen $\epsilon>0$, there exists $\delta>0$ (for simplicity, choose $\delta<1$),
+such that for all $x\in[0,1]$, $|x-1|<\delta$ implies $|g(x)-g(1)| = |g(x)|<\epsilon$.
+
+Which, because $x\in [0,1]$, then for all $n\in\mathbb{N}$, $|x^n| \leq 1$, showing that $|f_n(x)| = |x^ng(x)| \leq |g(x)|<\epsilon$.
+
+So, for all $n\in\mathbb{N}$ and all $x\in (1-\delta,1] = [0,1]\cap B_\delta(1)$, $|f_n(x)|<\epsilon$.
+
+\hfill
+
+\textbf{Behaviors for the rest of the regions:}
+
+Since for all $x\in (1-\delta,1]$ is well-behaved, the rest to consider is all $x\in [0,1-\delta]$.
+
+First, since $g$ is continuous on $[0,1]$ a compact set, then $g([0,1])\subseteq \mathbb{R}$ is also compact, showing that $g$ is bounded.
+Hence, there exists $M>0$, such that all $x\in [0,1]$ satisfies $|g(x)|\leq M$.
+
+Then, from the previous construction, $0<\delta<1$, hence $0<(1-\delta)<1$,
+showing that $\lim_{n\rightarrow\infty}(1-\delta)^n=0$. Therefore, since $\frac{\epsilon}{M}>0$, there exists $N$, such that $n\geq N$ implies $|(1-\delta)^n|=(1-\delta)^n<\frac{\epsilon}{M}$.
+
+Now, notice that for all $x\in[0,1-\delta]$, since $0\leq x \leq (1-\delta)$, then for all $n\in\mathbb{N}$, $0\leq x^n\leq (1-\delta)^n$.
+
+Hence, for all $n\geq N$ and all $x\in [0,1-\delta]$, we can conclude the following:
+$$|f_n(x)| = |x^ng(x)| = |x^n|\cdot |g(x)| \leq x^n\cdot M \leq (1-\delta)^n\cdot M< \frac{\epsilon}{M}\cdot M=\epsilon$$
+
+\hfill
+
+Now, for the $N$ constructed in the second part, for any $n\geq N$, for all $x\in[0,1]$, there are two cases:
+
+First, if $x\in (1-\delta,1]$, then from the first part, $|f_n(x)|<\epsilon$.
+
+Else, if $x\in [0,1-\delta]$, then from the second part, since $n\geq N$, we have $|f_n(x)|<\epsilon$ again.
+
+Hence, $\epsilon$ is an upper bound of the set $\{|f_n(x)|\ x\in [0,1]\}$, showing that $\sup_{x\in[0,1]}|f_n(x)|=\|f_n\|_\infty < \epsilon$.
+
+So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\infty<\epsilon$, showing that $f_n$ converges to $0$ uniformly.
 
 \break
 
-\section*{2}
+\section*{2 (Part b not done)}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $f_n:\mathbb{R}\rightarrow\mathbb{R}$ be defined as $f_n(x)=1/(1+n^2x^2)$, $n\in\mathbb{Z}^+$.
+        \begin{itemize}
+            \item[(a)] For what values of $x$ does the series $\sum f_n$ converge pointwise?
+            \item[(b)] For what values of $x$ does the series $\sum f_n$ converge uniformly? 
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] For $x=0$, since for all $n\in\mathbb{N}$, $f_n(0)=1/(1+n^2\cdot 0^2)=1$, then the series $\sum_{n=1}^{\infty} f_n(0)$ diverges.
+    
+    \hfill
+    
+    For $x\neq 0$, recall that $\sum_{n=1}^{\infty}\frac{1}{n^2x^2}$ converges (since $\sum_{n=1}^{\infty}\frac{1}{n^2}$ converges).
+    Now, since for all $n\in\mathbb{N}$, $0< n^2x^2 < (1+n^2x^2)$, then $0<\frac{1}{1+n^2x^2}<\frac{1}{n^2x^2}$, hence for all $N\in\mathbb{N}$, we can conclude the following:
+    $$0 < \sum_{n=1}^{N}f_n(x)=\sum_{n=1}^{N}\frac{1}{1+n^2x^2}<\sum_{n=1}^{N}\frac{1}{n^2x^2}$$
+    Then, since the series $\sum_{n=1}^{\infty}\frac{1}{n^2x^2}$ converges, while every term $f_n(x)>0$ (since $n,x>0$), then the above partial sum is bounded by the partial sum of $\sum_{n=1}^{\infty}\frac{1}{n^2x^2}$,
+    implies that $\sum_{n=1}^{\infty}f_n(x)$ converges.
+
+    Hence, all $x\in \mathbb{R}\setminus\{0\}$ has $\sum_{n=1}^{\infty}f_n(x)$ converges.
+    
+    \hfill
+    
+    \item[(b)] Even though the series $\sum_{n=1}^{\infty}f_n(x)$ converges pointwise on $\mathbb{R}\setminus\{0\}$, we can prove that it doesn't converge uniformly:
+    Recall that the Weierstrass Theorem states that given a sequence of functions $f_n:U\rightarrow\mathbb{R}$
+
+    \hfill
+
+    However, for all $r>0$, the series $\sum_{n=1}^{\infty}f_n(x)$ would converge uniformly on the region $(-\infty,-r]\cup [r,\infty)$:
+    Recall that the Weierstrass's Theorem (or Weierstrass M-Test) states that given a sequence of functions $f_n:U\rightarrow\mathbb{R}$ (where $U\subseteq \mathbb{R}$),
+    let $M_n = \sup_{x\in U}|f(x)|$ for all $n\in\mathbb{N}$, then $\sum_{n=1}^{\infty}M_n$ converges implies $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly on $U$.
+
+    For all $x\in (-\infty,-r]\cup [r,\infty)$, since $0<r^2\leq x^2$, then for all $n\in\mathbb{N}$, $0<(1+r^2n^2)\leq (1+n^2x^2)$, showing that $0<\frac{1}{1+n^2x^2}\leq \frac{1}{1+n^2r^2}$.
+    Hence, we can conclude that $0<f_n(x)\leq f_n(r)$, while $r\in (-\infty,-r]\cup [r,\infty)$, showing that $f_n(r)=\sup|f_n(x)| = \max|f_n(x)|$ on the given region $(-\infty,-r]\cup [r,\infty)$.
+
+    Then, since $\sum_{n=1}^{\infty}f_n(r)$ converges (since $r\neq 0$, which it satisfies the condition in \textbf{Part (a)}), then by Weierstrass's Theorem, since $\sum_{n=1}^{\infty}\sup|f_n(x)|$ converges for the region $(-\infty,-r]\cup [r,\infty)$,
+    then the series of functions $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly.
+
+    Hence, for any $r>0$, $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly on $(-\infty,-r]\cup [r,\infty)$.
+\end{itemize}
 
 \break
 
 \section*{3}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $f:\mathbb{R}\rightarrow\mathbb{R}$ be a continuous function. Define $f_n(x)=f(x+1/n)$, $n\in\mathbb{Z}^+$.
+        \begin{itemize}
+            \item[(a)] Does the sequence $\{f_n\}$ converge uniformly to $f$ in $\mathbb{R}$?
+            \item[(b)] Does the sequence $\{f_n\}$ converge uinformly to $f$ in any $K\subset \mathbb{R}$ compact? 
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] Regardless of the continuous function $f$,
+    since for all $x\in\mathbb{R}$, the sequence $(x+1/n)$ for $n\in\mathbb{Z}^+$ satisfies $\lim_{n\rightarrow\infty}(x+1/n)=x$,
+    then $\lim_{n\rightarrow\infty}f_n(x)=\lim_{n\rightarrow\infty} f(x+1/n) = f(x)$ (since $f$ is continuous, which the limit of the function is the function of the limit).
+    So, we can conclude that $f_n(x)$ converges pointwise onto $f$ for all $x\in\mathbb{R}$.
+
+    However, it's not true that $f_n$ would converge uniformly to $f$ in $\mathbb{R}$, and here is a counterexample: 
+    Take $f(x)=x^2$ a continuous function, which for all $n\in\mathbb{N}$, all $x\in\mathbb{R}$ satisfies: 
+    $$|f_n(x)-f(x)| = \left|f\left(x+\frac{1}{n}\right)-f(x)\right|=\left|\left(x+\frac{1}{n}\right)^2-x^2\right| = \left|\frac{1}{n}\left(2x+\frac{1}{n}\right)\right|$$
+    Hence, for $x>0$, $|f_n(x)-f(x)| = \frac{2x}{n}+\frac{1}{n^2}$. Hence, for all $M>0$, choose $x=nM>0$, we have $|f_n(x)-f(x)| = \frac{2nM}{n}+\frac{1}{n^2} > 2M > M$,
+    showing that the collection $\{|f_n(x)-f(0)\ |\ x\in\mathbb{R}\}$ is not bounded, which the supremum doesn't exists in $\mathbb{R}$.
+    Therefore, the norm $\|f_n-f\|_\infty$ is not even defined, which is not valid to talk about uniform convergence of $f_n$.
+
+    Hence, even though $f_n$ converges to $f$ pointwise on $\mathbb{R}$, it's not guaranteed that $f_n$ converges to $f$ uniformly on $\mathbb{R}$.
+    
+    \hfill
+
+    \item[(b)] Given that $K\subset \mathbb{R}$ is compact, then there exists $m,M\in K$, which $m=\min(K)$ and $M=\max(K)$.
+    Now, consider the set $[m,M+1]\subset\mathbb{R}$: it is closed and bounded under standard topology, which is compact, hence the continuous function $f$ is uniformly continuous on $[m,M+1]$.
+
+    Also, for all $x\in K$ and all $n\in\mathbb{N}$, since $m\leq x\leq M$, and $0<\frac{1}{n}\leq 1$, then $m\leq x+\frac{1}{n}\leq M+1$,
+    hence $x,(x+1/n)\in [m,M+1]$ (which also $K\subseteq [m,M+1]$).
+
+    Now, since $f$ is uniformly continuous on $[m,M+1]$, then for all $\epsilon>0$, there exists $\delta>0$, such that for all $x,y\in[m,M+1]$, $|x-y|<\delta$ implies $|f(x)-f(y)|<\epsilon$.
+    Then, for the given $\epsilon>0$, choose $N\in\mathbb{N}$ such that $\frac{1}{N}<\delta$ based on Archimedean's Property, which for all $n\geq N$ (with $\frac{1}{n}\leq \frac{1}{N}$), the following is true:
+    $$\forall x\in K\subseteq [m,M+1],\quad \left(x+\frac{1}{n}\right)\in [m,M+1],\quad \left|\left(x+\frac{1}{n}\right)-x\right| = \frac{1}{n}\leq \frac{1}{N}<\delta$$
+    $$\left|\left(x+\frac{1}{n}\right)-x\right| <\delta \implies |f_n(x)-f(x)| = \left|f\left(x+\frac{1}{n}\right)-f(x)\right| < \epsilon$$
+    Hence, for all $\epsilon>0$, there exists $N$, witH $n\geq N$ implies $|f_n(x)-f(x)|<\epsilon$ for all $x\in K$,
+    showing that for all $n\geq N$, since $\epsilon$ is an upper bound for the set $\{|f_n(x)-f(x)|\ |\ x\in K\}$, then $\sup_{x\in K}|f_n(x)-f(x)| = \|f_n-f\|_{\infty} \leq \epsilon$ on $K$.
+
+    Hence, $f_n$ converges to $f$ uniformly on $K$, given that $K$ is compact.
+\end{itemize}
 
 \break
 
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $f_n:[-1,1]\rightarrow\mathbb{R}$ be defined as $f_n(x)=xe^{-nx^2}$, $n\in\mathbb{Z}^+$.
+        \begin{itemize}
+            \item[(a)] Find the point-wise limit of the sequence $\{f_n\}$.
+            \item[(b)] Is the convergence uniform?
+            \item[(c)] Is $f$ differentiable? If so, find:
+            $$f'(0),\quad \lim_{n\rightarrow \infty}f_n'(0)$$
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
 
-\break
+\begin{itemize}
+    \item[(a)] First, if $x=0$, then $f_n(0) = 0\cdot e^{-n\cdot 0^2}=0$, so $\lim_{n\rightarrow\infty}f_n(0)=0$.
+    
+    \hfill
+    
+    Else, if $x\neq 0$, since $x\in[-1,1]$, then $|x|\leq 1$; hence, for all $n\in\mathbb{N}$, $|f_n(x)| = |xe^{-nx^2}| \leq e^{-nx^2} = (e^{x^2})^{-n}$ (while $x^2>0$, hence $e^{x^2}>1$).
+
+    Hence, this implies $\lim_{n\rightarrow\infty}(e^{x^2})^{-n}=0$. So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $|(e^{x^2})^{-n}| = (e^{x^2})^{-n}<\epsilon$. Hence, for $n\geq N$,
+    we have $|f_n(x)| \leq (e^{x^2})^{-n}<\epsilon$, showing that $\lim_{n\rightarrow\infty}f_n(x)=0$.
+
+    So, we can conclude that for all $x\in[-1,1]$, $\lim_{n\rightarrow\infty}f_n(x)=0$, which $f_n(x)$ converges pointwise to $f(x)=0$.
+    
+    \hfill
+
+    \item[(b)] Our claim is that the above convergence is in fact a uniform convergence.
+    
+    We'll again break it into two parts: region containing $0$, and the region not containing $0$.
+    Similarly, we'll choose an arbitrary $\epsilon>0$ for all purposes (and for simplicity, let $\epsilon<1$).
+
+    \textbf{Behavior about $0$:}
+    
+    Notice that since for all $x\in [-1,1]$, since for all $n\in\mathbb{N}$, $-nx^2\leq 0$, then $e^{-nx^2}\leq 1$. Hence, we have $|f_n(x)|=|xe^{-nx^2}|\leq |x|$.
+
+    Hence, for all $x\in[-1,1]$ satisfying $|x|<\epsilon$ (or $x\in (-\epsilon,\epsilon)$), we have the following:
+    $$\forall n\in\mathbb{N},\quad |f_n(x)|\leq |x|<\epsilon$$
+
+    \textbf{Behavior for the Remaining Region:}
+
+    Now, for all $x\in [-1,-\epsilon]\cup [\epsilon,1]$ (the remaining region $[-1,1]\setminus (-\epsilon,\epsilon)$), since $|x|\geq \epsilon$, then $x^2\geq \epsilon^2$.
+    Hence, for all $n\in\mathbb{N}$, we have $-nx^2\leq -n\epsilon^2$, or $e^{-nx^2}\leq e^{-n\epsilon^2}$.
+
+    Since $|x|\leq 1$, we have $|f_n(x)| = |xe^{-nx^2}| \leq e^{-nx^2}\leq e^{-n\epsilon^2}$. Then, let $N=\frac{-\ln(\epsilon)}{\epsilon^2}$. For all positive integer $n>N=\frac{-\ln(\epsilon)}{\epsilon^2}$, the following is true:
+    $$n\epsilon^2 > -\ln(\epsilon),\quad -n\epsilon^2<\ln(\epsilon),\quad e^{-n\epsilon^2}<\epsilon$$
+    Hence, for all $n>N$, every $x\in [-1,-\epsilon]\cup [\epsilon,1]$ satisfies $|f_n(x)| \leq e^{-n\epsilon^2}<\epsilon$.
+
+    \hfill
+
+    So, given arbitrary $\epsilon>0$, using the $N$ proposed in the second part, for all $n\geq N$, there are two cases:
+
+    First, if $x\in (-\epsilon,\epsilon)$, then by the first part, we get $|f_n(x)|<\epsilon$.
+
+    Else, if $x\in [-1,-\epsilon]\cup[\epsilon,1]$, then by the second part, $|f_n(x)|<\epsilon$ again.
+
+    Hence, $\epsilon$ is an upper bound of the collection $\{|f_n(x)|\ |\ x\in [-1,1]\}$, showing that $\sup_{x\in[-1,1]}|f_n(x)|=\|f_n\|_\infty<\epsilon$.
+
+    Since for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\infty<\epsilon$, then $f_n(x)$ converges to $f(x)=0$ uniformly on $[-1,1]$.
+    
+    \hfill
+
+    \item[(c)] Since $f(x)=0$, it is differentiable. And, $f'(0)=0$.
+    
+    Then, with $f_n(x)=xe^{-nx^2}$, its derivative $f_n'(x)=e^{-nx^2}+xe^{-nx^2}\cdot(-2nx) = e^{-nx^2}(1-2nx^2)$.
+    Which, $f_n'(0) = e^{-n\cdot 0^2}(1-2n\cdot 0^2) = e^0\cdot 1 = 1$. Hence, $\lim_{n\rightarrow\infty}f_n'(0)=1$, 
+    so $1 = \lim_{n\rightarrow\infty}f_n'(0) \neq f'(0) = 0$.
+\end{itemize}
+
+\hfill
+
+\hfill
 
 \section*{5}
 \begin{myBox}[]{}
     \begin{question}
+        Let $f_n:[-1,1]\rightarrow\mathbb{R}$ be a sequence of functions uniformly bounded, i.e.
+        $$\exists M>0\quad s.t. \sup_{x\in [-1,1],\ n\in\mathbb{N}}|f_n(x)| \leq M$$
+        Define:
+        $$f(x)=\sup_{n\in\mathbb{N}}f_n(x)$$
+        Give an example showing that in general $F$ is not a continuous function. 
         
+        Assuming that the $f_n$s are differentiable and $f_n'$ are uniformly bounded, i.e.
+        $$\exists K>0\quad s.t.\ \sup_{x\in[-1,1],\ n\in\mathbb{N}}|f_n'(x)|\leq K$$
+        Prove that $F$ is continuous.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{Example of Not continuous $F$:}
+
+For all $n\in\mathbb{N}$, define $f_n:[-1,1]\rightarrow\mathbb{R}$ as follow:
+$$f_n(x)=\begin{cases}
+    \frac{1}{n} & x\in \mathbb{Q}\cap [-1,1]\\
+    0 & x\in \mathbb{Q}^C\cap [-1,1]
+\end{cases}$$
+Which, for all $x\in [-1,1]$ and all $n\in\mathbb{N}$, if $x\in\mathbb{Q}$, then $|f_n(x)| = |\frac{1}{n}| \leq 1$; 
+similarly, if $x\in\mathbb{Q}^C$, then $|f_n(x)|=|0|\leq 1$. Hence, the sequence $f_n$ is uniformly bounded.
+
+\hfill
+
+Yet, if consider $F(x)=\sup_{n\in\mathbb{N}}f_n(x)$, these are the cases:
+
+First, if $x\in\mathbb{Q}$, then for all $n\in\mathbb{N}$, we have $f_n(x)=\frac{1}{n}$. Hence, $F(x)=\sup_{n\in\mathbb{N}}\{\frac{1}{n}\} = 1$.
+
+Else, if $x\in \mathbb{Q}^C$, then for all $n\in\mathbb{N}$, we have $f_n(x)=0$. Hence, $F(x)=0$.
+
+So, $F(x)$ is in fact the indicator function:
+$$F(x)=\begin{cases}
+    1 & x\in \mathbb{Q}\cap [-1,1]\\
+    0 & x\in \mathbb{Q}^C\cap [-1,1]
+\end{cases}$$
+Which is continuous nowhere on $[-1,1]$.
+
+\hfill
+
+\hfill
+
+\textbf{$f_n'$ are uniformly bounded implies $F$ is continuous:}
+
+Given that $f_n'$ are uniformly bounded:
+$$\exists K>0,\quad \sup_{x\in[-1,1],\ n\in\mathbb{N}}|f_n'(x)|\leq K$$
+Then, for all distinct $x,y\in [-1,1]$ (WLOG, assume $x<y$) and all $n\in\mathbb{N}$, since $f_n$ is differentiable,
+then by Mean Value Theorem, there exists $c\in (x,y)$, such that the following is true:
+$$\left|\frac{f_n(x)-f_n(y)}{x-y}\right|=|f_n'(c)| \leq K,\quad |f_n(x)-f_n(y)|\leq K|x-y|$$
+This proves that all $f_n$ are Lipschitz Continuous.
+
+\hfill
+
+Now, for all $x_0\in [-1,1]$ and all $\epsilon>0$, consider $F(x_0)$ and $\delta = \frac{\epsilon}{2K} >0$. Which, the following statements are true:
+\begin{itemize}
+    \item First, since $\frac{\epsilon}{2}>0$, and $F(x_0)=\sup_{n\in\mathbb{N}}f_n(x_0)$, then since $F(x_0)-\frac{\epsilon}{2}$ is no longer an upper bound,
+    then there exists $n\in\mathbb{N}$, such that $F(x_0)-\frac{\epsilon}{2}<f_n(x_0)\leq F(x_0)$.
+
+    Which, for all $x\in [-1,1]$ satisfying $|x-x_0|<\delta = \frac{\epsilon}{2K}$, by Lipschitz Continuity proven before:
+    $|f_n(x)-f_n(x_0)|\leq K|x-x_0| < K\cdot \frac{\epsilon}{2K} = \frac{\epsilon}{2}$. Hence, the following is true:
+    $$-\frac{\epsilon}{2}<f_n(x)-f_n(x_0)<\frac{\epsilon}{2},\quad f_n(x_0)-\frac{\epsilon}{2}<f_n(x)$$
+    Hence, since $f_n(x)\leq F(x)$ by definition, then $f_n(x_0)-\frac{\epsilon}{2}<f_n(x)\leq F(x)$. Combining with the previous inequality, we get:
+    $$F(x_0)-\frac{\epsilon}{2}<f_n(x_0),\quad F(x_0)-\epsilon < f_n(x_0)-\frac{\epsilon}{2}< F(x)$$
+
+    \hfill
+
+    \item Then, based on the same $x$ chosen above (with $|x-x_0|<\delta = \frac{\epsilon}{2K}$), we'll prove that $F(x)<F(x_0)+\epsilon$: Suppose the contrary, that $F(x)\geq F(x_0)+\epsilon$, then $F(x)-\frac{\epsilon}{2}\geq F(x_0)+\frac{\epsilon}{2}$.
+    Since $F(x)=\sup_{n\in\mathbb{N}}f_n(x)$, then since $F(x)-\frac{\epsilon}{2}$ is no longer an upper bound of the set, there exists $m\in\mathbb{N}$, such that $F(x)-\frac{\epsilon}{2}<f_m(x)\leq F(x)$.
+
+    Which, based on the Lipschitz Continuity, we can conclude the following:
+    $$|f_m(x_0)-f_m(x)| < K|x_0-x| < K \cdot \frac{\epsilon}{2K} = \frac{\epsilon}{2}$$
+    $$-\frac{\epsilon}{2}<f_m(x_0)-f_m(x)<\frac{\epsilon}{2},\quad f_m(x)-\frac{\epsilon}{2}<f_m(x_0) < f_m(x)+\frac{\epsilon}{2}$$
+    Then, the following inequalities are true:
+    $$F(x)-\frac{\epsilon}{2}<f_m(x),\quad F(x)-\epsilon<f_m(x)-\frac{\epsilon}{2},\quad f_m(x_0)\leq F(x_0)$$
+    $$F(x)-\epsilon < f_m(x)-\frac{\epsilon}{2}<f_m(x_0) \leq F(x_0),\quad F(x) < F(x_0)+\epsilon$$
+    However, recall that $F(x)\geq F(x_0)+\epsilon$ is our initial assumption, which contradicts with the aobve inequality.
+
+    So, our assumption must be false, we must have $F(x)<F(x_0)+\epsilon$.
+\end{itemize}
+
+Combining both inequality, we can conclude that $F(x_0)-\epsilon<F(x)<F(x_0)+\epsilon$, showing that $|F(x)-F(x_0)|<\epsilon$.
+
+Hence, for all $x\in[-1,1]$, $\epsilon>0$, there exists $\delta>0$, with $|x-x_0|<\delta$ implies $|F(x)-F(x_0)|<\epsilon$, showing that $F(x)$ is continuous on $[-1,1]$.
+
 
 \break
 
 \section*{6}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Find the value of $\sum_{k=1}^{\infty}k^2/3^k$.
     \end{question}
 \end{myBox}
 
