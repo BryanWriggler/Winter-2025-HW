@@ -136,6 +136,10 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
     then the series of functions $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly.
 
     Hence, for any $r>0$, $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly on $(-\infty,-r]\cup [r,\infty)$.
+
+    \hfill
+
+    In General, for all $U\subseteq \mathbb{R}$, if there exists $r>0$, with $U\subseteq (-\infty,-r]\cup [r,\infty)$, then $f_n$ converges uniformly on $U$ (since the supremum is bounded by the set $(-\infty,-r]\cup [r,\infty)$).
 \end{itemize}
 
 \break
@@ -269,7 +273,7 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
         Let $f_n:[-1,1]\rightarrow\mathbb{R}$ be a sequence of functions uniformly bounded, i.e.
         $$\exists M>0\quad s.t. \sup_{x\in [-1,1],\ n\in\mathbb{N}}|f_n(x)| \leq M$$
         Define:
-        $$f(x)=\sup_{n\in\mathbb{N}}f_n(x)$$
+        $$F(x)=\sup_{n\in\mathbb{N}}f_n(x)$$
         Give an example showing that in general $F$ is not a continuous function. 
         
         Assuming that the $f_n$s are differentiable and $f_n'$ are uniformly bounded, i.e.
@@ -352,7 +356,9 @@ Combining both inequality, we can conclude that $F(x_0)-\epsilon<F(x)<F(x_0)+\ep
 Hence, for all $x\in[-1,1]$, $\epsilon>0$, there exists $\delta>0$, with $|x-x_0|<\delta$ implies $|F(x)-F(x_0)|<\epsilon$, showing that $F(x)$ is continuous on $[-1,1]$.
 
 
-\break
+\hfill
+
+\hfill
 
 \section*{6}
 \begin{myBox}[]{}
@@ -362,6 +368,53 @@ Hence, for all $x\in[-1,1]$, $\epsilon>0$, there exists $\delta>0$, with $|x-x_0
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{The Series Absolutely Converges:}
+
+Let $a_k=\frac{k^2}{3^k}$ for all $k\in\mathbb{N}$, then the following is true:
+$$\lim_{k\rightarrow\infty}\frac{|a_{k+1}|}{|a_k|} = \lim_{n\rightarrow\infty}\left|\frac{(k+1)^2}{3^{k+1}}\cdot \frac{3^k}{k^2}\right|=\lim_{n\rightarrow\infty}\frac{1}{3}\left|\frac{(k+1)^2}{k^2}\right|=\frac{1}{3}$$
+Then, since $\lim_{k\rightarrow\infty}\frac{|a_{k+1}|}{|a_k|}=\frac{1}{3}<1$, then by Ratio Test, the series absolutely converges. 
+
+\hfill
+
+\textbf{Value of the Limit:}
+
+Recall that for all $k\in\mathbb{N}$, the sum $\sum_{n=1}^{k}(2n-1) = k^2$. Hence, the partial sum of the given series can also be rewrite as the following:
+$$\forall N\in\mathbb{N},\quad \sum_{k=1}^{N}\frac{k^2}{3^k} = \sum_{k=1}^{N}\left(\sum_{n=1}^{k}\frac{2n-1}{3^k}\right)$$
+Which, interchanging the summation, we get the following:
+$$\sum_{k=1}^{N}\left(\sum_{n=1}^{k}\frac{2n-1}{3^k}\right) = \sum_{n=1}^{N}\left(\sum_{k=n}^{N}\frac{(2n-1)}{3^k}\right)=\sum_{n=1}^{N}(2n-1)\left(\sum_{k=n}^{N}\frac{1}{3^k}\right)$$
+For the second partial sum, since $n\geq 1$, it satisfies the following equation:
+$$\sum_{k=n}^{N}\frac{1}{3^k} = \sum_{k=0}^{N}\frac{1}{3^k}-\sum_{k=0}^{n-1}\frac{1}{3^k} = \frac{1-1/3^{N+1}}{1-1/3}-\frac{1-1/3^{n}}{1-1/3} = \frac{1/3^{n}-1/3^{N+1}}{2/3} = \frac{3}{2}\left(\frac{1}{3^n}-\frac{1}{3^{N+1}}\right)\quad\quad (1)$$
+Plug back into the equation, we get:
+$$\sum_{n=1}^{N}(2n-1)\left(\sum_{k=n}^{N}\frac{1}{3^k}\right) = \sum_{n=1}^{N}(2n-1)\cdot\frac{3}{2}\left(\frac{1}{3^n}-\frac{1}{3^{N+1}}\right) = \sum_{n=1}^{N}\left(\frac{(2n-1)}{2\cdot 3^{n-1}}-\frac{(2n-1)}{2\cdot 3^N}\right)$$
+$$=\sum_{n=1}^{N}\frac{(2n-1)}{2\cdot 3^{n-1}} - \sum_{n=1}^{N}\frac{(2n-1)}{2\cdot 3^N} = \sum_{n=1}^{N}\frac{2n}{2\cdot 3^{n-1}} - \sum_{n=1}^{N}\frac{1}{2\cdot 3^{n-1}} - \frac{N^2}{2\cdot 3^N}$$
+$$= \sum_{n=1}^{N}\frac{n}{3^{n-1}} - \sum_{n=0}^{N-1}\frac{1}{2\cdot 3^{n}} - \frac{N^2}{2\cdot 3^N} = \sum_{n=1}^{N}\frac{n}{3^{n-1}} - \frac{1}{2}\cdot\frac{1-1/3^N}{1-1/3} - \frac{N^2}{2\cdot 3^N}$$
+$$=\sum_{n=1}^{N}\frac{n}{3^{n-1}} - \frac{3}{4}\left(1-\frac{1}{3^N}\right) - \frac{N^2}{2\cdot 3^N}\quad\quad (2)$$
+
+\hfill
+
+Now, for the first summation of the term in $(2)$, it can be rewrite as:
+$$\sum_{n=1}^{N}\frac{n}{3^{n-1}} = \sum_{n=1}^{N}\left(\sum_{l=1}^{n}\frac{3}{3^{n}}\right) = \sum_{l=1}^{N}\left(\sum_{n=l}^{N}3\cdot \frac{1}{3^{n}}\right)$$
+Which, based on the equation derived in $(1)$, we get:
+$$\sum_{l=1}^{N}\left(\sum_{n=l}^{N}3\cdot \frac{1}{3^{n}}\right) = \sum_{l=1}^{N}\left(3\cdot \frac{3}{2}\left(\frac{1}{3^l}-\frac{1}{3^{N+1}}\right)\right) = \frac{9}{2}\left(\sum_{l=1}^{N}\frac{1}{3^l}-\sum_{l=1}^{N}\frac{1}{3^{N+1}}\right)$$
+$$= \frac{9}{2}\left(\frac{3}{2}\left(\frac{1}{3}-\frac{1}{3^{N+1}}\right)-\frac{N}{3^{N+1}}\right) = \frac{9}{4}-\frac{9}{4}\cdot \frac{1}{3^N} - \frac{9}{2}\cdot\frac{N}{3^{N+1}}\quad\quad (3)$$
+
+\hfill
+
+Plug $(3)$ back into $(2)$, we get:
+$$\sum_{n=1}^{N}\frac{n}{3^{n-1}} - \frac{3}{4}\left(1-\frac{1}{3^N}\right) - \frac{N^2}{2\cdot 3^N} = \left(\frac{9}{4}-\frac{9}{4}\cdot \frac{1}{3^N} - \frac{9}{2}\cdot\frac{N}{3^{N+1}}\right)- \frac{3}{4}\left(1-\frac{1}{3^N}\right) - \frac{N^2}{2\cdot 3^N}$$
+$$ = \left(\frac{9}{4}-\frac{3}{4}\right) - \left(\frac{9}{4}-\frac{3}{4}\right)\frac{1}{3^N} - \frac{3}{2}\cdot \frac{N}{3^N}-\frac{N^2}{2\cdot 3^N}$$
+$$ = \frac{3}{2} - \frac{3}{2}\cdot\frac{1}{3^N} - \frac{3}{2}\cdot \frac{N}{3^N}-\frac{N^2}{2\cdot 3^N}$$
+So, connect back to the initial expression, the $N^{th}$ partial sum of the series is given by:
+$$\sum_{k=1}^{N}\frac{k^2}{3^k} = \frac{3}{2} - \frac{3}{2}\cdot\frac{1}{3^N} - \frac{3}{2}\cdot \frac{N}{3^N}-\frac{N^2}{2\cdot 3^N}$$
+
+\hfill
+
+Now, recall that $\lim_{N\rightarrow\infty}\frac{1}{3^N}=0$, $\lim_{N\rightarrow\infty}\frac{N}{3^N}=0$, and $\lim_{N\rightarrow\infty}\frac{N^2}{3^N} = 0$. Hence, $\lim_{N\rightarrow\infty}\sum_{k=1}^{N}\frac{k^2}{3^k}$ is given by:
+$$\lim_{N\rightarrow\infty}\sum_{k=1}^{N}\frac{k^2}{3^k} = \lim_{N\rightarrow\infty}\left(\frac{3}{2} - \frac{3}{2}\cdot\frac{1}{3^N} - \frac{3}{2}\cdot \frac{N}{3^N}-\frac{N^2}{2\cdot 3^N}\right) = \frac{3}{2}$$
+Hence, we can conclude the following:
+$$\sum_{k=1}^{\infty}\frac{k^2}{3^k}=\frac{3}{2}$$
+
 
 
 \end{document}
