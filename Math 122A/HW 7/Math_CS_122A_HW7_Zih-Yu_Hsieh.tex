@@ -1,0 +1,78 @@
+% Math_CS_122A_HW7_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122A HW7}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Apply the representation $f(z) = w_0+\zeta(z)^n$ to $\cos(z)$ with $z_0=0$.
+        Determine $\zeta(z)$ explicitly.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Show by use of (36), or directly, that $|f(z)\leq 1$ for $|z|\leq 1$ implies
+        $$\frac{|f'(z)|}{(1-|f(z)|^2)}\leq \frac{1}{1-|z|^2}$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that the arc of smallest noneuclidean length that joins two
+        given points in the unit disk is a circular arc which is orthogonal to the unit
+        circle. (Make use of a linear transformation that carries one end point
+        to the origin, the other to a point on the positive real axis.)
+        The shortest noneuclidean length is called the noneuclidean distance
+        between the end points. Derive a formula for the noneuclidean distance
+        between $z_1$ and $z_2$. Answer:
+        $$\frac{1}{2}\log\frac{1+\left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right|}{1-\left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right|}$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
