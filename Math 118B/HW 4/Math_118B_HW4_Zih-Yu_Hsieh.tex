@@ -86,13 +86,13 @@ First, if $x\in (1-\delta,1]$, then from the first part, $|f_n(x)|<\epsilon$.
 
 Else, if $x\in [0,1-\delta]$, then from the second part, since $n\geq N$, we have $|f_n(x)|<\epsilon$ again.
 
-Hence, $\epsilon$ is an upper bound of the set $\{|f_n(x)|\ x\in [0,1]\}$, showing that $\sup_{x\in[0,1]}|f_n(x)|=\|f_n\|_\infty < \epsilon$.
+Hence, $\epsilon$ is an upper bound of the set $\{|f_n(x)|\ x\in [0,1]\}$, showing that $\sup_{x\in[0,1]}|f_n(x)|=\|f_n\|_\infty \leq \epsilon$.
 
-So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\infty<\epsilon$, showing that $f_n$ converges to $0$ uniformly.
+So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\infty\leq\epsilon$, showing that $f_n$ converges to $0$ uniformly.
 
 \break
 
-\section*{2 (Part b not done)}
+\section*{2}
 \begin{myBox}[]{}
     \begin{question}
         Let $f_n:\mathbb{R}\rightarrow\mathbb{R}$ be defined as $f_n(x)=1/(1+n^2x^2)$, $n\in\mathbb{Z}^+$.
@@ -108,8 +108,6 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
 \begin{itemize}
     \item[(a)] For $x=0$, since for all $n\in\mathbb{N}$, $f_n(0)=1/(1+n^2\cdot 0^2)=1$, then the series $\sum_{n=1}^{\infty} f_n(0)$ diverges.
     
-    \hfill
-    
     For $x\neq 0$, recall that $\sum_{n=1}^{\infty}\frac{1}{n^2x^2}$ converges (since $\sum_{n=1}^{\infty}\frac{1}{n^2}$ converges).
     Now, since for all $n\in\mathbb{N}$, $0< n^2x^2 < (1+n^2x^2)$, then $0<\frac{1}{1+n^2x^2}<\frac{1}{n^2x^2}$, hence for all $N\in\mathbb{N}$, we can conclude the following:
     $$0 < \sum_{n=1}^{N}f_n(x)=\sum_{n=1}^{N}\frac{1}{1+n^2x^2}<\sum_{n=1}^{N}\frac{1}{n^2x^2}$$
@@ -121,9 +119,15 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
     \hfill
     
     \item[(b)] Even though the series $\sum_{n=1}^{\infty}f_n(x)$ converges pointwise on $\mathbb{R}\setminus\{0\}$, we can prove that it doesn't converge uniformly:
-    Recall that the Weierstrass Theorem states that given a sequence of functions $f_n:U\rightarrow\mathbb{R}$
+    Notice that if $\sum f_n$ converges to some function $F$ uniformly, then the partial sum of the functions $f_n$ is a Cauchy Sequence based on the norm $\|\cdot\|_\infty$.
+    This also implies that $\lim_{n\rightarrow\infty}\|f_n\|_\infty = 0$.
 
-    \hfill
+    Yet, on the set $\mathbb{R}\setminus\{0\}$, for all $n>1$, $\|f_n\|_\infty = 1$: It is clear that for all $x\in\mathbb{R}\setminus\{0\}$, $|f_n(x)|=|\frac{1}{1+n^2x^2}|=\frac{1}{1+n^2x^2}\leq 1$.
+    However, choose $x=\frac{1}{n^{k+2}}$ for positive integer $k$, we get:
+    $$f_n(1/n^{k+2}) = \frac{1}{1+n^2\cdot (1/n^{k+2})} = \frac{1}{1+1/n^k} = \frac{n^k}{n^k+1} = 1-\frac{1}{n^k+1}$$
+    Hence, since $\lim_{k\rightarrow\infty}\frac{1}{n^k+1} = 0$ (since $n>1$), then for all $\epsilon>0$, there exists $K$, with $k\geq K$ implies $\frac{1}{n^k+1}<\epsilon$.
+    So, $1-\epsilon < 1-\frac{1}{n^k+1}$, showing that $1-\epsilon$ is no longer a supremum of the set $\{|f_n(x)|\ |\ x\in\mathbb{R}\setminus\{0\}\}$. Hence, on the set $\mathbb{R}\setminus\{0\}$, $\|f_n\|_\infty=1$ (for $n>1$). Because $\lim_{n\rightarrow\infty}\|f_n\|_\infty\neq 0$, 
+    then the series of function $\sum f_n$ doesn't converge uniformly.
 
     However, for all $r>0$, the series $\sum_{n=1}^{\infty}f_n(x)$ would converge uniformly on the region $(-\infty,-r]\cup [r,\infty)$:
     Recall that the Weierstrass's Theorem (or Weierstrass M-Test) states that given a sequence of functions $f_n:U\rightarrow\mathbb{R}$ (where $U\subseteq \mathbb{R}$),
@@ -135,11 +139,7 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
     Then, since $\sum_{n=1}^{\infty}f_n(r)$ converges (since $r\neq 0$, which it satisfies the condition in \textbf{Part (a)}), then by Weierstrass's Theorem, since $\sum_{n=1}^{\infty}\sup|f_n(x)|$ converges for the region $(-\infty,-r]\cup [r,\infty)$,
     then the series of functions $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly.
 
-    Hence, for any $r>0$, $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly on $(-\infty,-r]\cup [r,\infty)$.
-
-    \hfill
-
-    In General, for all $U\subseteq \mathbb{R}$, if there exists $r>0$, with $U\subseteq (-\infty,-r]\cup [r,\infty)$, then $f_n$ converges uniformly on $U$ (since the supremum is bounded by the set $(-\infty,-r]\cup [r,\infty)$).
+    \textbf{Hence, for any $r>0$, $\sum_{n=1}^{\infty}f_n(x)$ converges uniformly on $(-\infty,-r]\cup [r,\infty)$ and all of its subset.}
 \end{itemize}
 
 \break
@@ -166,8 +166,8 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
     However, it's not true that $f_n$ would converge uniformly to $f$ in $\mathbb{R}$, and here is a counterexample: 
     Take $f(x)=x^2$ a continuous function, which for all $n\in\mathbb{N}$, all $x\in\mathbb{R}$ satisfies: 
     $$|f_n(x)-f(x)| = \left|f\left(x+\frac{1}{n}\right)-f(x)\right|=\left|\left(x+\frac{1}{n}\right)^2-x^2\right| = \left|\frac{1}{n}\left(2x+\frac{1}{n}\right)\right|$$
-    Hence, for $x>0$, $|f_n(x)-f(x)| = \frac{2x}{n}+\frac{1}{n^2}$. Hence, for all $M>0$, choose $x=nM>0$, we have $|f_n(x)-f(x)| = \frac{2nM}{n}+\frac{1}{n^2} > 2M > M$,
-    showing that the collection $\{|f_n(x)-f(0)\ |\ x\in\mathbb{R}\}$ is not bounded, which the supremum doesn't exists in $\mathbb{R}$.
+    Hence, for $x>0$, $|f_n(x)-f(x)| = \frac{2x}{n}+\frac{1}{n^2}$. Then, for all $M>0$, choose $x=nM>0$, we have $|f_n(x)-f(x)| = \frac{2nM}{n}+\frac{1}{n^2} > 2M > M$,
+    showing that the collection $\{|f_n(x)-f(0)|\ |\ x\in\mathbb{R}\}$ is not bounded, which the supremum doesn't exists in $\mathbb{R}$.
     Therefore, the norm $\|f_n-f\|_\infty$ is not even defined, which is not valid to talk about uniform convergence of $f_n$.
 
     Hence, even though $f_n$ converges to $f$ pointwise on $\mathbb{R}$, it's not guaranteed that $f_n$ converges to $f$ uniformly on $\mathbb{R}$.
@@ -184,7 +184,7 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
     Then, for the given $\epsilon>0$, choose $N\in\mathbb{N}$ such that $\frac{1}{N}<\delta$ based on Archimedean's Property, which for all $n\geq N$ (with $\frac{1}{n}\leq \frac{1}{N}$), the following is true:
     $$\forall x\in K\subseteq [m,M+1],\quad \left(x+\frac{1}{n}\right)\in [m,M+1],\quad \left|\left(x+\frac{1}{n}\right)-x\right| = \frac{1}{n}\leq \frac{1}{N}<\delta$$
     $$\left|\left(x+\frac{1}{n}\right)-x\right| <\delta \implies |f_n(x)-f(x)| = \left|f\left(x+\frac{1}{n}\right)-f(x)\right| < \epsilon$$
-    Hence, for all $\epsilon>0$, there exists $N$, witH $n\geq N$ implies $|f_n(x)-f(x)|<\epsilon$ for all $x\in K$,
+    Hence, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $|f_n(x)-f(x)|<\epsilon$ for all $x\in K$,
     showing that for all $n\geq N$, since $\epsilon$ is an upper bound for the set $\{|f_n(x)-f(x)|\ |\ x\in K\}$, then $\sup_{x\in K}|f_n(x)-f(x)| = \|f_n-f\|_{\infty} \leq \epsilon$ on $K$.
 
     Hence, $f_n$ converges to $f$ uniformly on $K$, given that $K$ is compact.
@@ -214,10 +214,10 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
     
     Else, if $x\neq 0$, since $x\in[-1,1]$, then $|x|\leq 1$; hence, for all $n\in\mathbb{N}$, $|f_n(x)| = |xe^{-nx^2}| \leq e^{-nx^2} = (e^{x^2})^{-n}$ (while $x^2>0$, hence $e^{x^2}>1$).
 
-    Hence, this implies $\lim_{n\rightarrow\infty}(e^{x^2})^{-n}=0$. So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $|(e^{x^2})^{-n}| = (e^{x^2})^{-n}<\epsilon$. Hence, for $n\geq N$,
+    This implies $\lim_{n\rightarrow\infty}(e^{x^2})^{-n}=0$. So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $|(e^{x^2})^{-n}| = (e^{x^2})^{-n}<\epsilon$. Hence, for $n\geq N$,
     we have $|f_n(x)| \leq (e^{x^2})^{-n}<\epsilon$, showing that $\lim_{n\rightarrow\infty}f_n(x)=0$.
 
-    So, we can conclude that for all $x\in[-1,1]$, $\lim_{n\rightarrow\infty}f_n(x)=0$, which $f_n(x)$ converges pointwise to $f(x)=0$.
+    We can conclude that for all $x\in[-1,1]$, $\lim_{n\rightarrow\infty}f_n(x)=0$, which $f_n(x)$ converges pointwise to $f(x)=0$.
     
     \hfill
 
@@ -250,9 +250,9 @@ So, for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\inf
 
     Else, if $x\in [-1,-\epsilon]\cup[\epsilon,1]$, then by the second part, $|f_n(x)|<\epsilon$ again.
 
-    Hence, $\epsilon$ is an upper bound of the collection $\{|f_n(x)|\ |\ x\in [-1,1]\}$, showing that $\sup_{x\in[-1,1]}|f_n(x)|=\|f_n\|_\infty<\epsilon$.
+    Hence, $\epsilon$ is an upper bound of the collection $\{|f_n(x)|\ |\ x\in [-1,1]\}$, showing that $\sup_{x\in[-1,1]}|f_n(x)|=\|f_n\|_\infty\leq\epsilon$.
 
-    Since for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\infty<\epsilon$, then $f_n(x)$ converges to $f(x)=0$ uniformly on $[-1,1]$.
+    Since for all $\epsilon>0$, there exists $N$, with $n\geq N$ implies $\|f_n\|_\infty\leq\epsilon$, then $f_n(x)$ converges to $f(x)=0$ uniformly on $[-1,1]$.
     
     \hfill
 
@@ -338,11 +338,11 @@ Now, for all $x_0\in [-1,1]$ and all $\epsilon>0$, consider $F(x_0)$ and $\delta
     \hfill
 
     \item Then, based on the same $x$ chosen above (with $|x-x_0|<\delta = \frac{\epsilon}{2K}$), we'll prove that $F(x)<F(x_0)+\epsilon$: Suppose the contrary, that $F(x)\geq F(x_0)+\epsilon$, then $F(x)-\frac{\epsilon}{2}\geq F(x_0)+\frac{\epsilon}{2}$.
-    Since $F(x)=\sup_{n\in\mathbb{N}}f_n(x)$, then since $F(x)-\frac{\epsilon}{2}$ is no longer an upper bound of the set, there exists $m\in\mathbb{N}$, such that $F(x)-\frac{\epsilon}{2}<f_m(x)\leq F(x)$.
+    Since $F(x)=\sup_{n\in\mathbb{N}}f_n(x)$, then because $F(x)-\frac{\epsilon}{2}$ is no longer an upper bound of the set, there exists $m\in\mathbb{N}$, such that $F(x)-\frac{\epsilon}{2}<f_m(x)\leq F(x)$.
 
     Which, based on the Lipschitz Continuity, we can conclude the following:
     $$|f_m(x_0)-f_m(x)| < K|x_0-x| < K \cdot \frac{\epsilon}{2K} = \frac{\epsilon}{2}$$
-    $$-\frac{\epsilon}{2}<f_m(x_0)-f_m(x)<\frac{\epsilon}{2},\quad f_m(x)-\frac{\epsilon}{2}<f_m(x_0) < f_m(x)+\frac{\epsilon}{2}$$
+    $$-\frac{\epsilon}{2}<f_m(x_0)-f_m(x)<\frac{\epsilon}{2},\quad f_m(x)-\frac{\epsilon}{2}<f_m(x_0)$$
     Then, the following inequalities are true:
     $$F(x)-\frac{\epsilon}{2}<f_m(x),\quad F(x)-\epsilon<f_m(x)-\frac{\epsilon}{2},\quad f_m(x_0)\leq F(x_0)$$
     $$F(x)-\epsilon < f_m(x)-\frac{\epsilon}{2}<f_m(x_0) \leq F(x_0),\quad F(x) < F(x_0)+\epsilon$$
