@@ -45,17 +45,57 @@ colback=blue!10
 
 \textbf{Pf:}
 
+Given $z_0=0$, which $\cos(z_0)=\cos(0)=1$. So, since $\cos(z)-1$ has zero ath $z=0$, and it is not identically $0$, there exists some order $n\in\mathbb{N}$ and analytic function $g(z)$ such that $g(0)\neq 0$,
+with $\cos(z)-1 = (z-0)^ng(z) = z^ng(z)$.
+
+Now, consider the derivatives of $\cos(z)-1$, and their evaluation at $z_0=0$:
+$$\frac{d}{dz}(\cos(z)-1)=-\sin(z),\quad -\sin(0)=0$$
+$$\frac{d}{dz}(-\sin(z))=-\cos(z),\quad -\cos(0)=1\neq 0$$
+Notice that this implies the order of the zero is $2$, hence $\cos(z)-1 = z^2g(z)$, where the goal is to find the analytic branch $\zeta(z)$ such that $\cos(z)-1 = \zeta(z)^2$.
+
+\hfill
+
+Now, notice that $\cos(z)=\frac{e^{iz}+e^{-iz}}{2}$, hence: 
+$$\cos(z)-1 = \frac{e^{iz}+e^{-iz}}{2} -1 = \frac{e^{iz}+e^{-zi}-2}{2} = \frac{(e^\frac{iz}{2}-e^{\frac{-iz}{2}})^2}{2}$$
+So, define the branch $\zeta(z) = \frac{e^\frac{iz}{2}-e^{\frac{-iz}{2}}}{\sqrt{2}}$ would satisfy $\zeta(z)^2 = \cos(z)-1$, its negative representation is also fitting the desired condition.
+
+
+
 \break
 
 \section*{2}
 \begin{myBox}[]{}
     \begin{question}
-        Show by use of (36), or directly, that $|f(z)\leq 1$ for $|z|\leq 1$ implies
+        Show by use of (36), or directly, that $|f(z)|\leq 1$ for $|z|\leq 1$ implies
         $$\frac{|f'(z)|}{(1-|f(z)|^2)}\leq \frac{1}{1-|z|^2}$$
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+In the textbook, given an analytic function $f$, with $w_0=f(z_0)$ with $|z_0|<R$ and $|w_0|<M$ for some $R,M>0$,
+then for $|z|<R$, we have the following inequality:
+$$\left|\frac{M(f(z)-w_0)}{M^2-\bar{w_0}f(z)}\right|\leq \left|\frac{R(z-z_0)}{R^2-\bar{z_0}z}\right|$$
+
+\hfill
+
+In the problem, the statement has $R=M=1$, hence fixing any $z_0$ with $|z_0|<1$, for all $z\neq z_0$ with $|z|<1$, it satisfies the following:
+$$\left|\frac{f(z)-f(z_0)}{1-\overline{f(z_0)}f(z)}\right|\leq \left|\frac{z-z_0}{1-\bar{z_0}z}\right|$$
+(Note: the original equation has $w_0=f(z_0)$).
+
+Which, since $z\neq z_0$, $|z-z_0|\neq 0$. Modify the equation, we get:
+$$\left|\frac{f(z)-f(z_0)}{z-z_0}\right|\cdot\left|\frac{1}{1-\overline{f(z_0)}f(z)}\right|\leq \frac{1}{|1-\bar{z_0}z|}$$
+Now, notice that $\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0} = f'(z_0)$, $\lim_{z\rightarrow z_0} (1-\overline{f(z_0)}f(z)) = (1-\overline{f(z_0)}f(z_0)) = (1-|f(z_0)|^2)$, and $\lim_{n\rightarrow\infty}(1-\bar{z_0}z) = (1-\bar{z_0}z_0) = (1-|z_0|^2)$.
+
+Which, for $|z_0|<1$, then $(1-|z_0|^2) > 0$; similarly, by Maximal Principle, since $|z_0|<1$ $z_0$ is not on the boundary of the unit disk $\mathbb{D}$.
+Hence, $|f(z_0)|$ cannot be the maximum, showing that $|f(z_0)|<1$ (since if $|f(z_0)|=1$, because it is not the maximum, there exists $z_1\in \mathbb{D}$, with $1=|f(z_0)| <|f(z_1)|$, 
+which contradicts the fact that $|f(z_1)|\leq 1$ when $|z_1|\leq 1$). Hence, $(1-|f(z_0)|^2) > 0$.
+
+So, the above inequality can be reduce to the following:
+$$\lim_{z\rightarrow z_0}\left|\frac{f(z)-f(z_0)}{z-z_0}\right|\cdot\left|\frac{1}{1-\overline{f(z_0)}f(z)}\right|\leq \lim_{z\rightarrow z_0}\frac{1}{|1-\bar{z_0}z|}$$
+$$|f'(z_0)|\cdot \frac{1}{|1-|f(z_0)|^2|}\leq \frac{1}{|1-|z_0|^2|}$$
+Hence, for $|z|<1$, we can conclude the following:
+$$\frac{|f'(z)|}{1-|f(z)|^2}\leq \frac{1}{1-|z|^2}$$
 
 \break
 
@@ -74,5 +114,53 @@ colback=blue!10
 \end{myBox}
 
 \textbf{Pf:}
+
+For any distinct $z_1,z_2\in\mathbb{D}$ (which $|z_1|,|z_2|<1$),consider the map $S(z)=\frac{z_1-z}{1-\bar{z_1}z}$:
+Recall that in \textbf{HW 1 Question 4 Part (b)}, we've proven that given $|w|<1$, the map $T(z)=\frac{w-z}{1-\bar{w}z}$ is in fact a bijection of the unit disk $\mathbb{D}$,
+hence the map $S(z)$ here is also a bijection of the unit disk, and specifically $S(z_1)=0$.
+
+\hfill
+
+Now, since $S$ is a linear transformation, the noneuclidean distance is preserved (based on a statement given in the previous problem in the textbook);
+and, by the Maximum Principle, since the maximum of the function's modulus could only appear at the boundary, hence since $|z_2|<1$ (not on the boundary of $\mathbb{D}$),
+then $|f(z_2)|<1$ (since $S$ is a bijection on $\mathbb{D}$, hence the maximum is given by $\max|S(z)|=1$).
+
+So, we can conclude that the Noneuclidean distance is achieved by some path $\gamma$ connecting the origin and the point $S(z_2)\in\mathbb{D}$ (because the noneuclidean distance of a path is invariant under linear transformation, 
+therefore it is sufficient to find such path after the transformation).
+
+\hfill
+
+\textbf{The Path $\gamma$ is a Straight Line:}
+
+WLOG, let $\gamma:[0,1]\rightarrow\mathbb{D}$ be a differentiable path, such that $\gamma(0)=0$, and $\gamma(1)=S(z_2)$. 
+Which, at every input, $\gamma(t)=r(t)e^{i\theta(t)}$ for some real-valued differentiable function $r(t)$ and $\theta(t)$ (Which, one can assume that $1>r(t)\geq 0$ for all $t\in [0,1]$ to fit $\gamma$ in the unit disk $\mathbb{D}$).
+Also, it satisfies $r(0)=0$, and $r(1)=|S(z_2)|$.
+
+Then, we get the following:
+$$|\gamma(t)| = r(t),\quad \gamma'(t) = r'(t)e^{i\theta(t)}  + i\theta'(t)r(t)e^{i\theta(t)}=(r'(t)+i\theta'(t)r(t))e^{i\theta(t)}$$
+$$|\gamma'(t)| = |r'(t)+i\theta'(t)r(t)| = \sqrt{(r'(t))^2+(\theta'(t)r(t))^2}$$
+Which, consider the noneuclidean distance, it is given as follow:
+$$\int_{\gamma}\frac{|dz|}{1-|z|^2} = \int_{0}^{1}\frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt = \int_{0}^{1}\frac{\sqrt{(r'(t))^2+(\theta'(t)r(t))^2}}{1-(r(t))^2}dt$$
+And, since $\sqrt{(r'(t))^2+(\theta'(t)r(t))^2}\geq \sqrt{(r'(t))^2} = |r'(t)|\geq r'(t)$, the above integral satisfy the inequality:
+$$\int_{0}^{1}\frac{\sqrt{(r'(t))^2+(\theta'(t)r(t))^2}}{1-(r(t))^2}dt \geq \int_{0}^{1}\frac{r'(t)}{1-(r(t))^2}dt$$
+So, doing the substitution $u=r(t)$, $du = r'(t)dt$ (which $t=0$ satisfies $u=r(0)=0$, and $t=1$ satisfies $u=r(1)=|S(z_2)|$), we get the following:
+$$\int_{\gamma}\frac{|dz|}{1-|z|^2}\geq \int_{0}^{|S(z_2)|}\frac{1}{1-u^2}du = \frac{1}{2}\int_{0}^{|S(z_2)|}\left(\frac{1}{1-u}+\frac{1}{1+u}\right)du$$
+$$\int_{\gamma}\frac{|dz|}{1-|z|^2}\geq \frac{1}{2}\left(-\ln|1-u|+\ln|1+u|\right)\bigg |_{0}^{|S(z_2)|} = \frac{1}{2}\ln\left|\frac{1+u}{1-u}\right|\bigg |_{0}^{|S(z_2)|} = \frac{1}{2}\ln\left|\frac{1+|S(z_2)|}{1-|S(z_2)|}\right|$$
+
+With $|S(z_2)| = \left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right| <1$, then $\frac{1+|S(z_2)|}{1-|S(z_2)|}>0$, the above inequality becomes:
+$$\int_{\gamma}\frac{|dz|}{1-|z|^2}\geq \frac{1}{2}\ln\frac{1+\left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right|}{1-\left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right|}$$
+
+Notice that for the straight path $\gamma(t)=S(z_2)t$ ($\gamma'(t)=S(z_2)$), the path integral produces the above value,
+so we can claim that the shortest distance is given as the above value.
+
+\hfill
+
+Hence, we can claim that the smallest noneuclidean distance between two points, is given as:
+$$\frac{1}{2}\ln\frac{1+\left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right|}{1-\left|\frac{z_1-z_2}{1-\bar{z_1}z_2}\right|}$$
+Also, because this minimum is achieved by having a straight path $\gamma$ going through $0$ and $S(z_2)$ (which is a straight line through the center, and it is orthogonal to the unit circle).
+Hence, the preimage $S^{-1}(\gamma)$ must be a circle that's orthogonal to the preimage of the unit circle, which is the unit circle itself (since the Mobius Transoformation $S$ with $|z_1|<1$ maps the boundary onto the boundary).
+
+With $S(z_1)=0$ and $S(z_2)=S(z_2)$, $z_1$ and $z_2$ are both on the preimage $S^{-1}(\gamma)$, so the shortest noneuclidean path joining the two arbitrary points in $\mathbb{D}$,
+is a circular arce orthogonal to the unit circe.
 
 \end{document}
