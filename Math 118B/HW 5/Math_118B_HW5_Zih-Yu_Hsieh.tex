@@ -1,0 +1,310 @@
+% Math_118B_HW5_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118B HW5}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1 (Part b not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        
+        \hfill
+        
+        \begin{itemize}
+            \item[(a)] Show that there exists a sequence of polynomials $q_m:[0,1]\rightarrow\mathbb{R}$ such that for each $x\in [0,1]$
+            $$\lim_{m\rightarrow\infty}q_m(x)=0$$
+            (pointwise convergence) but it does not converge uniformly.
+
+            \item[(b)] Prove that if a sequence of polynomial $p_m:[0,1]\rightarrow\mathbb{R}$ converges pointwise to $0$ and for all $m\in\mathbb{N}$ one has that
+            $\deg(p_m)\leq 100$, then the $p_m$ converges uniformly to $0$.
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] \textbf{Continuous Functions Converging to $0$ Pointwise, but not Uniformly:}
+
+    We'll first construct a sequence of continuous functions converging to $0$ pointwise, but not uniformly. For each $n\in\mathbb{N}$, let $f_n:[0,1]\rightarrow\mathbb{R}$ be defined as:
+    $$f_n(x)=\begin{cases}
+        4nx-2 & x\in [\frac{2}{4n},\frac{3}{4n}]\\
+        -4nx+4 & x\in (\frac{3}{4n},\frac{4}{4n}]\\
+        0 & x\notin [\frac{2}{4n},\frac{4}{4n}]
+    \end{cases}$$
+    This is a continuous function for all $n\in\mathbb{N}$, since the limit at $\frac{3}{4n}$, $\frac{2}{4n}$, and $\frac{4}{4n}$ all agrees with the function $f_n$'s actual values.
+
+    However, since at $x=\frac{3}{4n}\in [0,1]$, $f_n(x)=4n\cdot \frac{3}{4n}-2 = 3-2 = 1$, then $\|f_n\|_\infty = \sup_{x\in[0,1]}|f_n(x)| \geq 1$, showing that $f_n$ doesn't converge to $0$ uniformly 
+    (since the norm $\|\cdot\|_\infty$ is at least $1$ for all $n\in\mathbb{N}$).
+
+    \hfill
+
+    \textbf{Sequence of Polynomials:}
+
+    Now, since $f_n$ is continuous on $[0,1]$, by Stone-Weierstrass Theorem, there exists a sequence of polynomials $\{q_{n,k}\}_{k\in\mathbb{N}}$ that converges to $f_n$ uniformly.
+
+    For all $n\in\mathbb{N}$, since $\frac{1}{n}>0$, by the uniform convergence of $\{q_{n,k}\}_{k\in\mathbb{N}}$ onto $f_n$, there exists $N_n$, such that $k_n\geq N_n$ implies $\|f_n-q_{n,k_n}\|_\infty <\frac{1}{n}$ (for simplicity, fix $k_n$ to be the smallest integer with $k_n\geq N_n$).
+    For the rest of the proof of \textbf{Part (a)}, consider the sequence of polynomials $\{q_{n,k_n}\}_{n\in\mathbb{N}}$.
+
+    \hfill
+
+    \textbf{The Sequence Pointwise Converges to $0$:}
+
+    For all $x\in [0,1]$, there are two cases to consider:
+    \begin{itemize}
+        \item First, if $x=0$, for all $n\in\mathbb{N}$, we have $f_n(0)=0$. Then, for all $\epsilon>0$, there exists $N\in\mathbb{N}$, with $\frac{1}{N}<\epsilon$ based on Archimedean's Property. For all $n\geq N$ (which $\frac{1}{n}\leq \frac{1}{N}<\epsilon$), the previous choice of polynomials satisfy:
+        $$|q_{n,k_n}(0)| =|q_{n,k_n}(0)-f_n(0)| \leq \|q_{n,k_n}-f_n\|_\infty < \frac{1}{n} < \epsilon$$
+        Hence, this states that $\lim_{n\rightarrow\infty}q_{n,k_n}(0) = 0$.
+
+        \hfill
+
+        \item Else if $x\neq 0$ (which $x>0$ since $x\in [0,1]$), there exists $N\in\mathbb{N}$, such that $\frac{1}{N}<x$ based on Archimedean's Property. Then, for all $n\geq N$, since $\frac{4}{4n}=\frac{1}{n}\leq \frac{1}{N}<x$, $f_n(x) = 0$ (since $x \notin [\frac{2}{4n},\frac{4}{4n}]$).
+        
+        Again, for all $\epsilon>0$, there exists $M\in\mathbb{N}$, with $\frac{1}{M}<\epsilon$ again based on Archimedean's Property. Choose $K=\max\{M,N\}$, for all $n\geq K$ (which $n\geq N$, showing that $f_n(x)=0$; and $n\geq M$, showing that $\frac{1}{n}\leq \frac{1}{M}<\epsilon$), the previous choice of polynomials satisfy:
+        $$|q_{n,k_n}(x)| =|q_{n,k_n}(x)-f_n(x)| \leq \|q_{n,k_n}-f_n\|_\infty < \frac{1}{n} < \epsilon$$
+        Hence, this states that $\lim_{n\rightarrow\infty}q_{n,k_n}(x) = 0$.
+    \end{itemize}
+    So, regardless of the case, $\lim_{n\rightarrow\infty}q_{n,k_n}(x)=0$, showing that $\{q_{n,k_n}\}_{n\in\mathbb{N}}$ converges pointwise to $0$.
+
+    \hfill
+
+    \textbf{The Convergence is not Uniform:}
+
+    Recall that for all $n\in\mathbb{N}$, $\|f_n\|_\infty \geq 1$, and $\|f_n-q_{n,k_n}\|_\infty < \frac{1}{n}$. Hence, for $n\geq 2$ (which $\frac{1}{n}\leq \frac{1}{2}$), the following inequality is true:
+    $$\|q_{n,k_n}\|_\infty = \|(q_{n,k_n}-f_n)-(-f_n)\|_\infty \geq \bigg|\|q_{n,k_n}-f_n\|_\infty - \|-f_n\|_\infty\bigg| = \|f_n\|_\infty - \|q_{n,k_n}-f_n\|_\infty$$
+    $$\|q_{n,k_n}\|_\infty \geq \|f_n\|_\infty - \|q_{n,k_n}-f_n\|_\infty \geq 1-\|q_{n,k_n}-f_n\|_\infty > 1-\frac{1}{n} \geq 1-\frac{1}{2} = \frac{1}{2}$$
+    So, since $\|_\infty \geq \frac{1}{2}$ for all $n\geq 2$, the $\lim_{n\rightarrow\infty}\|q_{n,k_n}\|_\infty \neq 0$, showing that $\{q_{n,k_n}\}_{n\in\mathbb{N}}$ doesn't converge to $0$ uniformly.
+
+    \hfill
+
+    In Conclusion, $\{q_{n,k_n}\}_{n\in\mathbb{N}}$ constructed above, is a sequence of polynomial that converges pointwise to $0$, yet it doesn't converge uniformly to $0$. Which, it is a desired sequence for the question.
+
+    \break
+
+    \item[(b)] Let $\mathcal{P}_{100}([0,1])$ be the real vector space of polynomial defined on $[0,1]$ with degree at most $100$ (which $\dim\left(\mathcal{P}_{100}([0,1])\right)=101$). For this part, the sequence $\{p_m\}_{m\in\mathbb{N}}\subset \mathcal{P}_{100}([0,1])$, and they converges pointwise to $0$.
+    
+    Now, choose distinct points $x_1,x_2,...,x_{101}\in [0,1]$, and define the map $T:\mathcal{P}_{100}([0,1])\rightarrow\mathbb{R}^{101}$ by:
+    $$T(p) = (p(x_1),p(x_2),...,p(x_{101}))$$
+
+    \hfill
+
+    \textbf{The map $T$ is a Linear Map:}
+
+    For the zero function $0\in \mathcal{P}_{100}([0,1])$, it is clear that $T(0)=(0,0,...,0)\in\mathbb{R}^{101}$.
+
+    Then, for all $p,q\in \mathcal{P}_{100}([0,1])$:
+    $$T(p+q) = ((p+q)(x_1),(p+q)(x_2),...,(p+q)(x_{101})) = (p(x_1)+q(x_1),p(x_2)+q(x_2),...,p(x_{101})+q(x_{101}))$$
+    $$ = (p(x_1),p(x_2),...,p(x_{101})) + (q(x_1),q(x_2),...,q(x_{101}))= T(p)+T(q)$$
+    Also, for all $\lambda\in\mathbb{R}$ and $p\in\mathcal{P}_{100}([0,1])$:
+    $$T(\lambda p) = ((\lambda p)(x_1),(\lambda p)(x_2),...,(\lambda p)(x_{101})) = (\lambda \cdot p(x_1), \lambda\cdot p(x_2),...,\lambda\cdot p(x_{101}))$$
+    $$ = \lambda(p(x_1),p(x_2),...,p(x_{101})) = \lambda T(p)$$
+    Hence, with the above three criteria, $T$ is a linear map from $\mathcal{P}_{100}([0,1])\rightarrow\mathbb{R}^{101}$.
+
+    \hfill
+
+    \textbf{The map $T$ is Bijective:}
+
+    Since both $\mathcal{P}_{100}([0,1])$ and $\mathbb{R}^{101}$ have dimension $101$, then showing $T$ is bijective is equivalent to showing $T$ is injective.
+
+    Suppose $p\in \ker(T)$ (or $T(p)=(0,0,...,0)\in\mathbb{R}^{101}$), since for all $i\in \{1,2,...,101\}$, it has $p(x_i)=0$, then $p$ has at least $101$ distinct zeroes.
+    However, since $p\in\mathcal{P}_{100}([0,1])$, then its degree is at most $100$. By Fundamental Theorem of Algebra, if $p\neq 0$, it has at most $100$ distinct roots. Hence, $p=0$ is required.
+
+    So, $\ker(T)=\{0\}$, showing that $T$ is injective, hence bijective. So, $T^{-1}$ exists.
+
+    \hfill
+
+    \textbf{The map $T$ is Continuous:}
+
+    Let the usual dot product define the norm $\|\cdot\|_2$ of $\mathbb{R}^{101}$, and let $\|\cdot\|_\infty$ be the norm of $\mathcal{P}_{100}([0,1])$.
+    
+    For all $\epsilon>0$, let $\delta = \frac{\epsilon}{\sqrt{101}}>0$, for all $p,q\in \mathcal{P}_{100}([0,1])$, if $\|p-q\|_\infty < \delta = \frac{\epsilon}{\sqrt{101}}$, then the output satisfies:
+    $$T(p)-T(q)=T(p-q)=((p-q)(x_1),(p-q)(x_2),...,(p-q)(x_{101}))$$
+    $$\|T(p)-T(q)\|_2 = \sqrt{\sum_{i=1}^{101}|(p-q)(x_i)|^2} \leq \sqrt{\sum_{i=1}^{101}\|p-q\|_\infty^2} < \sqrt{\sum_{i=1}^{101}\left(\frac{\epsilon}{\sqrt{101}}\right)^2}$$
+    $$\|T(p)-T(q)\|_2 < \sqrt{\sum_{i=1}^{101}\frac{\epsilon^2}{101}} = \sqrt{101\cdot \frac{\epsilon^2}{101}} = \sqrt{\epsilon^2} = |\epsilon|=\epsilon$$
+    Hence, $\|p-q\|_\infty <\delta$ implies $\|T(p)-T(q)\|_2 < \epsilon$, showing that $T$ is in fact uniformly continuous.
+
+    \hfill
+
+    \textbf{The Sequence of Polynomial Converges Uniformly to $0$:}
+
+    Recall that since $\{p_m\}_{m\in\mathbb{N}}$ converges pointwise to $0$, then for all $i\in\{1,...,101\}$, $\lim_{m\rightarrow\infty}p_m(x_i)=0$.
+
+    Also, from the previous section, since $T^{-1}$ is continuous (possibly on a restricted domain), for all $\epsilon>0$, there exists $\delta>0$, such that for all $u\in\mathbb{R}^{101}$, $\|u\|_2<\delta$ implies $\|T^{-1}(u)\|_\infty<\epsilon$.
+
+    \hfill
+
+    Using the pointwise convergence, for the given $\delta>0$ (which $\frac{\delta}{\sqrt{101}}>0$), each $i\in\{1,...,101\}$ has a corresponding $M_i$, such that $m\geq M_i$ implies $|p_m(x_i)|<\frac{\delta}{\sqrt{101}}$.
+
+    Then, let $M = \max_{i\in\{1,...,101\}}\{M_i\}$, for all $m\geq M$ (which $m\geq M_i$ for all $i\in\{1,...,101\}$), the following is true:
+    $$\|T(p_m)-T(0)\|_2 = \|T(p_m)\|_2 = \sqrt{\sum_{i=1}^{101}|p_m(x_i)|^2} < \sqrt{\sum_{i=1}^{101}\left(\frac{\delta}{\sqrt{101}}\right)^2} = \sqrt{101\cdot \frac{\delta^2}{101}} = \sqrt{\delta^2} = |\delta|=\delta$$
+    Hence, by the continuity of $T^{-1}$, $T^{-1}(T(p_m)) = p_m$ satisfies $\|T^{-1}(T(p_m))\|_\infty < \epsilon$, or $\|p_m\|_\infty<\epsilon$.
+
+    Therefore, this concludes that the sequence of polynomials $p_m$ converges to $0$ uniformly.
+\end{itemize}
+
+\hfill
+
+\hfill
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f:[0,1]\rightarrow\mathbb{R}$ be a function such that $f',f'',f^{(3)}$ are defined and continuous in $[0,1]$.
+        Prove that for any $\epsilon>0$ there exists a polynomial $P$ such that
+        $$\sum_{j=0}^{3}\|f^{(j)}-P^{(j)}\|_\infty = \sum_{j=0}^{3}\sup_{x\in[0,1]}|(f^{(j)}-P^{(j)})(x)|<\epsilon$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Before starting the prove, recall that the antiderivatives of a polynomial $p:[0,1]\rightarrow\mathbb{R}$ is a collection of polynomials $\{P(x)+C\ |\ C\in\mathbb{R}\}$, 
+where $P:[0,1]\rightarrow\mathbb{R}$ is a polynomial satisfying $P'=p$.
+
+When taking the antiderivative of any polynomial in the following steps, we'll explicitly state the initial condition to prevent ambiguity about the constant coefficients of the antiderivative.
+
+\hfill
+
+\textbf{Generalized Statement:}
+
+We'll prove a more general version recursively: For all $n\in\mathbb{N}$, let $f:[0,1]\rightarrow\mathbb{R}$ be a function such that $f',...,f^{(n)}$ are all defined and continuous on $[0,1]$,
+then there exists a sequence of polynomials $\{P_m\}_{m\in\mathbb{N}}$, such that for all $j\in\{0,1,...,n\}$, $P_m^{(j)}$ converges to $f^{(j)}$ uniformly.
+
+\hfill
+
+For base case, since $f^{(n)}$ is defined and continuous on $[0,1]$, by Stone-Weierstrass Theorem, there exists a sequence of polynomials $\{p_{n,m}\}$ converging to $f^{(n)}$ uniformly.
+
+Then as \textbf{Step (1)}, for all $m\in\mathbb{N}$, let polynomial $p_{(n-1),m}:[0,1]\rightarrow\mathbb{R}$ be an antiderivative of $p_{n,m}$ ($p_{(n-1),m}'=p_{n,m}$) such that $p_{(n-1),m}(0) = f^{(n-1)}(0)$.
+
+Which, since the sequence of polynomials $\{p_{(n-1),m}\}_{m\in\mathbb{N}}$ satisfies: $p_{(n-1),m}' = p_{n,m}$ converges to $(f^{(n-1)})' = f^{(n)}$ uniformly, and $\lim_{m\rightarrow\infty}p_{(n-1),m}(0) = f^{(n-1)}(0)$.
+Then, the sequence $p_{(n-1),m}$ converges to $f^{(n-1)}$ uniformly.
+
+\hfill
+
+Now, for given $k\in\{1,...,n-1\}$, at \textbf{Step (k)} we constructed a sequence of $k^{th}$ antiderivative of the sequence of polynomials $\{p_{n,m}\}_{m\in\mathbb{N}}$ (denoted as $\{p_{(n-k),m}\}_{m\rightarrow\mathbb{N}}$), such that $p_{(n-k),m}$ converges to $f^{(n-k)}$ uniformly:
+
+At \textbf{Step (k+1)}, for each $m\in\mathbb{N}$, let polynomial $p_{(n-(k+1)),m}:[0,1]\rightarrow\mathbb{R}$ be an antiderivative of $p_{(n-k),m}$ (which $p_{(n-(k+1)),m}' = p_{(n-k),m}'$) such that $p_{(n-(k+1)),m}(0) = f^{(n-(k+1))}(0)$.
+
+Which, since the new sequence of polynomials $\{p_{(n-(k+1)),m}\}_{m\in\mathbb{N}}$ satisfies: $p_{(n-(k+1)),m}'=p_{(n-k),m}$ converges to $(f^{(n-(k+1))})'=f^{(n-k)}$,
+and $\lim_{m\rightarrow\infty}p_{(n-(k+1)),m}(0)=f^{(n-(k+1))}(0)$. Then, the sequence $p_{(n-(k+1)),m}$ converges to $f^{(n-(k+1))}$ uniformly.
+
+\hfill
+
+From the above process, since for all $k\in \{1,...,n\}$, we can find a sequence of $k^{th}$ antiderivative of polynomials $\{p_{n,m}\}_{m\in\mathbb{N}}$, denoted as $\{p_{(n-k),m}\}_{m\in\mathbb{N}}$, that converges to $f^{(n-k)}$ uniformly. 
+
+Then, the sequence $\{p_{0,m}\}_{m\in\mathbb{N}}$ is a sequence of polynomial that converges to $f^{(0)}=f$ uniformly. Which, for $j\in\{1,...,n\}$, the sequence of $j^{th}$ derivative $\{p_{j,m}\}_{m\in\mathbb{N}}$ converges uniformly to the $j^{th}$ derivative of $f$, namely $f^{(j)}$.
+(Note: Recall that for all $j\in\{1,...,n\}$ and all $m\in\mathbb{N}$, $p_{(j-1),m}$ is defined as an antiderivative of $p_{j,m}$).
+
+Hence, the sequence of polynomials $\{p_{0,m}\}_{m\in\mathbb{N}}$ has its $j^{th}$ derivative converges to $f^{(j)}$ uniformly for all given $f^{(j)}$, satisfying the desired condition stated initially.
+
+\hfill
+
+\textbf{The Original Problem:}
+
+From the above Generalized Statement, given $f:[0,1]\rightarrow\mathbb{R}$ such that $f',f'',f^{(3)}$ that are all defined and continuous on $[0,1]$, there exists a sequence of polynomials $\{P_m\}_{m\in\mathbb{N}}$, 
+such that for $j\in\{0,1,2,3\}$, its $j^{th}$ derivative $P_m^{(j)}$ converges to $f^{(j)}$ uniformly.
+
+Hence, given arbitrary $\epsilon>0$ (which $\frac{\epsilon}{4}>0$), for each $j\in\{0,1,2,3\}$, there is a corresponding $N_j$, such that the following is true:
+$$\forall m\in\mathbb{N},\quad m\geq N_j \implies \|f^{(j)}-P_m^{(j)}\|_\infty <\frac{\epsilon}{4}$$
+Then, choose $N = \max_{j\in\{0,1,2,3\}}N_j$, for any index $m\geq N$, since $m\geq N_j$ for all $j\in\{0,1,2,3\}$, the above statement guarantees $\|f^{(j)}-P_m^{(j)}\|_\infty <\frac{\epsilon}{4}$ for each $j$.
+Hence, the following inequality is true:
+$$\sum_{j=0}^{3}\|f^{(j)}-P_m^{(j)}\|_\infty < \sum_{j=0}^{3}\frac{\epsilon}{4}=\epsilon$$
+Therefore, for every $\epsilon>0$, we can find a corresponding polynomial $P$, such that $\sum_{j=0}^{3}\|f^{(j)}-P^{(j)}\|_\infty<\epsilon$.
+
+\begin{comment}
+\hfill
+
+\textbf{Sequence of Polynomials Converging to $f^{(3)}$ and $f^{(2)}$:}
+
+Given that $f^{(3)}$ is continuous on $[0,1]$, then by Stone-Weierstrass Theorem, there exists a sequence of polynomial $\{p_n\}_{n\in\mathbb{N}}$ that converges uniformly to $f^{(3)}$.
+Which, for all $n\in\mathbb{N}$, let $p_{1,n}:[0,1]\rightarrow\mathbb{R}$ be an antiderivative of $p_n$ that satisfies $p_{1,n}(0) = f''(0)$. 
+
+Then, since $p_{1,n}' = p_n$ converges to $(f'')' = f^{(3)}$, and $\lim_{n\rightarrow\infty}p_{1,n}(0) = \lim_{n\rightarrow\infty}f''(0) = f''(0)$,
+then we can conclude that $p_{1,n}$ must converge to $f''$ uniformly (since the derivatives converge uniformly to the derivative of $f''$, and there is a point converging to $f''$).
+
+\hfill
+
+\textbf{Sequence of Polynomials Converging to the other Functions:}
+\end{comment}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f:[0,1]\rightarrow\mathbb{R}$ be a continuous function such that
+        $$\int_{0}^{1}f(x)x^jdx = 0,\quad\quad j=0,1,2,......$$
+        Prove that $f(x)=0$, $\forall x\in[0,1]$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Since $f(x)$ is continuous on $[0,1]$ a bounded closed interval, by Stone-Weierstrass Theorem, there exists a sequence of polynomial $\{p_n\}_{n\in\mathbb{N}}$, such that $p_n$ converges to $f$ uniformly.
+
+Now, notice that for all polynomial $p(x)=a_0+a_1x+...+a_mx^m$ (where $a_0,a_1,...,a_m\in\mathbb{R}$), the following integral is true based on the Linearity of Riemann Integrable functions:
+$$\int_{0}^{1}f(x)p(x)dx = \int_{0}^{1}\sum_{k=0}^{m}a_kx^kdx = \sum_{k=0}^{m}a_k\int_{0}^{1}f(x)x^kdx = 0$$
+Hence, for all $n\in\mathbb{N}$, we have $\int_{0}^{1}f(x)p_n(x)dx = 0$.
+
+\hfill
+
+\textbf{$fp_n$ Converges Uniformly to $f^2$:}
+
+Because $f$ is continuous on $[0,1]$ a compact set, hence $f$ is bounded, there exists $M>0$, such that all $x\in[0,1]$ satisfies $|f(x)|<M$.
+
+Also, since $p_n$ converges to $f$ uniformly, for all $\epsilon>0$ (which $\frac{\epsilon}{M}>0$), there exists $N$, such that $n\geq N$ implies $\|f-p_n\|_\infty <\frac{\epsilon}{M}$.
+
+Hence, for all $n\geq N$, every $x\in[0,1]$ satisfies the following:
+$$|f(x)p_n(x) - (f(x))^2| = |f(x)|\cdot |p_n(x)-f(x)| < M\cdot |p_n(x)-f(x)| \leq M\cdot \|f-p_n\|_\infty < M\cdot \frac{\epsilon}{M}<\epsilon$$
+Hence, $\epsilon$ is an upper bound of the set $\{|f(x)p_n(x)-(f(x))^2|\ |\ x\in[0,1]\}$, showing that $\|fp_n-f^2\|_\infty = \sup_{x\in[0,1]}|f(x)p_n(x)-(f(x))^2| \leq \epsilon$.
+Based on the above statement, we can conclude that $fp_n$ converges uniformly to $f^2$.
+
+\hfill
+
+\textbf{Integral of $fp_n$ converges to Integral of $f^2$:}
+
+For all $n\in\mathbb{N}$, we have $fp_n$ being continuous on $[0,1]$ (since both $f$ and $p_n$ are continuous on $[0,1]$), and $fp_n$ converges to $f^2$ uniformly,
+hence the following is true:
+$$\lim_{n\rightarrow\infty}\int_{0}^{1}f(x)p_n(x)dx = \int_{0}^{1}\lim_{n\rightarrow\infty}f(x)p_n(x)dx = \int_{0}^{1}(f(x))^2dx$$
+Since $\int_{0}^{1}f(x)p_n(x)dx = 0$, then the limit above is $0$, hence $\int_{0}^{1}(f(x))^2dx = 0$.
+
+\hfill
+
+\textbf{Integral of $f^2$ is $0$ implies $f=0$:}
+
+Since $f$ is continuous on $[0,1]$, so does $f^2$; then, since for all $x\in[0,1]$, $(f(x))^2 \geq 0$, together with the statement $\int_{0}^{1}(f(x))^2dx = 0$,
+this implies that $(f(x))^2 = 0$ for all $x\in[0,1]$.
+
+Therefore, $f(x)=0$ for all $x\in[0,1]$.
+
+\end{document}
