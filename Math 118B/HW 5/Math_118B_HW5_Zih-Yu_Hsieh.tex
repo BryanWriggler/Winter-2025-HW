@@ -156,6 +156,17 @@ colback=blue!10
 
     \hfill
 
+    \textbf{The map $T^{-1}$ is also Continuous:}
+
+    The goal is to prove that for all $v_0\in\mathbb{R}^{101}$ and all $\epsilon>0$, there exists $\delta>0$, such that $\|v_0-v\|_2<\delta$ implies $\|T^{-1}(v_0)-T^{-1}(v)\|_\infty <\epsilon$.
+
+    From the previous section, we know given $\epsilon' = \sqrt{101}\epsilon>0$, with $\delta = \frac{\epsilon'}{\sqrt{101}} = \epsilon>0$, any $v\in\mathbb{R}^{101}$ with $\|T^{-1}(v_0)-T^{-1}(v)\|_\infty<\delta = \epsilon$
+    implies $\|TT^{-1}(v_0)-TT^{-1}(v)\|_2 = \|v_0-v\|_2 < \epsilon' = \sqrt{101}\epsilon$. Hence, we need the range to be narrower than $\sqrt{101}\epsilon$.
+
+    %We know $T^{-1}(v_0)=a_0+a_1x+...+a_{100}x^{100} = p(x)\in \mathcal{P}_{100}([0,1])$, with $v_0=(p(x_1),p(x_2),...,p(x_{101}))$.
+
+    \hfill
+
     \textbf{The Sequence of Polynomial Converges Uniformly to $0$:}
 
     Recall that since $\{p_m\}_{m\in\mathbb{N}}$ converges pointwise to $0$, then for all $i\in\{1,...,101\}$, $\lim_{m\rightarrow\infty}p_m(x_i)=0$.
