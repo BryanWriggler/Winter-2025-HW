@@ -1,0 +1,345 @@
+% Phys24_HW4-Zih_Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+\usepackage{fancyhdr}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Phys24 HW4}
+\author{Zih-Yu Hsieh}
+
+\fancypagestyle{plain}{%
+   \fancyhead[L]\textbf{Hsieh}
+   \renewcommand{\headrulewidth}{0pt}
+}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 8.16:
+
+        Consider the LC circuit in Fig. 8.31. Initial conditions have been
+        set up so that the voltage change across the capacitor (proceeding
+        around the loop in a clockwise manner) equals $V_0\cos(\omega t)$, where
+        $\omega = 1/\sqrt{LC}$. At $t = 0$, what are the voltage changes (proceeding
+        clockwise) across the capacitor and inductor? Where is the energy
+        stored? Answer the same questions for $T=\pi/(2\omega)$.
+
+        \begin{center}
+            \includegraphics*[width=30mm]{8.16.png}
+        \end{center}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+At any time $t$, when going clockwise, the voltage change of the capacitor is $V_0\cos(\omega t)$. Which, in case for the total voltage change to be $0$ across the loop,
+as going clockwise, the voltage change across the inductor must be $-V_0\cos(\omega t)$.
+
+Also, the energy of a capacitor is provided by $\frac{1}{2}CV^2$, which is recorded as $E_C(t) = \frac{C}{2}V_0^2\cos^2(\omega t)$.
+
+Similarly, since for capacitor, $Q=CV = CV_0\cos(\omega t)$, then the current $I=\frac{dQ}{dt}=-CV_0\omega\sin(\omega t)$, and the energy of an inductor is provided by: 
+$$\frac{1}{2}LI^2 = \frac{L}{2}\left(-CV_0\omega\sin(\omega t)\right)^2 = \frac{LC^2}{2}V_0^2\cdot \omega^2\sin^2(\omega t) = \frac{LC^2}{2}V_0^2\cdot\frac{1}{LC}\sin^2(\omega t)=\frac{C}{2}V_0^2\sin(\omega t)$$
+Hence, it is recorded as $E_L(t)=\frac{C}{2}V_0^2\sin^2(\omega t)=\frac{C}{2}V_0^2 - E_C(t)$.
+
+\hfill
+
+At $t=0$, the voltage change across the capacitor is $V_0\cos(\omega\cdot 0) = V_0$, while the change across the inductor is $-V_0$ instead (negative of what the capacitor has).
+
+Which, the energy of the capacitor is $E_C(0)=\frac{C}{2}V_0^2\cos(\omega \cdot 0) = \frac{C}{2}V_0^2$, while the energy of inductor is $E_L(0)=\frac{C}{2}V_0^2\sin^2(\omega \cdot 0)=0$.
+
+\hfill
+
+When $T=\frac{\pi}{2\omega}$, we have the voltage across the capacitor being $V_0\cos(\omega \cdot \frac{\pi}{2\omega}) = V_0\cos(\frac{\pi}{2})=0$, which the change across the inductor is $-0 = 0$ also.
+
+Which, the energy of the capacitor is $E_C(\frac{\pi}{2\omega}) = \frac{C}{2}V_0^2\sin^2(\omega\cdot \frac{\pi}{2\omega}) = 0$, while the energy of the inductor is given by $E_L(\frac{\pi}{2\omega}) = \frac{C}{2}V_0^2 - E_C(\frac{\pi}{2\omega}) = \frac{C}{2}V_0^2$.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        A voltage source $\mathcal{E}_0\cos(\omega t)$ is connected in series with a resistor $R$
+        and a capacitor $C$. Write down the differential equation expressing
+        Kirchhoff's law. Then guess an exponential form for the current,
+        and take the real part of your solution to find the actual current.
+        Determine how the amplitude and phase of the current behave for
+        very large and very small $\omega$, and explain the results physically.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+WLOG, assume in clockwise of the series, the circuit has voltage source, resistor, and capcitor in order.
+
+\hfill
+
+\textbf{Differential Equation:}
+
+Recall that given any current $I$, the voltage drop across the resistor $R$ is $-IR$ (a decrease since it is a voltage drop). Hence, 
+let $V_C$ denotes the voltage difference across the capacitor, by Kirchhoff's Law,
+in case for the total change in voltage across the loop to be $0$, we need the following to be true:
+$$\mathcal{E}-IR - V_C = 0,\quad \mathcal{E}=IR+V_C,\quad \mathcal{E}_0\cos(\omega t) = IR + V_C$$
+(Note: if $\mathcal{E}$ is a positive increment of voltage, then both $IR$ and $V_C$ needs to be negative in case to satisfy the Kirchhoff's Law).
+
+\hfill
+
+\textbf{Solution:}
+
+Which, since $V_C = \frac{Q}{C}$, and $I=\frac{dQ}{dt}$, the above equation could be rewrite as:
+$$R\frac{dQ}{dt}+\frac{1}{C}Q = \mathcal{E}_0\cos(\omega t)$$
+Solving the homogeneous equation of the above Differential Equation, we get:
+$$R\frac{dQ}{dt} + \frac{1}{C}Q = 0,\quad \frac{dQ}{dt}=-\frac{1}{RC}Q,\quad Q = Ae^{-t/(RC)}$$
+Then, for the nonhomogeneous equation, if treat the nonhomogeneous part as $\mathcal{E}_0e^{i\omega t}$ instead, guess the solution 
+$Q_p=Be^{i(\omega t+\phi)}$ (where $B\in\mathbb{C}$ and $\phi\in\mathbb{R}$), then the equation becomes:
+$$\frac{dQ_p}{dt}=i\omega Be^{i(\omega t+\phi)},\quad R\cdot i\omega Be^{i(\omega t+\phi)} + \frac{1}{C}\cdot Be^{i(\omega t+\phi)} = \mathcal{E}_0e^{i\omega t}$$
+$$(i\omega R+1/C)Q_p=\mathcal{E}_0\cos(\omega t),\quad Q_p = \frac{\mathcal{E}_0e^{i\omega t}}{i\omega R+1/C}$$
+Because $Q_p$ appears only in real, then can simply choose the real part of the above equation. After rationalize, we get:
+$$Q_p = \frac{\mathcal{E}_0e^{i\omega t}(1/C-i\omega R)}{(\omega R)^2+1/C^2}$$
+Which, let $\phi = \arctan(-C\omega R)$ (where $\sin(\phi)=-\omega R/\sqrt{1/C^2+(\omega R)^2}$ and $\cos(\phi)=1/(C\sqrt{1/C^2+(\omega R)^2})$, the above can be expressed as:
+$$(1/C-i\omega R)=\sqrt{1/C^2+(\omega R)^2}(\cos(\phi)+i\sin(\phi)) = \sqrt{1/C^2+(\omega R)^2}e^{i\phi}$$
+$$Q_p = \frac{\mathcal{E}_0e^{i\omega t}\cdot \sqrt{1/C^2+(\omega R)^2}e^{i\phi}}{(\omega R)^2+1/C^2} = \frac{\mathcal{E}_0}{\sqrt{1/C^2+(\omega R)^2}}e^{i(\omega t+\phi)}$$
+Which, take the real part, we get:
+$$Re(Q_p) = \frac{\mathcal{E}_0}{\sqrt{1/C^2+(\omega R)^2}}\cos(\omega t+\phi)$$
+So, the general solution is given by:
+$$Q_{tot}(t)=Q+Q_p=Ae^{-t/(RC)}+\frac{\mathcal{E}_0}{\sqrt{1/C^2+(\omega R)^2}}\cos(\omega t+\phi)$$
+Also, with the condition that at $t=0$, the capacitor contains no charge (initially discharged), then we get:
+$$Q_{tot}(0)=0 = A+\frac{\mathcal{E}_0}{\sqrt{1/C^2+(\omega R)^2}}\cos(\phi) =A+ \frac{\mathcal{E}_0}{C(1/C^2+(\omega R)^2)}$$
+$$A=-\frac{\mathcal{E}_0}{C(1/C^2+(\omega R)^2)}$$
+So, the solution to the given condition is:
+$$Q_{tot}(t)=-\frac{\mathcal{E}_0}{C(1/C^2+(\omega R)^2)}e^{-t/(RC)}+\frac{\mathcal{E}_0}{\sqrt{1/C^2+(\omega R)^2}}\cos(\omega t+\phi)$$
+Which, the current is given as $I=\frac{dQ_{tot}}{dt}$, or:
+$$I(t)=\frac{\mathcal{E}_0}{RC^2(1/C^2+(\omega R)^2)}e^{-t/(RC)}-\frac{\mathcal{E}_0\omega}{\sqrt{1/C^2+(\omega R)^2}}\sin(\omega t+\phi)$$
+$$I(t)=\frac{\mathcal{E}_0}{R+R(\omega RC)^2}e^{-t/(RC)}-\frac{\mathcal{E}_0}{\sqrt{1/(\omega C)^2+R^2}}\sin(\omega t+\phi)$$
+(Note: Remember that $\phi=-\arctan(C\omega R)$).
+
+\hfill
+
+\textbf{Effect of Frequency:}
+
+If looking at the steady state (after a long time, where $e^{-t/(RC)}$ is negligible), the current becomes:
+$$I_{steady}(t)=-\frac{\mathcal{E}_0}{\sqrt{1/(\omega C)^2+R^2}}\sin(\omega t+\phi)$$
+Where, $\phi=-\arctan(C\omega R)$.
+
+With $\omega$ being large, then $1/(\omega C)^2$ becomes small, where the amplitude is approximately $\mathcal{E}_0/\sqrt{R^2} = \mathcal{E}_0/R$;
+also, as $\omega$ gets large, $\phi$ is approximately $-\frac{\pi}{2}$ (given that $R,C$ are both positive). Physically, when $\omega$ is large, then the source of voltage has oscillated a lot in a fixed period of time,
+hence, the current is constantly changing direction, making it hard for the capacitor to build up charges.
+Hence, capacitor hardly has any effect on the curent, letting the current mostly be dominated by Ohm's Law (the resistor).
+
+(Note: here, $\sin(\omega t+\phi)\approx \sin(\omega t-\frac{\pi}{2}) = -\cos(\omega t)$. So, $I(t)\approx -\frac{E_0}{R}\cos(\omega t)$).
+
+\hfill
+
+On the other hand, with $\omega$ being small, then $1/(\omega C)^2$ is large, hence the amplitude would be close to $0$ (since denominator includes $1/(\omega C)^2$ in the square root), while the phase $\phi$ is approximately $0$.
+Physically, when $\omega$ is small, the source of voltage is not oscillating a lot in a fixed period of time, so the current is in the same direction for a longer period of time,
+providing more time for the capacitor to build up charges, and abridge the potential difference across the resistor. Hence, it is causing the derived current to have smaller amplitude (since fixing resistance $R$ while having lower voltage $V$ causes lower current $I$).
+
+\begin{comment}
+On the other hand, since the nonhomogeneous equation has a result of $\mathcal{E}_0\cos(\omega t)$, guess the particular solution $Q_p = k\sin(\omega t)+l\cos(\omega t)$. Which, plug into the solution, we get:
+$$\frac{dQ_p}{dt} = k\omega\cos(\omega t)-l\omega\sin(\omega t),\quad R(k\omega\cos(\omega t)-l\omega\sin(\omega t))+\frac{1}{C}(k\sin(\omega t)+l\cos(\omega t)) = \mathcal{E}_0\cos(\omega t)$$
+With time $t=0$, the above equation becomes:
+$$R(k\omega) + \frac{1}{C}(l) = \mathcal{E}_0$$
+With time $t=\frac{\pi}{2\omega}$, the above equation becomes:
+$$R(-l\omega)+\frac{1}{C}(k) = 0$$
+(Note: $\cos(\omega\cdot \frac{\pi}{2\omega})=0$, and $\sin(\omega\cdot \frac{\pi}{2\omega})=1$).
+
+Which, finding $l,k$ is equivalent to solve the following systems of equations:
+$$\begin{cases}
+    R\omega\cdot k + \frac{1}{C}\cdot l = \mathcal{E}_0\\
+    \frac{1}{C}\cdot k -R\omega \cdot l = 0
+\end{cases}\quad\quad \begin{pmatrix}
+    R\omega & \frac{1}{C}\\
+    \frac{1}{C} & -R\omega
+\end{pmatrix}\begin{pmatrix}
+    l\\k
+\end{pmatrix}=\begin{pmatrix}
+    \mathcal{E}_0\\0
+\end{pmatrix}$$
+Which, the inverse of the matrix is given by:
+$$\frac{1}{-(R\omega)^2-(1/C)^2}\begin{pmatrix}
+    -R\omega & -\frac{1}{C}\\
+    -\frac{1}{C} & R\omega
+\end{pmatrix}$$
+Hence, the solution is given by:
+$$\begin{pmatrix}
+    l\\k
+\end{pmatrix} = \frac{1}{-(R\omega)^2-(1/C)^2}\begin{pmatrix}
+    -R\omega & -\frac{1}{C}\\
+    -\frac{1}{C} & R\omega
+\end{pmatrix}\begin{pmatrix}
+    \mathcal{E}_0\\ 0
+\end{pmatrix} = \frac{\mathcal{E}_0}{-((R\omega)^2+1/C^2)}\begin{pmatrix}
+    -R\omega\\-\frac{1}{C}
+\end{pmatrix} = \frac{\mathcal{E}_0}{(R\omega)^2+1/C^2}\begin{pmatrix}
+    R\omega\\\frac{1}{C}
+\end{pmatrix}$$
+So, plugin $l,k$ solved above, the particular solution becomes:
+$$Q_p=\frac{\mathcal{E}_0}{(R\omega)^2+1/C^2}\left(R\omega \sin(\omega t) + \frac{1}{C}\cos(\omega t)\right)$$
+Hence, the general solution is given by:
+$$Q_{tot}(t)=Q+Q_p = Ae^{-t/(RC)}+\frac{\mathcal{E}_0}{(R\omega)^2+1/C^2}\left(R\omega \sin(\omega t) + \frac{1}{C}\cos(\omega t)\right)$$
+At $t=0$, since we can assume the charge hasn't built up in the capacitor yet, then $Q_{tot}(t)=0$, providing the following:
+$$A+\frac{\mathcal{E}_0/C}{(R\omega)^2+1/C^2}=0,\quad A=-\frac{\mathcal{E}_0/C}{(R\omega)^2+1/C^2}$$
+Hence, the total solution is given by:
+$$Q_{tot}(t)=\frac{\mathcal{E}_0/C}{(R\omega)^2+1/C^2}e^{-t/(RC)}+\frac{\mathcal{E}_0}{(R\omega)^2+1/C^2}\left(R\omega \sin(\omega t) + \frac{1}{C}\cos(\omega t)\right)$$
+Which, the current is given by $\frac{dQ_{tot}}{dt}$, or in the following form:
+$$I_{tot}(t)=-\frac{\mathcal{E}_0/(RC)^2}{(R\omega)^2+1/C^2}e^{-t/(RC)}+\frac{\mathcal{E}_0\omega}{(R\omega)^2+1/C^2}\left(R\omega \cos(\omega t) - \frac{1}{C}\sin(\omega t)\right)$$
+
+\hfill
+
+\textbf{Effect of Frequency:}
+
+When $\omega$ is large, then because the amplitude is given by:
+$$A=\sqrt{\left(\frac{\mathcal{E}_0\omega}{(R\omega)^2+1/C^2}\cdot R\omega\right)^2+\left(\frac{\mathcal{E}_0\omega}{(R\omega)^2+1/C^2}\cdot\frac{1}{C}\right)^2} = \sqrt{\frac{(\mathcal{E}_0\omega)^2\cdot((R\omega)^2+1/C^2)}{((R\omega)^2+1/C^2)^2}}$$
+$$=\frac{\mathcal{E}_0\omega}{\sqrt{(R\omega)^2+1/C^2}}$$
+\end{comment}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question} Purcell 8.34:
+
+        The box in Fig. 8.41(a) with four terminals contains a capacitor
+        $C$ and two inductors of equal inductance $L$ connected as shown.
+        An impedance $Z_0$ is to be connected to the terminals on the right.
+        For given frequency $\omega$, find the value that $Z_0$ must have if the
+        resulting impedance between the terminals on the left (the “input”
+        impedance) is to be equal to $Z_0$.
+
+        (You will find that the required value of $Z_0$ is a pure resistance
+        $R_0$ provided that $\omega^2 < 2/(LC)$. A chain of such boxes could be con-
+        nected together to form a ladder network resembling the ladder of
+        resistors in Exercise 4.36. If the chain is terminated with a resistor
+        of the correct value $R_0$, its input impedance at frequency $\omega$ will be
+        $R_0$, no matter how many boxes make up the chain.)
+
+        What is $Z_0$ in the special case $\omega=\sqrt{2/(LC)}$? It helps in understanding
+        that case to note that the contents of the box (a) can be
+        equally well represented by box (b).
+
+        \begin{center}
+            \includegraphics*[width=50mm]{8.34.png}
+        \end{center}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Recall that with the impedance for inductor is given by $i\omega L$, and the impedance for capacitor is given by $\frac{1}{i\omega C}$,
+and then impedance satisfies the same rule as resistance. Which, we have the following relationship:
+
+\begin{itemize}
+    \item First, consider the inductor on the right and $Z_0$, which they're in series. Hence, the total impedance $Z_1 = i\omega L+Z_0$.
+    \item Second, consider the capacitor, and the series described above, which are in paralle. Hence, the total impedance $Z_2$ satisfies:
+    $$\frac{1}{Z_2}=\frac{1}{1/(i\omega C)}+\frac{1}{Z_1} = i\omega C+\frac{1}{i\omega L+Z_0}=\frac{-\omega^2CL+i\omega CZ_0+1}{i\omega L+Z_0}$$
+    $$Z_2=\frac{i\omega L+Z_0}{-\omega^2CL +i\omega CZ_0+1}$$
+    \item Lastly, the inductor on the left is again in series with the above system. Hence, the total impedance $Z_3 = i\omega L+Z_2$, so:
+    $$Z_3 = i\omega L+\frac{i\omega L+Z_0}{-\omega^2CL +i\omega CZ_0+1}$$
+\end{itemize}
+Given that $Z_0=Z_3$ (the total impedance doesn't change). Then, the following equation is true:
+$$Z_0=i\omega L+\frac{i\omega L+Z_0}{-\omega^2CL +i\omega CZ_0+1}$$
+$$-\omega^2CLZ_0+i\omega CZ_0^2+Z_0=-i\omega^3CL^2-\omega^2CLZ_0+i\omega L+i\omega L+Z_0$$
+$$i\omega CZ_0^2=-i\omega^3CL^2+2i\omega L,\quad CZ_0^2=-\omega^2CL^2+2L$$
+$$Z_0^2=\frac{2L}{C}-\omega^2L^2,\quad Z_0 = \sqrt{\frac{2L}{C}-\omega^2L^2}$$
+
+\hfill
+
+\textbf{Special Case:}
+
+When $\omega=\sqrt{2/(CL)}$, then:
+$$Z_0=\sqrt{\frac{2L}{C}-\frac{2}{CL}L^2}=\sqrt{\frac{2L}{C}-\frac{2L}{C}}=0$$
+
+\hfill
+
+\hfill
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question} Purcell 8.38:
+
+        The circuit in Fig. 8.42 has two equal resistors $R$ and a capacitor $C$.
+        The frequency of the emf source, $\mathcal{E}_0\cos(\omega t)$, is chosen to be $\omega=1/(RC)$.
+        \begin{itemize}
+        \item[(a)] What is the total complex impedance of the circuit? Give it in
+        terms of $R$ only.
+        \item[(b)] If the total current through the circuit is written as $I(t)=I_0\cos(\omega t+\varphi)$, what are $I_0$ and $\varphi$?
+        \item[(c)] What is the average power dissipated in the circuit?
+        \end{itemize}
+    \end{question}
+
+    \begin{center}
+        \includegraphics*[width=50mm]{8.38.png}
+    \end{center}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] Recall that the impedance of capacitor is given by $\frac{1}{i\omega C}$, and the impedance of the resistor is simply given by resistance $R$.
+    
+    For the first part on the left, it's a resistor and capacitor in series, then the total impedance is given by:
+    $$Z_1 = R+\frac{1}{i\omega C} = R+\frac{1}{iC(1/(RC))}=R+\frac{1}{i(1/R)}=R-iR = (1-i)R$$
+
+    Then, since the above series is parallel to the other resistor on the right, then the total impedance $Z$ would satisfy:
+    $$\frac{1}{Z}=\frac{1}{Z_1}+\frac{1}{R}=\frac{1}{(1-i)R}+\frac{1}{R} = \frac{(1+i)}{2R}+\frac{2}{2R}=\frac{3+i}{2R}$$
+    $$Z=\frac{2R}{3+i}=\frac{2R(3-i)}{10}=\frac{(3-i)R}{5}$$
+
+    Hence, the total impedance is $Z=\frac{(3-i)R}{5}$.
+    
+    \hfill
+
+    \item[(b)] Given that the complex voltage is $\tilde{V}(t)=\mathcal{E}_0e^{i\omega t}$, while the impedance $Z=\frac{(3-i)R}{5}$, then the current $\tilde{I}(t)$ satisfies:
+    $$\tilde{I}(t)=\frac{\tilde{V}(t)}{Z} = \frac{5}{(3-i)R}\mathcal{E}_0e^{i\omega t}=\frac{5(3+i)}{10R}\mathcal{E}_0e^{i\omega t}=\frac{(3+i)}{2R}\mathcal{E}_0e^{i\omega t}$$
+    Now, let $\varphi = \arctan(1/3)$ (which $\sin(\varphi)=\frac{1}{\sqrt{10}}$ and $\cos(\varphi)=\frac{3}{\sqrt{10}}$). Then, the following is true:
+    $$(3+i)=\sqrt{10}\left(\frac{3}{\sqrt{10}}+i\frac{1}{\sqrt{10}}\right)=\sqrt{10}(\cos(\varphi)+i\sin(\varphi))=\sqrt{10}e^{i\varphi}$$
+    $$\tilde{I}(t)=\frac{\sqrt{10}e^{i\varphi}}{2R}\cdot \mathcal{E}_0e^{i\omega t}=\frac{\sqrt{10}\mathcal{E}_0}{2R}e^{i(\omega t+\varphi)}$$
+    Hence, consider the real part, we get:
+    $$I(t)=Re(\tilde{I}(t))=\frac{\sqrt{10}\mathcal{E}_0}{2R}\cos(\omega t+\varphi)$$
+    Hence, if $I(t)=I_0\cos(\omega t+\varphi)$, it satisfies:
+    $$I_0=\frac{\sqrt{10}\mathcal{E}_0}{2R},\quad \varphi=\arctan(1/3)$$
+    
+    \hfill
+
+    \item[(c)] Recall that the power dissipated at each instance is given by $P=IV$, where from the above conditions, it is as follow:
+    $$P(t)=I(t)V(t)=\frac{\sqrt{10}\mathcal{E}_0}{2R}\cos(\omega t+\varphi)\cdot \mathcal{E}_0\cos(\omega t)=\frac{\sqrt{10}\mathcal{E}_0^2}{2R}\cdot\frac{1}{2}(\cos((\omega t+\varphi)+\omega t))+\cos((\omega t+\varphi)-\omega t)$$
+    $$P(t)=\frac{\sqrt{10}\mathcal{E}_0^2}{4R}(\cos(2\omega t+\varphi)+\cos(\varphi))$$
+    Notice that because $\cos$ is periodic, then the integration over the period $T=\frac{2\pi}{\omega}$ provides:
+    $$\int_{0}^{\frac{2\pi}{\omega}}\cos(2\omega t+\varphi)dt = \int_{0}^{\frac{2\pi}{\omega}}\cos(2\omega t)dt = \int_{x=0}^{2\pi}\cos(2x)\omega dx = 0$$
+    (Note: the above is with substitution $x=\omega t$).
+
+    Hence, The average power dissipation is given by:
+    $$P_{ave}=\frac{1}{T}\int_{0}^{T}P(t)dt = \frac{\sqrt{10}\mathcal{E}_0^2}{4R}\cdot \frac{1}{T}\int_{0}^{T}(\cos(2\omega t+\varphi)+\cos(\varphi))dt$$
+    $$=\frac{\sqrt{10}\mathcal{E}_0^2}{4R}\cdot\frac{1}{T}\cdot T\cos(\varphi) = \frac{\sqrt{10}\mathcal{E}_0^2}{4R}\cos(\varphi)=\frac{\sqrt{10}\mathcal{E}_0^2}{4R}\cdot\frac{3}{\sqrt{10}}$$
+    $$=\frac{3\mathcal{E}_0^2}{4R}$$
+    Hence, average power dissipation is $P_{ave}=\frac{3\mathcal{E}_0^2}{4R}$.
+\end{itemize}
+
+\end{document}
