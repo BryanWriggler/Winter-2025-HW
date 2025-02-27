@@ -1,0 +1,81 @@
+% Math_CS_122A_HW8_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 148 Problem 2:
+
+        Prove that the region obtained from a simply connected region by
+        removing $m$ points has the connectivity $m + 1$, and find a homology basis.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 148 Problem 4:
+
+        Show that single-valued analytic branches of $\log z$, $z^\alpha$ and $z^z$ can be
+        defined in any simply connected region which does not contain the origin.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 148 Problem 5:
+
+        Show that a single-valued analytic branch of $\sqrt{1-z^2}$ can be
+        defined in any region such that the points $\pm 1$ are in the same component
+        of the complement. What are the possible values of
+        $$\int\frac{dz}{\sqrt{1-z^2}}$$
+        over a closed curve in the region?
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
