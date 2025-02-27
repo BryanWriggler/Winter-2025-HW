@@ -113,8 +113,97 @@ colback=blue!10
     \break
 
     \item[(b)] Let $\mathcal{P}_{100}([0,1])$ be the real vector space of polynomial defined on $[0,1]$ with degree at most $100$ (which $\dim\left(\mathcal{P}_{100}([0,1])\right)=101$). For this part, the sequence $\{p_m\}_{m\in\mathbb{N}}\subset \mathcal{P}_{100}([0,1])$, and they converges pointwise to $0$.
+    Which, for each $m\in\mathbb{N}$, $p_m(x)=a_{0,m}+a_{1,m}x+...+a_{100,m}x^{100}$ for some $\overline{a_m}=(a_{0,m},a_{1,m},...,a_{100,m})\in\mathbb{R}^{101}$.
     
-    Now, choose distinct points $x_1,x_2,...,x_{101}\in [0,1]$, and define the map $T:\mathcal{P}_{100}([0,1])\rightarrow\mathbb{R}^{101}$ by:
+    Now, as a tool for problem solving, choose distinct points $x_0,x_1,...,x_{100}\in [0,1]$. For all $(a_0,a_1,...,a_{100})\in\mathbb{R}^{101}$, let $p\in\mathcal{P}_{100}([0,1])$ satisfy $p(x)=a_0+a_1x+...+a_{100}x^{100}$.
+    Define the map $T:\mathbb{R}^{101}\rightarrow\mathbb{R}^{101}$ as follow:
+    $$T(a_0,a_1,...,a_{101})= (p(x_0),p(x_1),...,p(x_{100}))$$
+
+    \hfill
+
+    \textbf{$T$ is a Linear Map:}
+
+    For all $u=(u_0,u_1,...,u_{100}),v=(v_0,v_1,...,v_{100})\in\mathbb{R}^{101}$ and $a,b\in\mathbb{R}$. Let $p,q\in\mathcal{P}_{100}([0,1])$ be defined as:
+    $$p(x)=u_0+u_1x+...+u_{100}x^{100},\quad q(x)=v_0+v_1x+...+v_{100}x^{100}$$
+    Hence, $au+bv = (au_0+bv_0,au_1+bv_1,...,au_{100}+bv_{100})$ corresponds to the following polynomial:
+    $$(au_0+bv_0)+(au_1+bv_1)x+...+(au_{100}+bv_{100})x^{100}$$
+    $$=(au_0+au_1x+...+au_{100}x^{100})+(bv_0+bv_1x+...+bv_{100}x^{100})$$
+    $$=a(u_0+u_1x+...+u_{100}x^{100})+b(v_0+v_1x+...+v_{100}x^{100})$$
+    $$=ap(x)+bq(x)$$
+    Now, for $\bar{0}\in\mathbb{R}^{101}$, since it corresponds to the zero polynomial $0+0x+...+0x^{100}$, then $T(\bar{0})=\bar{0}$.
+
+    Also, the linearity is satisfied:
+    $$T(au+bv) = (ap(x_0)+bq(x_0),ap(x_1)+bq(x_1),...,ap(x_{100})+bq(x_{100}))$$
+    $$=a(p(x_0),p(x_1),...,p(x_{100}))+b(q(x_0),q(x_1),...,q(x_{100}))$$
+    $$ = aT(u)+bT(v)$$
+    The above statements showed that $T$ is a linear map.
+
+    \hfill
+    
+    \textbf{$T$ is Bijective, hence $T^{-1}$ Exists:}
+
+    Since $T$ is a linear operator on $\mathbb{R}^{101}$ (which is finite dimensional), it suffices to show that $T$ is injective.
+
+    Suppose $v=(v_0,v_1,...,v_{100})\in\mathbb{R}^{101}$ with the corresponding polynomial $q(x)=v_0+v_1x+...+v_{100}x^{100}$ satisfies $T(v)=\bar{0}$ (or $v\in \ker(T)$).
+    Then, $T(v)=(q(x_0),q(x_1),...,q(x_{100}))=\bar{0}$, showing that $q$ as a polynomial has $101$ distinct roots. However, since by assumption, if $q\neq 0$, then since its degree is at most $100$,
+    by Fundamental Theorem of Algebra, it could have at most $100$ distinct roots. Hence, this enforces $q=0$ (with all coefficients being $0$), showing that $v=\bar{0}$.
+
+    Hence, $\ker(T)=\{\bar{0}\}$, showing that $T$ is injective, which is equivalent to $T$ is bijective. Then, $T^{-1}$ exists, and it is also bijective.
+
+    \hfill
+
+    \textbf{$T^{-1}$ is Continuous:}
+
+    For $\mathbb{R}^{101}$ both the domain and codomain of $T^{-1}$, use the usual Euclidean Inner Product to define the usual norm.
+    Then, since $T^{-1}$ is a bijective linear operator between inner product space, by Singular Value Decomposition,
+    there exists two orthonormal bases $\{e_0,e_1,...,e_{100}\}\subset\mathbb{R}^{101}$, $\{f_0,f_1,...,f_{100}\}\subset \mathbb{R}^{101}$, and positive real numbers $s_0,s_1,...,s_{100}>0$, such that the following is true:
+    $$\forall v\in\mathbb{R}^{101},\quad T^{-1}(v)=\sum_{i=0}^{100}s_i\left<v,e_i\right>f_i$$
+    Which, let $s=\max\{s_0,s_1,...,s_{100}\}>0$. Based on the property of orthonormal basis, the following equations and inequalities are true for the norm:
+    $$\|v\|^2=\sum_{i=0}^{100}|\left<v,e_i\right>|^2$$
+    $$\|T^{-1}(v)\|^2 = \left\|\sum_{i=0}^{100}s_i\left<v,e_i\right>f_i\right\|^2 = \sum_{i=0}^{100}\|s_i\left<v,e_i\right>f_i\|^2 = \sum_{i=0}^{100}|s_i\left<v,e_i\right>|^2$$
+    $$\|T^{-1}(v)\|^2=\sum_{i=0}^{100}s_i^2|\left<v,e_i\right>|^2\leq \sum_{i=0}^{100}s^2|\left<v,e_i\right>|^2 = s^2\|v\|^2$$
+    Hence, $\|T^{-1}(v)\|\leq s\|v\|$.
+
+    Then, for all $\epsilon>0$, define $\delta=\frac{\epsilon}{s}>0$ For all $u,v\in\mathbb{R}^{101}$, if $\|u-v\|<\delta=\frac{\epsilon}{s}$, the following is true:
+    $$\|T^{-1}(u)-T^{-1}(v)\| = \|T^{-1}(u-v)\|\leq s\|u-v\|<s\cdot\frac{\epsilon}{s}=\epsilon$$
+    This shows that $T^{-1}$ is uniformly continuous.
+
+    \hfill
+
+    \textbf{The sequence $\{T(\overline{a_m})\}_{m\in\mathbb{N}}$ converges to $\bar{0}$:}
+
+    Recall initially that for each $p_m(x)=a_{0,m}+a_{1,m}x+...+a_{100,m}x^{100}$, the vector $\overline{a_m}=(a_{0,m},a_{1,m},...,a_{100,m})$ satisfies:
+    $$T(\overline{a_m})=(p_m(x_0),p_m(x_1),...,p_m(x_{100}))$$
+    Then, since the sequence $p_m$ converges to $0$ pointwise, for all $\epsilon>0$ (with $\frac{\epsilon}{\sqrt{101}}>0$), each $j\in\{0,1,...,100\}$ has a corresponding $N_j$, such that $m\geq N_j$ implies $|p_m(x_j)|<\frac{\epsilon}{\sqrt{101}}$.
+
+    Now, choose $N=\max\{N_0,N_1,...,N_{100}\}$. For all $m\geq N$ (which $m\geq N_j$ for each individual $j\in\{0,1,...,100\}$), then $|p_m(x_j)|<\frac{\epsilon}{\sqrt{101}}$ for each index $j$.
+    Hence, the following is true:
+    $$\|T(\overline{a_m})\|=\|(p_m(x_0),p_m(x_1),...,p_m(x_{100}))\| = \sqrt{\sum_{j=0}^{100}|p_m(x_j)|^2} < \sqrt{\sum_{j=0}^{100}\left(\frac{\epsilon}{\sqrt{101}}\right)^2} = \sqrt{\epsilon^2} = \epsilon$$
+    This shows that $\lim_{m\rightarrow\infty}T(\overline{a_m})=\bar{0}$.
+
+    \hfill
+
+    \textbf{The sequence $\{\overline{a_m}\}_{m\in\mathbb{N}}$ converges to $\bar{0}$:}
+    Since $T^{-1}$ is continuous, and $\lim_{m\rightarrow\infty}T(\overline{a_m})=\bar{0}$, then:
+    $$\lim_{m\rightarrow\infty}\overline{a_m}=\lim_{m\rightarrow\infty}T^{-1}(T(\overline{a_m})) = T^{-1}(\bar{0})=\bar{0}$$
+    Hence, for all $\epsilon>0$, there exists $N$, with $m\geq N$ implies $\|\overline{a_m}\|<\epsilon$.
+
+    \hfill
+
+    \textbf{The Sequence $p_m$ converges uniformly to $0$:}
+
+    From the previous statement, for all $\epsilon>0$ (which $\frac{\epsilon}{101}>0$), there exists $N$, with $m\geq N$ implies $\|\overline{a_m}\|<\frac{\epsilon}{101}$.
+
+    Then, with $\overline{a_m}=(a_{0,m},a_{1,m},...,a_{100,m})$, the following is true:
+    $$\forall j\in\{0,1,...,100\},\quad |a_{j,m}| = \sqrt{|a_{j,m}|^2}\leq \sqrt{\sum_{j=0}^{100}|a_{j,m}|^2} = \|\overline{a_m}\| < \frac{\epsilon}{101}$$
+    Hence, for all $x\in [0,1]$, the following is true:
+    $$|p_m(x)| = \left|\sum_{j=0}^{100}a_{j,m}x^j\right| \leq \sum_{j=1}^{100}|a_{j,m}|\cdot|x^j| \leq \sum_{j=0}^{100}|a_{j,m}| < \sum_{j=0}^{100}\frac{\epsilon}{101} = \epsilon$$
+    This shows that $\|p_m\|_\infty = \sup_{x\in[0,1]}|p_m(x)|\leq \epsilon$. Which, the above statement proves that $p_m$ converges uniformly to $0$.
+
+
+    
+\begin{comment}
+    and define the map $T:\mathcal{P}_{100}([0,1])\rightarrow\mathbb{R}^{101}$ by:
     $$T(p) = (p(x_1),p(x_2),...,p(x_{101}))$$
 
     \hfill
@@ -144,8 +233,6 @@ colback=blue!10
     So, $\ker(T)=\{0\}$, showing that $T$ is injective, hence bijective. So, $T^{-1}$ exists.
 
     \hfill
-
-\begin{comment}
     \textbf{The map $T$ is Continuous:}
 
     Let the usual dot product define the norm $\|\cdot\|_2$ of $\mathbb{R}^{101}$, and let $\|\cdot\|_\infty$ be the norm of $\mathcal{P}_{100}([0,1])$.
@@ -155,7 +242,7 @@ colback=blue!10
     $$\|T(p)-T(q)\|_2 = \sqrt{\sum_{i=1}^{101}|(p-q)(x_i)|^2} \leq \sqrt{\sum_{i=1}^{101}\|p-q\|_\infty^2} < \sqrt{\sum_{i=1}^{101}\left(\frac{\epsilon}{\sqrt{101}}\right)^2}$$
     $$\|T(p)-T(q)\|_2 < \sqrt{\sum_{i=1}^{101}\frac{\epsilon^2}{101}} = \sqrt{101\cdot \frac{\epsilon^2}{101}} = \sqrt{\epsilon^2} = |\epsilon|=\epsilon$$
     Hence, $\|p-q\|_\infty <\delta$ implies $\|T(p)-T(q)\|_2 < \epsilon$, showing that $T$ is in fact uniformly continuous.
-\end{comment}
+
 
     \textbf{The map $T^{-1}$ is Continuous:}
 
@@ -233,9 +320,12 @@ colback=blue!10
     Hence, by the continuity of $T^{-1}$, $T^{-1}(T(p_m)) = p_m$ satisfies $\|T^{-1}(T(p_m))\|_\infty < \epsilon$, or $\|p_m\|_\infty<\epsilon$.
 
     Therefore, this concludes that the sequence of polynomials $p_m$ converges to $0$ uniformly.
+\end{comment}
 \end{itemize}
 
-\break
+\hfill
+
+\hfill
 
 \section*{2}
 \begin{myBox}[]{}

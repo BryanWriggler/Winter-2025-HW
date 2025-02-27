@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  25 FEB 2025 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  26 FEB 2025 19:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,12 +558,22 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
-Overfull \hbox (6.05217pt too wide) in paragraph at lines 269--271
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (4.7393pt too wide) in paragraph at lines 118--120
+[]\OT1/cmr/m/n/10 Now, as a tool for prob-lem solv-ing, choose dis-tinct points $\OML/cmm/m/it/10 x[]; x[]; :::; x[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1]$. For all $(\OML/cmm/m/it/10 a[]; a[]; :::; a[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2
+ []
+
+[3]
+Overfull \hbox (8.56721pt too wide) in paragraph at lines 175--176
+[]\OT1/cmr/m/n/10 Recall ini-tially that for each $\OML/cmm/m/it/10 p[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 a[]x \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 ::: \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 a[]x[]$\OT1/cmr/m/n/10 , the vec-tor $[] = (\OML/cmm/m/it/10 a[]; a[]; :::; a[]\OT1/cmr/m/n/10 )$
+ []
+
+[4]
+Overfull \hbox (6.05217pt too wide) in paragraph at lines 359--361
 []\OT1/cmr/m/n/10 Which, since the se-quence of poly-no-mi-als $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 p[]\OMS/cmsy/m/n/10 g[]$ \OT1/cmr/m/n/10 sat-is-fies: $\OML/cmm/m/it/10 p[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 p[]$ \OT1/cmr/m/n/10 con-verges to $(\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 )[] =
  []
 
-[6] [7] [8] (./Math_118B_HW5_Zih-Yu_Hsieh.aux)
+[5] [6] [7] (./Math_118B_HW5_Zih-Yu_Hsieh.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -572,16 +582,16 @@ L3 programming layer <2024-02-20>
 Here is how much of TeX's memory you used:
  21185 strings out of 474116
  457661 string characters out of 5743681
- 1945187 words of memory out of 5000000
+ 1943187 words of memory out of 5000000
  43181 multiletter control sequences out of 15000+600000
  565971 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  93i,13n,99p,500b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on Math_118B_HW5_Zih-Yu_Hsieh.pdf (8 pages, 209688 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on Math_118B_HW5_Zih-Yu_Hsieh.pdf (7 pages, 197445 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 142 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 
