@@ -47,7 +47,41 @@ colback=blue!10
 
 \textbf{Pf:}
 
-\break
+Given the open region $\Omega$ is simply connected, which the complement $\Omega^C$ is connected in the extended complex plane.
+Now, let $z_1,...,z_m\in \Omega$ denote the $m$ distinct points being reomoved. Then, the new region $\Omega' = \Omega\setminus\{z_1,...,z_m\}$,
+and $(\Omega')^C = \Omega^C \cup \{z_1,...,z_m\}$.
+
+First, all $i\in\{1,...,m\}$ has $\{z_i\}$ being disjoint from $\Omega^C$: Since $z_i\in\Omega$, while $\Omega$ is open, then there exists $\epsilon_i>0$,
+with $B_{\epsilon_i}(z_i)\subseteq \Omega$. Hence, for all $a\in \Omega^C$, $d(z_i,a)\geq \epsilon_i$, showing that $z_i$ and $\Omega^C$ are disjoint.
+
+Then, since $\{z_i\}$ and $\Omega^C$ are both closed under standard topology, the two being disjoint implies the two are not connected, hence belong to different connected components.
+
+Furthermore, all distinct $i,j\in\{1,...,m\}$ have $\{z_i\},\{z_j\}$ being disjoint, since they're distinct points by assumption. Then, the two sets are also not connected, hence they belong to different connected components.
+
+Then, because each set $\Omega^C, \{z_1\},...,\{z_m\}$ all belong to distinct connected component, while each set is connected ($\Omega^C$ is connected in the extended complex plane by assumption, while a singleton is always connected under standard topology),
+then, there are $m+1$ connected components for the above collection. Hence, $(\Omega')^C$ has $m+1$ connected components, showing that the new region $\Omega'$ has connectivity $m+1$.
+
+\hfil
+
+\textbf{Homology Basis:}
+
+Recall the above definition, each $i\in \{1,...,m\}$ exists $\epsilon_i>0$, with $d(z_i,a)\geq \epsilon_i$ for all $a\in\Omega^C$;
+also, since for $j\neq i$, $d(z_i,z_j)>0$, then let $d = \min\{\epsilon_i\ |\ 1\leq i\leq m\} \cup \{d(z_i,z_j)\ |\ 1\leq i<j\leq m\}$.
+Which, $d>0$, and $B_d(z_i)$ contains no points from other connected components
+(for $a\in \Omega^C$, $d(z_i,a)\geq \epsilon_i\geq d$, showing that $a\notin B_d(z_i)$; and for $j\neq i$, $d(z_i,z_j)\geq d$, so $z_j\notin B_d(z_i)$ also). Therefore, $B_d(z_i)\setminus\{z_i\}$ is disjoint from $(\Omega')^C = \Omega^C\cup \{z_1,...,z_m\}$.
+
+Then, for each index $i$, let cycle $\gamma_i$ be defined as the parametrization $z_i+\frac{d}{2}e^{i\theta}$ for $\theta\in [0,2\pi]$. 
+Then, since for all $a\in\gamma_i$, $|a-z_i| = |\frac{d}{2}e^{i\theta}| = \frac{d}{2}<d$, then $a\in B_d(z_i)\setminus\{z_i\}$. showing that $\gamma_i\subset B_d(z_i)\setminus\{z_i\}$.
+Therefore, $\gamma_i$ is disjoint from $(\Omega')^C$, which is contained fully in $\Omega'$.
+
+Also, since $\gamma_i\subset B_d(z_i)$ (which is simply connected), for all $j\neq i$, since $z_j\notin B_d(z_i)$, then $n(\gamma_i,z_j)=0$; the same applies for all $a\in \Omega^C$ also.
+And, if do the following integration, we get:
+$$n(\gamma_i,z_i)=\frac{1}{2\pi i}\int_{\gamma_i}\frac{dz}{z-z_i} = \frac{1}{2\pi i}\int_{0}^{2\pi}\frac{1}{(z_i+\frac{d}{2}e^{i\theta})-z_i}i\frac{d}{2}e^{i\theta}d\theta = \frac{1}{2\pi i}\int_{0}^{2\pi}id\theta = 1$$
+Hence, $\gamma_i$ has winding number $1$ for component $\{z_i\}$, while winding number $0$ for other components for the complement. Therefore, the collection $\gamma_1,...,\gamma_m$ forms a homology basis for $\Sigma'$.
+
+\hfil
+
+\hfil
 
 \section*{2}
 \begin{myBox}[]{}
@@ -60,6 +94,20 @@ colback=blue!10
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{Single-Valued Branch of $\log(z)$:}
+
+Given that $\Omega$ is a simply connected region that doesn't contain $0$, then since $z\neq 0$ in the region,
+then based on \textbf{Corollary 2} of Generalized Cauchy's Theorem in the textbook (Ahlfors Pg. 142),
+one can define a single-valued branch of $\log(z)$ in this region.
+
+\hfil
+
+\textbf{Single-Valued Branch of $z^\alpha$ and $z^z$:}
+
+From the above part, since the single-valued branch of $\log(z)$ can be defined, then for all $\alpha\in\mathbb{R}$, $\alpha\log(z)$ and $z\log(z)$ both have single-valued branch.
+
+Hence, $z^\alpha = e^{\alpha \log(z)}$ and $z^z = e^{z\log (z)}$ are also well-defined.
 
 \break
 
@@ -77,5 +125,46 @@ colback=blue!10
 \end{myBox}
 
 \textbf{Pf:}
+
+Assume $\Omega$ is the open region, where $1,-1$ are in the same connected component of the complement.
+Which, for all cycle $\gamma\subset \Omega$, the winding number $n(\gamma,1)=n(\gamma,-1)$.
+
+\hfil
+
+\textbf{Single-Valued Branch:}
+
+First, consider the analytic function $\left(\frac{1}{z+1}-\frac{1}{z-1}\right)$ on $\Omega$: For all cycle $\gamma\subset \Omega$,
+the following integral is true:
+$$\int_\gamma\left(\frac{1}{z+1}-\frac{1}{z-1}\right)dz = \left(\int_\gamma\frac{1}{z+1}dz - \int_\gamma\frac{1}{z-1}dz\right) = 2\pi i(n(\gamma,1)-n(\gamma,-1)) = 0$$
+Then, this implies that an antiderivative $F(z)$ exists on $\Omega$ (with $F'(z)=\frac{1}{2}\left(\frac{1}{z+1}-\frac{1}{z-1}\right)$). Then, since the original function can be rewrite as:
+$$F'(z)=\left(\frac{1}{z+1}-\frac{1}{z-1}\right)=\frac{(z-1)-(z+1)}{(z+1)(z-1)}=\frac{-2}{z^2-1} = \frac{2}{1-z^2}$$
+Hence, $F(z)$ is an antiderivative of $\frac{2}{1-z^2}$.
+
+(Note: In real numbers, the antiderivative of the above equation is also written as $\ln(x+1)-\ln(x-1)=\ln\frac{x+1}{x-1}$, which will be a tool for guess here).
+
+\hfil
+
+Now, consider the equation $\frac{z+1}{z-1}e^{-F(z)}$, and its derivative:
+$$\frac{z+1}{z-1}=1+\frac{2}{z-1},\quad \frac{d}{dz}\left(\frac{z+1}{z-1}\right)=\frac{d}{dz}\left(\frac{2}{z-1}\right) = \frac{-2}{(z-1)^2}$$
+
+$$\frac{d}{dz}\left(\frac{z+1}{z-1}e^{-F(z)}\right) = \frac{-2}{(z-1)^2}e^{-F(z)}+\frac{z+1}{z-1}\left(-\frac{dF}{dz}\right)e^{-F(z)}$$
+$$= \frac{-2}{(z-1)^2}e^{-F(z)}+\frac{z+1}{z-1}\left(\frac{-2}{1-z^2}\right)e^{-F(z)}$$
+$$= \frac{-2}{(z-1)^2}e^{-F(z)}+\frac{z+1}{z-1}\left(\frac{-2}{(1-z)(1+z)}\right)e^{-F(z)}$$
+$$= \frac{-2}{(z-1)^2}e^{-F(z)}+\frac{2}{(z-1)^2}e^{-F(z)} = 0$$
+Then, since the derivative is $0$, then the function is in fact a constant over $\Omega$; and, since $\Omega$ excludes both $\pm 1$, then the value of $\frac{z+1}{z-1}e^{-F(z)}$ is always nonzero.
+Hence, $C=\frac{z+1}{z-1}e^{-F(z)}\neq 0$.
+
+Which, rewrite the function, we get:
+$$C=\frac{z+1}{z-1}e^{-F(z)} = \frac{(z+1)^2}{(z^2-1)}e^{-F(z)} = -\frac{(z+1)^2}{1-z^2}e^{-F(z)}$$
+Hence, we can rewrite it as the follow:
+$$1-z^2 = -\frac{1}{C}(z+1)^2e^{-F(z)}$$
+Then, define the function $\frac{i}{\sqrt{C}}(z+1)e^{-\frac{F(z)}{2}}$, we get:
+$$\left(\frac{i}{\sqrt{C}}(z+1)e^{-\frac{F(z)}{2}}\right)^2 = -\frac{1}{C}(z+1)^2e^{-F(z)} = 1-z^2$$
+Hence, define this branch as $\sqrt{1-z^2}=\frac{i}{\sqrt{C}}(z+1)e^{-\frac{F(z)}{2}}$, it is a well-defined single-valued branch.
+
+\hfil
+
+
+
 
 \end{document}
