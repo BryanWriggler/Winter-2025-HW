@@ -164,7 +164,22 @@ Hence, define this branch as $\sqrt{1-z^2}=\frac{i}{\sqrt{C}}(z+1)e^{-\frac{F(z)
 
 \hfil
 
+\textbf{Integral of $1/\sqrt{1-z^2}$:}
 
 
+\begin{comment}
+From the above part, we can define $\sqrt{1-z^2}$ as $D(z+1)e^{-\frac{F(z)}{2}}$ for constant $D=\frac{i}{\sqrt{C}}$ as defined above. Then, for any closed curve $\gamma\in\Omega$, the following integral can be rewrite as:
+$$\int_\gamma \frac{1}{\sqrt{1-z^2}}dz = \int_\gamma\sqrt{1-z^2}\cdot \frac{1}{1-z^2}dz = \int_\gamma D(z+1)e^{-\frac{F(z)}{2}}\cdot \frac{1}{2}\cdot\frac{2}{1-z^2}dz = \int_\gamma D(z+1)e^{-\frac{F(z)}{2}}\cdot \frac{1}{2}\cdot F'(z)dz$$
+(Note: Recall that $F'(z)=\frac{1}{1-z^2}$ from the construction in the first part).
+
+Then, let define the parametrization $\gamma:[a,b]\rightarrow\mathbb{C}$ for some nonempty closed interval $[a,b]$, we get:
+$$\int_\gamma \frac{1}{\sqrt{1-z^2}}dz = \int_{a}^{b}D(\gamma(t)+1)e^{-\frac{F(\gamma(t))}{2}}\cdot\frac{F'(\gamma(t))}{2}\cdot\gamma'(t)dt$$ 
+$$ = -D(\gamma(t)+1)e^{-\frac{F(\gamma(t))}{2}}\bigg|_{a}^{b} + \int_{a}^{b}D\cdot\gamma'(t)\cdot e^{-\frac{F(\gamma(t))}{2}}dt$$
+$$=\int_\gamma De^{-\frac{F(z)}{2}}dz$$
+(Note: The first line is parametrization, the second line is done through integration by part, and the third line is gotten by the fact that $\gamma$ is a closed curve, hence $\gamma(b)=\gamma(a)$, which the first part evaluated to be $0$).
+
+Then, since $\sqrt{1-z^2}=D(z+1)e^{-\frac{F(z)}{2}}$, then $De^{-\frac{F(z)}{2}}=\frac{\sqrt{1-z^2}}{(1+z)}=\frac{\sqrt{1-z^2}(1-z)}{1-z^2}=\frac{1-z}{\sqrt{1-z^2}}$. Hence, the above integral becomes:
+$$\int_\gamma \frac{1}{\sqrt{1-z^2}}dz=\int_\gamma De^{-\frac{F(z)}{2}}dz = \int_\gamma \frac{1-z}{\sqrt{1-z^2}}dz$$
+\end{comment}
 
 \end{document}
