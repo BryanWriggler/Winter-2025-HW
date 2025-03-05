@@ -46,7 +46,7 @@ colback=blue!10
 
 There are two cases to consider.
 
-Suppose $X\times X=\{(x,x)\}$ under this assumption, Then $X\times X\setminus\{(x,x)\} = \emptyset$ is vacuously connected.
+Suppose $X\times X=\{(x,x)\}$, then $X\times X\setminus\{(x,x)\} = \emptyset$ is vacuously connected.
 So, we can assume $X$ is not a singleton for the rest of the proof.
 
 \hfil
@@ -54,7 +54,7 @@ So, we can assume $X$ is not a singleton for the rest of the proof.
 Now, we'll prove the statement by contradiction. 
 
 Suppose $X$ is connected, while $Y=X\times X\setminus\{(x,x)\}$ is disconnected,
-then there exists open subsets $U,V\subseteq X\times X$, such that $(U\cap Y)$ and $(V\cap Y)$ forms a separation of $Y$.
+then there exists open subsets $U,V\subseteq X\times X$, such that $(U\cap Y)$ and $(V\cap Y)$ forms a separation of $Y$ (i.e. $(U\cap Y)\cap (V\cap Y)=\emptyset$, and $(U\cap Y)\cup (V\cap Y)=Y$ ).
 
 Since $(U\cap Y)$ and $(V\cap Y)$ are nonempty, there exists $(x_1,x_2)\in (U\cap Y)$, and $(x_3,x_4)\in (V\cap Y)$, and both points are not $(x,x)$, so at least one coordinate is not $x$.
 
@@ -82,7 +82,9 @@ So, $(x_3,x_2)\in (\{x_3\}\times X)\subseteq (V\cap Y)$, while also $(x_3,x_2)\i
 Yet, this contradicts the assumption that $(U\cap Y)$ and $(V\cap Y)$ forms a separation of $Y$.
 So, the initial assumption is false, $Y=X\times X\setminus\{(x,x)\}$ must be connected.
 
-\break
+\hfil
+
+\hfil
 
 \section*{2}
 \begin{myBox}[]{}
@@ -162,9 +164,7 @@ hence $f$ is a continuous path with image in $U$, that is joining $y$ and $z$ (s
 
 This shows that $U$ is in fact path connected.
 
-\hfil
-
-\hfil
+\break 
 
 \section*{3}
 \begin{myBox}[]{}
