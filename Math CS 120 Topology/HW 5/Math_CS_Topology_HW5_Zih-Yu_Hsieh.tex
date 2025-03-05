@@ -44,6 +44,44 @@ colback=blue!10
 
 \textbf{Pf:}
 
+There are two cases to consider.
+
+Suppose $X\times X=\{(x,x)\}$ under this assumption, Then $X\times X\setminus\{(x,x)\} = \emptyset$ is vacuously connected.
+So, we can assume $X$ is not a singleton for the rest of the proof.
+
+\hfil
+
+Now, we'll prove the statement by contradiction. 
+
+Suppose $X$ is connected, while $Y=X\times X\setminus\{(x,x)\}$ is disconnected,
+then there exists open subsets $U,V\subseteq X\times X$, such that $(U\cap Y)$ and $(V\cap Y)$ forms a separation of $Y$.
+
+Since $(U\cap Y)$ and $(V\cap Y)$ are nonempty, there exists $(x_1,x_2)\in (U\cap Y)$, and $(x_3,x_4)\in (V\cap Y)$, and both points are not $(x,x)$, so at least one coordinate is not $x$.
+
+Then, since $X$ is connected by assumption, while singletons are vacuously connected, then for all $y\in X$, the set $X\times \{y\}$ and $\{y\}\times X$ are connected subsets under the product topology of $X\times X$.
+
+\hfil
+
+Notice that WLOG, we can assume that $x_2\neq x$, and $x_3\neq x$ in this case (so, can assume that the two points $(x_1,x_2),(x_3,x_4)$ have different coordinates that are different from $x$).
+
+Under the most extreme case, we might have chosen $(x_1,x)$ and $(x_3,x)$ (where both points have $x$ in the same coordinate). However, since $(\{x_1\}\times X)\subseteq Y$ is a connected subset (because $x_1\neq x$, hence $(x,x)\notin \{x_1\}\times X$), while $(x_1,x)\in (U\cap Y)$,
+then $\{x_1\}\times X\subseteq (U\cap Y)$ (Note: if $(\{x_1\}\times X)\not\subseteq (U\cap Y)$, then $(\{x_1\}\times X)\cap (V\cap Y)\neq \emptyset$, showing that $(U\cap Y)$ and $(V\cap Y)$ actually forms a separation of $\{x_1\}\times X$,
+which contradicts the fact that $\{x_1\}\times X$ is connected).
+
+Hence, choose another $x_2\neq x$, we have $(x_1,x_2)\in \{x_1\}\times X\subseteq (U\cap Y)$, which $(x_3,x)$ has $x_3\neq x$, while $(x_1,x_2)$ has $x_2\neq x$.
+
+\hfil
+
+Now, here comes the contradiction: Given the point $(x_3,x_2)\in X\times X\setminus\{(x,x)\}$.
+
+Using the same logic as above, since $(x_3,x_4)\in (V\cap Y)$ by assumption, while $\{x_3\}\times X$ is connected, then $(\{x_3\}\times X)\subseteq (V\cap Y)$;
+similarly, since $(x_1,x_2)\in (U\cap Y)$ by assumption, while $X\times \{x_2\}$ is connected, then $(X\times \{x_2\})\subseteq (U\cap Y)$.
+
+So, $(x_3,x_2)\in (\{x_3\}\times X)\subseteq (V\cap Y)$, while also $(x_3,x_2)\in (X\times \{x_2\})\subseteq (U\cap Y)$, showing that $(U\cap Y)$ and $(V\cap Y)$ actually has nontrivial intersection.
+
+Yet, this contradicts the assumption that $(U\cap Y)$ and $(V\cap Y)$ forms a separation of $Y$.
+So, the initial assumption is false, $Y=X\times X\setminus\{(x,x)\}$ must be connected.
+
 \break
 
 \section*{2}
@@ -55,7 +93,78 @@ colback=blue!10
 
 \textbf{Pf:}
 
-\break
+Given an arbitrary open subset $U\subseteq \mathbb{R}^2$. If $U$ is empty, then it is vacuously path connected, hence can assume $U\neq \emptyset$.
+
+Now, choose any $u\in U$, consider the set $P\subseteq U$, such that every point $y\in P$, there exists a continuous path connecting the two points (So, 
+there exists $f_y:[0,1]\rightarrow U$, with $f_y(0)=x$ and $f_y(1)=y$).
+
+\hfil
+
+\textbf{The set $P$ is nonempty}: 
+
+Since $x\in P$ (by choosing $f_x:[0,1]\rightarrow U$ with $f_x(t)=x$, it is a continuous function with $f_x(0)=f_x(1)=x$), then $P$ is nonempty.
+
+\hfil
+
+\textbf{The set $P$ is open}: 
+
+Since $U$ is an open subset, then there exists $\epsilon>0$, with $B_\epsilon(x)\subseteq U$. Because every open ball is convex in vector space,
+then it is path connected (since for any $y,z\in B_\epsilon(x)$, choose $f:[0,1]\rightarrow U$ by $f(t)=ty+(1-t)z$, which is continuous;
+also, by convexity, $f([0,1])\subseteq B_\epsilon(x)$, hence $y,z$ are connected by paths). Therefore, $B_\epsilon(x)\subseteq P$.
+
+Now, for all $y\in P\subseteq U$, since there exists $r>0$ with $B_r(y)\subseteq U$, then because any open ball is path connected, then for all $z\in B_r(y)$, there exists continuous path
+$f:[0,1]\rightarrow U$ with $f(0)=y$ and $f(1)=z$.
+Then, since there exists continuous path $f_y:[0,1]\rightarrow U$ with $f_y(0)=x$ and $f_y(1)=y$ (because $y\in P$, so such path exists), define $f_z:[0,1]\rightarrow \mathbb{R}^2$ as follow:
+$$f_z(t)=\begin{cases}
+    f_y\left(2t\right) & t\in [0,\frac{1}{2}]\\
+    f\left(2t-1\right) & t\in [\frac{1}{2},1]
+\end{cases}$$
+Then, since $f_y(2t)$ and $f(2t-1)$ are continuous, while they agree on the point $\frac{1}{2}$ (since $f_y(2\cdot \frac{1}{2})=f_y(1)=y$, and $f(2\cdot\frac{1}{2}-1)=f(0)=y$),
+then by pasting lemma, $f_z$ is a continuous function. And, because both $f_y$ and $f$ have the image lying in $U$, then $f_z$ also has its image lie in $U$. Hence, 
+since $f_z(0)=f_y(0)=x$ and $f_z(1)=f(2-1)=f(1)=z$, then $f_z$ is a continuous path with image contained in $U$, that's joining $x$ and $z$, showing that $z\in P$.
+
+Therefore, $B_r(y)\subseteq P$, showing that $P$ is in fact open. Hence, $P\subseteq U$ is open under subspace topology of $U$ also.
+
+\hfil
+
+\textbf{The set $P$ is closed:}
+
+It is the same as proving $U\setminus P$ is open under subspace topology of $U$.
+
+For all $y\in U\setminus P$, there doesn't exist continuous path joining $x$ and $y$. Also, since $U$ is open, then there exists $r>0$, with $B_r(y)\subseteq U$.
+
+Notice that $B_r(y)\cap P = \emptyset$: Suppose the contrary that it is not empty, then there exists $z\in B_r(y)\cap P$.
+Which, there exists a path joining $x$ and $z$; and since $B_r(y)$ is convex, it is also path connected. Therefore, there exists a path joining $z$ and $y$.
+Then, using the similar method above, we can join the two paths to generate another continuous path that's starting from $x$ and ending at $y$, showing that $y\in P$.
+Yet, this contradicts the assumption that $y\notin P$, hence the assumption is false, showing that $B_r(y)\cap P=\emptyset$.
+
+This shows that $B_r(y)\subseteq U\setminus P$, hence $U\setminus P$ is open.
+
+Which, because $U\setminus P$ is open in the subspace topology of $U$ also, hence $P=U\setminus (U\setminus P)$ is closed under subspace topology.
+
+\hfil
+
+\textbf{$P=U$, and $U$ is path connected:}
+
+Now, because $P$ is proven to be both open and closed under subspace topology of $U$, while recalling that $U$ is a connected subset of $\mathbb{R}^2$,
+hence the only subset of $U$ that is both open and closed under its subspace topology, is $\emptyset$ and $U$ itself.
+
+Because $P$ is nonempty, then $P=U$.
+
+Now, for all $y,z\in P=U$, since there exists continuous paths $f_y,f_z:[0,1]\rightarrow U$, with $f_y(0)=x$ and $f_y(1)=y$, while $f_z(0)=x$ and $f_z(1)=z$.
+Hence, join the two paths together by $f:[0,1]\rightarrow U$ as follow:
+$$f(t)=\begin{cases}
+    f_y(1-2t) & [0,\frac{1}{2}]\\
+    f_z(2t-1) & [\frac{1}{2},1]
+\end{cases}$$
+Because both $f_y$, $f_z$ agrees at $\frac{1}{2}$ ($f_y(1-2\cdot\frac{1}{2})=f_y(1-1)=f_y(0)=x$, and $f_z(2\cdot\frac{1}{2}-1)=f_z(1-1)=f_z(0)=x$), while both paths are continuous with image being in $U$,
+hence $f$ is a continuous path with image in $U$, that is joining $y$ and $z$ (since $f(0)=f_y(1)=y$, and $f(1)=f_z(2-1)=f_z(1)=z$).
+
+This shows that $U$ is in fact path connected.
+
+\hfil
+
+\hfil
 
 \section*{3}
 \begin{myBox}[]{}
@@ -66,6 +175,30 @@ colback=blue!10
 \end{myBox}
 
 \textbf{Pf:}
+
+Given that $f:X\rightarrow Y$ is a continuous bijection, while $X,Y$ are both compact Hausdorff spaces.
+To prove that it is a homeomorphism, it suffices to prove that $f$ is an open map.
+
+(Note: Since if $f$ is an open map, all open set $U\subseteq X$ satisfies $f(U)\subseteq Y$ is open, hence $(f^{-1})^{-1}(U) = f(U)$ is open, 
+showing that for $f^{-1}$, all open subset in $X$ has preimage in $Y$ being open, implying that $f^{-1}$ is continuous).
+
+For all open set $U\subseteq X$, since $X\setminus U$ is closed, while $X$ is compact, hence $X\setminus U$ is also compact.
+Then, since $f$ is continuous, $f(X\setminus U)\subseteq Y$ is also compact. With the fact that $Y$ is Hausdorff (which all compact subsets are closed),
+then $f(X\setminus U)\subseteq Y$ is open.
+
+\hfil
+
+Now, since for all $u\in U$ (which $u\notin X\setminus U$), since $f$ is bijective, all $v\in X\setminus U$ satisfies $f(u)\neq f(v)$,
+showing that $f(u)\notin f(X\setminus U)$. Hence, $f(u)\in Y\setminus f(X\setminus U)$, or $f(U)\subseteq Y\setminus f(X\setminus U)$.
+
+Also, for all $y\in Y\setminus f(X\setminus U)$, since $f$ is a bijection, there exists $x\in X$, with $y=f(x)$.
+However, since $y\notin f(X\setminus U)$, this implies that $x\notin (X\setminus U)$, showing that $x\in U$.
+Hence, $y=f(x)\in f(U)$, or $(Y\setminus f(X\setminus U))\subseteq f(U)$.
+
+\hfil
+
+The above two implication proves that $f(U)=Y\setminus f(X\setminus U)$. Since $f(X\setminus U)$ is closed in $Y$, then $f(U)$ must be open in $Y$.
+This proves that $f$ is an open map. Combine with the assumption that it is a continuous bijection, then $f$ is in fact a homeomorphism.
 
 \break
 
@@ -78,5 +211,29 @@ colback=blue!10
 \end{myBox}
 
 \textbf{Pf:}
+
+Suppose a nonempty subset $K\subseteq X$ is compact. For each $\alpha\in K$, let $\Theta_\alpha = \{x\in X\ |\ x<\alpha\}$ (a ray in ordered topology, which is open).
+Then, consider the collection of open sets $\mathcal{F}=\{\Theta_\alpha\ |\ \alpha\in B\}$.
+
+\hfil
+
+Notice that this can never be an open cover of $K$: Suppose the contrary, that $\mathcal{F}$ actually forms an open cover of $K$,
+then since $K$ is compact, there exists $\alpha_1,...,\alpha_n\in K$, such that $K\subseteq \bigcup_{i=1}^{n}\Theta_{\alpha_i}$.
+
+Yet, since in a totally ordered set, a finite collection of elements has a maximum, hence, let $\alpha=\max\{\alpha_1,...,\alpha_n\} \in K$, 
+since for each $i\in\{1,...,n\}$, $\alpha_i\leq \alpha$, then by the definition, $\alpha\notin \Theta_{\alpha_i}$ (since $\alpha<\alpha_i$ is false).
+Hence, $\alpha\notin \bigcup_{i=1}^{n}\Theta_{\alpha_i}$.
+
+So, $\alpha\in K\subseteq \bigcup_{i=1}^{n}\Theta_{\alpha_i}$, while $\alpha\notin \bigcup_{i=1}^{n}\Theta_{\alpha_i}$, this is a contradiction. Therefore, the assumption is false,
+$\mathcal{F}$ cannot be an open cover of $K$.
+
+\hfil
+
+Since $\mathcal{F}$ is not an open cover of $K$, there exists $k\in K$, with $k\notin \bigcup \mathcal{F}$. Now, we claim that $k$ is in fact the maximum of $K$:
+
+For all $\alpha\in K$, since $k\notin \bigcup\mathcal{F}=\bigcup_{\alpha'\in K}\Theta_{\alpha'}$, then $k\notin \Theta_\alpha$.
+Hence, $k<\alpha$ is false, showing that $\alpha\leq k$.
+This shows that $k$ is actually a maximum element of $K$, hence all compact subset of $X$ under order topology has a maximum element.
+
 
 \end{document}
