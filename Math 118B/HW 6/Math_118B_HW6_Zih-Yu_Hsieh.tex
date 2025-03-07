@@ -125,6 +125,21 @@ colback=blue!10
 
 \textbf{Pf:}
 
+For all $x_0\in\mathbb{R}$, since $|x_1|=|cos(x_0)|\leq 1$, then WLOG, we just need to consider the properties of $\cos(x)$ on the domain $[-1,1]$.
+
+For all distinct $x,y\in[-1,1]$ (WLOG, assume $x<y$), since $\cos(x)$ is differentiable on $\mathbb{R}$ (with derivative $-\sin(x)$), by Mean Value Theorem, 
+there exists $c\in (x,y)$, such that $(\cos(x)-\cos(y))=-\sin(c)(x-y)$. Also, notice on $[-1,1]$, $|\sin(x)|$ has a maximum at $1$ 
+(since $\sin(x)$ is strictly increasing on this domain, hence $-\sin(1)=\sin(-1)\leq \sin(x)\leq \sin(1) < 1$; so $|\sin(x)|\leq \sin(1)$ on $[-1,1]$). Hence:
+$$|\cos(x)-\cos(y)|=|-\sin(c)|\cdot|x-y| \leq \sin(1)\cdot|x-y|$$
+Using similar
+ from \textbf{Question 1}, with the above inequality, since $x_1=\cos(x_0)\in[-1,1]$ and $\sin(1)<1$, 
+then all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq \sin(1)^{n-1}\cdot |x_2-x_1|$.
+
+
+\hfil
+
+\textbf{Approximation:}
+
 
 \break
 
@@ -153,7 +168,9 @@ colback=blue!10
 \section*{5}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $K\subset \mathbb{R}^n$ be a compact set. Suppose that $T:K\rightarrow K$ satisfies
+        $$\forall x,y\in K,\quad \|T(x)-T(y)\|<\|x-y\|$$
+        Show that there exists a unique $x_0\in K$ such that $T(x_0)=x_0$.
     \end{question}
 \end{myBox}
 
@@ -164,10 +181,72 @@ colback=blue!10
 \section*{6}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $K\subset \mathbb{R}^n$
+        be a compact set and $f : K \rightarrow K$ be a function such that
+        $$\|f(x)-f(y)\|=\|x-y\|,\quad \forall x,y\in K$$
+        Show that $f$ is a bijection.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{$f$ is Injective:}
+
+For all $x,y\in K$, suppose $f(x)=f(y)$, then since $0=\|f(x)-f(y)\|=\|x-y\|$, then $x=y$ is enforced. Hence, this proves injectivity.
+
+\hfil
+
+\textbf{$f$ is Surjective:}
+
+Suppose the contrary, that $f$ is not surjective (so, $f(K)\subsetneq K$).
+
+First, since for all $\epsilon>0$, choose $\delta=\epsilon$, all $x,y\in K$ with $\|x-y\|<\delta=\epsilon$ satisfies $\|f(x)-f(y)\|=\|x-y\|<\epsilon$,
+hence $f$ is uniformly continuous on $K$. Then, because $K$ is compact, then $f(K)$ is also compact, which is closed and bounded.
+
+Now, since $K\setminus f(K)\neq \emptyset$ based on assumption, there exists $x_0\in K\setminus f(K)$. Which, because the sets $\{x_0\}$ and $f(K)$ are both compact (which are both closed),
+while the two sets are disjoint, then by \textbf{HW 1 Question 3} (part from \textbf{Rudin Chapter 4 Question 21}), in any metric space,
+disjoint closed set $C$ and compact set $K$ always have $\inf\{d(x,y)\ |\ x\in C,y\in K\}>0$ (a positive distance between sets $C$ and $K$).
+So, apply this to the two sets, there exists $\lambda>0$, such that all $y\in f(K)$ satisfies $\|x_0-y\| = d(x_0,y) \geq \lambda$.
+
+\hfil
+
+Then, define $f_0(x)=x$, $f_1(x)=f(x)$, and for all integer $n\geq 1$, $f_{n+1}(x)=f(f_n(x))$. 
+(Note: inductively, we can also prove that all $m,n\in\mathbb{N}$ satisfies $f_m(f_n(x))=f_{m+n}(x) = f_n(f_m(x))$).
+
+With this definition, we can prove by induction that for all $n\in\mathbb{N}$,
+all $y\in f_{n}(K)$ satisfies $\|f_n(x_0)-f(y)\|\geq \lambda$.
+
+For base case $n=1$, recall that for all $y\in f_1(K) = f(K)$, because all $y\in f(K)$ satisfies $\|x_0-y\|\geq \lambda$, since $f$ preserves distance, we have:
+$$\|f_1(x_0)-f(y)\| =\|f(x_0)-f(y)\| = \|x_0-y\| \geq \lambda$$
+Hence, all $y\in f_1(K)$ satisfies $\|f_1(x_0)-f(y)\|\geq \lambda$, the claim is true for $n=1$.
+
+Now, suppose for given $n\in\mathbb{N}$, all $y\in f_{n}(K)$ satisfies $\|f_n(x_0)-f(y)\|\geq \lambda$.
+Then, for all $y\in f_{n+1}(K) = f(f_n(K))$, there exists $x\in f_n(K)$, with $f(x)=y$. Which, by induction hypothesis, $\|f_n(x_0)-y\|=\|f_n(x_0)-f(x)\| \geq \lambda$. 
+Hence, the following inequality is true:
+$$\|f_{n+1}(x_0)-f(y)\| = \|f(f_n(x_0))-f(y)\| = \|f_n(x_0)-y\| \geq \lambda$$
+Which, all $y\in f_{n+1}(K)$ satisfies $\|f_{n+1}(x_0)-f(y)\|\geq \lambda$, completing the induction.
+
+\hfil
+
+Lastly, consider the sequence defined recursively as $x_n=f_n(x_0)$ for all $n\in\mathbb{N}$. Then, since $f$ restrict the element to still be in $K$, then $(x_n)_{n\in\mathbb{N}}\subset K$, a compact set (which is closed and bounded).
+Hence, by Bolzano Weierstrass Theorem, since $(x_n)_{n\in\mathbb{N}}$ is bounded, there exists a convergent subsequence $(x_{n_k})_{k\in\mathbb{N}}$, which this subsequence is Cauchy.
+
+Then, given $\lambda>0$, there exists $N\in\mathbb{N}$, such that all $p\geq N$ implies $\|x_{n_p}-x_{n_{p+1}}\| < \lambda$, by the definition of Cauchy Sequence.
+
+However, since $n_{p+1}=n_p+k$ for some $k\in\mathbb{N}$, looking back at the definition, $x_{n_p}=f_{n_p}(x_0)$, while $x_{n_{p+1}}=x_{n_p+k}=f_{n_p+k}(x_0) = f_k(f_{n_p}(x_0))$.
+
+Because $k\geq 1$, then $f_k(x) = f(f_{k-1}(x))$, so $x_{n_{p+1}}=f_k(f_{n_p}(x_0))=f(f_{k-1}(f_{n_p}(x_0))) = f(f_{n_p}(f_{k-1}(x_0)))$.
+
+So, let $y=f_{n_p}(f_{k-1}(x_0))\in f_{n_p}(K)$, by the previous claim, the following inequality is true:
+$$\|x_{n_p}-x_{n_{p+1}}\| = \|f_{n_p}(x_0)-f(f_{n_p}(f_{k-1}(x_0)))\| = \|f_{n_p}(x_0)-f(y)\| \geq \lambda$$
+Yet, this contradicts the statement that $\|x_{n_p}-x_{n_{p+1}}\| < \lambda$.
+
+\hfil
+
+Since we eventually reach a contradiction, then the assumption must be false, so $f$ needs to be surjective.
+
+\hfil
+
+The above two sections proved that $f$ is in fact a bijection.
 
 \end{document}
