@@ -87,7 +87,7 @@ Hence, the assumption is false, $R$ must be a field.
         \item First, it's closed under both addition and multiplication: for any $(a+b\sqrt{d}),(e+f\sqrt{d})\in \mathbb{Z}[\sqrt{d}]$, we have:
         $$(a+b\sqrt{d})+(e+f\sqrt{d})=(a+e)+(b+f)\sqrt{d}$$
         $$(a+b\sqrt{d})(e+f\sqrt{d})=(ae+bfd)+(af+be)\sqrt{d}$$
-        Since $a,b,d,e,f\in\mathbb{Z}$, the above two expressions are having coefficients being integers. Hence, both the addition and multiplication ends up in $\mathbb{Z}[\sqrt{d}]$,
+        Since $a,b,d,e,f\in\mathbb{Z}$, the above two expressions are having integer coefficients. Hence, both the addition and multiplication ends up in $\mathbb{Z}[\sqrt{d}]$,
         showing the set is closed under both operation.
 
         \item Then, both zero and unity element exists: Since $0=0+0\sqrt{d}$ and $1=1+0\sqrt{d}$, so $0,1\in\mathbb{Z}[\sqrt{d}]$;
@@ -102,7 +102,7 @@ Hence, the assumption is false, $R$ must be a field.
     then we can say $(\mathbb{Z}[\sqrt{d}],+)$ is an abelian group (due to the closed operation, existence of zero element and additive inverse),
     while $(\mathbb{Z}[\sqrt{d}],\cdot)$ is a monoid (due to the closed operation, and the existence of unity element).
 
-    Hence, the above properties guarantees $\mathbb{Z}[\sqrt{d}]\subset \mathbb{C}$ to be a subring.
+    Hence, the above properties guarantee $\mathbb{Z}[\sqrt{d}]\subset \mathbb{C}$ to be a subring.
 
     \hfil
 
@@ -110,7 +110,7 @@ Hence, the assumption is false, $R$ must be a field.
     
     Hence, the following formulas are true:
     $$N(x)=|a^2-db^2|,\quad N(y)=|e^2-df^2|$$
-    $$N(x)N(y)=|a^2-db^2|\cdot|e^2-df^2| = |(ae)^2-d(af)^2-d(be)^2+(bfd)^2|$$
+    $$N(x)N(y)=|a^2-db^2|\cdot|e^2-df^2| = |(a^2-db^2)(e^2-df^2)| = |(ae)^2-d(af)^2-d(be)^2+(bfd)^2|$$
     $$= |((ae)^2+2abefd+(bfd)^2)+(-d(af)^2-d(be)^2-2abefd)|$$
     $$= |(ae+bfd)^2-d((af)^2+2abef+(be)^2)| = |(ae+bfd)^2-d(af+be)^2|$$
 
@@ -129,12 +129,14 @@ Hence, the assumption is false, $R$ must be a field.
 
         \hfil
 
-        Now, suppose the contrary that $a\neq 0$ (which implies $x\neq 0$), then since $p_1\bigm | d$, then $p_1\bigm |a^2$.
+        Now, suppose the contrary that $a\neq 0$ (which implies $x\neq 0$), then since $p_1\bigm | d$, then $p_1\bigm |a^2$ (Note: $a^2=db^2$).
         Which, this implies that $p_1\bigm |a$ (if not, by Euclid's Lemma, $(p_1,a)=1$, which implies that $(p_1,a^2)=1$, so $p_1$ no longer divides $a^2$, which is a contradiction).
 
         Then, under the prime factorization of $a^2$, $p_1$  must have an even power (since $a^2$ is a perfect square), which implies that in the prime factorization of $db^2=a^2$,
-        $p_1$ must also have even power $2k$ for some $k\in\mathbb{N}$. Yet, since $p_1$ has power $1$ in the prime factorization of $d$, then it can only have power of $(2k-1)$ in the prime factorization of $b^2$,
-        which it appears ood times. 
+        $p_1$ must also have even power, say $2k$ for some $k\in\mathbb{N}$. 
+        
+        Yet, since $p_1$ has power $1$ in the prime factorization of $d$, then it can only have power of $(2k-1)$ in the prime factorization of $b^2$,
+        which it appears odxd times. 
 
         Notice that since $b^2$ is a perfect square, all prime factors must have even power in prime factorization of $b^2$; however, now $p_1$ has an odd power in the prime factorization of $b^2$,
         which creates a contradiction.
@@ -170,7 +172,7 @@ Hence, the assumption is false, $R$ must be a field.
     \item[(5)] Suppose $x\in\mathbb{Z}[\sqrt{d}]$ satisfies $N(x)\in\mathbb{Z}$ being a prime number. Then, for all $y,z\in\mathbb{Z}[\sqrt{d}]$,
     if $yz = x$, then by the statement proven above, $N(yz)=N(y)N(z)=N(x)$ while $N(x)$ is a prime.
 
-    Hence, since both $N(y),N(z)$ are nonnegative integers, since $N(y)N(z)$ is prime, at least one of them must be $1$.
+    Hence, since both $N(y),N(z)$ are nonnegative integers, because $N(y)N(z)$ is prime, at least one of them must be $1$.
 
     So, WLOG, assume $N(y)=1$. Which, by the statement proven in previous section, $y\in (\mathbb{Z}[\sqrt{d}])^\times$, this shows that $x$ is irreducible,
     since all $y,z\in\mathbb{Z}[\sqrt{d}]$ with $yz = x$ must have at least one of them being a unit.
@@ -194,7 +196,7 @@ Since $N(x),N(y)$ are nonnegative integers dividing $49$, then they must be eith
 
 \hfil
 
-First, ince $N(x)N(y)=49$, then one of them is $1$ iff the other one is $49$. But, since in \textbf{Question 2} we've proven how the norm is $1$ iff the element is invertible,
+First, since $N(x)N(y)=49$, then one of them is $1$ iff the other one is $49$. But, since in \textbf{Question 2} we've proven how the norm is $1$ iff the element is invertible,
 then this case provides no information about irreducibility (since one of the element in $x,y$ is already a unit, due to having a norm of $1$).
 
 \hfil
@@ -215,9 +217,11 @@ Since for both possiblities we eventually reach a contradiction, then there does
 Since if $xy=7$, $N(x)N(y)=49$, which the above proves that $N(x)=N(y)=7$ is not possible, then WLOG, it must be the case $N(x)=1$ and $N(y)=49$.
 Since $N(x)=1$, then $x\in\mathbb{Z}[\sqrt{5}]$ is invertible (by the statement in \textbf{Question 2}).
 
+Because $xy=7$ implies one of the element is a unit, hence $7$ is irreducible in $\mathbb{Z}[\sqrt{5}]$.
+
 \break
 
-\section*{4}
+\section*{4}      
 \begin{myBox}[]{}
     \begin{question}
         Find the smallest prime number which is irreducible in $\mathbb{Z}[\sqrt{-1}]$.
@@ -242,7 +246,9 @@ Then, since $\mathbb{Z}[\sqrt{-1}]/(3)$ is an integral domain, it implies that $
 
 So, he smallest prime which is irreducible in $\mathbb{Z}[\sqrt{-1}]$, is $3$.
 
-\break
+\hfil
+
+\hfil
 
 \section*{5}
 \begin{myBox}[]{}
@@ -270,7 +276,9 @@ Consider the ideal $I=(X^2-5)\subset \mathbb{Z}[X]$:
 
 First, for all $f(X)\in I$, since $f(X)=(X^2-5)g(X)$ for some $g(X)\in\mathbb{Z}[X]$, then, the following is true:
 $$\phi(f(X))=((\sqrt{5})^2-5)g(\sqrt{5}) = (5-5)g(\sqrt{5})=0$$
-Hence, $f(X)\in \ker(\phi)$, showing that $(X^2-5)\subseteq \ker(\phi)$.
+Hence, $f(X)\in \ker(\phi)$, showing that $(X^2-5)\subseteq \ker(\phi)$. Which, by Generalized First Isomorphism Theorem, there exists a well-defined ring homomorphism $\phi':\mathbb{Z}[X]/(X^2-5)\twoheadrightarrow \mathbb{Z}[\sqrt{5}]$,
+such that composing with the projection map $\pi(f(X))=f(X)\mod (X^2-5)$, we have:
+$$\phi(f(X))=\phi'(\pi(F(x)))=\phi'(f(X)\mod (X^2-5)) = f(\sqrt{5})$$
 
 \hfil
 
@@ -287,21 +295,46 @@ Now, we'll prove that $(X^2-5)=\ker(\phi)$, by consider the relationship with $\
     \item[(2)] Now, define the evaluation map $\bar{\phi}:\mathbb{Q}[X]\twoheadrightarrow \mathbb{Q}[\sqrt{5}]$ by 
     $\bar{\phi}(f(X))=f(\sqrt{5})$, which this map is surjective, since all $a+b\sqrt{5}\in\mathbb{Q}[\sqrt{5}]$ has $\bar{\phi}(a+bX)=a+b\sqrt{5}$.
     
-    We know that for $X^2-5\in \mathbb{Q}[X]$, $(X^2-5)\subseteq \ker(\bar{\phi})$ (since for any $g(X)\in\mathbb{Q}[X]$, $(X^2-5)g(X)$ has an evaluation at $\sqrt{5}$ being $0$); on the other hand, by Generalized First Isomorphism Theorem, 
+    We know that for $X^2-5\in \mathbb{Q}[X]$, $(X^2-5)\subseteq \ker(\bar{\phi})$ (since for any $g(X)\in\mathbb{Q}[X]$, $(X^2-5)g(X)$ has an evaluation at $\sqrt{5}$ being $0$); so, by Generalized First Isomorphism Theorem, 
     there exists a well-defined ring homomorphism $\bar{\phi}':\mathbb{Q}[X]/(X^2-5)\twoheadrightarrow \mathbb{Q}[\sqrt{5}]$, such that the composition with canonical map $\pi(f(X))=f(X)\mod (X^2-5)$, we have $\bar{\phi}(f(X))=\bar{\phi}'(\pi(f(X)))=f(\sqrt{5})$.
 
     Now, notice that since $(X^2-5)\subseteq \mathbb{Q}[X]$ is a maximal ideal, then $\mathbb{Q}[X]/(X^2-5)$ is actually a field;
-    since $\bar{\phi}':\mathbb{Q}[X]/(X^2-5)\twoheadrightarrow \mathbb{Q}[\sqrt{5}]$ is surjective, then the domain is a field implies that $\ker(\bar{\phi}') = (0)$ (since the only ideal for prime is $(0)$ or itself, $\ker(\bar{\phi}')$ must be one of them; and since the map is surjective,
+    since $\bar{\phi}':\mathbb{Q}[X]/(X^2-5)\twoheadrightarrow \mathbb{Q}[\sqrt{5}]$ is surjective, then the domain is a field implies that $\ker(\bar{\phi}') = (0)$ (since the only ideal for a field is $(0)$ or itself, $\ker(\bar{\phi}')$ must be one of them; and since the map is surjective,
     then $\ker(\bar{\phi}')=(0)$ is enforced). 
 
-    Then, for all $f(X)\in \ker(\bar{\phi})$, since $\bar{\phi}(f(X))=\bar{\phi}'(\pi(f(X))) = \bar{\phi}'(f(X)\mod (X^2-5)) = 0$, while $\bar{\phi}'$ is injective,
-    then $f(X)\mod (X^2-5) = 0$, showing that $f(X)\in (X^2-5)$. Hence, $\ker(\bar{\phi})\subseteq (X^2-5)$, showing that $\ker(\bar{\phi})=(X^2-5)$.
+    Since $\bar{\phi'}$ is surjective, while $\ker(\bar{\phi'})=(0)$, then it is also injective, proving that $\bar{\phi'}$ is in fact an isomorphism. 
+    
+    \hfil
+
+    \item[(3)] Finally, consider the following diagram:
+    \begin{center}
+        \includegraphics*[width=60mm]{commute 3 111b hw7.png}
+    \end{center}
+    (Note: the $i$ indicates inclusion map, which is a ring homomorphism).
+
+    Since we've proven that $\phi'$ is a surjective function, $\bar{\phi'}$ is an isomorphism, and both inclusion maps are injective, the only thing left is to prove that the diagram commutes.
+
+    For all $f(X)\in\mathbb{Z}[X]\subset \mathbb{Q}[X]$, since the following is true: 
+    $$\phi'(f(X)\mod (X^2-5)) = \phi(f(X))=f(\sqrt{5})\in \mathbb{Z}[X]$$
+    Then, $i\circ \phi'(f(X)\mod (X^2-5))=f(\sqrt{5})\in\mathbb{Q}[X]$.
+
+    Similarly, if do the inclusion first, $i\left(f(X)\mod (X^2-5)\right)\in \mathbb{Q}[X]/(X^2-5)$ satisfies: 
+    $$\bar{\phi'}\circ i\left(f(X)\mod (X^2-5)\right) = \bar{\phi'}(f(X)\mod (X^2-5)) = \bar{\phi}(f(X))=f(\sqrt{5})\in\mathbb{Q}[X]$$
+    Hence, $\phi'\circ i = i\circ \bar{\phi'}$, showing that the diagram commutes.
 
     \hfil
 
-    \item[(3)] Finally, consider the following commutative diagram:
+    Now, because $\bar{\phi'}\circ i$ is injective (since both $i$ and $\bar{\phi'}$ is injective), then $i\circ \phi'$ is injective.
     
+    This enforces $\phi'$ to be injective
+    (if there exists $f(X),g(X)\in\mathbb{Z}[X]$ with $\left(f(X)\mod (X^2-5)\right)\neq \left(g(X)\mod (X^2-5)\right)$, but $\phi'\left(f(X)\mod (X^2-5)\right)=\phi'\left(g(X)\mod (X^2-5)\right)$,
+    then the composition $i\circ\phi'\left(f(X)\mod (X^2-5)\right)=i\circ\phi'\left(g(X)\mod (X^2-5)\right)$, showing that $i\circ\phi'$ is no longer injective, which contradicts).
 
+    So, since $\phi'$ is injective, then for all $f(X)\in \ker(\phi)$ (which $\phi(f(X))=f(\sqrt{5})=0$), then:
+    $$\phi'(f(X)\mod (X^2-5))=\phi(f(X))=0$$
+    Which shows that $f(X)\mod (X^2-5)\in \ker(\phi')=(0)$ (since $\phi'$ is now injective), or $f(X)\in (X^2-5)$.
+
+    Hence, $\ker(\phi)\subseteq (X^2-5)$, with the other inclusion proven before, we can conclude that $\ker(\phi)=(X^2-5)$.
 \end{itemize}
 
 
