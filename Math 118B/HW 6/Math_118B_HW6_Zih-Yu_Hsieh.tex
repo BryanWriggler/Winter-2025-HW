@@ -1,0 +1,173 @@
+% Math_118B_HW6_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118B HW6}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Chapter 5 Exercise 22:
+
+        Suppose $f$ is a real function on $\mathbb{R}$. Call $x$ a \textit{fixed point} of $f$ if $f(x)=x$.
+        \begin{itemize}
+            \item[(a)] If $f$ is differentiable and $f'(t)\neq 1$ for every real $t$, prove that $f$ has at most one fixed point.
+            \item[(b)] Show that the function $f$ defined by 
+            $$f(t)=t+(1+e^t)^{-1}$$
+            has no fixed point, although $0<f'(t)<1$ for all real $t$.
+            \item[(c)] However, if there is a constant $A<1$ such that $|f'(t)|\leq A$ for all real $t$, prove that a fixed point $x$ of $f$ exists,
+            and that $x=\lim x_n$, where $x_1$ is an arbitrary real number and
+            $$x_{n+1}=f(x_n)$$
+            for $n=1,2,3,....$
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] Given $f$ is differentiable and $f'(t)\neq 1$ for all real $t$. Suppose the contrary that $f$ has more than one fixed point,
+    there exists distinct $x,y\in\mathbb{R}$ (and WLOG, assume $x<y$), with $f(x)=x$ and $f(y)=y$. However, by Mean Value Theorem, there exists $c\in (x,y)$, such that $f'(c)=\frac{f(y)-f(x)}{y-x}=\frac{y-x}{y-x}=1$,
+    which contradicts the assumption that all $t\in\mathbb{R}$ satisfies $f'(t)\neq 1$.
+
+    Hence, the assumption is wrong, $f$ couldn't have more than one fixed point.
+
+    \hfil
+
+    \item[(b)] Given $f(t)=t+(1+e^t)^{-1}$, apply the differentiation rules, we get:
+    $$f'(t)=1-(1+e^t)^{-1}\cdot e^t = 1-\frac{e^t}{(1+e^t)^2}$$
+    Since for all $t\in\mathbb{R}$, $e^t>0$, so $(1+e^t)>1$ and $(1+e^t)>e^t$. Hence, $0<\frac{e^t}{(1+e^t)^2}<1$ (since everything is positive, while $e^t<(1+e^t)<(1+e^t)^2$).
+
+    Yet, there doesn't exists a fixed point: If consider $f(t)-t$, we get $(1+e^t)^{-1}$. Since $e^t>0$ for all $t\in\mathbb{R}$, then $(1+e^t)>0$, so does $(1+e^t)^{-1}$. Therefore, there doesn't exists $t\in\mathbb{R}$, 
+    with $(1+e^t)^{-1} = f(t)-t=0$, so there doesn't exist any fixed point for this function.
+
+    \hfil
+
+    \item[(c)] Suppose there exists $0\leq A<1$ such that $|f'(t)|\leq A$ for all real $t$. Then, for al distinct $x,y\in\mathbb{R}$ (WLOG, assume $x<y$), by Mean Value Theorem,
+    there exists $c\in (x,y)$, with $f'(c)(x-y)=(f(x)-f(y))$. So, the following is true:
+    $$|f(x)-f(y)| = |f'(c)|\cdot |x-y|\leq A|x-y|$$
+
+    \hfil
+
+    Now, for any $x_1\in\mathbb{R}$, we'll prove by induction that all $n\in\mathbb{N}$, $|x_{n+1}-x_n|\leq A^{n-1}|x_2-x_1|$.
+
+    For base case $n=1$, it's clear that $|x_{1+1}-x_1| = |x_2-x_1| \leq A^{1-1}|x_2-x_1|$.
+
+    Now, suppose for given $n\in\mathbb{N}$, $|x_{n+1}-x_n|\leq A^{n-1}|x_2-x_1|$, then for case $(n+1)$:
+    $$|x_{(n+1)+1}-x_{n+1}| = |f(x_{n+1})-f(x_n)| \leq A|x_{n+1}-x_n| \leq A\cdot A^{n-1}|x_2-x_1| = A^{(n+1)-1}|x_2-x_1|$$
+    Which, this completes the induction, showing that all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq A^{n-1}|x_2-x_1|$.
+
+    \hfil
+
+    Now, we can prove that the sequence $(x_n)_{n\in\mathbb{N}}$ is a Cauchy sequence in $\mathbb{R}$, therefore converges:
+
+    Given that $0\leq A<1$, then $\frac{1}{1-A}>0$. Now, since $A^{n-1}|x_2-x_1|$ defines a geometric sequence with ratio $0\leq A<1$,
+    then $\lim_{n\rightarrow\infty}A^{n-1}|x_2-x_1|=0$. So, for all $\epsilon>0$, since $\frac{1-A}{|x_2-x_1|}\epsilon>0$, there exists $N$,
+    with $n\geq N$ implies $A^{n-1}|x_2-x_1|<(1-A)\epsilon$.
+
+    Now, for all $m>n\geq N$, the following is true:
+    $$|x_m-x_n| = \left|\sum_{k=0}^{m-n-1}(x_{n+(k+1)}-x_{n+k})\right| \leq \sum_{k=0}^{m-n-1}|x_{n+(i+1)}-x_{n+i}|$$
+    $$|x_m-x_n|\leq \sum_{k=0}^{m-n-1}|x_{n+(i+1)}-x_{n+i}| \leq \sum_{k=0}^{m-n-1}A^{n+k-1}|x_2-x_1|$$
+    $$|x_m-x_n|\leq A^{n-1}|x_2-x_1|\sum_{k=0}^{m-n-1}A^{k} \leq A^{n-1}|x_2-x_1|\sum_{k=0}^{\infty}A^k$$
+    $$|x_m-x_n|\leq A^{n-1}|x_2-x_1|\cdot\frac{1}{1-A} < (1-A)\epsilon \cdot \frac{1}{1-A} = \epsilon$$
+    Since for all $\epsilon>0$, there exists $N$, with $m>n\geq N$ implies $|x_m-x_n|<\epsilon$, hence $(x_n)_{n\in\mathbb{N}}$ is a cauchy sequence,
+    which converges to some $x\in \mathbb{R}$.
+
+    Then, since $f$ is differentiable, then $f$ is continuous; hence, the following is true:
+    $$\lim_{n\rightarrow\infty}f(x_n)=f\left(\lim_{n\rightarrow\infty}x_n\right)=f(x),\quad \lim_{n\rightarrow\infty}f(x_n)=\lim_{n\rightarrow\infty}x_{n+1}=x$$
+    Hence, $f(x)=x$, which any $x_1\in\mathbb{R}$ with $x_{n+1}=f(x_n)$, has the sequential limit being a fixed point $x\in\mathbb{R}$.
+
+    Also, based on the previous part, since all $t\in\mathbb{R}$ has $|f'(t)|\leq A<1$, then by part (a), since $f'(t)\neq 1$ for all $t$, $f$ has at most one fixed point.
+    Hence, this fixed point is unique, all such sequence $(x_n)_{n\in\mathbb{N}}$ converges to a unique fixed point $x\in\mathbb{R}$.
+\end{itemize}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        For $f(x) = \cos(x)$, show that $x_{n+1}=f(x_n)$ defines a convergent sequence
+        for arbitrary $x_0\in\mathbb{R}$. Calculate the root $\alpha=\cos(\alpha)$, with an error less than
+        $10^{-2}$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{6}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
