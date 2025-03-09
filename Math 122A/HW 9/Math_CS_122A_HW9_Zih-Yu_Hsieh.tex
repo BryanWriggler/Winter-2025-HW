@@ -1,0 +1,341 @@
+% Math_CS_122A_HW9_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122A HW9}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 154 Problem 2:
+
+        Hwo many roots of the equation $z^4-6z+3=0$ have their modulus between $1$ and $2$?
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Ahlfors Pg. 161 Problem 5:
+
+        Complex integration can sometimes be used to evaluate area integrals. 
+        As an illustration, show that if $f(z)$ is analytic and bounded for $|z|<1$ and if $|\zeta|<1$, then
+        $$f(\zeta)=\frac{1}{\pi}\int\int_{|z|<1}\frac{f(z)dxdy}{(1-\bar{z}\zeta)^2}$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 64 Problem 1:
+
+        Prove that
+        $$\int_{0}^{\infty}\sin(x^2)dx = \int_{0}^{\infty}dx = \frac{\sqrt{2\pi}}{4}$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Consider the function $e^{-z^2}$, and the integration over a sector with origin at $0$ and radius $R$.
+Which, this can be parametrized by three curves: $\gamma_1$ - a straight line on real axis with $x\in[0,R]$, 
+$\gamma_2$ - a circular arc with radian $\frac{\pi}{4}$ and radius $R$ (parametrized by $z=Re^{i\theta}$, where $\theta\in [0,\frac{\pi}{4}]$),
+and $\gamma_3$ - another straight line of $z=re^{i\frac{\pi}{4}}$ (where $r\in [0,R]$). The orientation is given as follow:
+
+\begin{center}
+    \includegraphics*[width=60mm]{problem 3.png}
+\end{center}
+
+If consider the integral over this closed curve, since $e^{-z^2}$ is analytic on the whole plane, then the line integral is $0$. So, $\int_{\gamma_1+\gamma_2+\gamma_3}e^{-z^2}dz=0$.
+
+\hfil
+
+For $\int_{\gamma_1}e^{-z^2}dz$, it is parametrized by $\int_{0}^{R}e^{-x^2}dx$, which $\lim_{R\rightarrow\infty}\int_{0}^{R}e^{-x^2}dx=\frac{\sqrt{\pi}}{2}$ (since $e^{-x^2}$ is even, while $\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\pi}$).
+
+\hfil
+
+For $\int_{\gamma_2}e^{-z^2}dz$, it is parametrized by the following:
+$$\int_{\gamma_2}e^{-z^2}dz=\int_{0}^{\frac{\pi}{4}}\exp\left(-(Re^{i\theta})^2\right)iRe^{i\theta}d\theta = \int_{0}^{\frac{\pi}{4}}\exp(-R^2e^{i2\theta})iRe^{i\theta}d\theta$$
+$$= \int_{0}^{\frac{\pi}{4}}\exp(-R^2(\cos(2\theta)+i\sin(2\theta)))iRe^{i\theta}d\theta = \int_{0}^{\frac{\pi}{4}}e^{-R^2\cos(2\theta)}e^{-iR^2\sin(2\theta)}iRe^{i\theta}d\theta$$
+Which, consider the modulus, the following inequality is true:
+$$\left|\int_{\gamma_2}e^{-z^2}dz\right|\leq \int_{0}^{\frac{\pi}{4}}|e^{-R^2\cos(2\theta)}|\cdot |e^{-iR^2\sin(2\theta)}|\cdot |iRe^{i\theta}|d\theta = \int_{0}^{\frac{\pi}{4}}Re^{-R^2\cos(2\theta)}d\theta$$
+$$\left|\int_{\gamma_2}e^{-z^2}dz\right|\leq \frac{1}{2}\int_{0}^{\frac{\pi}{2}}Re^{-R^2\cos(u)}du$$
+(Note: the second line is done by the parametrization $u=2\theta$).
+
+Now, since in the domain $[0,\frac{\pi}{2}]$, $1-\frac{2}{\pi}u \leq \cos(u)$, then $e^{-R^2\cos(u)}\leq e^{-R^2(1-\frac{2}{\pi}u)}$ (given that $-R^2<0$, while the two functions are positive on the given domain).
+Then, we can further bound the integral by:
+$$\left|\int_{\gamma_2}e^{-z^2}dz\right|\leq \frac{1}{2}\int_{0}^{\frac{\pi}{2}}Re^{-R^2\cos(u)}du \leq \frac{1}{2}\int_{0}^{\frac{\pi}{2}}Re^{-R^2(1-\frac{2}{\pi}u)}du=\frac{1}{2}\int_{0}^{\frac{\pi}{2}}Re^{R^2\cdot\frac{2}{\pi}u-R^2}du$$
+$$\leq \frac{R}{2}\cdot\frac{\pi}{2R^2}e^{R^2\cdot \frac{2}{\pi}u-R^2}\bigg|_{0}^{\frac{\pi}{2}} = \frac{\pi}{4R}(e^{R^2\cdot\frac{2}{\pi}\cdot\frac{\pi}{2}-R^2}-e^{R^2\cdot\frac{2}{\pi}\cdot 0-R^2}) = \frac{\pi}{4R}(1-e^{-R^2})$$
+Then, since $\lim_{R\rightarrow\infty}\frac{\pi}{4R}=0$, $\lim_{R\rightarrow\infty}(1-e^{-R^2})=1$, then:
+$$0\leq \lim_{R\rightarrow\infty}\left|\int_{\gamma_2}e^{-z^2}dz\right|\leq \lim_{R\rightarrow\infty} \frac{\pi}{4R}(1-e^{-R^2})=0$$
+Hence, we can claim that $\lim_{R\rightarrow\infty}\int_{\gamma_2}e^{-z^2}dz = 0$.
+
+\hfil
+
+Lastly, for $\int_{\gamma_3}e^{-z^2}dz$, it is parametrized by $\int_{R}^{0}\exp(-(re^{i\frac{\pi}{4}})^2)e^{i\frac{\pi}{4}}dr$. Which, can be modified as:
+$$\int_{R}^{0}\exp(-r^2e^{i\frac{\pi}{2}})e^{i\frac{\pi}{4}}dr = e^{i\frac{\pi}{4}}\int_{R}^{0}e^{-ir^2}dr = e^{i\frac{\pi}{4}}\left(\int_{R}^{0}\cos(r^2)dr - i\int_{R}^{0}\sin(r^2)dr\right)$$
+$$=-e^{i\frac{\pi}{4}}\left(\int_{0}^{R}\cos(r^2)dr - i\int_{0}^{R}\sin(r^2)dr\right)$$
+
+Now, because $\int_{\gamma_1+\gamma_2+\gamma_3}e^{-z^2}dz=0$, then $\int_{\gamma_3}e^{-z^2}dz = -(\int_{\gamma_1}e^{-z^2}dz+\int_{\gamma_2}e^{-z^2}dz)$. Hence:
+$$\lim_{R\rightarrow\infty}\int_{\gamma_3}e^{-z^2}dz = \lim_{R\rightarrow\infty}-\left(\int_{\gamma_1}e^{-z^2}dz+\int_{\gamma_2}e^{-z^2}dz\right) = -\frac{\sqrt{\pi}}{2}$$
+$$\lim_{R\rightarrow\infty}-e^{i\frac{\pi}{4}}\left(\int_{0}^{R}\cos(r^2)dr - i\int_{0}^{R}\sin(r^2)dr\right) = -\frac{\sqrt{\pi}}{2}$$
+Hence, we can claim the following:
+$$\int_{0}^{\infty}\cos(r^2)dr - i\int_{0}^{\infty}\sin(r^2)dr = \frac{\sqrt{\pi}}{2}e^{-i\frac{\pi}{4}} = \frac{\sqrt{2\pi}}{4}(1-i)$$
+Then, take the real and imaginary part respectively, we get:
+$$\int_{0}^{\infty}\cos(r^2)dr = Re\left(\frac{\sqrt{2\pi}}{4}(1-i)\right)=\frac{\sqrt{2\pi}}{4}$$
+$$\int_{0}^{\infty}\sin(r^2)dr = -Im\left(\frac{\sqrt{2\pi}}{4}(1-i)\right)=\frac{\sqrt{2\pi}}{4}$$
+Hence, the two integrals evaluated to be $\frac{\sqrt{2\pi}}{4}$.
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 65 Problem 4:
+
+        Prove that for all $\zeta\in \mathbb{C}$ we have 
+        $$e^{-\pi \zeta^2}=\int_{-\infty}^{\infty}e^{-\pi x^2}e^{2\pi ix\zeta}dx$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 103 Problem 5:
+
+        Use contour integration to show that for all $\zeta$ real
+        $$\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\zeta}}{(1+x^2)^2}dx = \frac{\pi}{2}(1+2\pi |\zeta|)e^{-2\pi |\zeta|}$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\textbf{Residue at $i,-i$:}
+
+Consider the function $f(z)=e^{-2\pi i\zeta z}/(1+z^2)^2 = e^{-2\pi i\zeta z}/((z-i)(z+i))^2$, which it has poles at $z=\pm i$, each with order $2$ (since $(z^2+1)^2=(z-i)^2(z+i)^2$).
+
+Then, to show its residue at $i$, consider the derivative of $\phi_i(z)=e^{-2\pi i\zeta z}/(z+i)^2$:
+$$\phi_i'(z) = \frac{-2\pi i\zeta e^{-2\pi i\zeta z}\cdot (z+i)^2-2(z+i)e^{-2\pi i\zeta z}}{(z+i)^4}, \quad\phi_i'(i)=\frac{-2\pi i\zeta e^{2\pi \zeta}(-4)-2(2i)e^{2\pi \zeta}}{16} = -\frac{1}{4}(1-2\pi \zeta)ie^{2\pi \zeta}$$
+Then, we can expand $\phi_i(z)$ as the following term:
+$$\phi_i(z) = \phi_i(i)+\phi_i'(i)(z-i)+\phi_{i,2}(z)(z-i)^2$$
+The above term has $\phi_{i,2}(z)$ being analytic at $i$. Hence, $f(z)$ can be represented as:
+$$f(z)=\frac{\phi_i(z)}{(z-i)^2}=\frac{\phi_i(i)}{(z-i)^2}+\frac{\phi_i'(i)}{(z-i)}+\phi_{i,2}(z)$$
+Because the first term has antiderivative, while the third term is analytic at $i$, then for sufficiently small circle $C$ centered at $i$, the residue is given by:
+$$Res_{z=i}f(z)=\frac{1}{2\pi i}\int_{C}\frac{\phi_i'(i)}{(z-i)}dz = n(C,i)\cdot \phi_i'(i) = -\frac{1}{4}(1-2\pi \zeta)ie^{2\pi \zeta}$$
+
+\hfil
+
+Now, apply similar concept for $z=-i$, the derivative of $\phi_{-i}(z)=e^{-2\pi i\zeta z}/(z-i)^2$ is given as:
+$$\phi_{-i}'(z)=\frac{-2\pi i\zeta e^{-2\pi i\zeta z}\cdot (z-i)^2-2(z-i)e^{-2\pi i\zeta z}}{(z-i)^4},\quad \phi_{-i}'(-i)=\frac{-2\pi i\zeta e^{-2\pi\zeta}(-4)-2(-2i)e^{-2\pi\zeta}}{16}=\frac{1}{4}(1+2\pi\zeta)ie^{-2\pi\zeta}$$
+Then, expand $\phi_{-i}(z)$ as follow:
+$$\phi_{-i}(z)=\phi_{-i}(-i)+\phi_{-i}'(-i)(z+i)^2+\phi_{-i,2}(z)(z+i)^2$$
+Then, the above term has $\phi_{-i,2}(z)$ being analytic at $i$. Hence, $f(z)$ can again be represented as:
+$$f(z)=\frac{\phi_{-i}(z)}{(z+i)^2}=\frac{\phi_{-i}(-i)}{(z+i)^2}+\frac{\phi_{-i}'(-i)}{(z+i)}+\phi_{-i,2}(z)$$
+Therefore, based on similar reason as above (where the first and third terms are analytic or has antiderivative), with a sufficiently small circle $C$ centered at $-i$, the residue at $-i$ is given as:
+$$Res_{z=-i}f(z)=\frac{1}{2\pi i}\int_{C}\frac{\phi_{-i}'(-i)}{(z+i)}dz = n(C,-i)\phi_{-i}'(-i)=\frac{1}{4}(1+2\pi\zeta)ie^{-2\pi\zeta}$$
+
+\hfil
+
+\textbf{Integration for $\zeta\geq 0$:}
+
+Choose a radius $R>1$, and consider a semicircle $C_R$ in lower half plane parametrized by $z=Re^{-i\theta}$ with $\theta\in [0,\pi]$, and another straight line with $-R\leq x\leq R$ with the following orientation:
+
+\textbf{Insert Graph}
+
+Since it encloses only $z=-i$, if we integrate $f(z)$ along the contour of the semicircle, we'll get:
+$$\int_{R}^{-R}f(x)dx + \int_{C_R}f(z)dz = 2\pi i \cdot Res_{z=-i}f(z) = 2\pi i\cdot (\frac{1}{4}(1+2\pi\zeta)ie^{-2\pi\zeta}) = -\frac{\pi}{2}(1+2\pi\zeta)e^{-2\pi\zeta}$$
+Now, consider the second integral above with the parametrization:
+$$\int_{C_R}f(z)dz = \int_{\pi}^{0}\frac{e^{-2\pi i\zeta Re^{-i\theta}}}{(1+(Re^{-i\theta})^2)^2}\cdot (-iR)e^{-i\theta}d\theta$$
+Since $Re^{-i\theta}=R\cos(\theta)-i\cdot R\sin(\theta)$, then the exponential part could be rewrite as:
+$$e^{-2\pi i\zeta Re^{-i\theta}} = e^{-2\pi i\zeta (R\cos(\theta)-i\cdot R\sin(\theta))} = e^{-2\pi R\zeta\sin(\theta)}\cdot e^{-i\cdot 2\pi R\zeta\cos(\theta)}$$
+Hence, if we take the modulus, the following inequality is true:
+$$\left|\int_{C_R}f(z)dz\right| = \left|-\int_{0}^{\pi}\frac{e^{-2\pi i\zeta Re^{-i\theta}}}{(1+(Re^{-i\theta})^2)^2}\cdot (-iR)e^{-i\theta}d\theta\right|$$
+$$\leq \int_{0}^{\pi}\frac{|e^{-2\pi i\zeta Re^{-i\theta}}|}{|1+(Re^{-i\theta})^2|^2}\cdot|-iRe^{-i\theta}|d\theta \leq \int_{0}^{\pi}\frac{e^{-2\pi R\zeta \sin(\theta)}}{(R^2-1)^2}R d\theta$$
+Since $2\pi R\zeta\sin(\theta)\geq 0$ for $\theta\in [0,\pi]$ (since $\zeta\geq 0$ in this section), $e^{-2\pi R\zeta\sin(\theta)}\leq 1$. Then the above integral can then be bounded by:
+$$\left|\int_{C_R}f(z)dz\right|\leq \int_{0}^{\pi}\frac{R}{(R^2-1)^2}d\theta = \frac{\pi R}{(R^2-1)^2}$$
+So, as $R$ grows indefinitely, we get:
+$$0\leq \lim_{R\rightarrow\infty}\left|\int_{C_R}f(z)dz\right|\leq \lim_{R\rightarrow\infty}\frac{\pi R}{(R^2-1)^2}=0$$
+Hence, $\lim_{R\rightarrow\infty}\int_{C_R}f(z)dz=0$.
+
+So, we can claim that $\lim_{R\rightarrow\infty}\int_{R}^{-R}f(x)dx + \int_{C_R}f(z)dz = \int_{\infty}^{-\infty}f(x)dx = -\frac{\pi}{2}(1+2\pi\zeta)e^{-2\pi\zeta}$, so $\int_{-\infty}^{\infty}f(x)dx = \frac{\pi}{2}(1+2\pi\zeta)e^{-2\pi\zeta}$.
+
+Since $\zeta\geq 0$, then it can also be characterized as:
+$$\int_{-\infty}^{\infty}f(x)dx = \int_{-\infty}^{\infty}\frac{e^{-2\pi ix\zeta}}{(1+x^2)^2}dx = \frac{\pi}{2}(1+2\pi|\zeta|)e^{-2\pi|\zeta|}$$
+
+\hfil
+
+\textbf{Integration for $\zeta<0$:}
+
+Choose a radius $R>1$, and the semicircle $C_R$ in the upper half plane parametrized by $z=Re^{i\theta}$ with $\theta\in [0,\pi]$, and again consider a straight line with $-R\leq x\leq R$ with the following orientation:
+
+\textbf{Insert Graph}
+
+Since it encloses only $z=i$, if integrate $f(z)$ along the contour of the semicircle, we'll get:
+$$\int_{-R}^{R}f(x)dx+\int_{C_R}f(z)dz = 2\pi i\cdot Res_{z=i}f(z)=2\pi i\cdot (-\frac{1}{4}(1-2\pi \zeta)ie^{2\pi \zeta}) = \frac{\pi}{2}(1-2\pi\zeta)e^{2\pi\zeta}$$
+Then, using similar technique from previous part, we can prove that $\lim_{R\rightarrow\infty}\int_{C_R}f(z)dz = 0$.
+
+Hence, $\lim_{R\rightarrow\infty}\int_{-R}^{R}f(x)dx = \int_{-\infty}^{\infty}f(x)dx = -2\pi(1-2\pi\zeta)e^{2\pi\zeta}$.
+
+Since $\zeta<0$, then it is then characterized as:
+$$\int_{-\infty}^{\infty}f(x)dx =\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\zeta}}{(1+x^2)^2}dx = \frac{\pi}{2}(1+2\pi|\zeta|)e^{-2\pi|\zeta|}$$
+
+So, regardless of the sign of $\zeta$, the following integral is always true:
+$$\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\zeta}}{(1+x^2)^2}dx = \frac{\pi}{2}(1+2\pi|\zeta|)e^{-2\pi|\zeta|}$$
+
+\break
+
+\section*{6}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 104 Problem 10:
+
+        Show that if $a>0$, then
+        $$\int_{0}^{\infty}\frac{\log x}{x^2+a^2}dx = \frac{\pi}{2a}\log a$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Choose $0<\epsilon<a$, and $R>a$. Construct the semicircle $C_\epsilon$ and $C_R$ for upper half plane, with $C_r$ being characterized by $z=re^{i\theta}$ with $\theta\in[0,\pi]$.
+Along with two straight lines $\gamma$ on real axis parametrized by $\epsilon\leq |x|\leq R$, we can create a contour with the following orientation:
+
+\textbf{Insert Graph}
+
+Before starting, we need to redefine the logarithmic function, so that the region we're integrating over has a single-valued branch.
+Define the domain to be $\mathbb{C}\setminus\{ix\ |\ x\leq 0\}$, and for all $z$ in the domain, $\log(z)=\ln|z|+i\arg(z)$, where $\arg(z)\in (-\frac{\pi}{2},\frac{3\pi}{2})$ (so we can cover the whole real axis except for $0$).
+
+Then, for all $x<0$, $\log(x)=\ln|x|+i\arg(x)=\ln|x|+i\pi$.
+
+\hfil
+
+Now, if we consider the integral of $f(z)=\frac{\log(z)}{z^2+a^2}=\frac{\log(z)}{(z-ia)(z+ia)}$, the contour is enclosing the point $ia$. 
+Notice that since $\frac{\log(z)}{(z+ia)}$ is analytic at $ia$, then choose a sufficiently small circle $C$ centered at $ia$, the residue at $ia$ is given as:
+$$Res_{z=ia}f(z) = \frac{1}{2\pi i}\int_{C}\frac{\log(z)}{(z+ia)}\cdot\frac{1}{(z-ia)}dz = n(C,ia)\cdot \frac{\log(ia)}{(ia+ia)} = \frac{\ln(a)+i\frac{\pi}{2}}{2ia}$$
+
+So, integrating over the contour with the chosen orientation, we get:
+$$\int_{\gamma - C_\epsilon + C_R}f(z)dz = \left(\int_{-R}^{-\epsilon}f(x)dx+\int_{\epsilon}^{R}f(x)dx\right) - \int_{C_\epsilon}f(z)dz + \int_{C_R}f(z)dz$$
+$$ = 2\pi i\cdot Res_{z=ia}f(z) = 2\pi i\cdot \frac{\ln(a)+i\frac{\pi}{2}}{2ia} = \frac{\pi}{a}\ln(a)+i\frac{\pi^2}{2a}$$
+
+\hfil
+
+\textbf{Integral over $C_R$:}
+
+Given the parametrization $z=Re^{i\theta}$ with $\theta\in [0,\pi]$ for $C_R$, then the integral is given by:
+$$\int_{C_R}f(z)dz = \int_{0}^{\pi}\frac{\log(Re^{i\theta})}{(Re^{i\theta})+a^2}\cdot iRe^{i\theta}d\theta = \int_{0}^{\pi}\frac{\ln(R) + i\theta}{(Re^{i\theta})^2+a^2}\cdot iRe^{i\theta}d\theta$$
+Since $0\leq \theta \leq \pi$ for variable $\theta$, then the modulus of the integral can be bounded by:
+$$\left|\int_{C_R}f(z)dz\right|\leq \int_{0}^{\pi}\frac{|\ln(R) + i\theta|}{|(Re^{i\theta})^2+a^2|}|iRe^{i\theta}|d\theta \leq \int_{0}^{\pi}\frac{\sqrt{(\ln(R))^2+\theta^2}}{|Re^{i\theta}|^2-|a|^2}Rd\theta \leq \int_{0}^{\pi}\frac{\sqrt{(\ln(R))^2+\pi^2}}{R^2-a^2}Rd\theta$$
+$$\leq \int_{0}^{\pi}\frac{|\ln(R)|+|\pi|}{R^2-a^2}Rd\theta = \frac{\pi(|\ln(R)|+\pi)}{R^2-a^2}R$$
+WLOG, can assume the initial choice of $R\geq 1$, hence $\ln(R)\geq 0$, so $|\ln(R)|=\ln(R)$.
+
+Then, as $R\rightarrow\infty$, we get:
+$$0\leq \lim_{R\rightarrow\infty}\left|\int_{C_R}f(z)dz\right| \leq \lim_{R\rightarrow\infty}\frac{\pi(\ln(R)+\pi)R}{R^2-a^2} = \lim_{R\rightarrow\infty}\frac{\pi(\ln(R)+1+\pi)}{2R} = \lim_{R\rightarrow\infty}\frac{\pi/R}{2} = 0$$
+(Note: the above limit is given by L'hopital's Rule).
+
+Hence, $\lim_{R\rightarrow\infty}\int_{C_R}f(z)dz = 0$.
+
+\hfil
+
+\textbf{Integral over $C_\epsilon$:}
+
+Given the parametrization $z=\epsilon e^{i\theta}$ with $\theta\in [0,\pi]$ for $C_\epsilon$, then the integral is given by:
+$$\int_{C_\epsilon}f(z)dz = \int_{0}^{\pi}\frac{\log(\epsilon e^{i\theta})}{(\epsilon e^{i\theta})^2+a^2}i\epsilon e^{i\theta}d\theta=\int_{0}^{\pi}\frac{\ln(\epsilon)+i\theta}{(\epsilon e^{i\theta})^2+a^2}i\epsilon e^{i\theta}d\theta$$
+Based on similar argument, the modulus of the integral can be bounded by:
+$$\left|\int_{C_\epsilon}f(z)dz\right|\leq \int_{0}^{\pi}\frac{|\ln(\epsilon)+i\theta|}{|(\epsilon e^{i\theta})^2+a^2|}|i\epsilon e^{i\theta}|d\theta \leq \int_{0}^{\pi}\frac{\sqrt{(\ln(\epsilon))^2+\theta^2}}{||\epsilon e^{i\theta}|^2-a^2|}\epsilon d\theta \leq \int_{0}^{\pi}\frac{|\ln(\epsilon)|+|\theta|}{a^2-\epsilon^2}\epsilon d\theta$$
+$$\leq \int_{0}^{\pi}\frac{|\ln(\epsilon)|+|\pi|}{a^2-\epsilon^2}\epsilon d\theta\leq \frac{\pi(|ln(\epsilon)|+\pi)}{a^2-\epsilon^2}\epsilon = \frac{\pi|\ln(\epsilon)|\epsilon +\pi^2\epsilon}{a^2-\epsilon^2}$$
+WLOG, can assume $\epsilon<1$, hence $\ln(\epsilon)<0$, or $|\ln(\epsilon)|=-\ln(\epsilon)$ for simplicity.
+
+Then, as $\epsilon\rightarrow 0$, the following limits are true:
+$$\lim_{\epsilon\rightarrow 0^+}\frac{1}{a^2-\epsilon^2} = \frac{1}{a^2},\quad \lim_{\epsilon\rightarrow 0^+}\pi^2\epsilon = 0,\quad \lim_{\epsilon\rightarrow 0^+}-\pi\ln(\epsilon)\epsilon = \lim_{\epsilon\rightarrow 0^+}-\pi\frac{\ln(\epsilon)}{1/\epsilon} = \lim_{\epsilon\rightarrow 0^+}-\pi\frac{1/\epsilon}{-1/\epsilon^2} = \lim_{\epsilon\rightarrow 0^+}\pi \epsilon = 0$$
+Hence:
+$$\lim_{\epsilon\rightarrow 0^+}\frac{\pi|\ln(\epsilon)|\epsilon +\pi^2\epsilon}{a^2-\epsilon^2} = \lim_{\epsilon\rightarrow 0^+}\frac{-\pi\ln(\epsilon)\epsilon +\pi^2\epsilon}{a^2-\epsilon^2} = \frac{0+0}{a^2}=0$$
+So, $\lim_{\epsilon\rightarrow 0^+}\int_{C_\epsilon}f(z)dz = 0$.
+
+\hfil
+
+\textbf{Original Integral:}
+
+To retrieve the original integral $\int_{0}^{\infty}\frac{\log(x)}{x^2+a^2}dx$, we need $R\rightarrow\infty$ and $\epsilon\rightarrow 0^+$. So, the following is true:
+$$\lim_{R\rightarrow\infty}\lim_{\epsilon\rightarrow 0^+}\left(\int_{-R}^{-\epsilon}f(x)dx+\int_{\epsilon}^{R}f(x)dx\right) - \int_{C_\epsilon}f(z)dz + \int_{C_R}f(z)dz$$
+$$ = \int_{-\infty}^{0^-}f(x)dx + \int_{0^+}^{\infty}f(x)dx - \lim_{\epsilon\rightarrow 0^+}\int_{C_\epsilon}f(z)dz + \lim_{R\rightarrow\infty}\int_{C_R}f(z)dz$$
+$$ = \int_{-\infty}^{0^-}f(x)dx + \int_{0^+}^{\infty}f(x)dx$$
+
+Input the function $f(z)$, we get:
+$$\int_{-\infty}^{0^-}f(x)dx + \int_{0^+}^{\infty}f(x)dx = \int_{-\infty}^{0^-}\frac{\log(x)}{x^2+a^2}dx + \int_{0^+}^{\infty}\frac{\log(x)}{x^2+a^2}dx$$
+$$=\int_{-\infty}^{0^-}\frac{\ln|x|+i\pi}{x^2+a^2}dx + \int_{0^+}^{\infty}\frac{\ln|x|}{x^2+a^2}dx = \left(\int_{-\infty}^{0^-}\frac{\ln|x|}{x^2+a^2}dx + \int_{0^+}^{\infty}\frac{\ln|x|}{x^2+a^2}dx\right)+i\int_{-\infty}^{0^-}\frac{\pi}{x^2+a^2}dx$$
+Also, recall that the above quantity equals to $\frac{\pi}{a}\ln(a)+i\frac{\pi^2}{2a}$ by Residue Formula. Then:
+$$\left(\int_{-\infty}^{0^-}\frac{\ln|x|}{x^2+a^2}dx + \int_{0^+}^{\infty}\frac{\ln|x|}{x^2+a^2}dx\right) = Re\left(\frac{\pi}{a}\ln(a)+i\frac{\pi^2}{2a}\right) = \frac{\pi}{a}\ln(a)$$
+Lastly, since the function $\frac{ln|x|}{x^2+a^2}$ is in fact an even function, then $\int_{0^+}^{\infty}\frac{\ln|x|}{x^2+a^2}dx$ is half of the above quantity, or $\frac{\pi}{2a}\ln(a)$.
+Hence:
+$$\int_{0}^{\infty}\frac{\ln(x)}{x^2+a^2}dx = \frac{\pi}{2a}\ln(a)$$
+
+\break
+
+\section*{7 (second part not done)}
+\begin{myBox}[]{}
+    \begin{question} Stein and Shakarchi Pg. 104 Problem 10:
+
+        Show that if $|a|<1$, then
+        $$\int_{0}^{2\pi}\log|1-ae^{i\theta}|d\theta =0$$
+        Then, prove that the above result remains true if we assume only that $|a|\leq 1$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\textbf{When $|a|<1$:}
+
+Consider the integral of $-\log(1-z)/iz$ along a circle $C$ of radius $|a|<1$ centered at $0$. With the parametrization $z=ae^{i\theta}$ ($\theta\in [0,2\pi]$), it can be expressed as:
+$$I=\int_{C}-\frac{\log(1-z)}{iz}dz = \int_{0}^{2\pi}-\frac{\log(1-ae^{i\theta})}{iae^{i\theta}}(-iae^{i\theta})d\theta = \int_{0}^{2\pi}\log(1-ae^{i\theta})d\theta$$
+Which, define the domain to be $\mathbb{C}\setminus\{x\geq 1\}$, and $\log(1-z)=\ln|1-z|+i\arg(1-z)$, it can also be expressed as:
+$$I= \int_{0}^{2\pi}\log(1-ae^{i\theta})d\theta=\int_{0}^{2\pi}\ln|1-ae^{i\theta}|d\theta + i\int_{0}^{2\pi}\arg(1-ae^{i\theta})d\theta$$
+
+Going back to the original integral, since the function $-\frac{\log(1-z)}{i}$ is analytic on the domain $\mathbb{C}\setminus\{x\geq 1\}$, so on the disk enclosed by $C$, the only Pole 
+is generated by $\frac{1}{z}$ (at the origin). Hence, let $\phi(z)=-\frac{\log(1-z)}{i}$, the integral is then characterized by Cauchy's Integral Formula:
+$$\int_{C}-\frac{\log(1-z)}{iz}dz = \int_{C}\frac{\phi(z)}{z}dz = 2\pi i\cdot n(C,0)\phi(0)$$
+With $n(C,0)=1$ (winding number $1$ by our construction), and $\phi(0)=-\log(1-1)/(i\cdot 1)=0$, then such integral is evaluated to be $0$.
+
+Now, since $Re(I) = \int_{0}^{2\pi}\log|1-ae^{i\theta}|d\theta$, while $I=0$, then this integral must also evaluated to be $0$.
+
+\end{document}
