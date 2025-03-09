@@ -146,24 +146,191 @@ then all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq \sin(1)^{n-1}\cdot |x_2-x
 \section*{3}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $A\subseteq \mathbb{R}^n$ be a convex and bounded set such that $\bar{0}\in A$. 
+        Let $T:\overline{A}\rightarrow\overline{A}$ be a function such that 
+        $$\forall x,y\in\overline{A},\quad \|T(x)-T(y)\|\leq \|x-y\|$$
+        \begin{itemize}
+            \item[(a)] Prove that the set of fixed point of $T$, $\{x\in\mathbb{R}^n\ :\ T(x)=x\}$ is convex and nonempty.
+            \item[(b)] Give examples showing that the hypotheses of convexity and boundedness of $A$ are essential.
+            \item[(c)] Deduce a weaker condition than convexity under which the result still holds.  
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] \textbf{Existence of Fixed Point:}
+    
+    For all $\lambda\in (0,1)$ (so $0<\lambda<1$), consider the function $\lambda T$: 
+    
+    First, it is well-defined, since for all $x\in \overline{A}$, because $T(x),\bar{0}\in \overline{A}$,
+    then by convexity, any $t\in [0,1]$ has $t\cdot T(x)+(1-t)\bar{0} = t\cdot T(x)\in \overline{A}$.
+    Hence, since $\lambda \in [0,1]$, then $\lambda T(x)\in \overline{A}$.
+
+    \hfil
+    
+    Since for all $x,y\in \overline{A}$, the following is satisfied:
+    $$\|\lambda T(x)-\lambda T(y)\| = \lambda\|T(x)-T(y)\| \leq \lambda \|x-y\|$$
+    Then, by Contraction Principle, each $\lambda$ corresponds to a unique $x_\lambda\in \overline{A}$, with $\lambda T(x_\lambda)=x_\lambda$.
+
+    \hfil
+
+    Now, consider a sequence $(\lambda_n)_{n\in\mathbb{N}}\subset (0,1)$ that converges to $1$. If we consider the sequence of fixed point $(x_{\lambda_n})_{n\in\mathbb{N}}\subset \overline{A}$,
+    (with respect to each $\lambda_n$), since $\overline{A}$ is closed and bounded, then by Bolzano Weierstrass Theorem, 
+    there exists a convergent subsequence $(x_{\lambda_{n_k}})_{k\in\mathbb{N}}$ that converges to some $x_1$, and $x_1\in\overline{A}$ since $\overline{A}$ is closed, it contains all its limit points.
+
+    \hfil
+
+    Now, we can prove that $x_1$ is a fixed point of $T$: Because $T$ is continuous (for all $\epsilon>0$, let $\delta=\epsilon$, then all $x,y\in \overline{A}$ with $\|x-y\|<\delta=\epsilon$ has $\|T(x)-T(y)\|\leq \|x-y\|<\epsilon$),
+    then since $\lim_{k\rightarrow\infty}x_{\lambda_{n_k}}=x_1$, then $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}})=T(x_1)$.
+
+    Also, recall that each $x_{\lambda_{n_k}}$ is a fixed point for the function $\lambda_{n_k}T$, so $x_{\lambda_{n_k}}=\lambda_{n_k}T(x_{\lambda_{n_k}})$, or $T(x_{\lambda_{n_k}})=\frac{1}{\lambda_{n_k}}x_{\lambda_{n_k}}$.
+    (Note: $\frac{1}{\lambda_{n_k}}$ is well-defined, since it is contained in $(0,1)$, so it's never $0$).
+
+    Then, because $(\lambda_n)_{n\in\mathbb{N}}$ converges to $1$, so does its subsequence $(\lambda_{n_k})_{k\in\mathbb{N}}$. Then, since the sequence is never $0$, while the limit is also nonzero, then:
+    $$\lim_{k\rightarrow\infty}\frac{1}{\lambda_{n_k}}=\frac{1}{\lim_{k\rightarrow\infty}\lambda_{n_k}} = 1$$
+    Because $\overline{A}$ is bounded, there exists $M>0$ (choose $M>2$, and sufficiently large), with all $x\in\overline{A}$, $\|x\|\leq M$.
+    
+    So, by the above two limits, for all $\epsilon>0$ (for simplicity, modify $M$ from above such that $1>\frac{\epsilon}{2M}>0$), there exists $N_1,N_2$, such that:
+    $$k\geq N_1 \implies \|x_{\lambda_{n_k}}-x_1\|<\frac{\epsilon}{2M},\quad k\geq N_2 \implies \left|\frac{1}{\lambda_{n_k}}-1\right|<\frac{\epsilon}{2M}$$
+    Which, the second part above also implies that $0<\frac{1}{\lambda_{n_k}}<1+\frac{\epsilon}{2M}$.
+    So, for $N=\max\{N_1,N_2\}$, for all $k\geq N$ (so $k\geq N_1,N_2$), we have:
+    $$\left\|T(x_{\lambda_{n_k}})-x_1\right\| = \left\|\frac{1}{\lambda_{n_k}}x_{\lambda_{n_k}}-x_1\right\| = \left\|\left(\frac{1}{\lambda_{n_k}}x_{\lambda_{n_k}}-\frac{1}{\lambda_{n_k}}x_1\right)+\left(\frac{1}{\lambda_{n_k}}x_1-x_1\right)\right\|$$
+    $$\leq \left|\frac{1}{\lambda_{n_k}}\right|\cdot\left\|x_{\lambda_{n_k}}-x_1\right\|+\left|\frac{1}{\lambda_{n_k}}-1\right|\cdot \|x_1\| < \left(1+\frac{\epsilon}{2M}\right)\frac{\epsilon}{2M} + M\cdot \frac{\epsilon}{2M}$$
+    $$\leq 2\cdot \frac{\epsilon}{2M}+\frac{\epsilon}{2} = \frac{\epsilon}{M}+\frac{\epsilon}{2} < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+    (Note: For the second line, recall that $\frac{\epsilon}{2M}<1$ by our choice; and for the last line, recall that $M>2$).
+    Hence, we can conclude that $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}})=x_1$ (since all $\epsilon>0$, there exists $N$, with $\|T(x_{\lambda_{n_k}})-x_1\| <\epsilon$).
+
+    So, by the uniqueness of limit in metric space, $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}}) = T(x_1)=x_1$, showing that $x_1$ is a fixed point of $T$.
+    Hence, the set of fixed point of $T$ is nonempty.
+
+    \hfil
+
+    \textbf{Convexity of the Set of Fixed Point:}
+
+    Given that two points $x,y\in\overline{A}$ are fixed points of $T$ (i.e. $T(x)=x$ and $T(y)=y$), then for all $t\in [0,1]$, the point $z=tx+(1-t)y$ (on the line segmant $\overline{xy}$)
+
+    
+    \hfil
+
+    \item[(b)] \textbf{Counterexample without convexity:}
+    
+    Consider the unit circle $S^1 \subset \mathbb{R}^2$, which is not convex (since $(1,0), (-1,0)\in S^1$, yet $\frac{1}{2}(1,0)+(1-\frac{1}{2})(-1,0)=(0,0)\notin S^1$).
+
+    Now, consider $T:S^1\rightarrow S^1$ by $T(x,y)=-(x,y)$. For all $a,b\in S^1$, the given condition is true:
+    $$\|T(a)-T(b)\| = \|(-a)-(-b)\| \leq \|a-b\|$$
+    Yet, it has no fixed point, since the only point $v\in \mathbb{R}^2$ with $-v = v$ is $v=\bar{0}$, yet $\bar{0}\notin S^1$.
+    So, this function has no fixed point.
+
+    \hfil
+
+    \textbf{Couterexample without Boundedness:}
+
+    Consider any $n\in\mathbb{N}$, and any nonzero element $a\in\mathbb{R}^n$. Define $T:\mathbb{R}^n\rightarrow\mathbb{R}^n$ by $T(x)=x+a$.
+    For all $x,y\in \mathbb{R}^n$, the condition is satisfied:
+    $$\|T(x)-T(y)\| = \|(x+a)-(y+a)\| = \|x-y\|$$
+    Yet, since $a\neq \bar{0}$, all $x\in\mathbb{R}^n$ couldn't satisfy $T(x)=x$ (or else $a=\bar{0}$ is a contradiction). Hence, this function also has no fixed point.
+
+    \hfil
+
+    \item[(c)] Instead of convexity, consider the Star-Shaped domain: Given a nonempty set $A\subset \mathbb{R}^n$, it is Star-Shaped,
+    if there exists a point $a_0\in A$, such that for all $b\in A$, the line segmant $\overline{ab}\subset A$.
+\end{itemize}
 
 \break
 
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $X=C([0,1]:\mathbb{R})$ be the space of continuous real-valued functions defined in the interval $[0,1]$.
+        Prove that for any $\lambda\in (0,1)$ the functional equation
+        $$f(t)=\int_{0}^{1}e^{-st}\cos(\lambda f(s))ds$$
+        has a unique solution in $X$. Extend this result to the case $\lambda=1$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
 
-\break
+\textbf{Unique Solution for $\lambda\in (0,1)$:}
+
+First, recall that $X=C([0,1]:\mathbb{R})$ is a Banach Space, a complete normed vector space, so the Contraction Principle works in here.
+Define a transformation $T_\lambda:X\rightarrow X$ by $(T_\lambda(f))(t)=\int_{0}^{1}e^{-st}\cos(\lambda f(s))ds$ for all $\lambda\in (0,1)$ and $f\in X$.
+
+Now, notice that by Mean Value Theorem, for all distinct $x,y\in\mathbb{R}$ (assume $x<y$), since the derivative of $\cos(t)$ is given by $-\sin(t)$,
+then there exists $c\in (x,y)$, such that $(\cos(x)-\cos(y))=-\sin(c)(x-y)$. Hence, $|\cos(x)-\cos(y)|\leq |-\sin(c)|\cdot|x-y| \leq |x-y|$ (so this inequality can be generalized to all $x,y\in\mathbb{R}$).
+
+Then, for any $f,g\in X$, any $t\in [0,1]$ satisfies the following:
+$$|(T_\lambda(f))(t)-(T_\lambda(g))(t)| = \left|\int_{0}^{1}e^{-st}\cos(\lambda f(s))ds-\int_{0}^{1}e^{-st}\cos(\lambda g(s))ds\right|$$
+$$ = \left|\int_{0}^{1}e^{-st}(\cos(\lambda f(s))-\cos(\lambda g(s))ds\right| \leq \int_{0}^{1}|e^{-st}|\cdot |\cos(\lambda f(s))-\cos(\lambda g(s))|ds$$
+$$\leq \int_{0}^{1}|\lambda f(s)-\lambda g(s)|ds = \lambda \int_{0}^{1}|f(s)-g(s)|ds$$
+Since the variable $s\in [0,1]$ (domain of all functions in the function space $X$), then $|f(s)-g(s)| \leq \|f-g\|_\infty$, hence the above inequality can be rewrite as:
+$$|(T_\lambda(f))(t)-(T_\lambda(g))(t)| \leq \lambda\int_{0}^{1}|f(s)-g(s)|ds \leq \lambda\int_{0}^{1}\|f-g\|_\infty ds = \lambda\|f-g\|_\infty$$
+And, since the above inequality is true for all $t\in [0,1]$, then in fact $\|T(f)-T(g)\| \leq \lambda \|f-g\|_\infty$.
+
+Now, because all $f,g\in X$ satisfies $\|T_\lambda(f)-T_\lambda(g)\|_\infty \leq \lambda\|f-g\|_\infty$ while $\lambda<1$, then by contraction principle, there exists a unique $f_\lambda \in X$,
+such that $T_\lambda(f_\lambda)=f_\lambda$. Or, $f_\lambda\in X$ is the unique equation satisfying:
+$$f_\lambda(t)=\int_{0}^{1}e^{-st}\cos(\lambda f_\lambda(s))ds$$
+
+\hfil
+
+\textbf{Extension to $\lambda=1$:}
+
+Before starting, since for all $\lambda\in (0,1)$ and all $t\in [0,1]$, the following inequality is satisfied:
+$$|f_\lambda(t)| = \left|\int_{0}^{1}e^{-st}\cos(\lambda f_\lambda(s))ds\right|\leq\int_{0}^{1}|e^{-st}|\cdot |\cos(\lambda f_\lambda(s))|ds \leq \int_{0}^{1}1 ds = 1$$
+Then, we can conclude that $\|f_\lambda\|_\infty \leq 1$.
+
+\hfil
+
+Now, consider a sequence $(\lambda_n)_{n\in\mathbb{N}}\subset (0,1)$ that converges to $1$, and consider the corresponding sequence of functions $\{f_{\lambda_n}\}_{n\in\mathbb{N}}$,
+our goal is to apply Arzela-Ascoli Theorem.
+
+First, we know the domain $[0,1]$ for all these functions are bounded, and the above statement proved that the sequence of function is uniformly bounded, so the remaining condition is to prove that the sequence of function is equicontinuous.
+
+Recall that the function $e^{x}$ is a continuous function at $x=0$, so for all $\epsilon>0$, there exists $\delta>0$, such that $|x|<\delta$ implies $|1-e^x|<\epsilon$.
+Then, using the same $\delta$, for all $n\in\mathbb{N}$, any $t_1,t_2\in [0,1]$ satisfying $|t_1-t_2|<\delta$, we have:
+$$|f_{\lambda_n}(t_1)-f_{\lambda_n}(t_2)| = \left|\int_{0}^{1}e^{-st_1}\cos(\lambda_n f_{\lambda_n}(s))ds-\int_{0}^{1}e^{-st_2}\cos(\lambda_n f_{\lambda_n}(s))ds\right|$$
+$$ = \left|\int_{0}^{1}(e^{-st_1}-e^{-st_2})\cos(\lambda_n f_{\lambda_n}(s))ds\right| \leq \int_{0}^{1}|e^{-st_1}-e^{-st_2}|\cdot|\cos(\lambda_2 f_{\lambda_n}(s))|ds$$
+$$\leq \int_{0}^{1}e^{-st_1}|1-e^{st_1-st_2}|ds \leq \int_{0}^{1}|1-e^{s(t_1-t_2)}|ds$$
+For all $s\in [0,1]$, since $0\leq s|t_1-t_2|\leq |t_1-t_2|<\delta$, then by continuity of $e^{x}$, we know $|1-e^{s(t_1-t_2)}| < \epsilon$.
+Hence, the above inequality becomes:
+$$|f_{\lambda_n}(t_1)-f_{\lambda_n}(t_2)| \leq \int_{0}^{1}|1-e^{s(t_1-t_2)}|ds < \int_{0}^{1}\epsilon ds = \epsilon$$
+Since regardless of $n\in\mathbb{N}$, every $\epsilon>0$ has a corresponding $\delta>0$, with $|t_1-t_2|<\delta$ implies $|f_{\lambda_n}(t_1)-f_{\lambda_n}(t_2)|<\epsilon$,
+then this concludes that the sequence of functions $\{f_{\lambda_n}\}_{n\in\mathbb{N}}$ is in fact equicontinuous.
+
+Since all three conditions are satisfied, by Arzela-Ascoli Theorem, there exists a convergent subsequence $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}\subset \{f_{\lambda_n}\}_{n\in\mathbb{N}}$, define $f\in X$ to be the subsequential limit of $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}$
+
+\hfil
+
+Finally, we can prove that $f(t)=\int_{0}^{1}e^{-st}\cos(f(s))ds$ (a solution for $\lambda=1$):
+
+Since $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}$ converges to $f$ uniformly, then for all $\epsilon>0$ (which $\frac{\epsilon}{2}>0$), there exists $K$, with $k\geq K$ implies $\|f-f_{\lambda_{n_k}}\|_\infty <\frac{\epsilon}{2}$.
+
+Also, since $\{\lambda_n\}_{n\in\mathbb{N}}$ converges to $1$, then the subseuqnce $\{\lambda_{n_k}\}_{k\in\mathbb{N}}$ also converges to $1$. Hence, for the given $\epsilon>0$ above, there exists $K'$,
+with $k\geq K'$ implies $|1-\lambda_{n_k}|<\frac{\epsilon}{2}$.
+
+Now, let $g\in X$ be defined as $g(t)=\int_{0}^{1}e^{-st}\cos(f(s))ds$. 
+
+Choose $N=\max\{K,K'\}$, for all $k\geq N$ (which $k\geq K',K$), then for all $t\in [0,1]$, it satisfies:
+$$|g(t)-f_{\lambda_{n_k}}(t)| = \left|\int_{0}^{1}e^{-st}\cos(f(s))ds - \int_{0}^{1}e^{-st}\cos(\lambda_{n_k}f_{\lambda_{n_k}}(s))ds\right|$$
+$$= \left|\int_{0}^{1}e^{-st}(\cos(f(s))-\cos(\lambda_{n_k}f_{\lambda_{n_k}}(s)))ds\right|\leq \int_{0}^{1}|e^{-st}|\cdot |\cos(f(s))-\cos(\lambda_{n_k}f_{\lambda_{n_k}}(s))|ds$$
+$$\leq \int_{0}^{1}|f(s)-\lambda_{n_k}f_{\lambda_{n_k}}f(s)|ds \leq \int_{0}^{1}\|f-\lambda_{n_k}f_{\lambda_{n_k}}\|_\infty ds = \|f-\lambda_{n_k}f_{\lambda_{n_k}}\|_\infty$$
+Which, the above term can be rewrite as:
+$$\|f-\lambda_{n_k}f_{\lambda_{n_k}}\|_\infty = \|(f-f_{\lambda_{n_k}})+(f_{\lambda_{n_k}}-\lambda_{n_k}f_{\lambda_{n_k}})\|_\infty$$
+$$\leq \|f-f_{\lambda_{n_k}}\|_\infty +\|(1-\lambda_{n_k})f_{\lambda_{n_k}}\|_\infty < \frac{\epsilon}{2}+|1-\lambda_{n_k}|\cdot \|f_{\lambda_{n_k}}\|_\infty$$
+$$ < \frac{\epsilon}{2} + \frac{\epsilon}{2}\cdot \|f_{\lambda_{n_k}}\|_\infty \leq \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+(Note: Recall that $\|f_{\lambda_{n_k}}\|_\infty \leq 1$).
+
+Hence, the above combined to be the below inequality:
+$$|g(t)-f_{\lambda_{n_k}}(t)| \leq \|f-\lambda_{n_k}f_{\lambda_{n_k}}\|_\infty < \epsilon$$
+Which further implies that $\|g-f_{\lambda_{n_k}}\|_\infty \leq \epsilon$. Since all $\epsilon>0$ has an $N$, such that $k\geq N$ implies $\|g-f_{\lambda_{n_k}}\|_\infty \leq \epsilon$,
+then $g$ is the limit of the subsequence $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}$. Which, because under metric space, the limit is unique, therefore $g=f$.
+
+Hence, we can conclude that $f(t)=g(t)=\int_{0}^{1}e^{-st}\cos(f(s))ds$. For, $\lambda=1$, $f$ is a solution for the given functional equation.
+
+\hfil
+
+\hfil
 
 \section*{5}
 \begin{myBox}[]{}
@@ -176,7 +343,33 @@ then all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq \sin(1)^{n-1}\cdot |x_2-x
 
 \textbf{Pf:}
 
-\break
+\textbf{Existence:}
+
+First, we'll verify that the map $D:K\rightarrow\mathbb{R}$ by $D(x)=\|x-T(x)\|$ is continuous:
+
+For all $x,y\in K$, given any $\epsilon>0$, if chosen $\delta=\frac{\epsilon}{2}>0$, then for $\|x-y\|<\delta=\frac{\epsilon}{2}$, we have $\|T(x)-T(y)\|<\|x-y\|<\frac{\epsilon}{2}$.
+Hence, the above function $D$ satisfies:
+$$\|D(x)-D(y)\|=\|(x-T(x))-(y-T(y))\| = \|(x-y)+(T(y)-T(x))\|$$
+$$\|D(x)-D(y)\| \leq \|x-y\| + \|T(x)-T(y)\| < 2\|x-y\| < 2\cdot\frac{\epsilon}{2}=\epsilon$$
+Hence, we can conclude that $D$ is continuous on $K$, a compact set. Which, the image $D(K)\subset \mathbb{R}$ is compact, therefore a minmum $\lambda=\min D(K)$ exists.
+
+Notice that $\lambda \geq 0$, since $D(x)\geq 0$ for all $x\in K$; also, we know there exists $x_0\in K$, with $D(x_0)=\lambda$ by the definition of minimum.
+
+Now, to prove that $\lambda=0$, suppose $\lambda \neq 0$ (which $\lambda>0$) for the sake of contradiction. Then, notice that $x_0$ and $T(x_0)$ satisfies:
+$$D(T(x_0))=\|T(x_0)-T(T(x_0))\|<\|x_0-T(x_0)\| = D(x_0)=\lambda$$
+Which, $D(T(x_0))<D(x_0)$, while $D(x_0)=\lambda$ is assumed to be the minimum of the set $D(K)$ (which $D(T(x_0)))\in D(K)$). So, this is a contradiction,
+hence the initial assumption must be false. Therefore, $\lambda=0$. Hence, there exists $x_0\in K$, with $D(x_0)=\|x_0-T(x_0)\|=0$, so $T(x_0)=x_0$.
+
+\hfil
+
+\textbf{Uniqueness:}
+
+Suppose the contrary that there exists more than one fixed point (let $x_0,y_0\in K$ be two fixed points). Then, $\|x_0-y_0\|=\|T(x_0)-T(y_0)\|<\|x_0-y_0\|$ is a contradiction.
+Therefore, the assumption is false, there must have at most one fixed point. And by the existence argument, we know there exists a unique fixed point.
+
+\hfil
+
+\hfil
 
 \section*{6}
 \begin{myBox}[]{}
