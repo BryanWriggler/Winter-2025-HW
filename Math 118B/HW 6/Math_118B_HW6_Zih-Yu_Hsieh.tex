@@ -93,12 +93,12 @@ colback=blue!10
     Now, we can prove that the sequence $(x_n)_{n\in\mathbb{N}}$ is a Cauchy sequence in $\mathbb{R}$, therefore converges:
 
     Given that $0\leq A<1$, then $\frac{1}{1-A}>0$. Now, since $A^{n-1}|x_2-x_1|$ defines a geometric sequence with ratio $0\leq A<1$,
-    then $\lim_{n\rightarrow\infty}A^{n-1}|x_2-x_1|=0$. So, for all $\epsilon>0$, since $\frac{1-A}{|x_2-x_1|}\epsilon>0$, there exists $N$,
+    then $\lim_{n\rightarrow\infty}A^{n-1}|x_2-x_1|=0$. So, for all $\epsilon>0$, since $(1-A)\epsilon>0$, there exists $N$,
     with $n\geq N$ implies $A^{n-1}|x_2-x_1|<(1-A)\epsilon$.
 
     Now, for all $m>n\geq N$, the following is true:
-    $$|x_m-x_n| = \left|\sum_{k=0}^{m-n-1}(x_{n+(k+1)}-x_{n+k})\right| \leq \sum_{k=0}^{m-n-1}|x_{n+(i+1)}-x_{n+i}|$$
-    $$|x_m-x_n|\leq \sum_{k=0}^{m-n-1}|x_{n+(i+1)}-x_{n+i}| \leq \sum_{k=0}^{m-n-1}A^{n+k-1}|x_2-x_1|$$
+    $$|x_m-x_n| = \left|\sum_{k=0}^{m-n-1}(x_{n+(k+1)}-x_{n+k})\right| \leq \sum_{k=0}^{m-n-1}|x_{n+(k+1)}-x_{n+k}|$$
+    $$|x_m-x_n|\leq \sum_{k=0}^{m-n-1}|x_{n+(k+1)}-x_{n+k}| \leq \sum_{k=0}^{m-n-1}A^{n+k-1}|x_2-x_1|$$
     $$|x_m-x_n|\leq A^{n-1}|x_2-x_1|\sum_{k=0}^{m-n-1}A^{k} \leq A^{n-1}|x_2-x_1|\sum_{k=0}^{\infty}A^k$$
     $$|x_m-x_n|\leq A^{n-1}|x_2-x_1|\cdot\frac{1}{1-A} < (1-A)\epsilon \cdot \frac{1}{1-A} = \epsilon$$
     Since for all $\epsilon>0$, there exists $N$, with $m>n\geq N$ implies $|x_m-x_n|<\epsilon$, hence $(x_n)_{n\in\mathbb{N}}$ is a cauchy sequence,
@@ -108,7 +108,7 @@ colback=blue!10
     $$\lim_{n\rightarrow\infty}f(x_n)=f\left(\lim_{n\rightarrow\infty}x_n\right)=f(x),\quad \lim_{n\rightarrow\infty}f(x_n)=\lim_{n\rightarrow\infty}x_{n+1}=x$$
     Hence, $f(x)=x$, which any $x_1\in\mathbb{R}$ with $x_{n+1}=f(x_n)$, has the sequential limit being a fixed point $x\in\mathbb{R}$.
 
-    Also, based on the previous part, since all $t\in\mathbb{R}$ has $|f'(t)|\leq A<1$, then by part (a), since $f'(t)\neq 1$ for all $t$, $f$ has at most one fixed point.
+    Also, based on the previous part, since all $t\in\mathbb{R}$ has $|f'(t)|\leq A<1$, then by \textbf{Part (a)}, since $f'(t)\neq 1$ for all $t$, $f$ has at most one fixed point.
     Hence, this fixed point is unique, all such sequence $(x_n)_{n\in\mathbb{N}}$ converges to a unique fixed point $x\in\mathbb{R}$.
 \end{itemize}
 
@@ -148,7 +148,7 @@ $$= (\sin(1))^{n-1}|x_2-x_1|\cdot\frac{1}{1-\sin(1)} < (1-\sin(1))\epsilon\cdot\
 Since all $\epsilon>0$ has a corresponding $N$, with $m>n\geq N$ implies $|x_m-x_n|<\epsilon$, then the sequence defined by $x_{n+1}=\cos(x_n)$ is in fact a Cauchy Sequence,
 hence in the complete space $\mathbb{R}$, it is a convergent sequence.
 
-So, regardless of the choice $x_0$, using the definition $x_{n+1}=f(x_n)$ for all $n\in\mathbb{N}$, the sequence $(x_n)_{n\in\mathbb{N}}$ converges.
+So, regardless of the choice $x_0$, using the definition $x_{n+1}=\cos(x_n)$ for all $n\in\mathbb{N}$, the sequence $(x_n)_{n\in\mathbb{N}}$ converges.
 
 
 \hfil
@@ -178,7 +178,7 @@ This root is nearly a fixed point for $\cos(x)$.
 
 \break
 
-\section*{3 (Not done)}
+\section*{3}
 \begin{myBox}[]{}
     \begin{question}
         Let $A\subseteq \mathbb{R}^n$ be a convex and bounded set such that $\bar{0}\in A$. 
@@ -207,7 +207,7 @@ This root is nearly a fixed point for $\cos(x)$.
     
     Since for all $x,y\in \overline{A}$, the following is satisfied:
     $$\|\lambda T(x)-\lambda T(y)\| = \lambda\|T(x)-T(y)\| \leq \lambda \|x-y\|$$
-    Then, by Contraction Principle, each $\lambda$ corresponds to a unique $x_\lambda\in \overline{A}$, with $\lambda T(x_\lambda)=x_\lambda$.
+    Then, by Contraction Principle, $\lambda T$ has a unique fixed point in $\overline{A}$, each $\lambda$ corresponds to a unique $x_\lambda\in \overline{A}$, with $\lambda T(x_\lambda)=x_\lambda$.
 
     \hfil
 
@@ -235,7 +235,9 @@ This root is nearly a fixed point for $\cos(x)$.
     $$\leq \left|\frac{1}{\lambda_{n_k}}\right|\cdot\left\|x_{\lambda_{n_k}}-x_1\right\|+\left|\frac{1}{\lambda_{n_k}}-1\right|\cdot \|x_1\| < \left(1+\frac{\epsilon}{2M}\right)\frac{\epsilon}{2M} + M\cdot \frac{\epsilon}{2M}$$
     $$\leq 2\cdot \frac{\epsilon}{2M}+\frac{\epsilon}{2} = \frac{\epsilon}{M}+\frac{\epsilon}{2} < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
     (Note: For the second line, recall that $\frac{\epsilon}{2M}<1$ by our choice; and for the last line, recall that $M>2$).
-    Hence, we can conclude that $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}})=x_1$ (since all $\epsilon>0$, there exists $N$, with $\|T(x_{\lambda_{n_k}})-x_1\| <\epsilon$).
+    Hence, we can conclude that $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}})=x_1$ (since all $\epsilon>0$, there exists $N$, with $\|T(x_{\lambda_{n_k}})-x_1\| <\epsilon$). 
+
+    Hence, $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}})=x_1$.
 
     So, by the uniqueness of limit in metric space, $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}}) = T(x_1)=x_1$, showing that $x_1$ is a fixed point of $T$.
     Hence, the set of fixed point of $T$ is nonempty.
@@ -257,7 +259,7 @@ This root is nearly a fixed point for $\cos(x)$.
     On the other hand, we can also conclude:
     $$(1-t)\|x-y\| \leq \|x-y\|-\|T(z)-y\| \leq \|T(z)-x\| \leq (1-t)\|x-y\|,\quad \|T(z)-x\| = (1-t)\|x-y\|$$
     $$t\|x-y\| = (1-(1-t))\|x-y\| \leq \|x-y\|-\|T(z)-x\| \leq \|T(z)-y\| \leq t\|x-y\|,\quad \|T(z)-y\|=t\|x-y\|$$
-    It implies that $\|T(z)-y\|=\lambda\|x-y\|=t\|x-y\|$, and $\|T(z)-x\|=(1-\lambda)\|x-y\|=(1-t)\|x-y\|$, which enforce the condition $\lambda =t$.
+    It implies that $\|T(z)-y\|=\lambda\|x-y\|=t\|x-y\|$, and $\|T(z)-x\|=(1-\lambda)\|x-y\|=(1-t)\|x-y\|$, which enforce the condition $\lambda =t$ (unless $\|x-y\|=0$, but if $x=y$, $z=x=y$ is trivial).
     So, $T(z)=\lambda x+(1-\lambda)y = tx+(1-t)y=z$.
 
     Hence, $z$ is also a fixed point, which $\overline{xy}$ is a subset of this fixed point. Therefore, we can conclude that this set of fixed point is in fact convex.
@@ -327,11 +329,11 @@ then there exists $c\in (x,y)$, such that $(\cos(x)-\cos(y))=-\sin(c)(x-y)$. Hen
 
 Then, for any $f,g\in X$, any $t\in [0,1]$ satisfies the following:
 $$|(T_\lambda(f))(t)-(T_\lambda(g))(t)| = \left|\int_{0}^{1}e^{-st}\cos(\lambda f(s))ds-\int_{0}^{1}e^{-st}\cos(\lambda g(s))ds\right|$$
-$$ = \left|\int_{0}^{1}e^{-st}(\cos(\lambda f(s))-\cos(\lambda g(s))ds\right| \leq \int_{0}^{1}|e^{-st}|\cdot |\cos(\lambda f(s))-\cos(\lambda g(s))|ds$$
+$$ = \left|\int_{0}^{1}e^{-st}(\cos(\lambda f(s))-\cos(\lambda g(s)))ds\right| \leq \int_{0}^{1}|e^{-st}|\cdot |\cos(\lambda f(s))-\cos(\lambda g(s))|ds$$
 $$\leq \int_{0}^{1}|\lambda f(s)-\lambda g(s)|ds = \lambda \int_{0}^{1}|f(s)-g(s)|ds$$
 Since the variable $s\in [0,1]$ (domain of all functions in the function space $X$), then $|f(s)-g(s)| \leq \|f-g\|_\infty$, hence the above inequality can be rewrite as:
 $$|(T_\lambda(f))(t)-(T_\lambda(g))(t)| \leq \lambda\int_{0}^{1}|f(s)-g(s)|ds \leq \lambda\int_{0}^{1}\|f-g\|_\infty ds = \lambda\|f-g\|_\infty$$
-And, since the above inequality is true for all $t\in [0,1]$, then in fact $\|T(f)-T(g)\| \leq \lambda \|f-g\|_\infty$.
+And, since the above inequality is true for all $t\in [0,1]$, then in fact $\|T_\lambda(f)-T_\lambda(g)\| \leq \lambda \|f-g\|_\infty$.
 
 Now, because all $f,g\in X$ satisfies $\|T_\lambda(f)-T_\lambda(g)\|_\infty \leq \lambda\|f-g\|_\infty$ while $\lambda<1$, then by contraction principle, there exists a unique $f_\lambda \in X$,
 such that $T_\lambda(f_\lambda)=f_\lambda$. Or, $f_\lambda\in X$ is the unique equation satisfying:
@@ -350,20 +352,20 @@ Then, we can conclude that $\|f_\lambda\|_\infty \leq 1$.
 Now, consider a sequence $(\lambda_n)_{n\in\mathbb{N}}\subset (0,1)$ that converges to $1$, and consider the corresponding sequence of functions $\{f_{\lambda_n}\}_{n\in\mathbb{N}}$,
 our goal is to apply Arzela-Ascoli Theorem.
 
-First, we know the domain $[0,1]$ for all these functions are bounded, and the above statement proved that the sequence of function is uniformly bounded, so the remaining condition is to prove that the sequence of function is equicontinuous.
+First, we know the domain $[0,1]$ for all these functions are bounded, and the above statement proved that the sequence of function is uniformly bounded by $1$, so the remaining condition is to prove that the sequence of function is equicontinuous.
 
 Recall that the function $e^{x}$ is a continuous function at $x=0$, so for all $\epsilon>0$, there exists $\delta>0$, such that $|x|<\delta$ implies $|1-e^x|<\epsilon$.
 Then, using the same $\delta$, for all $n\in\mathbb{N}$, any $t_1,t_2\in [0,1]$ satisfying $|t_1-t_2|<\delta$, we have:
 $$|f_{\lambda_n}(t_1)-f_{\lambda_n}(t_2)| = \left|\int_{0}^{1}e^{-st_1}\cos(\lambda_n f_{\lambda_n}(s))ds-\int_{0}^{1}e^{-st_2}\cos(\lambda_n f_{\lambda_n}(s))ds\right|$$
-$$ = \left|\int_{0}^{1}(e^{-st_1}-e^{-st_2})\cos(\lambda_n f_{\lambda_n}(s))ds\right| \leq \int_{0}^{1}|e^{-st_1}-e^{-st_2}|\cdot|\cos(\lambda_2 f_{\lambda_n}(s))|ds$$
-$$\leq \int_{0}^{1}e^{-st_1}|1-e^{st_1-st_2}|ds \leq \int_{0}^{1}|1-e^{s(t_1-t_2)}|ds$$
+$$ = \left|\int_{0}^{1}(e^{-st_1}-e^{-st_2})\cos(\lambda_n f_{\lambda_n}(s))ds\right| \leq \int_{0}^{1}|e^{-st_1}-e^{-st_2}|\cdot|\cos(\lambda_n f_{\lambda_n}(s))|ds$$
+$$\leq \int_{0}^{1}|e^{-st_1}|\cdot|1-e^{st_1-st_2}|ds \leq \int_{0}^{1}|1-e^{s(t_1-t_2)}|ds$$
 For all $s\in [0,1]$, since $0\leq s|t_1-t_2|\leq |t_1-t_2|<\delta$, then by continuity of $e^{x}$, we know $|1-e^{s(t_1-t_2)}| < \epsilon$.
 Hence, the above inequality becomes:
 $$|f_{\lambda_n}(t_1)-f_{\lambda_n}(t_2)| \leq \int_{0}^{1}|1-e^{s(t_1-t_2)}|ds < \int_{0}^{1}\epsilon ds = \epsilon$$
 Since regardless of $n\in\mathbb{N}$, every $\epsilon>0$ has a corresponding $\delta>0$, with $|t_1-t_2|<\delta$ implies $|f_{\lambda_n}(t_1)-f_{\lambda_n}(t_2)|<\epsilon$,
 then this concludes that the sequence of functions $\{f_{\lambda_n}\}_{n\in\mathbb{N}}$ is in fact equicontinuous.
 
-Since all three conditions are satisfied, by Arzela-Ascoli Theorem, there exists a convergent subsequence $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}\subset \{f_{\lambda_n}\}_{n\in\mathbb{N}}$, define $f\in X$ to be the subsequential limit of $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}$
+Since all three conditions are satisfied, by Arzela-Ascoli Theorem, there exists a convergent subsequence $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}\subset \{f_{\lambda_n}\}_{n\in\mathbb{N}}$, define $f\in X$ to be the subsequential limit of $\{f_{\lambda_{n_k}}\}_{k\in\mathbb{N}}$.
 
 \hfil
 
@@ -429,7 +431,7 @@ hence the initial assumption must be false. Therefore, $\lambda=0$. Hence, there
 
 \textbf{Uniqueness:}
 
-Suppose the contrary that there exists more than one fixed point (let $x_0,y_0\in K$ be two fixed points). Then, $\|x_0-y_0\|=\|T(x_0)-T(y_0)\|<\|x_0-y_0\|$ is a contradiction.
+Suppose the contrary that there exists more than one fixed point (let $x_0,y_0\in K$ be two distinct fixed points). Then, $\|x_0-y_0\|=\|T(x_0)-T(y_0)\|<\|x_0-y_0\|$ is a contradiction.
 Therefore, the assumption is false, there must have at most one fixed point. And by the existence argument, we know there exists a unique fixed point.
 
 \hfil
