@@ -118,7 +118,7 @@ colback=blue!10
 \begin{myBox}[]{}
     \begin{question}
         For $f(x) = \cos(x)$, show that $x_{n+1}=f(x_n)$ defines a convergent sequence
-        for arbitrary $x_0\in\mathbb{R}$. Calculate the root $\alpha=\cos(\alpha)$, with an error less than
+        for arbitrary $x_0\in\mathbb{R}$. Calculate the root $\alpha=\cos(\alpha)$, $\alpha>0$, with an error less than
         $10^{-2}$.
     \end{question}
 \end{myBox}
@@ -131,19 +131,54 @@ For all distinct $x,y\in[-1,1]$ (WLOG, assume $x<y$), since $\cos(x)$ is differe
 there exists $c\in (x,y)$, such that $(\cos(x)-\cos(y))=-\sin(c)(x-y)$. Also, notice on $[-1,1]$, $|\sin(x)|$ has a maximum at $1$ 
 (since $\sin(x)$ is strictly increasing on this domain, hence $-\sin(1)=\sin(-1)\leq \sin(x)\leq \sin(1) < 1$; so $|\sin(x)|\leq \sin(1)$ on $[-1,1]$). Hence:
 $$|\cos(x)-\cos(y)|=|-\sin(c)|\cdot|x-y| \leq \sin(1)\cdot|x-y|$$
-Using similar
- from \textbf{Question 1}, with the above inequality, since $x_1=\cos(x_0)\in[-1,1]$ and $\sin(1)<1$, 
-then all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq \sin(1)^{n-1}\cdot |x_2-x_1|$.
+Then, using this, we can prove inductively that all integer $n\geq 2$ has $|x_{n+1}-x_n| \leq (\sin(1))^{n-1}|x_2-x_1|$:
+
+For base case $n=2$, $|x_{2+1}-x_2| = |\cos(x_2)-\cos(x_1)| \leq \sin(1)\cdot |x_2-x_1|$.
+
+Now, for give $n\geq 2$, if $|x_{n+1}-x_n|\leq (\sin(1))^{n-1}|x_2-x_1|$, then for case $(n+1)$:
+$$|x_{(n+1)+1}-x_{(n+1)}|=|\cos(x_{n+1})-\cos(x_n)|\leq \sin(1)\cdot|x_{n+1}-x_n|\leq \sin(1)\cdot (\sin(1))^{n-1}|x_2-x_1|$$
+So, this finishes the induction, all $n\geq 2$ satisfies $|x_{n+1}-x_n|\leq (\sin(1))^{n-1}|x_2-x_1|$.
+
+Since $0<\sin(1)<1$, then $\lim_{n\rightarrow\infty}(\sin(1))^{n-1}|x_2-x_1|=0$. Hence, for all $\epsilon>0$ (which $(1-\sin(1))\epsilon>0$), there exists $N$, with $n\geq N$ implies $|x_{n+1}-x_n|\leq (\sin(1))^{n-1}|x_2-x_1|<(1-\sin(1))\epsilon$.
+
+Then, for all $m>n\geq N$, the following summation is true:
+$$|x_m-x_n| = \left|\sum_{k=0}^{m-n-1}(x_{n+k+1}-x_{n+k})\right|\leq\sum_{k=0}^{m-n-1}|x_{n+k+1}-x_{n+k}| \leq \sum_{k=0}^{m-n-1}(\sin(1))^{(n+k)-1}|x_2-x_1|$$
+$$\leq (\sin(1))^{n-1}|x_2-x_1|\sum_{k=0}^{m-n-1}(\sin(1))^k\leq (\sin(1))^{n-1}|x_2-x_1|\sum_{k=0}^{\infty}(\sin(1))^k $$
+$$= (\sin(1))^{n-1}|x_2-x_1|\cdot\frac{1}{1-\sin(1)} < (1-\sin(1))\epsilon\cdot\frac{1}{1-\sin(1)}=\epsilon$$
+Since all $\epsilon>0$ has a corresponding $N$, with $m>n\geq N$ implies $|x_m-x_n|<\epsilon$, then the sequence defined by $x_{n+1}=\cos(x_n)$ is in fact a Cauchy Sequence,
+hence in the complete space $\mathbb{R}$, it is a convergent sequence.
+
+So, regardless of the choice $x_0$, using the definition $x_{n+1}=f(x_n)$ for all $n\in\mathbb{N}$, the sequence $(x_n)_{n\in\mathbb{N}}$ converges.
 
 
 \hfil
 
-\textbf{Approximation:}
+\textbf{Approximation of $\alpha=\cos(\alpha)$:}
+
+Since $\cos(x)$ is infinitely differentiable, while its derivatives are always $\pm\cos(x)$ or $\pm\sin(x)$, then the derivatives are always bounded by $1$.
+
+If do the $4^{th}$ degree taylor polynomial of $\cos(x)$ about $0$, namely $P_4(x)=1-\frac{x^2}{2!}+\frac{x^4}{4!}$, we know for all $y\in\mathbb{R}$,
+there exists $c\in \overline{xy}$, with $\cos(y)-P_4(y)=\frac{f^{(5)}(c)}{5!}y^5$. Hence:
+$$|\cos(y)-P_4(y)| \leq \left|\frac{f^{(5)}(c)}{5!}y^5\right| \leq \frac{1}{5!}|y^5| \leq 10^{-2}|y^5|$$
+(Note: $\frac{1}{5!}=\frac{1}{120}\leq 10^{-2}$).
+
+Then, given $\alpha=\cos(\alpha)$ (which $|\alpha|\leq 1$) and $\alpha>0$, we have $|\alpha-P_4(\alpha)| = |\cos(\alpha)-P_4(\alpha)| \leq 10^{-2}|\alpha^5| \leq 10^{-2}$.
+If calculate the root of $x-P_4(x)$ on the domain $[0,1]$, we'll be able to approximate the solution.
+
+Running a Python Program using Newton's Method with 50 iterations, the root is approximately $r=0.73922$.
+
+Which, putting into $\cos(x)$, we get:
+$$\cos(0.73922)\approx 0.73899$$
+This root is nearly a fixed point for $\cos(x)$.
+
+\begin{center}
+    \includegraphics*[width=100mm]{newtons method.png}
+\end{center}
 
 
 \break
 
-\section*{3}
+\section*{3 (Not done)}
 \begin{myBox}[]{}
     \begin{question}
         Let $A\subseteq \mathbb{R}^n$ be a convex and bounded set such that $\bar{0}\in A$. 
@@ -209,7 +244,23 @@ then all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq \sin(1)^{n-1}\cdot |x_2-x
 
     \textbf{Convexity of the Set of Fixed Point:}
 
-    Given that two points $x,y\in\overline{A}$ are fixed points of $T$ (i.e. $T(x)=x$ and $T(y)=y$), then for all $t\in [0,1]$, the point $z=tx+(1-t)y$ (on the line segmant $\overline{xy}$)
+    Given that two points $x,y\in\overline{A}$ are fixed points of $T$ (i.e. $T(x)=x$ and $T(y)=y$), then for all $t\in [0,1]$, the point $z=tx+(1-t)y$ (on the line segmant $\overline{xy}$), it satisfies the following:
+    $$\|T(z)-y\| = \|T(z)-T(y)\| \leq \|z-y\|=\|(tx+(1-t)y)-y\| = t\|x-y\|$$
+    $$\|T(z)-x\|=\|T(z)-T(x)\| \leq \|z-x\|=\|(tx+(1-t)y)-x\| = \|(t-1)x+(1-t)y\| = (1-t)\|x-y\|$$
+    Now, since distance between $x,y$ satisfies:
+    $$\|x-y\| \leq \|T(z)-x\|+\|T(z)-y\| \leq (1-t)\|x-y\| + t\|x-y\| = \|x-y\|$$
+    Notice that if $T(z)$ is not colinear with $x,y$, then $\|x-y\|<\|T(z)-x\|+\|T(z)-y\|$ (since triangle inequality is equality iff the two components are nonnegative multiple of each other under vector space;
+    if $T(z)$ is not in $\overline{xy}$, then $T(z)-x$ and $T(z)-y$ cannot be scalar nonnegative multiple of each other).
+    Hence, $T(z)\in \overline{xy}$, or $T(z)=\lambda x+(1-\lambda)y$ for some $\lambda\in [0,1]$. Which:
+    $$\|T(z)-y\| = \|(\lambda x+(1-\lambda)y)-y\| = \lambda\|x-y\|,\quad \|T(z)-x\| = \|(\lambda x+(1-\lambda)y)-x\|=(1-\lambda)\|x-y\|$$
+
+    On the other hand, we can also conclude:
+    $$(1-t)\|x-y\| \leq \|x-y\|-\|T(z)-y\| \leq \|T(z)-x\| \leq (1-t)\|x-y\|,\quad \|T(z)-x\| = (1-t)\|x-y\|$$
+    $$t\|x-y\| = (1-(1-t))\|x-y\| \leq \|x-y\|-\|T(z)-x\| \leq \|T(z)-y\| \leq t\|x-y\|,\quad \|T(z)-y\|=t\|x-y\|$$
+    It implies that $\|T(z)-y\|=\lambda\|x-y\|=t\|x-y\|$, and $\|T(z)-x\|=(1-\lambda)\|x-y\|=(1-t)\|x-y\|$, which enforce the condition $\lambda =t$.
+    So, $T(z)=\lambda x+(1-\lambda)y = tx+(1-t)y=z$.
+
+    Hence, $z$ is also a fixed point, which $\overline{xy}$ is a subset of this fixed point. Therefore, we can conclude that this set of fixed point is in fact convex.
 
     
     \hfil
@@ -234,8 +285,22 @@ then all $n\in\mathbb{N}$ satisfies $|x_{n+1}-x_n|\leq \sin(1)^{n-1}\cdot |x_2-x
 
     \hfil
 
-    \item[(c)] Instead of convexity, consider the Star-Shaped domain: Given a nonempty set $A\subset \mathbb{R}^n$, it is Star-Shaped,
-    if there exists a point $a_0\in A$, such that for all $b\in A$, the line segmant $\overline{ab}\subset A$.
+    \item[(c)] Instead of convexity, consider a Star-Shaped domain centered at $\bar{0}$: Given a nonempty set $A\subset \mathbb{R}^n$, it is Star-Shaped,
+    if there exists a point $a_0\in A$, such that for all $b\in A$, the line segmant $\overline{a_0b}\subset A$. Which, call the point $a_0$ being a center of $A$.
+
+    If given a bounded Star-Shaped domain $A$ that's centered at $\bar{0}$, and $T:\overline{A}\rightarrow\overline{A}$ satisfied $\|T(x)-T(y)\|\leq \|x-y\|$ for all $x,y\in \overline{A}$.
+    Then, for all $\lambda\in (0,1)$, $\lambda T$ is a well-defined function again (since for all $x\in \overline{A}$, $\lambda T(x) = \lambda T(x)+(1-\lambda)\cdot \bar{0} \in \overline{A}$, due to the Star-Shaped assumption).
+    Since $\lambda T$ satisfied $\|\lambda T(x)-\lambda T(y)\|= \lambda \|T(x)-T(y)\|\leq \lambda\|x-y\|$, then by contraction principle, there exists unique fixed point $x_\lambda\in\overline{A}$ (or $\lambda T(x_\lambda)=x_\lambda$).
+
+    Then, using the same method in \textbf{Part (a)} (since beside the Star-Shaped condition, closed and boundedness of $\overline{A}$ follows), choose a sequence $(\lambda_n)_{n\in\mathbb{N}}\subset (0,1)$ that converges to $1$,
+    the corresponding fixed point sequence $(x_{\lambda_n})_{n\in\mathbb{N}}\subset \overline{A}$, which has a convergent subsequence $(x_{\lambda_{n_k}})_{k\in\mathbb{N}}$ converging to some $x_1\in \overline{A}$ due to the closed and boundedness of $\overline{A}$.
+
+    Again, by the continuity of $T$, we have $\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}})=T(x_1)$, and since $\lambda_{n_k}T(x_{\lambda_{n_k}})=x_{\lambda_{n_k}}$, then $T(x_{\lambda_{n_k}})=\frac{1}{\lambda_{n_k}}x_{\lambda_{n_k}}$.
+    Using the same method in \textbf{Part (a)}, we can again deduce:
+    $$\lim_{k\rightarrow\infty}T(x_{\lambda_{n_k}}) = \lim_{k\rightarrow\infty}\frac{1}{\lambda_{n_k}}x_{\lambda_{n_k}} = \left(\lim_{k\rightarrow\infty}\frac{1}{\lambda_{n_k}}\right)(\lim_{k\rightarrow\infty}x_{\lambda_{n_k}}) = x_1$$
+    Hence, $T(x_1)=x_1$, showing that the fixed point is nonempty.
+
+    So, given a bounded Star-Shaped domain centered at $\bar{0}$, we can still deduce the fact that the function has a nonempty collection of fixed point (though convexity is not guaranteed).
 \end{itemize}
 
 \break
