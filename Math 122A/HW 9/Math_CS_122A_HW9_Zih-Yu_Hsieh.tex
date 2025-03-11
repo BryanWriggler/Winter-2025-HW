@@ -230,19 +230,19 @@ There are three cases:
 
     For the ones on the side, since the sides are parametrized by $R+i\zeta t$ and $-R+i\zeta t$ for $t\in[0,1]$ respectively, then the first integral is given by:
     $$\int_{0}^{1}e^{-\pi(R+i\zeta t)^2}\cdot i\zeta dt = \int_{0}^{1}e^{-\pi(R^2+i\cdot 2R\zeta t-\zeta^2t^2)}\cdot i\zeta dt$$
-    $$=\int_{0}^{1}e^{-\pi(R^2-2Rvt)}\cdot e^{i\cdot 2Rut-\zeta^2t^2}\cdot i\zeta dt=e^{-\pi R^2}\int_{0}^{1}e^{R\cdot 2\pi vt}\cdot e^{i\cdot 2Rut}\cdot e^{-\zeta^2t^2}\cdot i\zeta dt$$
+    $$=\int_{0}^{1}e^{-\pi(R^2-2Rvt)}\cdot e^{-i\cdot 2\pi Rut+\pi\zeta^2t^2}\cdot i\zeta dt=e^{-\pi R^2}\int_{0}^{1}e^{R\cdot 2\pi vt}\cdot e^{-i\cdot 2\pi Rut}\cdot e^{\pi\zeta^2t^2}\cdot i\zeta dt$$
     Which, taking the modulus, it is bounded by:
-    $$\left|\int_{0}^{1}e^{-\pi(R+i\zeta t)^2}\cdot i\zeta dt\right| \leq e^{-\pi R^2}\int_{0}^{1}e^{R\cdot 2\pi vt}\cdot |e^{i\cdot 2Rut}|\cdot |e^{-\zeta^2t^2}|\cdot |i\zeta| dt$$
-    $$\leq e^{-\pi R^2}\int_{0}^{1}e^{R\cdot |2\pi v|}\cdot |e^{-\zeta^2t^2}|\cdot |\zeta| dt = e^{-\pi R^2+R\cdot |2\pi v|}\int_{0}^{1}\cdot |e^{-\zeta^2t^2}|\cdot |\zeta| dt$$
+    $$\left|\int_{0}^{1}e^{-\pi(R+i\zeta t)^2}\cdot i\zeta dt\right| \leq e^{-\pi R^2}\int_{0}^{1}e^{R\cdot 2\pi vt}\cdot |e^{-i\cdot 2\pi Rut}|\cdot |e^{\pi\zeta^2t^2}|\cdot |i\zeta| dt$$
+    $$\leq e^{-\pi R^2}\int_{0}^{1}e^{R\cdot |2\pi v|}\cdot |e^{\pi\zeta^2t^2}|\cdot |\zeta| dt = e^{\pi R^2+R\cdot |2\pi v|}\int_{0}^{1}\cdot |e^{-\pi \zeta^2t^2}|\cdot |\zeta| dt$$
     (Note: the above is given by $R\cdot 2\pi vt \leq R\cdot |2\pi v|\cdot t \leq R\cdot|2\pi v|$, since $t\in [0,1]$).
 
-    Then, since $\lim_{R\rightarrow\infty}-\pi R^2+R|2\pi v| = -\infty$, so $\lim_{R\rightarrow\infty}e^{-\pi R^2+R|2\pi v|}=0$, then since $\int_{0}^{1}\cdot |e^{-\zeta^2t^2}|\cdot |\zeta| dt$ is a constant, then:
+    Then, since $\lim_{R\rightarrow\infty}-\pi R^2+R|2\pi v| = -\infty$, so $\lim_{R\rightarrow\infty}e^{-\pi R^2+R|2\pi v|}=0$, then since $\int_{0}^{1}\cdot |e^{\pi\zeta^2t^2}|\cdot |\zeta| dt$ is a constant, then:
     $$\lim_{R\rightarrow\infty}e^{-\pi R^2+R\cdot |2\pi v|}\int_{0}^{1}\cdot |e^{-\zeta^2t^2}|\cdot |\zeta| dt = 0$$
     So, we can conclude the following:
     $$\lim_{R\rightarrow\infty}\int_{0}^{1}e^{-\pi(R+i\zeta t)^2}\cdot i\zeta dt = 0$$
 
-    Similar concepts applied on the line $-R+i\zeta t$ (since $-\pi(-R+i\zeta t)^2$ is then given by $-\pi(R^2+2Rvt)-\pi(-i\cdot 2Rut-\zeta^2t^2)$, so the same inequality still applies).
-    Hence: 
+    Similar concepts applied on the line $-R+i\zeta t$ (since $-\pi(-R+i\zeta t)^2$ is then given by $-\pi(R^2+2Rvt)-\pi(-i\cdot 2Rut-\zeta^2t^2)$, so the same concept still applies, where the bound of the modulus is dominated by $e^{-\pi(R^2+2Rv)}$, 
+    which converges to $0$ as $R\rightarrow\infty$). Hence: 
     $$\lim_{R\rightarrow\infty}\int_{0}^{1}e^{-\pi(-R+i\zeta t)^2}\cdot i\zeta dt = 0$$
 
     \hfil
@@ -259,8 +259,12 @@ There are three cases:
     $$\lim_{R\rightarrow\infty}\int_{-R}^{R}e^{-\pi(x+i\zeta)^2}dx = \lim_{R\rightarrow\infty}e^{\pi\zeta^2}\int_{-R}^{R}e^{-\pi x^2}\cdot e^{-2\pi ix\zeta}dx = 1$$
     So, we can conclude that $\int_{-\infty}^{\infty}e^{-\pi x^2}\cdot e^{-2\pi ix\zeta}dx = e^{-\pi\zeta^2}$.
 
+    Which, by doing substitution $u=-x$ ($-du=dx$), we get the following:
+    $$-\int_{\infty}^{-\infty}e^{-\pi u^2}\cdot e^{-2\pi i(-u)\zeta} du = \int_{-\infty}^{\infty}e^{-\pi u^2}\cdot e^{2\pi iu\zeta}du = e^{-\pi\zeta^2}$$
+
     \hfil
 
+    \begin{comment}
     \item[(2)] \textbf{When $u<0$}, similar constructions can be made, but instead using $-R,R,R-i\zeta,-R-i\zeta$ as the four points instead.
     
     \begin{center}
@@ -298,13 +302,33 @@ There are three cases:
         \end{tikzpicture}
     \end{center}
 
-    Using similar concept, we can prove the exact same result as when $u>0$.
+    (Note: For this part, $i\zeta$ has imaginary part $u$, then $-i\zeta$ has imaginary part $-u$, which is positive).
+    
+    (Note 2: the reason using $-i$, is because we want the integration to be over a counterclockwise orientation).
 
-    (Note: the reason using $-i$, is because we want the integration of $e^{az}$ to have negative real parts in the exponent. So, instead of doing $+i\zeta$, do $-i\zeta$ so as $R\rightarrow\infty$ the side integrals actually converge).
+    Using similar concept, we can prove the exact same result as $u>0$ (where the contour integral is $0$):
 
     \hfil
+
+    For the line integral on real axis, $\lim_{R\rightarrow\infty}\int_{-R}^{R}e^{-\pi x^2}dx=1$ again based on Gauss's Integral.
+
+    \hfil
+
+    For side integrals parametrized by $R-i\zeta t$ and $-R-i\zeta t$ (with $t\in[0,1]$), we can expand the integrals to following form:
+    $$I_1=\int_{0}^{1}e^{-\pi(R-i\zeta t)^2}\cdot (-i\zeta)dt = e^{-\pi R^2}\int_{0}^{1}e^{-R\cdot 2\pi vt}\cdot e^{i\cdot 2\pi Rut}\cdot e^{\pi\zeta^2 t^2}(-i\zeta)dt$$
+    $$I_2 = \int_{0}^{1}e^{-\pi(-R-i\zeta t)^2}\cdot (-i\zeta)dt = e^{-\pi R^2}\int_{0}^{1}e^{-R\cdot 2\pi vt}\cdot e^{-i\cdot 2\pi Rut}\cdot e^{\pi\zeta^2 t^2}(-i\zeta)dt$$
+    Again, using the same inequality $(e^{-R\cdot 2\pi vt} \leq e^{R|2\pi v|}$, and the fact that $\lim_{R\rightarrow\infty}e^{-\pi R^2+R|2\pi v|}=0$), we get:
+    $$\lim_{R\rightarrow\infty}|I_1| \leq \lim_{R\rightarrow\infty}e^{-\pi R^2}\int_{0}^{1}e^{-R\cdot 2\pi vt}\cdot |e^{i\cdot 2\pi Rut}|\cdot |e^{\pi\zeta^2 t^2}|\cdot|-i\zeta|dt$$
+    $$\leq \lim_{R\rightarrow\infty}e^{-\pi R^2+R|2\pi v|}\int_{0}^{1}|e^{\pi\zeta^2 t^2}|\cdot |\zeta|dt = 0$$
+    Similar inequality applies for $|I_2|$, hence as $R\rightarrow\infty$, $I_1,I_2$ both converges to $0$ (since the modulus converges to $0$).
+
+    \hfil
+
+    Lastly, for the upper half of the parallelagram parametrized by $x-i\zeta$ for $\in [-R,R]$, we get:
+    $$\int_{-R}^{R}e^{-\pi(x-i\zeta)^2}dx = \int_{-R}^{R}e^{-\pi (x^2-2ix\zeta)}$$
+    \end{comment}
     
-    \item[(3)] \textbf{When $u=0$}, since $\zeta=iv$, then $\zeta^2 = -v^2$. So, the proposed integral becomes:
+    \item[(2)] \textbf{When $u=0$}, since $\zeta=iv$, then $\zeta^2 = -v^2$. So, the proposed integral becomes:
     $$\int_{-R}^{R}e^{-\pi x^2}\cdot e^{2\pi ix\zeta}dx = \int_{-R}^{R}e^{-\pi x^2}\cdot e^{2\pi ix\cdot iv}dx = \int_{-R}^{R}e^{-\pi x^2}\cdot e^{-2\pi vx}dx$$
     Which, by completing the square, we get:
     $$\int_{-R}^{R}e^{-\pi x^2}\cdot e^{2\pi ix\zeta}dx = e^{\pi v^2}\int_{-R}^{R}e^{-\pi x^2}\cdot e^{-2\pi vx}\cdot e^{-\pi v^2}dx = e^{\pi v^2}\int_{-R}^{R}e^{-\pi(x^2+2vx+v^2)}dx = e^{\pi v^2}\int_{-R}^{R}e^{-\pi(x+v)^2}dx$$
@@ -449,7 +473,9 @@ $$\int_{-\infty}^{\infty}f(x)dx =\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\zeta}}
 So, regardless of the sign of $\zeta$, the following integral is always true:
 $$\int_{-\infty}^{\infty}\frac{e^{-2\pi ix\zeta}}{(1+x^2)^2}dx = \frac{\pi}{2}(1+2\pi|\zeta|)e^{-2\pi|\zeta|}$$
 
-\break
+\hfil
+
+\hfil
 
 \section*{6}
 \begin{myBox}[]{}
@@ -537,9 +563,7 @@ Lastly, since the function $\frac{ln|x|}{x^2+a^2}$ is in fact an even function, 
 Hence:
 $$\int_{0}^{\infty}\frac{\ln(x)}{x^2+a^2}dx = \frac{\pi}{2a}\ln(a)$$
 
-\hfil
-
-\hfil
+\break
 
 \section*{7}
 \begin{myBox}[]{}
