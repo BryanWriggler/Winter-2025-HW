@@ -1,0 +1,187 @@
+% Phys24_HW5_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 9.15:
+
+        If we can assume symmetry
+        about this axis, it is very much easier to find the field B at a point
+        $$\int_C\bar{B}\cdot d\bar{r} = \int_S\left(\mu_0\epsilon_0\frac{\partial \bar{E}}{\partial t}+\mu_0\bar{J}\right)\cdot d\bar{s}$$
+        applied to a circular path through the point. Use this to show that
+        the field at P, which is midway between the capacitor plates in
+        Fig. 9.15, and a distance r from the axis of symmetry, equals $B=(\mu_0Ir)/(2\pi b^2)$. 
+        You may assume that the distance s between the plates
+
+        is small compared with their radius b.
+
+        \begin{center}
+            \includegraphics*[width=50mm]{phys 24 hw 5 p1.png}
+        \end{center}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+With $I$ flowing to the right, then the positive side of the capacitor is on the left side. Hence, the electric field in the capacitor is pointing to the right, denote as direction $\hat{z}$.
+Then, use cylindrical coordinates for simplicity in this question.
+
+If assume the charge density $\sigma$ is uniformly distributed at any time, then for any time $t$, the charge density $\sigma(t)=\frac{Q(t)}{\pi b^2}$ (charge over the volume),
+which the electric field is given by $\bar{E}=\frac{\sigma(t)}{\epsilon_0}\hat{z} = \frac{Q(t)}{\epsilon_0\pi b^2}\hat{z}$.
+
+Now, given that $\frac{\partial \bar{E}}{\partial t} = \frac{d}{dt}\left(\frac{Q(t)}{\epsilon_0 \pi b^2}\hat{z}\right) = \frac{I(t)}{\epsilon_0 \pi b^2}\hat{z}$, and $\hat{J}=\bar{0}$ 
+(since there's no current flowing through the middle of a capacitor),
+if we assume that $\bar{B}$ is purely in $\hat{\varphi}$ direction, while cylindrically symmetric (i.e. $\bar{B}(t)=B(t)\hat{\varphi}$),
+by constructing a disk $S$ centered on the wire, with normal $\hat{z}$ and radius $r$ (i.e. a disk parallel to the capacitor), it satisfies:
+$$\int_{\partial S}\bar{B}\cdot d\bar{r}=\int_{S}\left(\mu_0\epsilon_0\frac{\partial \bar{E}}{\partial t}+\mu_0\bar{J}\right)\cdot d\bar{s} = \int_{S}\mu_0\epsilon_0\frac{I(t)}{\epsilon_0\pi b^2}\hat{z}\cdot \hat{z}dA = \frac{\mu_0 I(t)}{\pi b^2}\cdot \pi r^2$$
+(Note: integral $\int_SdA$ returns the area of $S$, which is $\pi r^2$).
+
+Similarly, since $\bar{B}$ is solely in $\hat{\varphi}$ direction, it is always parallel to the tangent vector of the boundary. Hence, the above integral is also written as:
+$$\int_{\partial S}\bar{B}\cdot d\bar{r} = \int_{0}^{2\pi}B(t)rd\theta = B(t)2\pi r$$
+(Note: Since $\bar{B}$ has constant magnitude and parallel to tangent vector of $\partial S$, then $\bar{B}\cdot d\bar{r}$ becomes $B(t) rd\theta$, which is the differential of the line integral).
+
+Hence, the following is true:
+$$B(t)2\pi r=\frac{\mu_0 I(t)\pi r^2}{\pi b^2},\quad B(t)=\frac{\mu_0 I(t)r}{2\pi b^2}$$
+Hence, in general:
+$$B=\frac{\mu_0Ir}{2\pi b^2}$$
+
+\hfil
+
+\hfil
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 9.25:
+
+        Of all the electromagnetic energy in the universe, by far the largest
+        amount is in the form of waves with wavelengths in the millimeter range. 
+        
+        This is the cosmic microwave background radiation discovered 
+        by Penzias and Wilson in 1965. It apparently fills all space,
+        including the vast space between galaxies, with an energy density
+        of $4\cdot 10^{-14} J/m^3$. 
+        
+        Calculate the rms electric field strength in
+        this radiation, in volts/m. Roughly how far away from a $1$ kilowatt 
+        radio transmitter would you find a comparable electromagnetic wave intensity?
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given that the energy density $U=\epsilon_0 E_{rms}^2$, while $\epsilon_0=8.85\cdot 10^{-12}$ and $U=4\cdot 10^{-14}J/m^3$ as given, we get:
+$$E_{rms}^2 = \frac{U}{\epsilon_0} = \frac{4\cdot 10^{-14}\ J/m^3}{8.85\cdot 10^{-12}\ (C^2\cdot s^2)/(kg\cdot m^3)}\approx 4.52 \cdot 10^{-3}\ (kg\cdot J)/(C^2\cdot s^2) = 4.52\cdot 10^{-3}\ (kg\cdot m^2\cdot J)/(s^2\cdot m^2\cdot C^2)$$
+$$4.52\cdot 10^{-3} (kg\cdot (m/s)^2\cdot J)/(m^2\cdot C^2) = 4.52\cdot 10^{-3}(J/C)^2/m^2 = 4.52\cdot 10^{-3}\ (V/m)^2$$
+$$E_{rms}=\sqrt{4.52\cdot 10^{-3}}\approx 0.0672\ V/m$$
+Now, consider the fact that the radio transmitter has the wave spreads in spherical way. Which, its power density over the sphere surface at radius $R$ is given by $S=\frac{P}{4\pi R^2} = \frac{10^3}{4\pi R^2}$ (which has power of $1$ kilowatt, or $10^3$ watt).
+
+With the energy density being given as $U=\frac{S}{c}$ (with $c=3\cdot 10^8\ m/s$), then for it to be the same as the cosmic microwave background radiation's energy density, we get:
+$$U=\frac{S}{c}=\frac{10^3}{4\pi R^2\cdot 3\cdot 10^8} = 4\cdot 10^{-14},\quad R^2 = \frac{10^3}{4\pi \cdot 3\cdot 10^8\cdot 4\cdot 10^{-14}} = \frac{10^9}{48\pi} \approx 6.631\cdot 10^6 m$$
+$$R=\sqrt{6.631\cdot 10^6}\approx 2575m = 2.575 km$$
+So, in case for the electromagnetic wave of a 1 kilowatt radio transmitter to have the same intensity (same energy density), we need distance of $R\approx 2.575 km$.
+
+\hfil
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Purcell 9.29:
+
+        A capacitor is charged by having current flow in a thin straight wire
+        from the middle of one circular plate to the middle of the other. 
+        The electric field inside the capacitor increases, so the
+        energy density also increases. 
+        
+        This implies that there must be a
+        flow of energy from somewhere. As in Problem 9.10, this “somewhere” is the wire. 
+        Verify that the flux of the Poynting vector away
+        from the wire equals the rate of change of the energy stored in the field.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given that the capacitor is a cylinder with height $s$ and radius $b$, with the rotation axis points in $\hat{z}$ direction.
+
+If consider a similar setup in \textbf{Question 1}, then we know with the current $I$ flowing in $\hat{z}$ direction, 
+the magnetic field is given by $\bar{B}=\frac{\mu_0Ir}{2\pi b^2}\hat{\varphi}$, where $r$ is the radius of a concentric disk $S$
+we constructed that's parallel to the capacitor (all the setup are done in \textbf{Question 1}).
+
+With the electric field $\bar{E}=\frac{Q}{\epsilon_0\pi b^2}\hat{z}$, then the Poynting Vector is given by:
+$$\bar{S}=\frac{1}{\mu_0}\bar{E}\times \bar{B} = \frac{1}{\mu_0}\cdot \frac{Q}{\epsilon_0\pi b^2}\cdot \frac{\mu_0Ir}{2\pi b^2}\hat{z}\times \hat{\varphi} = \frac{-QIr}{2\epsilon_0 (\pi b^2)^2}\hat{r}$$
+Which, at the boundary of the capacitor's side (with $r=b$), we get:
+$$\bar{S}=\frac{-QIb}{2\epsilon_0\pi^2b^4}\hat{r} = \frac{-QI}{2\epsilon_0 \pi^2b^3}\hat{r}$$
+Then, with the wire being approximated by a curve, we can assume the surface area is $0$, or the flux through the wire is always $0$; hence, we only need to consider for the capacitor.
+
+Since the bases of the cylinder (capcitor) have normal $\hat{z}$, the flux of Poynting vector is $0$ on these two fases;
+instead, the side of the cylinder (with normal $\hat{r}$), with the area of the side being $2\pi bs$, the total flux is given by:
+$$\phi_{\bar{S}} = \bar{S}\cdot \hat{r}\cdot 2\pi bs = \frac{-QIs}{\epsilon_0 \pi b^2}$$
+
+Lastly, recall that the energy of a capacitor $W=\frac{1}{2}QV$, which the potential $V=E\cdot s$ (electric field times the separation of capacitor),
+then $W=\frac{s}{2}QE$, we get the power as follow:
+$$P=\frac{dW}{dt} = \frac{s}{2}\left(\frac{dQ}{dt}E+Q\frac{dE}{dt}\right)=\frac{s}{2}\left(I\cdot \frac{Q}{\epsilon_0\pi b^2}+Q\cdot \frac{I}{\epsilon_0\pi b^2}\right) = \frac{s}{2}\cdot \frac{2QI}{\epsilon_0 \pi b^2} = \frac{QIs}{\epsilon_0\pi b^2}$$
+With a sign difference, this matches up precisely with $\phi_{\bar{S}}$ (the flux of Poynting Vector on the surface of the wire, including the surface of the capacitor).
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        What is the equation of motion of a point-like particle with charge $q$ and mass $m$ in an
+        electromagnetic field $(\overline{E},\overline{B})$. Neglect the emission of radiation by the moving charge. 
+        Determine the temporal change of the energy $W$ of the particle in the external field.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Suppose the electromagnetic field is well defined in every position in $\mathbb{R}^3$. With the motion of the charge being recorded by $\bar{r}(t)$,
+velocity recorded by $\bar{r}'(t)$, then at any moment, the force on the particle is given by:
+$$\bar{F}(t) = m\bar{r}''(t)=q\bar{E}(\bar{r}(t))+q\bar{r}'(t)\times \bar{B}(\bar{r}(t))$$
+So, without any further assumption on the fields, the general equation of motion is given by:
+$$m\bar{r}''-q\bar{r}'\times \bar{B}(\bar{r})-q\bar{E}(\bar{r}) = 0$$
+
+\hfil
+
+Also, given that power is $P=\bar{F}\cdot \bar{v} = \bar{F}\cdot \bar{r}'$, we then get the following:
+$$P=\bar{F}\cdot \bar{r}' = q(\bar{E}(\bar{r}))\cdot \bar{r}' + q(\bar{r'}\times \bar{B}(\bar{r}))\cdot \bar{r'} = q\bar{r}'\cdot \bar{E}(\bar{r})$$
+The reason is because $\bar{r'}\times \bar{B}(\bar{r})$ is orthogonal to $\bar{r'}$ by definition, hence the inner product with $\bar{r'}$ vanishes.
+So, we can say the power (change of the charge's kinetic energy), is given by $P=q\bar{r'}\cdot \bar{E}(\bar{r})$.
+
+\end{document}
