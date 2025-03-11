@@ -253,7 +253,7 @@ $$e^{-\pi \zeta^2} = \int_{-\infty}^{\infty}e^{-\pi x^2}\cdot e^{2\pi ix\zeta}dx
 
 \break
 
-\section*{5}
+\section*{5 (can simplify with Jordan's Lemma)}
 \begin{myBox}[]{}
     \begin{question}
         Stein and Shakarchi Pg. 103 Problem 5:
@@ -425,7 +425,7 @@ $$\int_{0}^{\infty}\frac{\ln(x)}{x^2+a^2}dx = \frac{\pi}{2a}\ln(a)$$
 
 \break
 
-\section*{7 (second part not done)}
+\section*{7}
 \begin{myBox}[]{}
     \begin{question} Stein and Shakarchi Pg. 104 Problem 11
         :
@@ -439,6 +439,10 @@ $$\int_{0}^{\infty}\frac{\ln(x)}{x^2+a^2}dx = \frac{\pi}{2a}\ln(a)$$
 \textbf{Pf:}
 
 \textbf{When $|a|<1$:}
+
+If $a=0$, the case is trivial (since $\log|1-ae^{i\theta}| = \log|1|=0$, then the whole integral is $0$). So, assume $a\neq 0$.
+
+\hfil
 
 Consider the integral of $\log(1-z)/iz$ along a circle $C$ of radius $|a|<1$ centered at $0$. With the parametrization $z=ae^{i\theta}$ ($\theta\in [0,2\pi]$), it can be expressed as:
 $$I=\int_{C}\frac{\log(1-z)}{iz}dz = \int_{0}^{2\pi}\frac{\log(1-ae^{i\theta})}{iae^{i\theta}}(iae^{i\theta})d\theta = \int_{0}^{2\pi}\log(1-ae^{i\theta})d\theta$$
@@ -454,7 +458,42 @@ Now, since $Re(I) = \int_{0}^{2\pi}\log|1-ae^{i\theta}|d\theta$, while $I=0$, th
 
 \hfil
 
-\textbf{Case when $|a|=1$:}
+\textbf{Case when $|a|=1$ (Real Integral Approach):}
+
+For $|a|=1$, WLOG, we can assume $a=1$ (since other than that, any $e^{i\phi}$ is adding a phase of $\phi$, which by changing the range of our integrand, we can modify it to be the same as $a=1$).
+
+Then, the integral can be rewrite as:
+$$\int_{0}^{2\pi}\ln|1-e^{i\theta}|d\theta = \int_{0}^{2\pi}\ln|1-(\cos(\theta)+i\sin(\theta))|d\theta = \int_{0}^{2\pi}\ln\sqrt{(1-\cos(\theta))^2+(-\sin(\theta))^2}d\theta$$
+$$=\int_{0}^{2\pi}\ln\sqrt{1+\cos^2(\theta)-2\cos(\theta)+\sin^2(\theta)}d\theta = \int_{0}^{2\pi}\ln\left((2-2\cos(\theta))^\frac{1}{2}\right)d\theta$$
+$$=\frac{1}{2}\int_{0}^{2\pi}\ln\left(4\left(\frac{1-\cos(\theta)}{2}\right)\right)d\theta = \frac{1}{2}\int_{0}^{2\pi}\ln\left(2^2\cdot \sin^2\left(\frac{\theta}{2}\right)\right)d\theta$$
+$$ = \frac{1}{2}\cdot 2\int_{0}^{2\pi}\ln\left(2\sin\left(\frac{\theta}{2}\right)\right)d\theta$$
+Using the substitution $u=\frac{\theta}{2}$ (with $2du = d\theta$), it can be modified to:
+$$\frac{1}{2}\cdot 2\int_{0}^{2\pi}\ln\left(2\sin\left(\frac{\theta}{2}\right)\right)d\theta = 2\int_{0}^{\pi}\ln(2\sin(u))du = 2\int_{0}^{\pi}(\ln(2)+\ln(\sin(u)))du$$
+$$ = 2\pi\ln(2) + 2\int_{0}^{\pi}\ln(\sin(u))du$$
+
+So, it suffices to show the integral of $\ln(\sin(u))$ from $0$ to $\pi$.
+
+\hfil
+
+Notice that since $\sin(u)=\sin(\pi-u)$, then for the following integral, do the substitution $\theta=\pi-u$ (or $-d\theta = du$), we can do the following:
+$$\int_{\frac{\pi}{2}}^{\pi}\ln(\sin(u))du = \int_{\frac{\pi}{2}}^{\pi}\ln(\sin(\pi-u))du = -\int_{\frac{\pi}{2}}^{0}\ln(\sin(\theta))d\theta = \int_{0}^{\frac{\pi}{2}}\ln(\sin(\theta))d\theta$$
+So, the following is true:
+$$\int_{0}^{\pi}\ln(\sin(u))du = 2\int_{0}^{\frac{\pi}{2}}\ln(\sin(u))du$$
+Let $I=\int_{0}^{\frac{\pi}{2}}\ln(\sin(u))du$, using the fact that $\sin(u)=\cos(\frac{\pi}{2}-u)$, with substitution $\theta=\frac{\pi}{2}-u$ (or $-d\theta=du$), we can again get:
+$$I=\int_{0}^{\frac{\pi}{2}}\ln\left(\cos\left(\frac{\pi}{2}-u\right)\right)du = -\int_{\frac{\pi}{2}}^{0}\ln(\cos(\theta))d\theta = \int_{0}^{\frac{\pi}{2}}\ln(\cos(\theta))d\theta$$
+So, we can also get the following:
+$$2I=\int_{0}^{\frac{\pi}{2}}\ln(\sin(u))du+\int_{0}^{\frac{\pi}{2}}\ln(\cos(u))du = \int_{0}^{\frac{\pi}{2}}\ln(\sin(u)\cos(u))du = \int_{0}^{\frac{\pi}{2}}\ln\left(\frac{1}{2}\sin(2u)\right)du$$
+$$=\int_{0}^{\frac{\pi}{2}}\left(\ln\left(\frac{1}{2}\right)+\ln(\sin(2u))\right)du = -\frac{\pi}{2}\ln(2) + \int_{0}^{\frac{\pi}{2}}\ln(\sin(2u))du$$
+Using the substitution $\theta=2u$ (with $\frac{1}{2}d\theta=du$), we get the following:
+$$2I = -\frac{\pi}{2}\ln(2)+\frac{1}{2}\int_{0}^{\pi}\ln(\sin(\theta))d\theta$$
+But, recall the fact that $\int_{0}^{\pi}\ln(\sin(u))du = 2\int_{0}^{\frac{\pi}{2}}\ln(\sin(u))du = 2I$. So, we gt:
+$$2I=-\frac{\pi}{2}\ln(2)+\frac{1}{2}\cdot 2I = -\frac{\pi}{2}\ln(2)+I,\quad I=-\frac{\pi}{2}\ln(2)$$
+
+Substituting back to the original integral, we get the following:
+$$\int_{0}^{\pi}\ln(\sin(u))du = 2I = -\pi\ln(2)$$
+Finally, we get that the original integral is given by:
+$$\int_{0}^{2\pi}\ln|1-e^{i\theta}|d\theta = 2\pi\ln(2) + 2\int_{0}^{\pi}\ln(\sin(u))du = 2\pi\ln(2)+2(-\pi\ln(2))=0$$
+Hence, we can say it is possible to extend to the case $|a|=1$, so the integral is true for all $|a|\leq 1$.
 
 
 
