@@ -116,7 +116,19 @@ colback=blue!10
     \hfil
 
     \item[(d)] Start with $x_1$, since $x_1$ gets mapped to $x_2$, the point on the graph is $(x_1,x_2)$; then, to let $x_2$ be the next input, we need to match the x-coordinate to $x_2$,
-    hence draw 
+    hence draw a line from $(x_1,x_2)$ to $(x_2,x_2)$. This can then connect to the next point (since the input coordinate is now $x_2$).
+
+    Then, using similar concept, for all integer $k\geq 2$, every input $x_k$ corresponds to output $x_{k+1}$, which we can connect the previous point $(x_k,x_k)$ to $(x_k,x_{k+1})$, 
+    which then can connect to $(x_{k+1},x_{k+1})$ so the next input is $x_{k+1}$.
+
+    Under the actual graph, the pattern looks like the following:
+
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width = 100mm]{118 hw6 p1 pd.jpg}
+            \caption{The Path Converging to the Fixed Point}
+        \end{center}
+    \end{figure}
 \end{itemize}
 
 \break
@@ -178,9 +190,12 @@ Which, putting into $\cos(x)$, we get:
 $$\cos(0.73922)\approx 0.73899$$
 This root is nearly a fixed point for $\cos(x)$.
 
-\begin{center}
-    \includegraphics*[width=100mm]{newtons method.png}
-\end{center}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=120mm]{newtons method.png}
+        \caption{Code for Calculation}
+    \end{center}
+\end{figure}
 
 
 \break
