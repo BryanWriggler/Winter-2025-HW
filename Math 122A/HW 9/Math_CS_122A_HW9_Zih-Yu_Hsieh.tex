@@ -89,15 +89,15 @@ we have total of $4-1=3$ zeroes.
 If convert the above integral to polar coordinates, we get the following:
 $$\frac{1}{\pi}\int\int_{|z|<1}\frac{f(z)dxdy}{(1-\bar{z}\zeta)^2}=\frac{1}{\pi}\int_{r=0}^{1}\int_{\theta=0}^{2\pi}\frac{f(re^{i\theta})r}{(1-\zeta re^{-i\theta})^2}d\theta dr = \frac{1}{\pi}\int_{r=0}^{1}\int_{\theta=0}^{2\pi}\frac{f(re^{i\theta})(e^{i\theta})^2\cdot r}{(e^{i\theta}-r\zeta)^2}d\theta dr$$
 Then, define $C$ to have parametrization $z=e^{i\theta}$ with $\theta\in [0,\pi]$, the inner part of the integral becomes:
-$$\frac{1}{\pi}\int_{\theta=0}^{2\pi}\frac{f(re^{i\theta})(e^{i\theta})^2r}{(e^{i\theta}-r\zeta)^2}d\theta =2\cdot \frac{1}{2\pi i}\int_{0}^{\pi}\frac{f(re^{i\theta})re^{i\theta}}{(e^{i\theta}-r\zeta)^2}ie^{i\theta}d\theta = 2\cdot\frac{1}{2\pi i}\int_{C}\frac{f(rz)rz}{(z-r\zeta)^2}dz$$
+$$\frac{1}{\pi}\int_{\theta=0}^{2\pi}\frac{f(re^{i\theta})(e^{i\theta})^2r}{(e^{i\theta}-r\zeta)^2}d\theta =2\cdot \frac{1}{2\pi i}\int_{0}^{2\pi}\frac{f(re^{i\theta})re^{i\theta}}{(e^{i\theta}-r\zeta)^2}ie^{i\theta}d\theta = 2\cdot\frac{1}{2\pi i}\int_{C}\frac{f(rz)rz}{(z-r\zeta)^2}dz$$
 Recall that for any analytic function $\phi(z)$ at a point $a$, by Cauchy's Integral formula, we get:
 $$\phi'(a)=\frac{1!}{2\pi i}\int_{C}\frac{\phi(z)}{(z-a)^2}dz$$
-So, given that $z=r\zeta$ (which with $r\in [0,1]$ and $|\zeta|<1$, $r\zeta$ is strictly in the unit disk, so integrate over $C$ given above is valid), let $\phi(z)=f(rz)rz$ (which $\phi'(z)=f'(rz)r^2z + f(rz)r$), we have:
+So, given that $a=r\zeta$ (which with $r\in [0,1]$ and $|\zeta|<1$, $r\zeta$ is strictly in the unit disk, so integrate over $C$ given above is valid), let $\phi(z)=f(rz)rz$ (which $\phi'(z)=f'(rz)r^2z + f(rz)r$), we have:
 $$f'(r(r\zeta))r^2(r\zeta) + f(r(r\zeta))r = \frac{1!}{2\pi i}\int_{C}\frac{f(rz)rz}{(z-r\zeta)^2}dz$$
 $$2\cdot\frac{1}{2\pi i}\int_{C}\frac{f(rz)rz}{(z-r\zeta)^2}dz = 2\left(f'(r^2\zeta)r^3\zeta + f(r^2\zeta)r\right)$$
 Hence, the original integral can be rewrite as:
 $$\frac{1}{\pi}\int_{r=0}^{1}\int_{\theta=0}^{2\pi}\frac{f(re^{i\theta})(e^{i\theta})^2\cdot r}{(e^{i\theta}-r\zeta)^2}d\theta dr = \int_{r=0}^{1}2\left(f'(r^2\zeta)r^3\zeta + f(r^2\zeta)r\right) dr$$
-Now, consider the function $f(\zeta r^2)r^2$, which has derivative $f'(\zeta r^2)r^2\cdot 2r\zeta + f(\zeta r^2)\cdot 2r = 2\left(f'(r^2\zeta)r^3\zeta + f(r^2\zeta)r\right)$. 
+Now, consider the function $f(\zeta r^2)r^2$, which has derivative with respect to $r$ being $f'(\zeta r^2)r^2\cdot 2r\zeta + f(\zeta r^2)\cdot 2r = 2\left(f'(r^2\zeta)r^3\zeta + f(r^2\zeta)r\right)$. 
 Then, the above integral can be rewrite as:
 $$\int_{r=0}^{1}2\left(f'(r^2\zeta)r^3\zeta + f(r^2\zeta)r\right) dr = f(\zeta r^2)r^2\bigg|_{r=0}^{1} = f(\zeta)$$
 Hence, we can claim that for $f(z)$ that's analytic and bounded on $|z|<1$, and given $|\zeta|<1$, the integral is true:
