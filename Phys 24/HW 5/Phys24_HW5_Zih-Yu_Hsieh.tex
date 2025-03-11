@@ -190,4 +190,142 @@ $$P=\bar{F}\cdot \bar{r}' = q(\bar{E}(\bar{r}))\cdot \bar{r}' + q(\bar{r'}\times
 The reason is because $\bar{r'}\times \bar{B}(\bar{r})$ is orthogonal to $\bar{r'}$ by definition, hence the inner product with $\bar{r'}$ vanishes.
 So, we can say the power (change of the charge's kinetic energy), is given by $P=q\bar{r'}\cdot \bar{E}(\bar{r})$.
 
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    A circularly polarized monochromatic wave is described by
+    $$\bar{E}(\bar{r},t)=E(\cos(kz-\omega t),\sin(kz-\omega t),0)$$
+    Compute the corresponding magnetic induction $\bar{B}(\bar{r},t)$. Assume the underlying medium is vacuum.
+\end{myBox}
+
+\textbf{Pf:}
+
+Since the underlying medium is vacuum, then Maxwell's equation is valid. Hence, $\nabla\times \bar{E}=-\frac{d\bar{B}}{dt}$.
+Hence, we get the following:
+$$\nabla\times \bar{E} = E\begin{vmatrix}
+    \hat{i}&\hat{j}&\hat{k}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    \cos(kz-\omega t)&\sin(kz-\omega t)&0
+\end{vmatrix} = \hat{i}E\left(-\frac{\partial}{\partial z}\sin(kz-\omega t)\right) -\hat{j}E\left(-\frac{\partial}{\partial z}\cos(kz-\omega t)\right)$$
+$$ = E(-k\cos(kz-\omega t),k\sin(kz-\omega t),0)$$
+Then, given that the above quantity is $-\frac{d\bar{B}}{dt}$, we then get:
+$$-\frac{d\bar{B}}{dt}=-kE(\cos(kz-\omega t),-\sin(kz-\omega t),0)$$
+$$\bar{B} = kE\left(-\frac{1}{\omega}\sin(kz-\omega t),-\frac{1}{\omega}\cos(kz-\omega t),0\right) = -\frac{k}{\omega }E(\sin(kz-\omega t),\cos(kz-\omega t),0)$$
+
+\break
+
+\section*{6}
+\begin{myBox}[]{}
+    Consider the particle from 4 moving in the field of 5. Formulate the equation of motion!
+\end{myBox}
+
+\textbf{Pf:}
+
+Given $\bar{r}=(x,y,z)$ (where $x,y,z:\mathbb{R}\rightarrow\mathbb{R}$ are twice differentiable functions, 
+recording the position, velocity and acceleration in each direction).
+
+Then, $\bar{r}''=(x'',y'',z'')$, $\bar{r'}=(x',y',z')$, while the fields (that's only dependent on the z-coordinate) is given of the form in \textbf{Question 5}.
+
+Which, $\bar{r}'\times \bar{B}(\bar{r})$ is given by:
+$$\bar{r}'\times \bar{B}(\bar{r})=-\frac{k}{\omega}E\begin{vmatrix}
+    \hat{i}&\hat{j}&\hat{k}\\
+    x'&y'&z'\\
+    \sin(kz-\omega t)&\cos(kz-\omega t)&0
+\end{vmatrix} = -\frac{k}{\omega}E\left(\hat{i}(-z'\cos(kz-\omega t))-\hat{j}(-z'\sin(kz-\omega t))\right)$$
+$$= \frac{1}{\omega}E(kz'\cos(kz-\omega t),-kz'\sin(kz-\omega t),0)$$
+
+Plug into the equation got in \textbf{Question 4}, we get:
+$$m\bar{r}''-q\bar{r}'\times \bar{B}(\bar{r})-q\bar{E}(\bar{r})=\bar{0}$$
+$$(mx'',my'',mz'')-q\cdot \frac{1}{\omega}E(kz'\cos(kz-\omega t),-kz'\sin(kz-\omega t),0) - qE(\cos(kz-\omega t),\sin(kz-\omega t),0)=\bar{0}$$
+After simplification, we get the following equation:
+$$\begin{cases}
+    mx''-\frac{q}{\omega}E\cdot kz'\cos(kz-\omega t)-qE\cos(kz-\omega t)=0\\
+    my'' + \frac{q}{\omega}E\cdot kz'\sin(kz-\omega t)-qE\sin(kz-\omega t)=0\\
+    mz''=0
+\end{cases}$$
+Which, $z'=a$ for some $a\in\mathbb{R}$, and $z = at+b$ for some $b\in \mathbb{R}$ based on the third equation (where second derivative is $0$). Hence, we can further reduce the equation to:
+$$\begin{cases}
+    mx'' = \left(\frac{q}{\omega }E\cdot ka+qE\right)\cos(k(at+b)-\omega t)\\
+    my'' = \left(qE-\frac{q}{\omega}E\cdot ka\right)\sin(k(at+b)-\omega t)
+\end{cases}$$
+Regroup the terms, the trig functions are in the form $\cos((ka-\omega)t+kb),\ \sin((ka-\omega)t+kb)$, which has the second antiderivative being the following:
+$$-\frac{1}{(ka-\omega)^2}\cos((ka-\omega)t+kb) + ct+d$$
+$$-\frac{1}{(ka-\omega)^2}\sin((ka-\omega)t+kb)+et+f$$
+Where $c,d,e,f\in\mathbb{R}$ are arbitrary integration constants.
+
+\hfil
+
+Hence, combining with the above equations (which need to normalize $x,y$ with a factor of $\frac{1}{m}$), we get a family of solutions for $\bar{r}=(x,y,z)$ being the following:
+$$\begin{cases}
+    x = -\frac{1}{m}\cdot\left(\frac{q}{\omega}E\cdot ka+qE\right)\cdot\frac{1}{(ka-\omega)^2}\cos((ka-\omega)t+kb)+ct+d\\
+    y = -\frac{1}{m}\cdot \left(qE-\frac{q}{\omega}E\cdot ka\right)\cdot\frac{1}{(ka-\omega)^2}\sin((ka-\omega)t+kb)+et+f\\
+    z = at+b
+\end{cases}$$
+(Note:$a,b,c,d,e,f\in\mathbb{R}$ are arbitrary constants).
+
+\break
+
+\section*{7}
+\begin{myBox}[]{}
+    Let the particle at $t = 0$ be at the origin of coordinates. How should the initial conditions for the velocity be chosen in order to keep the energy W of the particle constant?
+\end{myBox}
+
+\textbf{Pf:}
+
+Given that when $t=0$, $\bar{r}=\bar{0}$, then we know $z(0)=a\cdot 0+b = 0$, or $b=0$.
+
+Hence, from the equations gotten in \textbf{Question 6}, it simplified to:
+$$\begin{cases}
+    x = -\frac{1}{m}\cdot\left(\frac{q}{\omega}E\cdot ka+qE\right)\cdot\frac{1}{(ka-\omega)^2}\cos((ka-\omega)t)+ct+d\\
+    y = -\frac{1}{m}\cdot \left(qE-\frac{q}{\omega}E\cdot ka\right)\cdot\frac{1}{(ka-\omega)^2}\sin((ka-\omega)t)+et+f\\
+    z = at
+\end{cases}$$
+
+On the other hand, for energy $W$ to be constant, we want $P=\frac{dW}{dt}=0$. Hence, we need $P=q\bar{r}'\cdot \bar{E}(\bar{r})=0$,
+which suffices to show $\bar{r}'\cdot \bar{E}(\bar{r})=0$.
+
+With the above solution, we get the velocity as follow:
+$$\bar{r}'(t)=(x',y',z') $$
+$$= \hat{i}\left(\frac{1}{m}\cdot\left(\frac{q}{\omega}E\cdot ka+qE\right)\cdot\frac{1}{(ka-\omega)}\sin((ka-\omega)t)+c\right)$$
+$$ + \hat{j}\left(-\frac{1}{m}\cdot\left(qE-\frac{q}{\omega}E\cdot ka\right)\cdot\frac{1}{(ka-\omega)}\cos((ka-\omega)t)+e\right)$$
+$$+\hat{k}a$$
+With $\bar{E}(\bar{r})=E(\cos(kz-\omega t),\sin(kz-\omega t),0)=E(\cos((ka-\omega)t),\sin((ka-\omega)t),0)$, we get the inner product given as:
+$$0=\bar{r}'\cdot \bar{E}$$
+$$= \frac{E}{m(ka-\omega)}\left(\frac{qEka}{\omega}+qE\right)\sin((ka-\omega)t)\cos((ka-\omega)t) + c\cos((ka-\omega)t)$$
+$$ - \frac{E}{m(ka-\omega)}\left(-\frac{qEka}{\omega}+qE\right)\cos((ka-\omega)t)\sin((ka-\omega)t)+e\sin((ka-\omega)t)$$
+
+$$ = \frac{qE^2ka}{m\omega(ka-\omega)}\cdot 2\sin((ka-\omega)t)\cos((ka-\omega)t)  + c\cos((ka-\omega)t)+e\sin((ka-\omega)t)$$
+$$ =\frac{qE^2ka}{m\omega(ka-\omega)}\sin(2(ka-\omega)t)+ c\cos((ka-\omega)t)+e\sin((ka-\omega)t)$$
+Notice that the above three functions $\sin(2Ct),\cos(Ct),\sin(Ct)$ (where $C=(ka-\omega)$ for simplicity) are linearly independent in function space (assuming $C\neq 0$),
+then in case for the above sum to be constantly $0$, we need their coefficients to all be $0$.
+
+Hence, $c=e=0$, and $\frac{qE^2ka}{m\omega(ka-\omega)}=0$. Since can assume $q,E,k,m,\omega\neq 0$, then we need $a=0$ also.
+
+\hfil
+
+\textbf{Velocity Condition:}
+
+So, with the given condition above, we can conclude that the velocity is as follow:
+$$\bar{r}'(t)=(x',y',z')$$
+$$=\hat{i}\left(\frac{1}{m}\cdot\left(\frac{q}{\omega}E\cdot ka+qE\right)\cdot\frac{1}{(ka-\omega)}\sin((ka-\omega)t)+c\right)$$
+$$ + \hat{j}\left(-\frac{1}{m}\cdot\left(qE-\frac{q}{\omega}E\cdot ka\right)\cdot\frac{1}{(ka-\omega)}\cos((ka-\omega)t)+e\right)$$
+$$+\hat{k}a$$
+
+$$=\hat{i}\left(-\frac{qE}{m\omega}\sin(-\omega t)\right) + \hat{j}\left(\frac{qE}{m\omega}\cos(-\omega t)\right) + 0\hat{k}$$
+
+\hfil
+
+In fact, plug back in $a=c=e=0$, we can retrieve the original solution (with only $d,f\in\mathbb{R}$ not being fixed):
+$$\bar{r}(t)=(x,y,z)$$
+
+$$\begin{cases}
+    x=-\frac{qE}{m\omega^2}\cos(-\omega t)+d\\
+    y=-\frac{qE}{m\omega^2}\sin(-\omega t)+f\\
+    z=0
+\end{cases}$$
+
+
+
+
 \end{document}
