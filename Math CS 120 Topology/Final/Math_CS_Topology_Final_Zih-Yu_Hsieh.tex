@@ -1,0 +1,303 @@
+% Math_CS_Topology_Final_Zih-Yu_Hsieh.tex
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{CJKutf8}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS Topology Final}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Without looking it up, define topological space, and continuous function
+        between topological spaces.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\textbf{Topological Space:}
+
+Given any set $X$, a topology on $X$ is a classification of what subsets are "open" in the set.
+More formally, a topology on $X$ is a collection $\mathcal{T}$ collecting open subsets of $X$, such that the following conditions are satisfied:
+\begin{itemize}
+    \item[(1)] $\emptyset, X\in \mathcal{T}$ (empty set and the shole set are open).
+    \item[(2)] For arbitrary collection $\mathcal{U}\subseteq \mathcal{T}$, the union $\bigcup \mathcal{U}\in \mathcal{T}$ (union of arbitrary collection of open sets is open). 
+    \item[(3)] For any two $U,V\in \mathcal{T}$, the intersection $U\cap V\in \mathcal{T}$ (intersection of finite open sets is open). 
+\end{itemize}
+
+Which, $(X,\mathcal{T})$ (the set $X$ along with a topology $\mathcal{T}$ on $X$) is called a "Topological Space".
+
+\hfil
+
+\textbf{Continuous Function:}
+
+Given $X,Y$ two topological spaces, a function $f:X\rightarrow Y$ is continuous, if for any open sets $U\subseteq Y$, its preimage $f^{-1}(U)\subseteq X$ is open.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that the product of two path connected spaces is path connected. 
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Suppose $X,Y$ are two path connected spaces (i.e. for any two points in the same space, there exists a continuous path joining the two points).
+
+\hfil
+
+Now, consider $X\times Y$ under product topology. For any $(x_1,y_1),(x_2,y_2)\in X\times Y$, since $x_1,x_2\in X$ and $y_1,y_2\in Y$,
+by the definition of path connected space, there exists two continuous paths $f:[0,1]\rightarrow X$ and $g:[0,1]\rightarrow Y$, with $f(0)=x_1,f(1)=x_2$, and $g(0)=y_1,g(1)=y_2$.
+
+Then, define the function $h:[0,1]\rightarrow X\times Y$ as $h(t)=(f(t),g(t))$. Then, $h(0)=(f(0),g(0))=(x_1,y_1)$, and $h(1)=(f(1),g(1))=(x_2,y_2)$.
+So, this is potentially a function joining the two given points, it remains to show that $h$ is continuous.
+
+\hfil
+
+For any open set $W\subseteq X\times Y$, consider the preimage $h^{-1}(W)\subseteq [0,1]$: For any $t_0\in h^{-1}(W)$, since $h(t_0) = (f(t_0),g(t_0))\in W$, by the definition of openness in product topology,
+there exists open sets $U\subseteq X$ and $V\subseteq Y$, such that $h(t_0)=(f(t_0),g(t_0))\in (U\times V)\subseteq W$. Then, since $f,g$ are continuous, then $f^{-1}(U), g^{-1}(V)\subseteq [0,1]$ are open.
+
+Then, consider $f^{-1}(U)\cap g^{-1}(V)$, which is also open in $[0,1]$: Since $f(t_0)\in U$ and $g(t_0)\in V$, then $t_0\in f^{-1}(U)$ and $t_0\in g^{-1}(V)$,
+hence $t_0\in f^{-1}(U) \cap g^{-1}(V)$.
+
+Now, for all $t\in f^{-1}(U)\cap g^{-1}(V)$, since $h(t)=(f(t),g(t))$ has $f(t)\in U$ and $g(t)\in V$,
+then $h(t)\in (U\times V) \subseteq W$, showing that $t\in h^{-1}(U\times V) \subseteq h^{-1}(W)$.
+So, we can conclude that $t_0\in (f^{-1}(U)\cap g^{-1}(V))\subseteq h^{-1}(W)$.
+
+Since $f^{-1}(U)\cap g^{-1}(V)$ is open in $[0,1]$, therefore we can conclude that $h^{-1}(W)\subseteq [0,1]$ is in fact open.
+
+This proves that the new function $h$ is in fact continuous. Since it joins $(x_1,y_1)$ and $(x_2,y_2)$, then it is a path joining the two given points.
+So, because any two points in $X\times Y$ can be joined by continuous paths, we can conclude that $X\times Y$ is in fact path connected.
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Suppose $X$ is a connected metric space. Prove that, for every pair of points $a,b\in X$,
+        there exists a sequence $x_1,x_2,...,x_n$ such that $a=x_1$, $b=x_n$, and $d(x_i,x_{i+1})\leq 1$
+        for all $i=1,...,n-1$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Since $X$ is a connected metric space, then the only subset of $X$ that is both open and closed (clopen subsets), is $\emptyset$ and $X$ itself.
+
+Based on this logic, pick any point $x\in X$, and define the set $C$, such that for all points $a\in C$,
+there exists a sequence $x_1,...,x_n$, with $x=x_0, a=x_n$, and $d(x_i,x_{i+1})\leq 1$ for all $i=1,...,(n-1)$.
+Which, for simplicity, assume $x\in C$ also (i.e. can have a sequence of length $1$, with $x_1 = x$, connecting $x$ to $x$ itself).
+
+Our first goal is to prove that $C=X$.
+
+\hfil
+
+\textbf{The set $C$ is open:} 
+
+For all points $a\in C$, there exists a sequence $x_1,...,x_n$, such that $x_1=x$ and $x_n=a$,
+while each $i=1,...,n-1$ has $d(x_i,x_{i+1})\leq 1$. Then, consider the open ball $B(a,1)$: every point $z\in B(a,1)$ has $d(a,z)<1$,
+so for point $z$, choose the sequence to be $x=x_1,...,x_n = a, x_{n+1}=z$, which by the definition of set $C$,
+we know every $i=1,...,n-1$ has $d(x_i,x_{i+1})\leq 1$, while for $i=n$, $d(x_n,x_{n+1})=d(a,z)<1$,
+hence this sequence joining $x=x_1$ and $z=x_{n+1}$ satisfies the condition of $C$, so $z\in C$.
+This proves that $a\in B(a,1)\subseteq C$, or $C$ is open under metric topology.
+
+\hfil
+
+\textbf{The set $X\setminus C$ is open:}
+
+For all $b\in X\setminus C$, none of the finite sequence $x=x_1,...,x_n=b$ satisfies the given condition, there exists $i\in \{1,...,n-1\}$,
+with $d(x_i,x_{i+1})> 1$.
+
+This implies that the open ball $B(b,1)\subseteq X\setminus C$: Suppose the contrary, that $B(b,1)\not\subseteq (X\setminus C)$, 
+then there exists $c\in B(b,1)$, with $c\in C$. Hence, there exists a sequence $x=x_1,...,x_n=c$, such that all $i=1,...,n-1$, $d(x_i,x_{i+1})\leq 1$;
+also, since $c\in B(b,1)$, then $d(b,c)<1$. 
+Which, add a new point to the sequence $x_{n+1}=b$, every $i=1,...,n-1$ has $d(x_i,x_{i+1})$ by assumption,
+while for $i=n$, $d(x_n,x_{n+1})=d(c,b)<1$, hence the sequence $x=x_1,...,x_n=c,x_{n+1}=b$ satisfies the given condition,
+implying that $b\in C$. Yet, this contradicts the assumption that $b\in X\setminus C$, hence our assumption must be false,
+showing that $b\in B(b,1)\subseteq (X\setminus C)$, proving that $(X\setminus C)$ is open under metric topology.
+
+\hfil
+
+\textbf{The set $C=X$:}
+
+Since $X\setminus C$ is open, then $C$ must be closed; yet, since $C$ is also open, then $C$ is clopen implies $C=\emptyset$ or $C=X$.
+Yet, it is clear that $x\in C$ (can assume $X$ is nonempty, hence there exists $x\in X$), so $C\neq \emptyset$. Therefore, the only possibility is $C=X$.
+
+\hfil
+
+\textbf{The Original Statement is True:}
+
+Since $C=X$, then for all $a,b\in X=C$, there exists two sequences $x_1,...,x_n$, and $y_1,...,y_m$,
+such that $x_1=y_1=x$, $x_n=a$, $y_m=b$, and for all $i\in \{1,...,n-1\}$ and $j\in \{1,...,m-1\}$,
+we have $d(x_i,x_{i+1}), d(y_j,y_{j+1})\leq 1$.
+
+Now, define the new sequence $z_1,...,z_{m+n}$ based on the following logic:
+$$\forall i\in \{1,...,n\},\quad z_i = x_{(n+1)-i},\quad \quad \quad \forall i\in \{n+1,...,n+m\},\quad z_i = y_{i-n}$$
+So, $z_1 = x_{(n+1)-1} = x_n = a$, and $z_{m+n}= y_{(m+n)-n} = y_m = b$.
+
+Also, for all $i\in \{1,...,n,...,n+m-1\}$, if $i\leq (n-1)$, we have $d(z_i,z_{i+1}) = d(x_{(n+1)-i},x_{(n+1)-(i+1)}) = \leq 1$;
+if $i=n$, then $d(z_n,z_{n+1}) = d(x_1,y_1) = d(x,x) = 0\leq 1$; else, if $i\geq (n+1)$, $d(z_{i},z_{i+1}) = d(y_{i-n}, y_{(i+1)-n}) \leq 1$.
+
+Hence, the finite sequence $z_1,...,z_{m+n}$ has $z_1=a$, $z_{m+n}=b$, and every consequent elements have distance at most $1$ apart.
+
+This shows that for any pair $a,b\in X$, there exists a sequence $z_1,...,z_k$ with $a=z_1$, $b=z_k$, and $d(z_i,z_{i+1})\leq 1$ for all $i=1,...,k-1$,
+which the original statemenet is true.
+
+\hfil
+
+\hfil
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that if $X$ and $Y$ are compact Hausdorff spaces then any surjective
+        continuous function $f:X\rightarrow Y$ is a quotient map.    
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+To prove if a map is a quotient map, we need all sets $U\subseteq Y$ to be open iff its preimage $f^{-1}(U)\subseteq X$ is open.
+
+\hfil
+
+\begin{itemize}
+    \item[$\implies:$] Suppose $U\subseteq Y$ is open, then by the definition of continuous function, its preimage $f^{-1}(U)\subseteq X$ is open.
+
+    \hfil
+
+    \item[$\impliedby$:] Then, suppose for $U\subseteq Y$, its preimage $f^{-1}(U)\subseteq X$ is open.
+    Given that $X$ is Compact and Hausdorff, since $(X\setminus f^{-1}(U))\subseteq X$ is closed, implies it is also a compact set.
+    
+    Which, since continuous function sends compact sets to compact sets, then $f(X\setminus f^{-1}(U))\subseteq Y$ is compact,
+    which as $Y$ is itself a Hausdorff space, then $f(X\setminus f^{-1}(U))$ is compact implies it is closed.
+    
+    Because for all $x\in (X\setminus f^{-1}(U))$, $x \notin f^{-1}(U)$, which shows that $f(x)\notin U$, hence $f(x)\in Y\setminus U$,
+    so $f(X\setminus f^{-1}(U))\subseteq (Y\setminus U)$;
+    similarly, because $f$ is surjective, all $y\in Y\setminus U$ has preimage $f^{-1}(\{y\})\subseteq (X\setminus f^{-1}(U))$
+    (since $y\notin U$, its preimage can't be in $f^{-1}(U)$), hence $y\in f(X\setminus f^{-1}(U))$,
+    showing that $Y\setminus U\subseteq f^(X\setminus f^{-1}(U))$. This proves that $(Y\setminus U)=f(X\setminus f^{-1}(U))$.
+    
+    Lastly, because $f(X\setminus f^{-1}(U)) = Y\setminus U$ is closed, then its complement $U$ is open.
+\end{itemize}
+
+\hfil
+
+The above two statements proved that $U\subseteq Y$ is open iff $f^{-1}(U)\subseteq X$ is open, hence the map $f$ given is in fact a quotient map.
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        If $A$ is a subspace of $X$, then $X/A$ is the quotient space where $A$ is collapsed to a point.
+        Describe or draw (or both) the following quotient space.
+        \begin{itemize}
+            \item $[0,2]/\{0,1,2\}$
+            \item $\mathbb{R}/[0,1]$
+            \item $\mathbb{R}/\{0,1\}$
+            \item $\mathbb{R}^2/S^1$
+            \item a Möbius band / its boundary circle.
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item $[0,2]/\{0,1,2\}$:
+    
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=120mm]{1.jpg}
+        \end{center}
+    \end{figure}
+
+    \hfil
+
+    \item $\mathbb{R}/[0,1]$:
+    
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=120mm]{2.jpg}
+        \end{center}
+    \end{figure}
+
+    \break
+
+    \item $\mathbb{R}/\{0,1\}$:
+    
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=120mm]{3.jpg}
+        \end{center}
+    \end{figure}
+
+    \hfil
+
+    \item $\mathbb{R}^2/S^1$:
+    
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=120mm]{4.jpg}
+        \end{center}
+    \end{figure}
+
+    As an extra fun fact, in Japan there is a type of doll used as a charm to stop the rain, called the "Shine, Shine Monk" (
+        \begin{CJK}{UTF8}{min}
+            てるてる坊主
+        \end{CJK}
+    , "Teru Teru Bōzu"), and it looks a lot like $\mathbb{R}^2/S^1$:
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=40mm]{haru.jpg}
+        \end{center}
+    \end{figure}
+
+    I guess $\mathbb{R}^2/S^1$ could be a potential topological name for it.
+
+    \break
+
+    \item a Möbius band / its boundary circle: By following modification, it forms $\mathbf{RP}^2$.
+    
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=120mm]{5.jpg}
+        \end{center}
+    \end{figure}
+\end{itemize}
+
+\end{document}
