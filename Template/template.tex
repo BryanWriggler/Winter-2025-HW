@@ -7,13 +7,15 @@
 arc=5mm,
 lower separated=false,
 fonttitle=\bfseries,
-%colbacktitle=green!10,
-%coltitle=green!50!black,
 enhanced,
 attach boxed title to top left={xshift=0.5cm,
         yshift=-2mm},
+arc=5mm,
 colframe=blue!50!black,
-colback=blue!10
+colback=blue!10,
+colbacktitle=blue!10,
+title ={\textcolor{black}{auto counter}},
+fonttitle=\bfseries,
 }
 
 \usepackage{amsmath}
@@ -22,6 +24,7 @@ colback=blue!10
 \usepackage[utf8]{inputenc}
 \linespread{1.2}
 
+%add [section] and [subsection] after environments can help index it
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
@@ -34,6 +37,7 @@ colback=blue!10
 \maketitle
 
 \section*{1}
+
 \begin{myBox}[]{}
     \begin{question}
         
